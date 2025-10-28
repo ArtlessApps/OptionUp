@@ -1,0 +1,139 @@
+{
+  "lesson_id": "option_fundamentals",
+  "title": "What is an Option?",
+  "estimated_time": "5 min",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "insurance_vs_options.png",
+      "headline": "Why do traders pay $500 for a piece of paper?",
+      "text": "Options are the financial world's most misunderstood tool. In the next 5 minutes, you'll understand what Wall Street took years to learn."
+    },
+    {
+      "screen_type": "definition",
+      "headline": "An Option is a Contract",
+      "text": "An option gives you the RIGHT (not obligation) to buy or sell a stock at a specific price before a specific date.",
+      "visual": "contract_document.png",
+      "highlight_words": ["RIGHT", "not obligation", "specific price", "specific date"]
+    },
+    {
+      "screen_type": "analogy",
+      "headline": "Think of it like concert tickets",
+      "text": "You buy a $50 ticket for a concert next month. You have the RIGHT to go, but you don't HAVE to. If you get sick, you're only out $50. But if tickets resell for $500, you can go OR sell your ticket for a profit.",
+      "interactive": "tap_to_reveal",
+      "reveal_sections": [
+        {
+          "label": "The ticket = Option contract"
+        },
+        {
+          "label": "Concert date = Expiration date"
+        },
+        {
+          "label": "$50 ticket price = Premium you pay"
+        },
+        {
+          "label": "Your choice to attend = Your right to exercise"
+        }
+      ]
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "4 Terms You'll See Everywhere",
+      "cards": [
+        {
+          "term": "Premium",
+          "definition": "The price you pay to buy the option",
+          "example": "$3 per share = $300 total"
+        },
+        {
+          "term": "Strike Price",
+          "definition": "The price you can buy/sell the stock at",
+          "example": "$155 = your locked-in price"
+        },
+        {
+          "term": "Expiration Date",
+          "definition": "The deadline - after this, option is worthless",
+          "example": "30 days from today"
+        },
+        {
+          "term": "Underlying Asset",
+          "definition": "The stock the option is based on",
+          "example": "AAPL stock"
+        }
+      ]
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "What does an option give you?",
+      "options": [
+        "The obligation to buy a stock",
+        "The right (but not obligation) to buy or sell a stock",
+        "Ownership of the company",
+        "A guaranteed profit"
+      ],
+      "correct": 1,
+      "xp_reward": 10,
+      "explanation_correct": "Exactly! It's a RIGHT, not an obligation. That's what makes options less risky than stocks in some ways.",
+      "explanation_wrong": "Not quite. An option gives you a choice - the RIGHT but not OBLIGATION to act."
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "You buy an option for $5 per share. What's the MOST you can lose?",
+      "options": [
+        "$5 per share (the premium you paid)",
+        "Unlimited losses",
+        "$100 per share",
+        "Nothing - options are risk-free"
+      ],
+      "correct": 0,
+      "xp_reward": 15,
+      "explanation_correct": "Perfect! When you BUY an option, your maximum loss is always just the premium you paid. That's the beauty of options.",
+      "explanation_wrong": "Think about it: if you paid $5 for a concert ticket and don't go, what did you lose? Just the $5 ticket price."
+    },
+    {
+      "screen_type": "scenario",
+      "question": "AAPL is at $150. You pay $4 for an option to buy it at $155 anytime this month. Next week, AAPL jumps to $165. What should you do?",
+      "options": [
+        "Exercise your option - buy at $155 and sell at $165",
+        "Let it expire - you can't make money",
+        "Cry because you lost $4"
+      ],
+      "correct": 0,
+      "xp_reward": 15,
+      "explanation_correct": "Boom! You can buy at $155 (your strike) and immediately sell at $165 (market price) = $10 profit. Minus your $4 premium = $6 net profit per share. That's a 150% return!",
+      "explanation_wrong": "Look at the numbers: You can buy at $155 (your locked-in strike), but the stock is worth $165. That's $10 profit per share!"
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "Lock These In 🔒",
+      "cards": [
+        {
+          "front": "What's an option?",
+          "back": "A CONTRACT giving you the RIGHT (not obligation) to buy or sell a stock at a set price before a set date"
+        },
+        {
+          "front": "Your maximum loss?",
+          "back": "Only the PREMIUM you paid - nothing more"
+        },
+        {
+          "front": "Why use options?",
+          "back": "LEVERAGE: Control $15,000 of stock for just $300. Limited downside, unlimited upside."
+        }
+      ]
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 60,
+      "total_xp": 60,
+      "badge": "options_foundation",
+      "badge_description": "You understand what options actually are",
+      "streak_bonus": false,
+      "next_lesson_preview": {
+        "title": "What is a Call Option?",
+        "description": "Now learn the first type: calls (betting the stock goes UP)",
+        "unlock_status": "unlocked"
+      },
+      "celebration_message": "Most traders skip this. You're already ahead! 🚀"
+    }
+  ]
+}
