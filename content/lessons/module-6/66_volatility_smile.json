@@ -1,0 +1,38 @@
+{
+  "lesson_id": "volatility-smile",
+  "title": "Volatility Smile",
+  "estimated_time": "8 min",
+  "total_xp": 80,
+  "badge": "😊 Smile Decoder",
+  "screens": [
+    {"screen_type": "hook", "visual": "smile_chain.png", "headline": "Why is the far OTM option pricier (per IV) than ATM?", "text": "The volatility smile reveals the market's fear of tails."},
+    {"screen_type": "definition", "headline": "U-shaped IV across strikes", "text": "ATM IV is lowest; OTM puts and calls have higher IV. Deep OTM highest—pricing in fat tails.", "visual": "smile_chart.png", "highlight_words": ["ATM lowest", "OTM higher", "fat tails"]},
+    {"screen_type": "analogy", "headline": "Insurance pricing", "text": "Total-destruction coverage costs more than fender-bender, despite lower probability."},
+    {"screen_type": "key_terms", "headline": "Smile glossary", "cards": [
+      {"term": "Volatility Smile", "definition": "U-shaped IV vs strike"},
+      {"term": "Put Skew", "definition": "OTM puts IV > OTM calls IV (equities)"},
+      {"term": "Fat Tails", "definition": "Extreme moves > normal model"},
+      {"term": "Tail Risk Premium", "definition": "Extra IV in deep OTM options"}
+    ]},
+    {"screen_type": "multiple_choice", "question": "SPY $450: $450C IV 18%, $470C IV 26%. Why higher IV OTM?", "options": ["Error", "More buyers", "Fat tails priced", "Guaranteed move"], "correct": 2, "xp_reward": 10, "explanation_correct": "Market charges for unlikely but severe moves.", "explanation_wrong": "The smile embeds tail probabilities beyond normal."},
+    {"screen_type": "multiple_choice", "question": "OTM put IV 30% vs OTM call IV 22% means?", "options": ["Overpriced puts", "Downside feared (put skew)", "Calls are better", "Guaranteed profit"], "correct": 1, "xp_reward": 10, "explanation_correct": "Equities show persistent put skew due to crash demand.", "explanation_wrong": "Higher put IV reflects demand for protection, not mispricing."},
+    {"screen_type": "interactive_example", "headline": "Option Chain Smile Explorer", "description": "Compare IV across strikes and see smile premium.", "inputs": [
+      {"label": "Underlying", "value": "SPY"},
+      {"label": "DTE", "value": 30}
+    ], "outputs": [
+      {"label": "$430 Put IV", "value": "32%"},
+      {"label": "$450 ATM IV", "value": "18%"},
+      {"label": "$470 Call IV", "value": "28%"}
+    ], "teaching_points": ["ATM best value, OTM carries smile premium", "Put skew: downside IV often higher than upside"]},
+    {"screen_type": "scenario", "question": "Which put spread offers better risk-adjusted value? Far OTM 30% IV or near ATM 20% IV?", "options": ["Far OTM", "Near ATM"], "correct": 1, "xp_reward": 10, "explanation_correct": "Near ATM avoids paying as much smile premium; often higher ROC.", "explanation_wrong": "Deep OTM credits can mask worse ROC due to tail premium."},
+    {"screen_type": "summary_cards", "headline": "Smile takeaways", "cards": [
+      {"front": "What", "back": "OTM IV > ATM IV → U-shaped curve"},
+      {"front": "Why", "back": "Fat tails, crash demand, lottery calls"},
+      {"front": "Trade", "back": "Favor ATM/near ATM for value; be cautious with deep OTM"},
+      {"front": "Put skew", "back": "Equities: left tail priced richer than right"}
+    ]},
+    {"screen_type": "celebration", "xp_earned": 80, "total_xp": 80, "badge": "😊 Smile Decoder", "badge_description": "Understands IV smiles and value zones", "streak_bonus": false, "celebration_message": "You can now read the smile like a pro.", "next_lesson_preview": {"title": "Skew Trading", "description": "Profit from asymmetric IV", "unlock_status": "unlocked"}}
+  ]
+}
+
+

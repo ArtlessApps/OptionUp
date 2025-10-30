@@ -1,0 +1,28 @@
+{
+  "lesson_id": "assignment-exercise-taxes",
+  "title": "Assignment & Exercise Tax Implications",
+  "estimated_time": "7 min",
+  "total_xp": 70,
+  "badge": "📋 Assignment Tax Expert",
+  "screens": [
+    {"screen_type": "hook", "visual": "covered_call_assignment_basis.png", "headline": "Covered call premium isn't separate—it's in the sale price", "text": "Report combined per IRS rules."},
+    {"screen_type": "definition", "headline": "Adjust proceeds/cost basis", "text": "Call assignment: premium ADDED to sale price. Put assignment: premium SUBTRACTED from cost basis.", "visual": "basis_adjustments.png"},
+    {"screen_type": "analogy", "headline": "House option payment", "text": "Option fee + purchase = total sale price—one transaction."},
+    {"screen_type": "key_terms", "headline": "Core rules", "cards": [
+      {"term": "Cost Basis Adj", "definition": "Short put premium reduces basis"},
+      {"term": "Sale Price Adj", "definition": "Short call premium increases proceeds"},
+      {"term": "Holding Period", "definition": "ITM CC can reset; OTM preserves"},
+      {"term": "Straddle Rules", "definition": "Advanced; consult CPA"}
+    ]},
+    {"screen_type": "multiple_choice", "question": "Sold $50 put for $3; assigned. Basis?", "options": ["$50", "$53", "$47", "$3"], "correct": 2, "xp_reward": 10, "explanation_correct": "Cost basis is strike minus premium = $47.", "explanation_wrong": "Put premium reduces purchase basis."},
+    {"screen_type": "interactive_example", "headline": "Covered Call Assignment Walkthrough", "description": "Compute combined gain with premium added to proceeds.", "inputs": [{"label": "Cost Basis", "value": 180}, {"label": "Strike", "value": 185}, {"label": "Premium", "value": 6}], "outputs": [{"label": "Proceeds", "value": "$191"}, {"label": "Gain", "value": "$11/share"}]},
+    {"screen_type": "summary_cards", "headline": "Watch-outs", "cards": [
+      {"front": "ITM CC resets clock", "back": "Prefer OTM if near LTCG"},
+      {"front": "Assignment dates", "back": "Impact ST/LT classification"},
+      {"front": "Get help", "back": "Frequent assignment → CPA"}
+    ]},
+    {"screen_type": "celebration", "xp_earned": 70, "total_xp": 70, "badge": "📋 Assignment Tax Expert", "badge_description": "Reports basis correctly", "streak_bonus": false, "celebration_message": "You won't over/underpay due to misreporting.", "next_lesson_preview": {"title": "Record Keeping for Traders", "description": "Discipline that compounds edge", "unlock_status": "unlocked"}}
+  ]
+}
+
+

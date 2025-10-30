@@ -1,0 +1,29 @@
+{
+  "lesson_id": "correlation-risk",
+  "title": "Correlation Risk",
+  "estimated_time": "8 min",
+  "total_xp": 80,
+  "badge": "🔗 Correlation Breaker",
+  "screens": [
+    {"screen_type": "hook", "visual": "tech_in_unison.png", "headline": "5 different tickers ≠ diversification if they move together", "text": "Correlation turns many trades into one big bet."},
+    {"screen_type": "definition", "headline": "Correlation = simultaneous losses", "text": "Shared factors (sector, strategy, Greeks, expiry) make positions fail together.", "visual": "corr_matrix.png"},
+    {"screen_type": "analogy", "headline": "Restaurants, same street", "text": "Variety of cuisine but same location risk → all suffer together."},
+    {"screen_type": "key_terms", "headline": "Correlation types", "cards": [
+      {"term": "Sector", "definition": "Same industry exposure"},
+      {"term": "Strategy", "definition": "All short vol / all bullish"},
+      {"term": "Greeks", "definition": "Common delta/vega/gamma"},
+      {"term": "Time", "definition": "Expiry clustering"}
+    ]},
+    {"screen_type": "multiple_choice", "question": "ICs on SPY/QQQ/IWM/DIA—diversified?", "options": ["Very", "Moderate", "Barely (all US equities, short vol)", "Perfect"], "correct": 2, "xp_reward": 10, "explanation_correct": "High cross-index correlation and same strategy risk.", "explanation_wrong": "They share asset class and Greek profile."},
+    {"screen_type": "scenario", "question": "Approach with less correlation?", "options": ["8 tech bull puts", "Mixed: SPY, TLT, GLD, XLE, XLV, EWJ, XLF"], "correct": 1, "xp_reward": 10, "explanation_correct": "Different asset classes/sectors reduce correlation.", "explanation_wrong": "Tech group is one effective bet."},
+    {"screen_type": "interactive_example", "headline": "Correlation Checker", "description": "Enter tickers; see average correlation and suggestions.", "inputs": [{"label": "Tickers", "value": "AAPL,MSFT,GOOGL,NVDA,META"}], "outputs": [{"label": "Avg Corr", "value": "0.82 (HIGH)"}, {"label": "Diversification", "value": "2/10"}], "teaching_points": ["Target avg corr <0.5", "Mix sectors/asset classes/strategies"]},
+    {"screen_type": "summary_cards", "headline": "Reduce correlation", "cards": [
+      {"front": "Mix assets", "back": "Equities + bonds + commodities"},
+      {"front": "Mix strategies", "back": "Long + short premium; bullish + bearish"},
+      {"front": "Stagger expiries", "back": "Lower time correlation"}
+    ]},
+    {"screen_type": "celebration", "xp_earned": 80, "total_xp": 80, "badge": "🔗 Correlation Breaker", "badge_description": "Knows how to de-link risks", "streak_bonus": false, "celebration_message": "You now see through false diversification.", "next_lesson_preview": {"title": "Black Swan Protection", "description": "Prepare for the unthinkable", "unlock_status": "unlocked"}}
+  ]
+}
+
+

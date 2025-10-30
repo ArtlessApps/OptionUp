@@ -1,0 +1,43 @@
+{
+  "lesson_id": "perfect-vertical-spread-timing",
+  "title": "Perfect Vertical Spread Timing",
+  "estimated_time": "8 min",
+  "total_xp": 80,
+  "badge": "🎯 Perfect Timing",
+  "screens": [
+    {"screen_type": "hook", "visual": "trophy_gold.png", "headline": "220% profit in 15 days by timing a catalyst.", "text": "Alex’s NVIDIA earnings spread."},
+    {"screen_type": "definition", "headline": "Meet Alex", "text": "3 years | $75k | Catalyst-driven trades; edges earnings & structure.", "visual": "trader_card_alex.png"},
+    {"screen_type": "definition", "headline": "The Trade (Nov 8, 2024)", "text": "NVDA $500. Bought $500C ($25), sold $550C ($10) → debit $15 ($1,500). Max profit $3,500; breakeven $515; 45 DTE.", "visual": "bull_call_spread.png"},
+    {"screen_type": "key_terms", "headline": "Plan around earnings (Nov 22)", "cards": [
+      {"term": "Thesis", "definition": "AI momentum → likely beat"},
+      {"term": "Exit", "definition": "Sell morning after earnings"},
+      {"term": "Risk", "definition": "Binary; size at 2% ($1,500)"},
+      {"term": "Time", "definition": "45 DTE gives post-event buffer"}
+    ]},
+    {"screen_type": "scenario", "headline": "Journey", "question": "Sequence", "options": [
+      "Week 1: NVDA $515; spread $18",
+      "Day 13: NVDA $520; spread $22 (IV rising)",
+      "Earnings beat; AH $565",
+      "Open: spread ~$48 → SELL"], "correct": 3, "xp_reward": 10, "explanation_correct": "Captured 220% as planned.", "explanation_wrong": "The catalyst was the core of the edge."},
+    {"screen_type": "analogy", "headline": "Decision point", "text": "Morning after: sell now vs hold for more. IV will crush; take the win. Alex sold at $48; end-day $45 validated exit.", "visual": "decision_moment.png"},
+    {"screen_type": "key_terms", "headline": "What Went Right", "cards": [
+      {"term": "Catalyst", "definition": "Clear reason for move"},
+      {"term": "Structure", "definition": "Spread cuts cost, keeps upside"},
+      {"term": "Time", "definition": "45 DTE buffers IV crush"},
+      {"term": "Discipline", "definition": "Took exceptional profits"}
+    ]},
+    {"screen_type": "key_terms", "headline": "Risks / Tweaks", "cards": [
+      {"term": "Binary risk", "definition": "Could miss; size small"},
+      {"term": "Entry IV", "definition": "Bought 14d prior; 7d might be cheaper"}
+    ]},
+    {"screen_type": "definition", "headline": "Greeks Snapshot", "text": "At entry: Δ~0.50, vega ~0.15, theta −$30/day. After gap: Δ~0.95, vega low, theta small—price move dominated.", "visual": "greeks_panel.png"},
+    {"screen_type": "summary_cards", "headline": "Takeaway", "cards": [
+      {"front": "Catalyst + conviction", "back": "Research matters"},
+      {"front": "Use spreads", "back": "Lower cost, strong payoff"},
+      {"front": "Take profits", "back": "Don’t chase last dollar"}
+    ]},
+    {"screen_type": "celebration", "xp_earned": 80, "total_xp": 80, "badge": "🎯 Perfect Timing", "badge_description": "Executed catalyst trade flawlessly", "streak_bonus": false, "celebration_message": "Exceptional profits deserve swift exits.", "next_lesson_preview": {"title": "Getting Assigned (Horror Story)", "description": "Understand cash-secured puts", "unlock_status": "unlocked"}}
+  ]
+}
+
+

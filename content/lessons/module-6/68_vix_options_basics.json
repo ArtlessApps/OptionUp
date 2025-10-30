@@ -1,0 +1,29 @@
+{
+  "lesson_id": "vix-options-basics",
+  "title": "VIX Options Basics",
+  "estimated_time": "7 min",
+  "total_xp": 70,
+  "badge": "📉 VIX Navigator",
+  "screens": [
+    {"screen_type": "hook", "visual": "vix_spike_gain.png", "headline": "VIX calls: insurance that explodes in crises", "text": "Powerful hedge, but weird mechanics you must know."},
+    {"screen_type": "definition", "headline": "VIX = fear gauge (expected 30d SPX vol)", "text": "Ranges: 12–20 normal, 20–30 elevated, 30–50 panic, 50–80 crisis. VIX↑ when SPX↓.", "visual": "vix_zones.png", "highlight_words": ["inverse", "hedge", "spikes"]},
+    {"screen_type": "analogy", "headline": "Smoke detector", "text": "Silent most days; invaluable in a fire. Insurance pays in rare events; costs most months."},
+    {"screen_type": "key_terms", "headline": "VIX specifics", "cards": [
+      {"term": "VIX Futures", "definition": "Options settle to futures, not spot"},
+      {"term": "Contango", "definition": "Futures > spot → decay headwind"},
+      {"term": "European Style", "definition": "Cash-settled at expiry; no early exercise"},
+      {"term": "Tail Hedge", "definition": "Small cost; large payoff in crashes"}
+    ]},
+    {"screen_type": "multiple_choice", "question": "VIX 15 stays calm for a month; your long VIX calls do what?", "options": ["Flat", "Gain theta", "Decay to near zero", "Track spot"], "correct": 2, "xp_reward": 10, "explanation_correct": "Without fear spike, theta/contango erode value.", "explanation_wrong": "VIX options are volatility bets; calm periods decay."},
+    {"screen_type": "scenario", "question": "$100k portfolio: hedge choices?", "options": ["VIX calls", "SPY puts", "Do nothing"], "correct": 1, "xp_reward": 10, "explanation_correct": "VIX calls = leverage in panics; SPY puts simpler; both valid depending on skill.", "explanation_wrong": "Unhedged portfolios suffer large drawdowns in crises."},
+    {"screen_type": "summary_cards", "headline": "Use with care", "cards": [
+      {"front": "Inverse", "back": "SPX↓ → VIX↑ (often 50–100%)"},
+      {"front": "Decay", "back": "Contango and theta erode longs"},
+      {"front": "Timing", "back": "Hedge during calm; expect many zeroes"},
+      {"front": "Alt hedge", "back": "SPY/SPX puts are simpler for most"}
+    ]},
+    {"screen_type": "celebration", "xp_earned": 70, "total_xp": 70, "badge": "📉 VIX Navigator", "badge_description": "Understands VIX hedging mechanics", "streak_bonus": false, "celebration_message": "Strong grasp of a complex product.", "next_lesson_preview": {"title": "Portfolio Heat", "description": "Total risk across positions", "unlock_status": "unlocked"}}
+  ]
+}
+
+

@@ -1,0 +1,29 @@
+{
+  "lesson_id": "portfolio-heat",
+  "title": "Portfolio Heat (Total Risk)",
+  "estimated_time": "8 min",
+  "total_xp": 80,
+  "badge": "🔥 Heat Manager",
+  "screens": [
+    {"screen_type": "hook", "visual": "portfolio_heat_alert.png", "headline": "2% per trade isn't safe if 15 trades share the same risk", "text": "Total portfolio heat matters more than per-trade risk."},
+    {"screen_type": "definition", "headline": "Heat = sum of max losses", "text": "Portfolio Heat = Σ max loss across open positions. If correlated, losses can realize together.", "visual": "heat_formula.png"},
+    {"screen_type": "analogy", "headline": "Bridge weight limit", "text": "Each person is light; together can collapse the bridge. Same with positions."},
+    {"screen_type": "key_terms", "headline": "Heat concepts", "cards": [
+      {"term": "Portfolio Heat", "definition": "Total $ at risk across positions"},
+      {"term": "Heat %", "definition": "Heat / account size"},
+      {"term": "Correlated Heat", "definition": "Same sector/strategy → simultaneous losses"},
+      {"term": "Uncorrelated", "definition": "Independent risks reduce effective heat"}
+    ]},
+    {"screen_type": "multiple_choice", "question": "$100k, 12 positions, $800 max loss each. Heat?", "options": ["$800", "$1,600", "$9,600", "$100,000"], "correct": 2, "xp_reward": 10, "explanation_correct": "12 × 800 = $9,600 (9.6% heat).", "explanation_wrong": "Sum all max losses to get heat."},
+    {"screen_type": "multiple_choice", "question": "8% heat all in tech condors is actually?", "options": ["Exactly 8%", "Lower", "Higher (correlated)", "Zero"], "correct": 2, "xp_reward": 10, "explanation_correct": "Correlation increases effective risk.", "explanation_wrong": "Sector concentration raises effective heat."},
+    {"screen_type": "interactive_example", "headline": "Heat Calculator", "description": "Enter positions, see heat and correlation warnings.", "inputs": [{"label": "Account", "value": 100000}], "outputs": [{"label": "Heat", "value": "$5,550 (5.55%)"}, {"label": "Tech Heat", "value": "$3,800 (68%)"}], "teaching_points": ["Diversify sectors to reduce effective heat"]},
+    {"screen_type": "summary_cards", "headline": "Guidelines", "cards": [
+      {"front": "Targets", "back": "Conservative <10%; Moderate 10–20%; Aggressive 20–30%; Danger >30%"},
+      {"front": "Trim heat", "back": "Reduce when VIX >25; before events; after losing streaks"},
+      {"front": "Review", "back": "Track heat weekly; avoid creep"}
+    ]},
+    {"screen_type": "celebration", "xp_earned": 80, "total_xp": 80, "badge": "🔥 Heat Manager", "badge_description": "Understands and manages total risk", "streak_bonus": false, "celebration_message": "You now track the metric that saves accounts.", "next_lesson_preview": {"title": "Correlation Risk", "description": "Why 10 trades may be 1 bet", "unlock_status": "unlocked"}}
+  ]
+}
+
+

@@ -1,0 +1,22 @@
+{
+  "lesson_id": "journal-template",
+  "title": "Journal Template",
+  "estimated_time": "7 min",
+  "total_xp": 70,
+  "badge": "📓 Master Journalist",
+  "screens": [
+    {"screen_type": "hook", "visual": "journal_open.png", "headline": "If you don’t track it, you can’t improve it.", "text": "Your journal is your mentor."},
+    {"screen_type": "definition", "headline": "Why Journal?", "text": "Find patterns, track improvement, capture emotions, build accountability. Data > opinions.", "visual": "improvement_chart.png"},
+    {"screen_type": "definition", "headline": "Minimum Tracking (10 items)", "text": "Dates, ticker, strategy, entry/exit, P/L $, P/L %, days in trade, notes.", "visual": "journal_row.png"},
+    {"screen_type": "definition", "headline": "Advanced Tracking", "text": "Greeks at entry (Δ/Θ/ν), VIX/IVR, trend, exit reason, emotional tags, portfolio heat/correlation.", "visual": "advanced_fields.png"},
+    {"screen_type": "definition", "headline": "Monthly Summary", "text": "Total P/L, win rate, avg win/loss, profit factor, best/worst, rule breaks, emotion tags.", "visual": "monthly_dashboard.png"},
+    {"screen_type": "definition", "headline": "Quarterly Review", "text": "Win rate, avg win≥loss, best strategy, loss conditions, rule adherence, emotional patterns, max DD, trend of improvement.", "visual": "quarterly_checklist.png"},
+    {"screen_type": "interactive_example", "headline": "Real Insight", "description": "Sarah: 0% win when VIX>35; 90% when VIX<20 → add ‘no trade VIX>35’.", "inputs": [{"label": "VIX threshold", "value": 35}], "outputs": [{"label": "Rule Added", "value": "No new trades if VIX > 35"}]},
+    {"screen_type": "definition", "headline": "Template", "text": "Google Sheets link (make a copy): Trade log, monthly summary (auto), quarterly review checklist, charts, example data, instructions.", "visual": "template_preview.png"},
+    {"screen_type": "definition", "headline": "Build the Habit", "text": "Log immediately at close; weekly 30‑min review; monthly metrics; quarterly deep dive.", "visual": "habit_calendar.png"},
+    {"screen_type": "multiple_choice", "question": "80% win on condors, 40% on verticals—action?", "options": ["Practice verticals", "Do more condors; reduce verticals", "Ignore", "Quit"], "correct": 1, "xp_reward": 10, "explanation_correct": "Double down on edge; fix or drop weak strategy.", "explanation_wrong": "Journal insights drive allocation."},
+    {"screen_type": "celebration", "xp_earned": 70, "total_xp": 70, "badge": "📓 Master Journalist", "badge_description": "Data‑driven improvement", "streak_bonus": false, "celebration_message": "Your journal is your coach.", "next_lesson_preview": {"title": "Next Steps & Resources", "description": "Grand finale", "unlock_status": "unlocked"}}
+  ]
+}
+
+

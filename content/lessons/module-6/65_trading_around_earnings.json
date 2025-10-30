@@ -1,0 +1,115 @@
+{
+  "lesson_id": "trading-around-earnings",
+  "title": "Trading Around Earnings",
+  "estimated_time": "8 min",
+  "total_xp": 80,
+  "badge": "📊 Earnings Warrior",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "earnings_gap_iv_crush.png",
+      "headline": "Stock rockets 12%... and your calls lose money?",
+      "text": "Welcome to IV crush—the #1 earnings trap that destroys retail traders."
+    },
+    {
+      "screen_type": "definition",
+      "headline": "Binary events create IV spikes and big moves",
+      "text": "Earnings drive uncertainty → IV spikes into the event and collapses right after. Even if direction is right, IV crush can offset gains.",
+      "visual": "iv_timeline.png",
+      "highlight_words": ["IV spikes", "IV crush", "binary"],
+      "example": {
+        "t-30d": "IV 30%",
+        "t-7d": "IV 50%",
+        "t-1d": "IV 80%",
+        "t+1d": "IV 40% (crushed)"
+      }
+    },
+    {
+      "screen_type": "analogy",
+      "headline": "Concert ticket after the show",
+      "text": "Before: hype → expensive tickets (high IV). After: event over → nobody pays (IV crush). Options behave the same around earnings.",
+      "interactive": "tap_to_reveal",
+      "reveal_sections": [
+        {"label": "Pre-event hype", "content": "High IV inflates option prices"},
+        {"label": "Post-event", "content": "IV collapses, price deflates"},
+        {"label": "Direction can be right", "content": "But vega loss dominates"}
+      ]
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "Earnings glossary",
+      "cards": [
+        {"term": "Earnings Date", "definition": "Quarterly disclosure; typical gaps 3-15%"},
+        {"term": "IV Crush", "definition": "30-50% IV drop post-announcement"},
+        {"term": "Earnings Calendar", "definition": "Plan positions around known dates"},
+        {"term": "Straddle", "definition": "Long call + put; needs huge move to beat crush"}
+      ]
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "AAPL $180, 1wk $180C costs $8 at 80% IV. Stock gaps to $185. Likely outcome?",
+      "options": ["+50%", "Flat", "-20% to -40%", "2x"],
+      "correct": 2,
+      "xp_reward": 10,
+      "explanation_correct": "IV drops to ~40-50% and destroys more value than the $5 delta gain adds.",
+      "explanation_wrong": "Direction helps, but IV crush usually hurts more on modest moves."
+    },
+    {
+      "screen_type": "scenario",
+      "question": "NVDA $500, earnings in 3 days, you're bullish to $530. Best approach?",
+      "options": ["Buy calls now", "Sell puts now", "Buy calls after", "Avoid"],
+      "correct": 1,
+      "xp_reward": 10,
+      "explanation_correct": "Sell premium into high IV so crush helps you. Buying before is a gamble.",
+      "explanation_wrong": "Buying before fights IV crush. Selling premium uses it to your advantage."
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "IV Crush Calculator",
+      "description": "Model P/L across stock moves and IV drops.",
+      "inputs": [
+        {"label": "Stock Price", "value": 100},
+        {"label": "Strike", "value": 100},
+        {"label": "DTE", "value": 7},
+        {"label": "IV Before", "value": 80},
+        {"label": "Stock Move %", "type": "slider", "min": -15, "max": 15, "value": 5},
+        {"label": "IV After", "value": 40}
+      ],
+      "outputs": [
+        {"label": "Before Price", "value": "$8.00"},
+        {"label": "After Price", "value": "$6.50"},
+        {"label": "P/L", "value": "-$1.50 (-19%)"}
+      ],
+      "teaching_points": [
+        "Need 8-10% move to breakeven",
+        "Crush magnitude dominates moderate moves"
+      ]
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "Playbook",
+      "cards": [
+        {"front": "Four ways", "back": "Buy before (risky); Sell before (best); Buy after (safe); Avoid (wise)"},
+        {"front": "IV timeline", "back": "T-7 spike; T-1 peak; T+0 crush"},
+        {"front": "Pro move", "back": "Sell credit spreads/condors 7d pre; close next morning"},
+        {"front": "Risk control", "back": "Size 1-2%; earnings are gambles with edge"}
+      ]
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 80,
+      "total_xp": 80,
+      "badge": "📊 Earnings Warrior",
+      "badge_description": "Understands IV crush and earnings tactics",
+      "streak_bonus": false,
+      "celebration_message": "You can now avoid the classic earnings trap!",
+      "next_lesson_preview": {
+        "title": "Volatility Smile",
+        "description": "Why OTM IV is higher than ATM",
+        "unlock_status": "unlocked"
+      }
+    }
+  ]
+}
+
+
