@@ -1,0 +1,177 @@
+{
+  "lesson_id": "choosing-expiration-dates",
+  "title": "Choosing Expiration Dates",
+  "estimated_time": "8 min",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "📅⏰",
+      "headline": "Right prediction, wrong timing = $0",
+      "text": "You predicted TSLA would hit $300. It did... 3 days after your options expired. You were RIGHT but made zero. Expiration selection isn't about predicting the future - it's about giving yourself time to BE right."
+    },
+    {
+      "screen_type": "definition",
+      "headline": "The Expiration Timeline",
+      "text": "WEEKLIES = 0-14 days (high risk, theta acceleration). MONTHLIES = 30-90 days (balanced, most popular). QUARTERLIES = 90-120 days (slower pace). LEAPS = 12+ months (behaves like stock). Choose based on your catalyst timing and risk tolerance. More time = more premium but more safety.",
+      "visual": "📆",
+      "highlight_words": ["WEEKLIES", "MONTHLIES", "QUARTERLIES", "LEAPS", "catalyst timing"]
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "Expiration Types",
+      "cards": [
+        {
+          "term": "Weekly Options (0-14 days)",
+          "definition": "Short-term options, expire every Friday",
+          "example": "TSLA earnings in 3 days? Buy weekly call. Fast theta, cheap premium, binary outcome. 80% expire worthless. High risk/reward."
+        },
+        {
+          "term": "Monthly Options (30-90 days)",
+          "definition": "Standard options, third Friday of each month",
+          "example": "Think stock rises over next 2 months? Buy 60-day call. Enough time to be right, not overpaying for excess time. Sweet spot for most traders."
+        },
+        {
+          "term": "LEAPS (1-2 years)",
+          "definition": "Long-term options, January expirations",
+          "example": "Bullish on AI for 2 years? Buy NVDA Jan 2027 call. Acts like stock ownership but cheaper (delta ~0.80). Lower risk, lower reward."
+        }
+      ]
+    },
+    {
+      "screen_type": "analogy",
+      "headline": "Think of it like shipping packages",
+      "text": "You need to send a package. Three shipping options with different delivery times and prices...",
+      "interactive": "tap_to_reveal",
+      "reveal_sections": [
+        {
+          "label": "Overnight shipping (Weeklies - 1-7 days)",
+          "content": "Expensive per day ($50), but package arrives FAST. Use only when you MUST have it tomorrow (earnings, Fed decision). Miss the window = wasted money. High stress."
+        },
+        {
+          "label": "Standard shipping (Monthlies - 30-60 days)",
+          "content": "Moderate cost ($20), arrives in reasonable time. Most flexible. Even if delayed 1-2 weeks, still arrives. This is 60-90 day options - enough time to be right."
+        },
+        {
+          "label": "Slow boat shipping (LEAPS - 1+ year)",
+          "content": "Cheap per day ($5), but takes forever. Use when NOT urgent (long-term conviction). Package could get lost, but you have time to resend."
+        },
+        {
+          "label": "This is expiration selection",
+          "content": "Match timeframe to your catalyst. Known event (earnings) = weeklies. Uncertain timing (sector rotation) = monthlies. Long thesis (AI boom) = LEAPS."
+        }
+      ]
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "AAPL earnings are in 2 days. You're very bullish. Which expiration makes most sense?",
+      "options": [
+        "Weeklies expiring in 3 days after earnings",
+        "Monthlies expiring in 45 days",
+        "LEAPS expiring in 1 year",
+        "All are equally good"
+      ],
+      "correct": 0,
+      "xp_reward": 10,
+      "explanation_correct": "Perfect! Known catalyst (earnings in 2 days) = use shortest expiration needed. Weeklies give you exposure to the move at lowest cost. No need to pay for 45 extra days you don't need. Match expiration to catalyst!",
+      "explanation_wrong": "When catalyst is KNOWN (earnings in 2 days), use short expiration. Why pay for 45 days when the move happens in 2? Weeklies expiring 3 days out capture the earnings pop at minimal cost. Don't overpay for time you won't use."
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "You think EVs will boom over the next year, but timing is uncertain. Best expiration?",
+      "options": [
+        "Weeklies - keep rolling forward",
+        "30-60 day options",
+        "90-180 day options or LEAPS",
+        "2-year LEAPS only"
+      ],
+      "correct": 2,
+      "xp_reward": 10,
+      "explanation_correct": "Smart for uncertain timing! 90-180 days gives you room to be right without overpaying. Could also use 1-year LEAPS for very long thesis. Avoid weeklies/monthlies when timing unknown - theta will kill you if the move takes 4 months.",
+      "explanation_wrong": "Unknown timing = buy more time. 30-60 days works if you think move is 'within 2 months.' But 'boom over next year' suggests longer (90-180 days or LEAPS). Give yourself cushion - better to overpay for time than run out of time."
+    },
+    {
+      "screen_type": "scenario",
+      "question": "You're learning options and making frequent mistakes. Which expiration gives you most forgiveness?",
+      "options": [
+        "Weeklies - cheap to experiment",
+        "60-90 day options",
+        "LEAPS - most time",
+        "Doesn't matter when learning"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "Great for learners! 60-90 days gives you time to see your thesis play out AND recover from timing mistakes. Weeklies expire before you learn anything. LEAPS are expensive to experiment with. 60-90 days = training wheels with enough time.",
+      "explanation_wrong": "When learning, you WILL be wrong about timing. 60-90 day options give you room for error. Weeklies expire too fast (you're still figuring it out). LEAPS cost too much for experiments. Start with monthlies, graduate to weeklies once you have edge."
+    },
+    {
+      "screen_type": "scenario",
+      "question": "A stock's options chain shows: 7-day $2, 45-day $5, 365-day $15. You're bullish for 3 months. Which is best value?",
+      "options": [
+        "7-day ($2) - cheapest",
+        "45-day ($5) - matches 3-month timeline",
+        "365-day ($15) - most time",
+        "Buy multiple 7-day and roll them"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "Best match! 45-day ($5) covers your 3-month thesis at reasonable cost. 7-day = you'd need to roll 12+ times = $24+ total = more expensive. 365-day = overpaying for 9 extra months you don't need ($15 vs $5). Match expiration to thesis!",
+      "explanation_wrong": "Calculate cost vs time: 7-day needs ~12 rolls to cover 3 months = $24 total + commissions. 365-day = paying $15 for 12 months when you only need 3. 45-day = $5 for perfect time window. Match the option to your timeline, don't under or overpay."
+    },
+    {
+      "screen_type": "calculation",
+      "question": "You have $1,000 to deploy on 60-day calls ($5 each). How many contracts can you buy? (Number only)",
+      "input_type": "number",
+      "correct_answer": 2,
+      "tolerance": 0,
+      "xp_reward": 15,
+      "hint": "Each contract = $5 × 100 shares. How many can you afford?",
+      "explanation": "$5 premium × 100 = $500 per contract. $1,000 ÷ $500 = 2 contracts. Remember to always multiply by 100! Many beginners see $5 and think the contract costs $5 total. It's $500."
+    },
+    {
+      "screen_type": "scenario",
+      "question": "It's Monday. Your weekly options expire Friday. Stock hasn't moved. Theta is -$75/day. What do you do?",
+      "options": [
+        "Hold to Friday - it might move!",
+        "Sell now and cut losses",
+        "Roll to next week's expiration",
+        "Buy more to average down"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "Cut and run! Theta at -$75/day × 4 days = you'll lose $300 more by Friday even if stock doesn't move. You're in the theta death spiral. Sell now, take the L, move to better opportunity. Hope is not a strategy.",
+      "explanation_wrong": "Math is brutal here: 4 days left, theta -$75/day = you'll bleed $300 by Friday. Stock needs to move $300 just to break even on time decay PLUS the move you need for profit. Probability is against you. Professional traders cut weekly losers fast."
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "Expiration Selection Guide",
+      "cards": [
+        {
+          "front": "When to use each expiration?",
+          "back": "Weeklies: Known catalyst in 1-7 days. Monthlies: Directional thesis over 1-3 months. Quarterlies: Uncertain timing, 3-6 month view. LEAPS: Long-term conviction, 1-2 year thesis. Match expiration to catalyst!"
+        },
+        {
+          "front": "The 30-day rule",
+          "back": "Avoid buying options with <30 days unless you have specific near-term catalyst. Theta accelerates after 30 days. Exception: earnings, Fed meetings, product launches. Otherwise, give yourself 60+ days."
+        },
+        {
+          "front": "Rolling options - when does it make sense?",
+          "back": "Roll when: 1) Thesis intact but need more time, 2) Can roll for credit/small debit, 3) >30 days left on new expiration. Don't roll: 1) Down 50%+ (accept loss), 2) Thesis broken, 3) Just hope."
+        }
+      ]
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 80,
+      "total_xp": 1040,
+      "badge": "📅 Expiration Expert",
+      "badge_description": "You know how to choose the perfect expiration date!",
+      "celebration_message": "Excellent! You now understand timing is everything. Final lesson: reading an options chain like a pro.",
+      "streak_bonus": false,
+      "next_lesson_preview": {
+        "title": "Reading an Options Chain",
+        "description": "Master the interface where all options trades begin",
+        "unlock_status": "unlocked"
+      }
+    }
+  ]
+}

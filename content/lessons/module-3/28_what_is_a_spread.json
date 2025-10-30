@@ -1,0 +1,187 @@
+{
+  "lesson_id": "what-is-a-spread",
+  "title": "What is a Spread?",
+  "estimated_time": "8 min",
+  "total_xp": 80,
+  "badge": "🎯 Spread Specialist",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "split_screen_option_costs.png",
+      "headline": "Why pay $2,500 when you could pay $500?",
+      "text": "Spreads let you trade options for a fraction of the cost. But there's a catch..."
+    },
+    {
+      "screen_type": "definition",
+      "headline": "A spread = Two options working together",
+      "text": "A spread is when you BUY one option and SELL another option at the same time. Think of it like trading a 'pair' instead of singles. The option you sell reduces the cost of the option you buy.",
+      "visual": "two_options_linked.png",
+      "highlight_words": ["BUY", "SELL", "same time"]
+    },
+    {
+      "screen_type": "analogy",
+      "headline": "Insurance with a deductible",
+      "text": "Imagine buying car insurance. Full coverage costs $2,000/year (like buying a call). But if you add a $5,000 deductible, it drops to $500/year (like selling a higher call to reduce cost). You're still covered for big moves, but you accept limits on your max payout. That's exactly how spreads work.",
+      "interactive": "tap_to_reveal",
+      "reveal_sections": [
+        {
+          "label": "Full insurance = Naked option (expensive)",
+          "content": "Buying a single option without selling one gives you unlimited profit potential but costs more."
+        },
+        {
+          "label": "Deductible = Selling second leg (cheaper)",
+          "content": "Selling another option brings in premium that reduces your net cost."
+        },
+        {
+          "label": "Limited payout = Capped profit",
+          "content": "The option you sold caps your maximum profit, but you paid less to enter the trade."
+        }
+      ]
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "Spread vocabulary",
+      "cards": [
+        {
+          "term": "Legs",
+          "definition": "The two options in a spread (long leg + short leg)",
+          "example": "Buy $100 call + Sell $110 call = 2 legs"
+        },
+        {
+          "term": "Width",
+          "definition": "The distance between strike prices",
+          "example": "$100 and $110 strikes = $10 wide spread"
+        },
+        {
+          "term": "Net Debit",
+          "definition": "You pay money upfront (spread costs you)",
+          "example": "Buy for $25, Sell for $10 = $15 debit"
+        },
+        {
+          "term": "Net Credit",
+          "definition": "You collect money upfront (spread pays you)",
+          "example": "Sell for $25, Buy for $10 = $15 credit"
+        }
+      ]
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "If you buy a $50 call for $8 and sell a $55 call for $3, what's your net cost?",
+      "options": [
+        "$5 debit",
+        "$11 debit",
+        "$5 credit",
+        "$11 credit"
+      ],
+      "correct": 0,
+      "xp_reward": 10,
+      "explanation_correct": "Perfect! You paid $8 and collected $3, so $8 - $3 = $5 net debit. You spent $5 per share ($500 per spread).",
+      "explanation_wrong": "Not quite. When you BUY ($8) and SELL ($3), you subtract: $8 - $3 = $5. Since you paid more than you collected, it's a debit."
+    },
+    {
+      "screen_type": "scenario",
+      "question": "Why would someone sell an option as part of their spread?",
+      "options": [
+        "To reduce the cost of the option they're buying",
+        "To increase their potential profit",
+        "To avoid assignment risk",
+        "To eliminate time decay"
+      ],
+      "correct": 0,
+      "xp_reward": 10,
+      "explanation_correct": "Exactly! The premium you collect from selling reduces your upfront cost. You give up some upside, but you lower your entry price significantly.",
+      "explanation_wrong": "The main reason is cost reduction. Selling an option brings in premium, which offsets the cost of the option you bought. The trade-off is capped profit."
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "Build your first spread",
+      "description": "Adjust the short call strike to see how it affects cost and profit potential",
+      "inputs": [
+        {
+          "label": "Stock Price",
+          "value": 100,
+          "locked": true
+        },
+        {
+          "label": "Long Call Strike",
+          "value": 100,
+          "locked": true
+        },
+        {
+          "label": "Long Call Premium",
+          "value": 12,
+          "locked": true
+        },
+        {
+          "label": "Short Call Strike",
+          "type": "dropdown",
+          "options": [105, 110, 115],
+          "value": 105
+        }
+      ],
+      "outputs": [
+        {
+          "label": "Short Call Premium",
+          "calculation": "short_strike == 105 ? 8 : short_strike == 110 ? 5 : 3"
+        },
+        {
+          "label": "Net Debit",
+          "calculation": "12 - short_premium",
+          "format": "currency"
+        },
+        {
+          "label": "Max Profit",
+          "calculation": "(short_strike - 100) - net_debit",
+          "format": "currency"
+        },
+        {
+          "label": "Max Loss",
+          "calculation": "net_debit",
+          "format": "currency"
+        },
+        {
+          "label": "Breakeven",
+          "calculation": "100 + net_debit"
+        }
+      ],
+      "teaching_points": [
+        "Notice: Selling the $105 call gives you $8 back, reducing your $12 cost to just $4",
+        "But your max profit is now capped at $1 ($100 total) instead of unlimited",
+        "Try different strikes to see the cost/profit trade-off"
+      ]
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "Spread essentials",
+      "cards": [
+        {
+          "front": "What is a spread?",
+          "back": "Buying AND selling options simultaneously. Two legs working together as one position."
+        },
+        {
+          "front": "Why use spreads?",
+          "back": "Reduce cost by 50-80% compared to naked options. Trade-off: Capped profit potential."
+        },
+        {
+          "front": "Key metrics",
+          "back": "Max Profit = Width - Debit | Max Loss = Debit | Breakeven = Long Strike + Debit"
+        }
+      ]
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 80,
+      "total_xp": 80,
+      "badge": "🎯 Spread Specialist",
+      "badge_description": "You understand the foundation of all spread strategies",
+      "streak_bonus": true,
+      "celebration_message": "You just unlocked a whole new way to trade options with less capital!",
+      "next_lesson_preview": {
+        "title": "Bull Call Spread",
+        "description": "Learn the most popular bullish spread strategy",
+        "unlock_status": "unlocked"
+      }
+    }
+  ]
+}
+

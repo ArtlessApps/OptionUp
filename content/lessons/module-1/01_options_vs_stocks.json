@@ -1,0 +1,135 @@
+{
+  "lesson_id": "options-vs-stocks",
+  "title": "Options vs Stocks",
+  "estimated_time": "6 min",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "📊💰",
+      "headline": "Control $10,000 of stock for just $200?",
+      "text": "Last month, NVDA moved 10%. Stock investors made $1,000. Options traders made $4,000. Same stock, same move, but 4x the returns. This is leverage - and it's not as scary as it sounds."
+    },
+    {
+      "screen_type": "definition",
+      "headline": "What exactly is an option?",
+      "text": "An option is a CONTRACT that gives you the right (not obligation) to buy or sell 100 shares of stock at a specific price, by a specific date. Think of it as a coupon with an expiration date - you can use it or let it expire.",
+      "visual": "📄",
+      "highlight_words": ["CONTRACT", "right", "100 shares", "specific date"]
+    },
+    {
+      "screen_type": "analogy",
+      "headline": "Think of it like a house deposit",
+      "text": "You want to buy a $400,000 house, but you're not sure yet. You put down a $5,000 deposit to lock in that price for 90 days. During those 90 days...",
+      "interactive": "tap_to_reveal",
+      "reveal_sections": [
+        {
+          "label": "House value rises to $450,000",
+          "content": "You exercise your right to buy at $400,000. You just made $50,000 (minus your $5,000 deposit)."
+        },
+        {
+          "label": "House value drops to $350,000",
+          "content": "You walk away. You lose your $5,000 deposit, but you didn't buy an overpriced house. Smart move."
+        },
+        {
+          "label": "This is exactly how options work",
+          "content": "The deposit = premium. The locked-in price = strike price. The 90 days = expiration date."
+        }
+      ]
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "3 words you need to know",
+      "cards": [
+        {
+          "term": "Premium",
+          "definition": "The price you pay for the option contract",
+          "example": "$3.50 per share = $350 total (because 1 contract = 100 shares)"
+        },
+        {
+          "term": "Strike Price",
+          "definition": "The price you can buy/sell the stock at",
+          "example": "$150 strike means you can buy at $150, even if stock is at $200"
+        },
+        {
+          "term": "Expiration Date",
+          "definition": "When your option contract expires",
+          "example": "Jan 19, 2024 = your last day to use it or lose it"
+        }
+      ]
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "What's the main difference between buying stock vs buying an option?",
+      "options": [
+        "Options are always more profitable",
+        "Options have an expiration date, stocks don't",
+        "Options are illegal for beginners",
+        "Options can only go up in value"
+      ],
+      "correct": 1,
+      "xp_reward": 10,
+      "explanation_correct": "Exactly! Stocks you can hold forever. Options EXPIRE - they have a countdown clock. This is crucial to understand because time decay will become your friend or enemy depending on your strategy.",
+      "explanation_wrong": "Not quite. The key difference is TIME. Stocks = no expiration. Options = they expire worthless if you don't use them. This is why options can decay in value even if the stock doesn't move."
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "You buy 1 option contract. How many shares of stock does this control?",
+      "options": [
+        "1 share",
+        "10 shares",
+        "100 shares",
+        "1,000 shares"
+      ],
+      "correct": 2,
+      "xp_reward": 10,
+      "explanation_correct": "Perfect! This is critical: 1 option contract = 100 shares. So if you see a premium of $2.50, you're actually paying $250 (×100). This trips up beginners constantly.",
+      "explanation_wrong": "Not quite - and this is a CRITICAL detail: 1 option contract always represents 100 shares. So a $2 premium actually costs you $200. Many beginners miss this and get surprised by their actual cost!"
+    },
+    {
+      "screen_type": "scenario",
+      "question": "Stock is at $100. You can either: A) Buy 100 shares for $10,000, or B) Buy 1 call option for $500. Which has more risk?",
+      "options": [
+        "Buying stock - you could lose all $10,000",
+        "Buying the option - you could lose all $500",
+        "They have the same risk",
+        "Neither has risk"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "Right! With options, your max loss is ALWAYS just the premium you paid ($500). With stock, you could theoretically lose all $10,000 if the company goes bankrupt. This defined risk is why many traders prefer options.",
+      "explanation_wrong": "Think about max loss. Stock: you own $10,000 worth - it could go to zero (bankruptcy). Option: you paid $500 - that's the MOST you can lose. Options actually have LESS dollar risk in this case."
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "Key Takeaways",
+      "cards": [
+        {
+          "front": "What's an option?",
+          "back": "A CONTRACT giving you the RIGHT (not obligation) to buy/sell 100 shares at a set price by a set date. You pay a premium upfront."
+        },
+        {
+          "front": "Why use options instead of stock?",
+          "back": "Leverage: Control $10,000 of stock for just $500. Defined risk: Max loss = premium paid. Flexibility: Profit when stock goes up, down, or sideways."
+        },
+        {
+          "front": "What's the catch?",
+          "back": "Options EXPIRE. If you're wrong about timing, you can lose 100% of premium paid. Stock you can hold forever and wait for recovery."
+        }
+      ]
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 60,
+      "total_xp": 60,
+      "badge": "🎓 Options Apprentice",
+      "badge_description": "You understand what options are!",
+      "celebration_message": "Great start! You just learned why millions of traders use options. Next up: the two types of options you can trade.",
+      "streak_bonus": false,
+      "next_lesson_preview": {
+        "title": "Calls vs Puts",
+        "description": "Learn the two building blocks - betting on stocks going UP or DOWN",
+        "unlock_status": "unlocked"
+      }
+    }
+  ]
+}

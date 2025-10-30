@@ -1,0 +1,159 @@
+{
+  "lesson_id": "premium-intrinsic-time-value",
+  "title": "Premium: What You're Actually Paying For",
+  "estimated_time": "8 min",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "💰⏰",
+      "headline": "Your option loses value every single day",
+      "text": "Even if the stock doesn't move. Even if you're right about direction. You're fighting a countdown clock called theta. Understanding what you're paying for is the difference between profit and pain."
+    },
+    {
+      "screen_type": "definition",
+      "headline": "Premium = Intrinsic Value + Time Value",
+      "text": "Every option premium has TWO parts. INTRINSIC = how much it's worth if you exercised right now. TIME = what you're paying for the possibility of bigger moves. Time value ALWAYS goes to zero at expiration.",
+      "visual": "🧮",
+      "highlight_words": ["Intrinsic Value", "Time Value", "goes to zero"]
+    },
+    {
+      "screen_type": "analogy",
+      "headline": "Think of it like a pizza delivery guarantee",
+      "text": "Pizza shop says: $20 for a pizza, PLUS $5 delivery fee if you want it in 30 minutes or less. The longer you're willing to wait, the less you pay for speed...",
+      "interactive": "tap_to_reveal",
+      "reveal_sections": [
+        {
+          "label": "You need it NOW (30 min guarantee)",
+          "content": "You pay $25 total. The $5 extra is for the TIME VALUE - the promise of fast delivery. The $20 is INTRINSIC - the actual pizza value."
+        },
+        {
+          "label": "You can wait 2 hours (no rush)",
+          "content": "You pay $21 total. Only $1 for time value. Why pay for speed you don't need? The pizza is still worth $20."
+        },
+        {
+          "label": "This is option premium",
+          "content": "Close to expiration = expensive time value (need fast moves). Far from expiration = cheaper per day. Intrinsic value = immediate profit if exercised."
+        }
+      ]
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "Breaking Down Premium",
+      "cards": [
+        {
+          "term": "Intrinsic Value",
+          "definition": "The option's value if exercised RIGHT NOW",
+          "example": "AAPL at $180, you own $170 call = $10 intrinsic ($180 - $170). This can NEVER go negative."
+        },
+        {
+          "term": "Time Value",
+          "definition": "Premium you pay for the time left until expiration",
+          "example": "Option worth $15, but only $10 intrinsic = $5 is pure time value. This decays every day."
+        },
+        {
+          "term": "Extrinsic Value",
+          "definition": "Another name for time value",
+          "example": "Same as time value. If someone says 'extrinsic,' they mean the part that decays. Premium = Intrinsic + Extrinsic."
+        }
+      ]
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "TSLA is at $250. A $240 call costs $18. How much is intrinsic value?",
+      "options": [
+        "$18",
+        "$0",
+        "$10",
+        "$240"
+      ],
+      "correct": 2,
+      "xp_reward": 10,
+      "explanation_correct": "Perfect! Stock at $250, strike at $240 = $10 of immediate value if you exercised (you'd buy at $240, stock worth $250). That's intrinsic. The other $8 of premium is time value.",
+      "explanation_wrong": "Intrinsic = Stock Price - Strike Price (for calls). $250 - $240 = $10 intrinsic value. The option costs $18 total, so $8 is time value that will decay. Always separate the two!"
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "Your call option has $5 intrinsic and $3 time value. At expiration, if the stock hasn't moved, what's your option worth?",
+      "options": [
+        "$8 (same as before)",
+        "$5 (only intrinsic remains)",
+        "$3 (only time value)",
+        "$0 (everything decays)"
+      ],
+      "correct": 1,
+      "xp_reward": 10,
+      "explanation_correct": "Exactly! At expiration, time value is ZERO. Only intrinsic value remains. If stock hasn't moved, that $5 intrinsic is still there. This is why 'in the money' options always retain some value.",
+      "explanation_wrong": "At expiration, time value disappears - there's no time left! But intrinsic value remains as long as the option is in the money. $5 intrinsic means the option still has $5 of real value you can exercise."
+    },
+    {
+      "screen_type": "calculation",
+      "question": "NVDA is at $500. A $480 call costs $28. What's the time value? (Answer in dollars, no $)",
+      "input_type": "number",
+      "correct_answer": 8,
+      "tolerance": 0,
+      "xp_reward": 15,
+      "hint": "First calculate intrinsic value (Stock - Strike), then subtract from total premium",
+      "explanation": "Intrinsic = $500 - $480 = $20. Total premium = $28. Time value = $28 - $20 = $8. This $8 will decay to zero by expiration no matter what happens to the stock."
+    },
+    {
+      "screen_type": "scenario",
+      "question": "Two calls on AAPL at $180: Option A expires tomorrow ($10 premium), Option B expires in 90 days ($15 premium). Which has MORE time value?",
+      "options": [
+        "Option A (expires tomorrow)",
+        "Option B (expires in 90 days)",
+        "They have the same time value",
+        "Neither has time value"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "Correct! More time = more time value. Option B has 90 days of possibility for big moves, so you pay $15. Option A has 1 day left - almost all intrinsic, minimal time value. Longer expiration = more expensive per contract.",
+      "explanation_wrong": "Think about it: which has more TIME left? Option B (90 days) has way more opportunity for the stock to make big moves. That possibility = time value. Option A expires tomorrow - barely any time value left."
+    },
+    {
+      "screen_type": "scenario",
+      "question": "You bought a call for $10. Stock hasn't moved, but 30 days passed. Now it's worth $7. Why did you lose money?",
+      "options": [
+        "The stock went down",
+        "Time decay ate your premium",
+        "You were assigned",
+        "Your broker charged fees"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "Exactly! This is THETA DECAY. Even with zero stock movement, time value bleeds away every day. You paid for 60 days of time. After 30 days, you only have 30 days left - worth less. This is the option seller's advantage.",
+      "explanation_wrong": "You experienced time decay (theta). The stock didn't move, but your option is now worth LESS because you have less TIME. Every day that passes, time value erodes. This is why holding options through expiration without movement is deadly."
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "Premium Breakdown - Remember This",
+      "cards": [
+        {
+          "front": "What is premium made of?",
+          "back": "Premium = Intrinsic Value + Time Value. Intrinsic = immediate profit if exercised. Time = cost of possibility. Time always decays to zero."
+        },
+        {
+          "front": "Why do options lose value over time?",
+          "back": "Time value ALWAYS decays to $0 at expiration. The closer you get, the faster it decays (theta). Even if you're right about direction, you can lose money to time decay."
+        },
+        {
+          "front": "How to calculate each part?",
+          "back": "Intrinsic (Call) = Stock Price - Strike (if positive). Time Value = Total Premium - Intrinsic. At expiration, time value = $0, only intrinsic remains."
+        }
+      ]
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 80,
+      "total_xp": 290,
+      "badge": "💎 Premium Expert",
+      "badge_description": "You understand what you're actually paying for!",
+      "celebration_message": "Fantastic! You now know why options decay and how to calculate value. Next: visualizing profit and loss.",
+      "streak_bonus": false,
+      "next_lesson_preview": {
+        "title": "Your First Profit/Loss Diagram",
+        "description": "Learn to read the charts that show your max risk and reward",
+        "unlock_status": "unlocked"
+      }
+    }
+  ]
+}

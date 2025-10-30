@@ -1,0 +1,199 @@
+{
+  "lesson_id": "reading-options-chain",
+  "title": "Reading an Options Chain",
+  "estimated_time": "9 min",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "🗺️📊",
+      "headline": "This screen has all the data you need to trade",
+      "text": "The options chain is your command center. It shows every strike, every expiration, every price. Beginners see chaos. Pros see opportunity. By the end of this lesson, you'll read it fluently."
+    },
+    {
+      "screen_type": "definition",
+      "headline": "What is an Options Chain?",
+      "text": "The options chain is a GRID showing all available options for a stock. ROWS = different strike prices. COLUMNS = bid, ask, volume, open interest, implied volatility, Greeks. LEFT side = calls. RIGHT side = puts. CENTER = current stock price. Every broker shows this - learn it once, use everywhere.",
+      "visual": "📊",
+      "highlight_words": ["GRID", "strike prices", "LEFT = calls", "RIGHT = puts", "CENTER = stock price"]
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "Options Chain Columns Explained",
+      "cards": [
+        {
+          "term": "Volume",
+          "definition": "Contracts traded TODAY (resets daily)",
+          "example": "Volume 5,000 = 5,000 contracts traded today. High volume = liquid. Volume 10 = illiquid, avoid. Want 1,000+ for easy entry/exit."
+        },
+        {
+          "term": "Open Interest (OI)",
+          "definition": "Total outstanding contracts (all traders combined)",
+          "example": "OI 50,000 = 50,000 contracts exist. Updates overnight. High OI = liquid market. OI < 1,000 = avoid (hard to exit)."
+        },
+        {
+          "term": "Implied Volatility (IV)",
+          "definition": "Market's expectation of future volatility (%)",
+          "example": "IV 40% = stock expected to move ~40% annualized. High IV before earnings (big move expected). Low IV in quiet periods. Affects premium price."
+        }
+      ]
+    },
+    {
+      "screen_type": "analogy",
+      "headline": "Think of it like a restaurant menu",
+      "text": "You walk into a restaurant. The menu is organized so you can find what you want...",
+      "interactive": "tap_to_reveal",
+      "reveal_sections": [
+        {
+          "label": "Left side: Appetizers (Calls)",
+          "content": "Calls are on the LEFT. If bullish (hungry for upside), shop here. Each row = different strike price. Scroll down for cheaper (OTM), scroll up for expensive (ITM)."
+        },
+        {
+          "label": "Center: Today's Specials (Stock Price)",
+          "content": "The CENTER shows current stock price ($150). This is your reference point. Strikes above = OTM calls. Strikes below = ITM calls. Opposite for puts."
+        },
+        {
+          "label": "Right side: Desserts (Puts)",
+          "content": "Puts are on the RIGHT. If bearish (think price drops), shop here. Same strikes as left, but these profit when stock falls. Two sides, one stock."
+        },
+        {
+          "label": "Columns: Prices and Details",
+          "content": "Each column shows: bid (you sell at), ask (you buy at), volume (today's activity), OI (total contracts), IV (expected volatility). Read left to right."
+        }
+      ]
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "You see: Strike $150, Bid $4.90, Ask $5.10, Volume 8,500, OI 45,000. Is this option liquid?",
+      "options": [
+        "No - low volume",
+        "Yes - high volume and tight spread",
+        "Can't determine",
+        "No - OI is too high"
+      ],
+      "correct": 1,
+      "xp_reward": 10,
+      "explanation_correct": "Very liquid! Volume 8,500 = active trading today. OI 45,000 = lots of contracts exist. Spread $0.20 = tight (only 4% of price). You can enter/exit instantly at fair prices. This is what you want to see.",
+      "explanation_wrong": "All signs point to liquid: Volume 8,500 (want 1,000+) ✓, OI 45,000 (want 1,000+) ✓, Spread $0.20 on $5 option (4%, want <5%) ✓. This option trades easily. Compare to illiquid: Volume 50, OI 200, Spread $2."
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "Stock is $180. You're looking at the options chain. You want to buy a call. Where do you look?",
+      "options": [
+        "Right side (puts section)",
+        "Left side (calls section)",
+        "Center (stock price)",
+        "Doesn't matter"
+      ],
+      "correct": 1,
+      "xp_reward": 10,
+      "explanation_correct": "Calls are always on the LEFT side of the chain. Puts on RIGHT. Stock price in CENTER. This is universal across all brokers. Looking for bullish trade = shop the left side, scan the strikes.",
+      "explanation_wrong": "Remember the layout: LEFT = Calls (bullish), RIGHT = Puts (bearish), CENTER = Current stock price. Want to buy a call (bullish trade) = look at LEFT side of options chain. Every broker uses this format."
+    },
+    {
+      "screen_type": "scenario",
+      "question": "You see two $200 strikes: Call IV 45%, Put IV 60%. What does this tell you?",
+      "options": [
+        "Calls are overpriced",
+        "Market expects downside move (puts more expensive)",
+        "Both are equally priced",
+        "IV doesn't affect price"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "Smart read! Put IV 60% vs Call IV 45% = puts are more expensive (fear premium). Market is pricing in downside risk. This happens before earnings misses, bear markets, or company bad news. High put IV = defensive positioning.",
+      "explanation_wrong": "IV directly affects premium. Higher IV = higher premium. Put IV 60% vs Call IV 45% = puts cost MORE relative to calls. This is 'put skew' - market fears downside. You're paying 15% extra for puts due to fear. Common before negative catalysts."
+    },
+    {
+      "screen_type": "scenario",
+      "question": "Scanning options chain, you see: $180 strike has Volume 12K/OI 80K. $185 strike has Volume 200/OI 400. Which do you trade?",
+      "options": [
+        "$180 - much more liquid",
+        "$185 - less competition",
+        "Both are fine",
+        "Volume doesn't matter"
+      ],
+      "correct": 0,
+      "xp_reward": 15,
+      "explanation_correct": "Always choose liquidity! $180 strike: 12K volume today, 80K open interest = lots of activity = easy to exit. $185 strike: 200 volume, 400 OI = ghost town = wide spreads = hard to trade. Stick to liquid strikes (usually ATM and close OTM).",
+      "explanation_wrong": "Liquidity matters for entry/exit. $180 strike has 40x more volume = tighter spreads = instant fills. $185 strike low volume = you might be the ONLY trader = wide bid-ask spread = lose $ to slippage. Always trade the liquid strikes."
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "Options Chain Simulator",
+      "description": "Explore a live options chain and find trades",
+      "inputs": [
+        {
+          "name": "Stock Price",
+          "type": "display",
+          "value": "$150"
+        },
+        {
+          "name": "Your Outlook",
+          "type": "dropdown",
+          "options": ["Bullish", "Bearish"]
+        },
+        {
+          "name": "Time Frame",
+          "type": "selector",
+          "options": ["30 days", "60 days", "90 days"]
+        },
+        {
+          "name": "Risk Tolerance",
+          "type": "dropdown",
+          "options": ["Conservative", "Moderate", "Aggressive"]
+        }
+      ],
+      "teaching_points": [
+        "See how strike selection changes with risk tolerance?",
+        "Notice ATM strikes have highest volume/OI?",
+        "Watch how IV differs between strikes (volatility skew)"
+      ]
+    },
+    {
+      "screen_type": "scenario",
+      "question": "You see an ATM call: Bid $5.00, Ask $5.05, Delta 0.50, Volume 15K. A far OTM call: Bid $0.50, Ask $1.50, Delta 0.10, Volume 200. You're moderately bullish. Which?",
+      "options": [
+        "ATM call - liquid and balanced",
+        "OTM call - cheaper",
+        "Both equally good",
+        "Neither - wait for better setup"
+      ],
+      "correct": 0,
+      "xp_reward": 15,
+      "explanation_correct": "ATM is clearly better! Tight spread ($0.05 vs $1.00), high volume (15K vs 200), delta 0.50 = 50% chance ITM. OTM: wide spread = lose $50+ to slippage, low volume = hard to exit, delta 0.10 = 10% chance. ATM wins every category.",
+      "explanation_wrong": "Compare the metrics: ATM spread 1% (tight) vs OTM spread 100% (terrible). ATM volume 15K (liquid) vs OTM 200 (illiquid). ATM delta 0.50 (good odds) vs OTM 0.10 (lottery ticket). For moderate bullishness, ATM is the clear choice."
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "Options Chain Mastery",
+      "cards": [
+        {
+          "front": "How to read an options chain?",
+          "back": "LEFT = Calls (bullish). RIGHT = Puts (bearish). CENTER = Stock price. ROWS = Strike prices (scroll for ITM/OTM). COLUMNS = Bid/Ask/Volume/OI/IV/Greeks. Shop by expiration date first, then strike."
+        },
+        {
+          "front": "What to check before buying?",
+          "back": "1) Bid-Ask spread (<5% of price), 2) Volume (1,000+ today), 3) Open Interest (1,000+ total), 4) IV level (high = expensive), 5) Delta (probability). All 5 must pass your filter."
+        },
+        {
+          "front": "Where are the most liquid options?",
+          "back": "ATM and 1-2 strikes OTM (highest volume/OI). Monthly expirations (not weeklies far out). Mega-cap stocks (SPY, QQQ, AAPL, TSLA, NVDA). These are your bread-and-butter trades."
+        }
+      ]
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 90,
+      "total_xp": 1130,
+      "badge": "🎓 Module 1 Complete!",
+      "badge_description": "You've mastered options fundamentals!",
+      "celebration_message": "INCREDIBLE WORK! You've completed Module 1! You now understand: what options are, how they work, how to read chains, risk management, and position sizing. You're ready for Unit 2: How Options Actually Work. This is where it gets REAL. See you there!",
+      "streak_bonus": false,
+      "next_lesson_preview": {
+        "title": "Module 2: Income Strategies - Coming Soon!",
+        "description": "Learn covered calls, cash-secured puts, and the wheel strategy",
+        "unlock_status": "locked"
+      }
+    }
+  ]
+}

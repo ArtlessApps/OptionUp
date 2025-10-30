@@ -1,0 +1,186 @@
+{
+  "lesson_id": "theta-decay",
+  "title": "Theta: Why Options Decay",
+  "estimated_time": "8 min",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "⏰💸",
+      "headline": "Your option loses $50 every single day",
+      "text": "Stock doesn't move. Market closed. You did nothing. Yet your call drops from $500 to $450 overnight. This is theta decay - the silent killer of option buyers. Let's understand it so you can avoid it."
+    },
+    {
+      "screen_type": "definition",
+      "headline": "What is Theta (Time Decay)?",
+      "text": "Theta is the rate at which your option loses value as time passes. Every day closer to expiration = less time for the stock to move = lower time value. Theta accelerates in the final 30 days. At expiration, time value = $0. Always.",
+      "visual": "📉⏱️",
+      "highlight_words": ["Theta", "loses value", "every day", "accelerates", "final 30 days"]
+    },
+    {
+      "screen_type": "analogy",
+      "headline": "Think of it like a melting ice cube",
+      "text": "You buy a 10-pound block of ice for $100. You plan to sell it when it's most valuable. But it's melting - losing weight every hour, faster as it gets smaller...",
+      "interactive": "tap_to_reveal",
+      "reveal_sections": [
+        {
+          "label": "Day 1: Ice is 10 lbs, melts slowly",
+          "content": "You lose 0.2 lbs per day. Hardly noticeable. You still have 9.8 lbs. Plenty of time to sell it. This is long-dated options (90+ days)."
+        },
+        {
+          "label": "Day 7: Ice is 7 lbs, melting faster",
+          "content": "Now losing 0.5 lbs per day. Temperature is rising. You need to sell soon or it'll be worthless. This is 30-day options."
+        },
+        {
+          "label": "Day 9: Ice is 3 lbs, melting FAST",
+          "content": "Losing 1+ lbs per day. In a race against time. Tomorrow it might be 0. This is final week - theta decay is exponential."
+        },
+        {
+          "label": "This is time decay (theta)",
+          "content": "Your option = ice. Expiration = when it's fully melted. The closer you get, the faster it melts. You're in a race against the clock."
+        }
+      ]
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "Understanding Theta",
+      "cards": [
+        {
+          "term": "Theta",
+          "definition": "Daily rate of time decay (usually shown as negative)",
+          "example": "Theta = -$0.50 = your option loses $0.50/share per day × 100 = $50/day in value. Every. Single. Day."
+        },
+        {
+          "term": "30-Day Decay Acceleration",
+          "definition": "Time decay speeds up dramatically in final 30 days",
+          "example": "Option loses $20/week at 60 days out. Loses $50/week at 20 days out. Loses $100+/week in final 7 days. Exponential."
+        },
+        {
+          "term": "Weekend Theta",
+          "definition": "Options decay over weekends even though market is closed",
+          "example": "Buy Friday, worth less Monday. You lost 2-3 days of time value. Market closed, but the countdown clock never stops."
+        }
+      ]
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "You buy a call on Monday for $500. Stock doesn't move all week. Friday, it's worth $450. Why?",
+      "options": [
+        "The stock went down",
+        "Implied volatility dropped",
+        "Theta decay ate $50 of time value",
+        "Your broker charged fees"
+      ],
+      "correct": 2,
+      "xp_reward": 10,
+      "explanation_correct": "Exactly! This is pure theta decay. You had 5 less days until expiration, so time value decreased $50. Stock didn't move = no change in intrinsic value. But time value bleeds every day. This is why holding options is expensive.",
+      "explanation_wrong": "Stock didn't move = intrinsic value unchanged. But you now have 5 fewer days until expiration. That LOST time = lost value. Every day that passes, time value decays. This is theta - the silent option killer for buyers."
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "Which option loses MORE value per day to theta decay?",
+      "options": [
+        "Call expiring in 90 days",
+        "Call expiring in 7 days",
+        "They decay at the same rate",
+        "Neither decays"
+      ],
+      "correct": 1,
+      "xp_reward": 10,
+      "explanation_correct": "Right! Short-dated options decay MUCH faster. A 7-day option might lose $30/day. A 90-day option might lose $5/day. The acceleration is exponential. This is why weekly options are dangerous - you're fighting the clock every single day.",
+      "explanation_wrong": "Theta accelerates as expiration approaches. 90-day option = slow bleed ($5/day). 7-day option = rapid decay ($30+/day). The final week is brutal - you can lose 50% of value even if stock moves in your direction but not fast enough."
+    },
+    {
+      "screen_type": "scenario",
+      "question": "It's Wednesday. You own calls expiring Friday. Stock moved UP 3% but your calls are FLAT. Why?",
+      "options": [
+        "Calls are broken",
+        "Delta gains were erased by theta decay",
+        "Stock needs to move more than 3%",
+        "This is impossible"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "This is the trader's nightmare! Stock moved in your favor (+3%), but with only 2 days left, theta decay is MASSIVE (might be $100/day). Your gains from stock movement were completely eaten by time decay. This is why short-dated options are so risky.",
+      "explanation_wrong": "You experienced the theta trap. Yes, stock went up (+3% = positive delta). But you lost 2 days of time (massive negative theta with 2 days left). When theta > delta, you lose even when you're RIGHT. Lesson: give yourself time!"
+    },
+    {
+      "screen_type": "scenario",
+      "question": "You're choosing between two calls. Same strike, same stock. A) 30 days = $300. B) 90 days = $600. Which fights theta better?",
+      "options": [
+        "30-day (cheaper)",
+        "90-day (more time cushion)",
+        "Both decay the same",
+        "Neither is good"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "Smart thinking! The 90-day costs 2x but gives you 3x the time. You have breathing room for your thesis to play out. The 30-day enters rapid decay immediately. For directional trades, paying up for time is often worth it.",
+      "explanation_wrong": "Think per-day cost: 30-day = $10/day theta burn. 90-day = $6.67/day. Plus, the 30-day enters exponential decay immediately. The 90-day has 60 days of slow decay before acceleration. You're buying TIME to be right."
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "Theta Decay Visualizer",
+      "description": "Watch how time value decays as expiration approaches",
+      "inputs": [
+        {
+          "name": "Days Until Expiration",
+          "type": "slider",
+          "min": 1,
+          "max": 90,
+          "default": 90
+        },
+        {
+          "name": "Option Premium",
+          "type": "slider",
+          "min": 1,
+          "max": 20,
+          "default": 10
+        },
+        {
+          "name": "Intrinsic Value",
+          "type": "slider",
+          "min": 0,
+          "max": 15,
+          "default": 5
+        }
+      ],
+      "teaching_points": [
+        "Notice: Decay is slow at 90 days, then accelerates",
+        "The final 30 days is where most time value disappears",
+        "Intrinsic value never decays - only time value goes to zero"
+      ]
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "Theta Survival Guide",
+      "cards": [
+        {
+          "front": "What is theta decay?",
+          "back": "The daily loss of time value as expiration approaches. Shown as negative number (theta = -$0.50 = lose $50/day). Accelerates exponentially in final 30 days."
+        },
+        {
+          "front": "How to fight theta decay?",
+          "back": "Buy longer expirations (90+ days), avoid holding through final 30 days, sell winners early (50-100% gain), cut losers fast (-50%). Or become a seller and LET theta work for you."
+        },
+        {
+          "front": "The theta rule for buyers",
+          "back": "Never buy options with less than 30 days unless you have a SPECIFIC catalyst (earnings). The decay rate is too fast. Give yourself at least 60 days to be right."
+        }
+      ]
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 80,
+      "total_xp": 670,
+      "badge": "⏰ Theta Warrior",
+      "badge_description": "You understand time decay and how to fight it!",
+      "celebration_message": "Awesome! You now know the invisible force that kills most option traders. Next: what happens at expiration - assignment and exercise.",
+      "streak_bonus": false,
+      "next_lesson_preview": {
+        "title": "Assignment & Exercise",
+        "description": "Learn what happens when options expire and when you should exercise early",
+        "unlock_status": "unlocked"
+      }
+    }
+  ]
+}

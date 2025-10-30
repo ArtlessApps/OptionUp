@@ -1,0 +1,193 @@
+{
+  "lesson_id": "poor-mans-covered-call",
+  "title": "Poor Man's Covered Call (PMCC)",
+  "estimated_time": "8 min",
+  "total_xp": 80,
+  "badge": "💎 PMCC Expert",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "leap_with_short_call.png",
+      "headline": "Covered calls without owning stock?",
+      "text": "The Poor Man's Covered Call mimics covered calls using LEAPS instead of shares. Same income, 90% less capital."
+    },
+    {
+      "screen_type": "definition",
+      "headline": "PMCC = LEAP call + Sell short-term calls against it",
+      "text": "Buy a deep ITM LEAP call (long-term, .80+ delta) and sell short-term OTM calls against it, just like a covered call. But instead of owning 100 shares ($50,000), you own a LEAP ($5,000). You collect weekly/monthly premium while maintaining long exposure.",
+      "visual": "pmcc_structure.png",
+      "highlight_words": ["deep ITM LEAP", "sell short-term calls", "90% less capital"]
+    },
+    {
+      "screen_type": "analogy",
+      "headline": "Renting out your mortgage property",
+      "text": "Covered call = You own a $50k house, rent it out for $500/month. PMCC = You have a mortgage on the house (only $5k down payment), rent it out for $500/month. Same rental income, way less capital tied up. If house appreciates, you still benefit. If it crashes below your mortgage, you lose the down payment.",
+      "interactive": "tap_to_reveal",
+      "reveal_sections": [
+        {
+          "label": "Traditional = Own house outright ($50k)",
+          "content": "Requires full capital to own 100 shares for covered calls."
+        },
+        {
+          "label": "PMCC = Mortgage ($5k down)",
+          "content": "Use LEAP as stock replacement with fraction of capital."
+        },
+        {
+          "label": "Same rent income, less capital",
+          "content": "Collect similar premium but free up $45k for other investments."
+        }
+      ]
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "PMCC components",
+      "cards": [
+        {
+          "term": "The LEAP (Long)",
+          "definition": "Deep ITM call, 12+ months, .75-.85 delta",
+          "example": "Buy $450 call on $550 stock, 18 months out"
+        },
+        {
+          "term": "The Short Call",
+          "definition": "OTM call, 30-45 days, .30 delta",
+          "example": "Sell $570 call, 35 days to expiration"
+        },
+        {
+          "term": "Net Debit",
+          "definition": "LEAP cost - Short call premium collected",
+          "example": "Pay $115 for LEAP, collect $8 for short = $107 net"
+        },
+        {
+          "term": "Rolling",
+          "definition": "Buy back short call, sell new one further out or higher strike",
+          "example": "Roll weekly: Close Friday, open Monday"
+        }
+      ]
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "What's the main advantage of PMCC over traditional covered calls?",
+      "options": [
+        "Uses 80-90% less capital for same income",
+        "PMCC has zero risk",
+        "PMCC always makes more money",
+        "No need to manage the position"
+      ],
+      "correct": 0,
+      "xp_reward": 10,
+      "explanation_correct": "Exactly! Covered call requires $50,000 (100 shares). PMCC requires ~$5,000 (one LEAP). Both generate similar weekly/monthly income, but PMCC frees up $45,000 for other investments.",
+      "explanation_wrong": "Capital efficiency is the key. You can run 10 PMCC positions for the price of 1 covered call position, diversifying across stocks while generating 10x the income on same capital."
+    },
+    {
+      "screen_type": "scenario",
+      "question": "Your PMCC: LEAP at $100 strike, short $120 call. Stock rallies to $125. What happens?",
+      "options": [
+        "Short call gets assigned - close both legs or roll the short up",
+        "LEAP protects you from any loss",
+        "You automatically keep all profit",
+        "Nothing - let it expire"
+      ],
+      "correct": 0,
+      "xp_reward": 10,
+      "explanation_correct": "Right! If short call is assigned, you can either: A) Exercise your LEAP to deliver shares, or B) Close both legs (buy back short, sell LEAP) and take profit. Or C) Roll the short call to higher strike before assignment. Most traders roll.",
+      "explanation_wrong": "When short call goes ITM, you face assignment risk. But your LEAP protects you - you can exercise it to deliver shares. Most traders close both legs or roll the short call up and out to keep the position alive."
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "Build a PMCC",
+      "description": "MSFT at $400. Buy $360 LEAP (18 months, .82 delta) for $55. Sell $420 call (35 days, .28 delta) for $5. Net debit: $50 ($5,000). Track monthly income.",
+      "inputs": [
+        {
+          "label": "Stock Price",
+          "value": 400,
+          "locked": true
+        },
+        {
+          "label": "LEAP Strike",
+          "value": 360,
+          "locked": true
+        },
+        {
+          "label": "LEAP Cost",
+          "value": 55,
+          "locked": true
+        },
+        {
+          "label": "Short Strike",
+          "value": 420,
+          "locked": true
+        },
+        {
+          "label": "Time Period",
+          "type": "dropdown",
+          "options": ["Month 1", "Month 3", "Month 12"],
+          "value": "Month 1"
+        }
+      ],
+      "outputs": [
+        {
+          "label": "Month 1",
+          "value": "Collect $5 ($500) | MSFT at $410 | Roll short, collect $6 more"
+        },
+        {
+          "label": "Month 3",
+          "value": "MSFT at $425 | Roll to $440 strike | Collect $4 | Continue monthly"
+        },
+        {
+          "label": "Months 4-12",
+          "value": "Average $4/month ($400) | Total income ~$5,500 | LEAP now worth ~$70 | Total profit: $7,500 (150% ROI)"
+        },
+        {
+          "label": "vs Covered Call",
+          "value": "Stock: $40,000 capital, $8,000 profit (20% ROI) | PMCC: $5,000 capital, $7,500 profit (150% ROI)"
+        }
+      ],
+      "teaching_points": [
+        "PMCC made 150% on $5k vs covered call 20% on $40k",
+        "Same total profit, but PMCC freed up $35k for other trades",
+        "Roll short calls monthly to continue collecting premium"
+      ]
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "PMCC implementation guide",
+      "cards": [
+        {
+          "front": "Setup",
+          "back": "Buy LEAP (.80 delta, 12+ months) + Sell 30-45 day calls (.25-.35 delta) | Roll shorts every 21-30 days"
+        },
+        {
+          "front": "Strike selection",
+          "back": "LEAP: Deep ITM (stock price - 20%) | Short: OTM (stock price + 5-10%)"
+        },
+        {
+          "front": "When to use",
+          "back": "Bullish long-term + want income | Small account | Capital efficiency priority | Comfortable managing 2 legs"
+        },
+        {
+          "front": "Risk management",
+          "back": "If stock drops below LEAP strike, consider closing | Roll shorts up if breached | Set stop loss at -50% on LEAP"
+        },
+        {
+          "front": "Comparison to covered calls",
+          "back": "Pros: 90% less capital, same income | Cons: Can lose 100% on LEAP, no dividends"
+        }
+      ]
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 80,
+      "total_xp": 80,
+      "badge": "💎 PMCC Expert",
+      "badge_description": "Master of capital-efficient income generation",
+      "streak_bonus": true,
+      "celebration_message": "This is THE strategy for building wealth in small accounts!",
+      "next_lesson_preview": {
+        "title": "When NOT to Trade",
+        "description": "Critical lesson: avoiding disasters",
+        "unlock_status": "unlocked"
+      }
+    }
+  ]
+}
+

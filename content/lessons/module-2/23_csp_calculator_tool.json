@@ -1,0 +1,266 @@
+{
+  "lesson_id": "csp_calculator_tool",
+  "title": "CSP Calculator (Interactive)",
+  "estimated_time": "8 min",
+  "total_xp": 80,
+  "badge": "🧮 Put Calculator",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "calculator_charts.png",
+      "headline": "Is 1.4% monthly return on cash good enough?",
+      "text": "Let's calculate the REAL returns on cash-secured puts, including the opportunity cost of cash sitting idle and the risk if you get assigned underwater. The math that separates smart CSP traders from bagholders."
+    },
+    {
+      "screen_type": "definition",
+      "headline": "The 4 Numbers That Matter for CSPs",
+      "text": "Every CSP trade has four key calculations: (1) ROI on cash reserved, (2) Annualized return, (3) Effective purchase price if assigned, (4) Breakeven price. Understanding these BEFORE selling lets you compare CSPs to other investments.",
+      "visual": "four_calculations.png",
+      "highlight_words": ["ROI on cash", "Annualized return", "Effective purchase price", "Breakeven", "BEFORE selling"]
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "Calculation #1: Return on Cash Reserved",
+      "description": "How much are you earning on the cash sitting in your account?",
+      "inputs": [
+        {
+          "label": "Strike Price",
+          "type": "number",
+          "value": 360,
+          "min": 100,
+          "max": 500
+        },
+        {
+          "label": "Premium Collected",
+          "type": "number",
+          "value": 5.00,
+          "min": 0.5,
+          "max": 30,
+          "step": 0.5
+        },
+        {
+          "label": "Days to Expiration",
+          "type": "slider",
+          "value": 30,
+          "min": 7,
+          "max": 90,
+          "step": 7
+        }
+      ],
+      "formula_display": "ROI = (Premium × 100) / (Strike × 100) × 100%",
+      "outputs": [
+        {
+          "label": "Cash Reserved",
+          "calculation": "strike * 100",
+          "format": "currency"
+        },
+        {
+          "label": "Premium Income",
+          "calculation": "premium * 100",
+          "format": "currency",
+          "highlight": true
+        },
+        {
+          "label": "Return on Cash",
+          "calculation": "((premium * 100) / (strike * 100)) * 100",
+          "format": "percentage"
+        },
+        {
+          "label": "Annualized Return",
+          "calculation": "(((premium * 100) / (strike * 100)) * (365 / days)) * 100",
+          "format": "percentage",
+          "highlight": true
+        }
+      ],
+      "teaching_points": [
+        "Try $10 premium: Higher premium = better returns",
+        "Try 45 days: Longer duration = lower annualized rate",
+        "Compare to: CD rates (5%), dividend stocks (2-4%)"
+      ]
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "Calculation #2: Effective Purchase Price",
+      "description": "If you get assigned, what's your REAL cost per share?",
+      "inputs": [
+        {
+          "label": "Strike Price",
+          "value": 360,
+          "locked": true
+        },
+        {
+          "label": "Premium Collected",
+          "type": "number",
+          "value": 5.00,
+          "min": 0.5,
+          "max": 30,
+          "step": 0.5
+        },
+        {
+          "label": "Stock Price When Assigned",
+          "type": "slider",
+          "value": 345,
+          "min": 300,
+          "max": 360,
+          "step": 5
+        }
+      ],
+      "formula_display": "Effective Cost = Strike Price - Premium Collected",
+      "outputs": [
+        {
+          "label": "Assignment Price (what you pay)",
+          "value": "$360 per share",
+          "calculation": "strike",
+          "format": "currency"
+        },
+        {
+          "label": "Premium Collected (reduces cost)",
+          "calculation": "premium * 100",
+          "format": "currency"
+        },
+        {
+          "label": "Effective Cost Basis",
+          "calculation": "strike - premium",
+          "format": "currency",
+          "highlight": true
+        },
+        {
+          "label": "Current Market Price",
+          "calculation": "assigned_price",
+          "format": "currency"
+        },
+        {
+          "label": "Unrealized P/L",
+          "calculation": "(assigned_price - (strike - premium)) * 100",
+          "format": "currency",
+          "conditional_color": true
+        },
+        {
+          "label": "% Underwater",
+          "calculation": "((assigned_price - (strike - premium)) / (strike - premium)) * 100",
+          "format": "percentage",
+          "conditional_color": true
+        }
+      ],
+      "teaching_points": [
+        "Try $355 stock price: Small 3.5% drawdown",
+        "Try $330: Now 7% underwater - still manageable?",
+        "Premium ALWAYS improves your cost basis"
+      ]
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "Calculation #3: Which Strike is Better?",
+      "description": "Compare aggressive vs conservative CSP strikes",
+      "inputs": [
+        {
+          "label": "Current Stock Price",
+          "value": 380,
+          "locked": true
+        },
+        {
+          "label": "Days to Expiration",
+          "value": 30,
+          "locked": true
+        }
+      ],
+      "comparison_table": {
+        "headers": ["Strike", "Premium", "ROI", "Ann. Return", "Eff. Cost", "Assignment Prob", "Risk Level"],
+        "rows": [
+          {
+            "strike": "$360 (5% OTM)",
+            "premium": "$5.00",
+            "roi": "1.4%",
+            "annual": "17%",
+            "eff_cost": "$355",
+            "prob": "30%",
+            "risk": "Lower ✅"
+          },
+          {
+            "strike": "$370 (3% OTM)",
+            "premium": "$7.00",
+            "roi": "1.9%",
+            "annual": "23%",
+            "eff_cost": "$363",
+            "prob": "40%",
+            "risk": "Medium"
+          },
+          {
+            "strike": "$380 (ATM)",
+            "premium": "$11.00",
+            "roi": "2.9%",
+            "annual": "35%",
+            "eff_cost": "$369",
+            "prob": "50%",
+            "risk": "Higher ⚠️"
+          }
+        ]
+      },
+      "teaching_points": [
+        "ATM = highest premium but 50% chance of assignment",
+        "OTM = lower premium but less likely to get assigned",
+        "Pick based on: Do you WANT to own this stock?"
+      ]
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "You have $40,000 cash. You can: (A) Sell $400 put for $6 premium, or (B) Put cash in 5% savings. Which is better for 30 days?",
+      "options": [
+        "A - CSP returns 1.5% (18% annualized) vs 5% annual savings",
+        "B - Savings is guaranteed, CSP has assignment risk",
+        "Both are equal - 5% annual = 1.5% per 30 days",
+        "It depends on whether you want to own the stock"
+      ],
+      "correct": 3,
+      "xp_reward": 10,
+      "explanation_correct": "Perfect! If you WANT the stock, CSP is better (higher return + you'd buy anyway). If you DON'T want the stock, savings is safer. CSPs aren't 'better' - they're different risk profiles. Match to your goals!",
+      "explanation_wrong": "This isn't a math question - it's a strategy question. CSP has better return IF you want the stock. Savings is better IF you don't want assignment risk. What are YOUR goals?"
+    },
+    {
+      "screen_type": "scenario",
+      "question": "Stock $200. Sell $190 put for $4 OR $180 put for $2. You're VERY BULLISH and don't want to own the stock. Which CSP?",
+      "options": [
+        "$190 put (more premium, higher return)",
+        "$180 put (less premium, lower risk)",
+        "Don't sell any puts - you're too bullish",
+        "Both are fine - same risk"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "Smart! You're bullish (expect stock to stay up) AND don't want assignment. So sell the $180 put - far enough OTM that assignment is unlikely, but still collects $200 premium for doing nothing. Lower return but matches your outlook!",
+      "explanation_wrong": "Think about your goals: You're bullish (stock won't drop) and DON'T want ownership. The $180 put is 10% OTM - much safer from assignment while still earning premium. Match your strike to your outlook!"
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "The 4 CSP Calculations 🧮",
+      "cards": [
+        {
+          "front": "Return on Cash Formula?",
+          "back": "(Premium / Strike Price) × 100. Annualize by × (365/days). Target 1-3% monthly (12-36% annual)."
+        },
+        {
+          "front": "Effective Cost Formula?",
+          "back": "Strike Price - Premium. This is your TRUE cost if assigned. Always lower than strike!"
+        },
+        {
+          "front": "Which strike to pick?",
+          "back": "Want to own stock? ATM (high premium, high assignment chance). Don't want stock? OTM (low premium, low risk)."
+        }
+      ]
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 80,
+      "total_xp": 610,
+      "badge": "🧮 Put Calculator",
+      "badge_description": "You can calculate CSP returns and compare strategies",
+      "streak_bonus": false,
+      "next_lesson_preview": {
+        "title": "Getting Assigned - Is It Bad?",
+        "description": "Learn why assignment isn't scary and how to handle it",
+        "unlock_status": "unlocked"
+      },
+      "celebration_message": "CSP math mastered! You're making informed decisions now! 📊"
+    }
+  ]
+}

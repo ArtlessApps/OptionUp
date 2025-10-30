@@ -1,0 +1,175 @@
+{
+  "lesson_id": "strike_selection_strategy",
+  "title": "Picking Your Strike Price",
+  "estimated_time": "7 min",
+  "total_xp": 70,
+  "badge": "🎯 Strike Picker",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "target_with_arrows.png",
+      "headline": "Why did you choose THAT strike price?",
+      "text": "Most beginners pick strikes randomly - 'that one looks good!' - and wonder why they keep losing money. In 7 minutes, you'll learn the systematic approach that professionals use."
+    },
+    {
+      "screen_type": "definition",
+      "headline": "Strike Selection = Risk vs Reward",
+      "text": "Higher strikes give you MORE upside potential but LESS premium income. Lower strikes give you MORE premium income but cap your gains sooner. There's no 'perfect' strike - only the right strike for YOUR goal and risk tolerance.",
+      "visual": "strike_spectrum_chart.png",
+      "highlight_words": ["Higher strikes", "MORE upside", "LESS premium", "Lower strikes", "MORE premium", "cap your gains", "YOUR goal"]
+    },
+    {
+      "screen_type": "analogy",
+      "headline": "Think of it like insurance deductibles",
+      "text": "Low deductible ($500) = High monthly premium but you're covered faster. High deductible ($5,000) = Low monthly premium but you need bigger claims to benefit. Same with covered calls: Out-of-the-money (OTM) strikes = higher profit potential, less premium. At-the-money (ATM) strikes = more premium, lower profit potential.",
+      "interactive": "tap_to_reveal",
+      "reveal_sections": [
+        {
+          "label": "Low deductible = At-the-money strike (more premium, less upside)"
+        },
+        {
+          "label": "High deductible = Out-of-the-money strike (less premium, more upside)"
+        },
+        {
+          "label": "Monthly premium = Your option premium income"
+        },
+        {
+          "label": "Coverage = Your profit potential before assignment"
+        }
+      ]
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "3 Types of Strikes",
+      "cards": [
+        {
+          "term": "At-The-Money (ATM)",
+          "definition": "Strike price equals (or very close to) current stock price",
+          "example": "Stock $180, sell $180 call = highest premium, immediate cap"
+        },
+        {
+          "term": "Out-of-The-Money (OTM)",
+          "definition": "Strike price ABOVE current stock price (for calls)",
+          "example": "Stock $180, sell $190 call = lower premium, room for stock gain"
+        },
+        {
+          "term": "Delta",
+          "definition": "Probability the option ends in-the-money (0-1.0)",
+          "example": "0.30 delta = ~30% chance of assignment"
+        }
+      ]
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "Stock is $100. Which strike gives you the MOST premium income?",
+      "options": [
+        "$100 strike (at-the-money)",
+        "$105 strike (slightly out-of-the-money)",
+        "$110 strike (further out-of-the-money)",
+        "All strikes pay the same premium"
+      ],
+      "correct": 0,
+      "xp_reward": 10,
+      "explanation_correct": "Exactly! At-the-money strikes ($100) always have the highest premium because there's maximum time value. But you give up all upside immediately - the stock is already at your strike!",
+      "explanation_wrong": "The closer the strike is to the current price, the more premium it pays. An ATM $100 strike pays more than a $105 or $110 strike."
+    },
+    {
+      "screen_type": "scenario",
+      "question": "You own AAPL at $170 (very bullish). Which covered call strategy makes sense?",
+      "options": [
+        "Sell $170 strike (ATM) for max premium",
+        "Sell $180 strike (OTM) for less premium but more upside",
+        "Sell $160 strike (ITM) for huge premium",
+        "Don't sell any calls - you're too bullish"
+      ],
+      "correct": 3,
+      "xp_reward": 15,
+      "explanation_correct": "Smart! If you're VERY bullish and expect big gains, don't cap your upside with a covered call. Wait until your bullish thesis plays out, THEN start selling calls. Or sell far OTM strikes ($200+) that won't interfere.",
+      "explanation_wrong": "Think about your outlook: If you expect AAPL to soar, why would you cap your gains at $170 or even $180? Either skip covered calls or sell so far OTM ($200+) that assignment is unlikely."
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "Strike Picker Tool",
+      "description": "Compare three different strike prices for the same stock",
+      "inputs": [
+        {
+          "label": "Current Stock Price",
+          "value": 180,
+          "locked": true
+        },
+        {
+          "label": "Your Outlook",
+          "type": "select",
+          "options": ["Very Bullish", "Slightly Bullish", "Neutral", "Slightly Bearish"],
+          "value": "Slightly Bullish"
+        }
+      ],
+      "comparison_table": {
+        "headers": ["Strike", "Premium", "Max Profit", "Upside Room", "Assignment Prob", "Best For"],
+        "rows": [
+          {
+            "strike": "$180 (ATM)",
+            "premium": "$5.00",
+            "max_profit": "$500",
+            "upside_room": "0%",
+            "prob": "50%",
+            "best_for": "Neutral/Bearish"
+          },
+          {
+            "strike": "$185 (OTM)",
+            "premium": "$3.50",
+            "upside_room": "2.8%",
+            "max_profit": "$850",
+            "prob": "35%",
+            "best_for": "Slightly Bullish ✅"
+          },
+          {
+            "strike": "$190 (OTM)",
+            "premium": "$2.00",
+            "upside_room": "5.6%",
+            "max_profit": "$1,200",
+            "prob": "20%",
+            "best_for": "Very Bullish"
+          }
+        ]
+      },
+      "teaching_points": [
+        "Try 'Neutral': ATM strikes make sense",
+        "Try 'Very Bullish': Far OTM preserves upside",
+        "Premium vs Upside is always a trade-off"
+      ]
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "How to Pick Strikes 🎯",
+      "cards": [
+        {
+          "front": "Neutral to bearish outlook?",
+          "back": "Sell AT-THE-MONEY strikes. Max premium, you don't expect stock to run anyway. Income is the goal."
+        },
+        {
+          "front": "Slightly bullish outlook?",
+          "back": "Sell OUT-OF-THE-MONEY strikes 2-5% above current price. Balanced premium + upside room."
+        },
+        {
+          "front": "Very bullish outlook?",
+          "back": "DON'T sell covered calls OR sell FAR OTM (>10% above). Preserve your upside potential."
+        }
+      ]
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 70,
+      "total_xp": 230,
+      "badge": "🎯 Strike Picker",
+      "badge_description": "You know how to select optimal strike prices",
+      "streak_bonus": false,
+      "next_lesson_preview": {
+        "title": "When to Close Early",
+        "description": "Learn when to buy back your covered call before expiration",
+        "unlock_status": "unlocked"
+      },
+      "celebration_message": "Strike selection mastered! You're thinking like a pro trader! 🎯"
+    }
+  ]
+}

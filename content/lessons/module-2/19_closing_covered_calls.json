@@ -1,0 +1,195 @@
+{
+  "lesson_id": "closing_covered_calls",
+  "title": "When to Close Early",
+  "estimated_time": "7 min",
+  "total_xp": 70,
+  "badge": "🚪 Exit Expert",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "exit_door_with_money.png",
+      "headline": "You sold a call for $3. Now it's worth $0.30. What do you do?",
+      "text": "Most beginners wait until expiration - missing huge opportunities to lock in profits early and redeploy capital. Learn the professional exit strategy that can double your annual returns."
+    },
+    {
+      "screen_type": "definition",
+      "headline": "Closing = Buying Back Your Sold Call",
+      "text": "When you SELL a covered call, you can BUY it back anytime before expiration to 'close' the position. If the option has lost value (decayed toward $0), you can buy it back cheap, keep most of the original premium, and sell a NEW call immediately. This is how pros maximize income.",
+      "visual": "close_position_diagram.png",
+      "highlight_words": ["BUY it back", "close", "lost value", "buy it back cheap", "sell a NEW call"]
+    },
+    {
+      "screen_type": "analogy",
+      "headline": "Think of it like a rental agreement",
+      "text": "You rent out your car for $500/month. After 1 week, the renter says 'I don't need it anymore, I'll pay you $50 to cancel the rental early.' You accept - you keep $450 profit ($500 - $50 buyout), and now you can rent the car to someone else immediately for another $500. You just made $450 in 1 week instead of $500 in 1 month!",
+      "interactive": "tap_to_reveal",
+      "reveal_sections": [
+        {
+          "label": "Rental income = Premium you sold call for"
+        },
+        {
+          "label": "Early cancellation = Buying back the call cheap"
+        },
+        {
+          "label": "Renting again = Selling a new covered call"
+        },
+        {
+          "label": "Time efficiency = Making $450/week vs $500/month"
+        }
+      ]
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "Exit Strategy Terms",
+      "cards": [
+        {
+          "term": "Buy to Close (BTC)",
+          "definition": "Buying back an option you previously sold to close it",
+          "example": "Sold call for $3, BTC at $0.30 = $2.70 profit locked in"
+        },
+        {
+          "term": "50% Rule",
+          "definition": "Common strategy: close when option decays to 50% of value",
+          "example": "Sold for $2, close when it hits $1 (50% profit captured)"
+        },
+        {
+          "term": "Rolling",
+          "definition": "Closing current call and opening new one simultaneously",
+          "example": "Close Jan $190 call, open Feb $195 call"
+        }
+      ]
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "You sold a call for $4.00. A week later it's worth $2.00. Should you close it?",
+      "options": [
+        "Yes - lock in $2 profit and sell a new call",
+        "No - wait for it to decay to $0 for full profit",
+        "Yes - but only if you're bearish on the stock",
+        "It depends on how much time is left"
+      ],
+      "correct": 3,
+      "xp_reward": 10,
+      "explanation_correct": "Smart! With 3+ weeks left, wait longer - you might get closer to $0. With <1 week left, close now - that last $2 won't decay fast enough. The time remaining matters!",
+      "explanation_wrong": "It depends on TIME REMAINING. If there's 3 weeks left, you might capture more decay. If there's 3 days left, close now and sell a new 30-day call. Time is key!"
+    },
+    {
+      "screen_type": "scenario",
+      "question": "Sold $5 call, now worth $0.40 with 2 days until expiration. Close it or wait?",
+      "options": [
+        "Close now and pay $0.40 to lock in $4.60 profit",
+        "Wait 2 days to save the $0.40 and get full $5 profit",
+        "Close only if stock is moving against you",
+        "Never close - always wait for expiration"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "Correct! With only 2 days left, that $0.40 will likely decay to near $0 anyway. Save the commission and let it expire. The $0.40 'savings' isn't worth the hassle. Different story if it was 20 days out!",
+      "explanation_wrong": "With just 2 days left, you're 'picking up pennies' to close it. That $0.40 will decay to near zero naturally. Wait it out - your time is worth more than $40."
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "Close vs Wait Calculator",
+      "description": "See when it makes sense to close early and reopen",
+      "inputs": [
+        {
+          "label": "Premium Sold For",
+          "type": "number",
+          "value": 4.00,
+          "min": 1,
+          "max": 20,
+          "step": 0.5
+        },
+        {
+          "label": "Current Option Price",
+          "type": "slider",
+          "value": 2.00,
+          "min": 0.1,
+          "max": 4.0,
+          "step": 0.1
+        },
+        {
+          "label": "Days Remaining",
+          "type": "slider",
+          "value": 15,
+          "min": 1,
+          "max": 30,
+          "step": 1
+        },
+        {
+          "label": "New Call Premium (30 days)",
+          "type": "number",
+          "value": 4.00,
+          "min": 1,
+          "max": 20,
+          "step": 0.5
+        }
+      ],
+      "outputs": [
+        {
+          "label": "Profit if closed now",
+          "calculation": "(premium_sold - current_price) * 100",
+          "format": "currency"
+        },
+        {
+          "label": "Profit if wait to expiration",
+          "calculation": "premium_sold * 100",
+          "format": "currency"
+        },
+        {
+          "label": "Opportunity: New call income",
+          "calculation": "new_premium * 100",
+          "format": "currency",
+          "highlight": true
+        },
+        {
+          "label": "TOTAL if close + reopen",
+          "calculation": "((premium_sold - current_price) * 100) + (new_premium * 100)",
+          "format": "currency",
+          "highlight": true
+        },
+        {
+          "label": "Days to earn new premium",
+          "value": "30 days"
+        }
+      ],
+      "teaching_points": [
+        "Try $0.50 current price: Strong case to close",
+        "Try 3 days remaining: Maybe wait it out",
+        "Try $3 new premium: Lower opportunity cost"
+      ]
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "Early Close Decision Tree 🚪",
+      "cards": [
+        {
+          "front": "When to DEFINITELY close?",
+          "back": "Option decayed 70%+ AND >2 weeks remaining. Close, lock profit, sell new call. Example: Sold $5, now $1, with 20 days left."
+        },
+        {
+          "front": "When to WAIT?",
+          "back": "Less than 3-5 days to expiration OR option still has significant value (>50%). Let time decay work for you."
+        },
+        {
+          "front": "The 50% Rule",
+          "back": "Many pros close at 50% profit (sold $4, buy back at $2) regardless of time. Simple, effective, proven."
+        }
+      ]
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 70,
+      "total_xp": 300,
+      "badge": "🚪 Exit Expert",
+      "badge_description": "You know when to close positions early for maximum efficiency",
+      "streak_bonus": false,
+      "next_lesson_preview": {
+        "title": "Common Covered Call Mistakes",
+        "description": "Learn the errors that cost beginners thousands",
+        "unlock_status": "unlocked"
+      },
+      "celebration_message": "Exit timing is an art - you're learning from the masters! 🎨"
+    }
+  ]
+}

@@ -1,0 +1,255 @@
+{
+  "lesson_id": "covered_call_calculator",
+  "title": "Covered Call Calculator (Interactive)",
+  "estimated_time": "8 min",
+  "total_xp": 80,
+  "badge": "🧮 Income Calculator",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "calculator_with_money.png",
+      "headline": "Is 1.9% return in 30 days good or bad?",
+      "text": "Let's build the calculator every covered call trader uses. You'll see exactly how to calculate returns, breakevens, and annualized income - the math that separates profitable traders from losers."
+    },
+    {
+      "screen_type": "definition",
+      "headline": "The 3 Numbers That Matter",
+      "text": "Every covered call has three possible outcomes: (1) Max Profit if called away, (2) Income if expires, (3) Breakeven if stock drops. Knowing these numbers BEFORE you trade is the difference between gambling and strategy.",
+      "visual": "three_outcomes_diagram.png",
+      "highlight_words": ["Max Profit", "Income", "Breakeven", "BEFORE you trade"]
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "Calculation #1: Max Profit (Stock Called Away)",
+      "description": "When the stock goes ABOVE your strike and gets assigned",
+      "inputs": [
+        {
+          "label": "Shares Owned",
+          "value": 100,
+          "locked": true
+        },
+        {
+          "label": "Your Cost Basis",
+          "type": "number",
+          "value": 180,
+          "min": 100,
+          "max": 300
+        },
+        {
+          "label": "Strike Price Sold",
+          "type": "number",
+          "value": 190,
+          "min": 100,
+          "max": 300
+        },
+        {
+          "label": "Premium Collected",
+          "type": "number",
+          "value": 3.50,
+          "min": 0.5,
+          "max": 20,
+          "step": 0.5
+        }
+      ],
+      "formula_display": "Max Profit = [(Strike - Cost Basis) × 100] + (Premium × 100)",
+      "outputs": [
+        {
+          "label": "Capital Gain",
+          "calculation": "(strike - cost_basis) * 100",
+          "format": "currency"
+        },
+        {
+          "label": "Premium Income",
+          "calculation": "premium * 100",
+          "format": "currency"
+        },
+        {
+          "label": "Total Max Profit",
+          "calculation": "((strike - cost_basis) * 100) + (premium * 100)",
+          "format": "currency",
+          "highlight": true
+        },
+        {
+          "label": "Return on Investment",
+          "calculation": "(((strike - cost_basis) + premium) / cost_basis) * 100",
+          "format": "percentage"
+        }
+      ],
+      "teaching_points": [
+        "Try $195 strike: Higher strike = more max profit",
+        "Try $2 premium: Lower premium = less total profit",
+        "This is your BEST case scenario"
+      ]
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "Calculation #2: Premium Income (Stock Stays Flat)",
+      "description": "When stock stays below strike - you keep shares + premium",
+      "inputs": [
+        {
+          "label": "Current Stock Price",
+          "value": 185,
+          "locked": true
+        },
+        {
+          "label": "Your Cost Basis",
+          "value": 180,
+          "locked": true
+        },
+        {
+          "label": "Premium Collected",
+          "type": "number",
+          "value": 3.50,
+          "min": 0.5,
+          "max": 20,
+          "step": 0.5
+        },
+        {
+          "label": "Days to Expiration",
+          "type": "slider",
+          "value": 30,
+          "min": 7,
+          "max": 90,
+          "step": 7
+        }
+      ],
+      "formula_display": "Monthly Return = (Premium / Stock Price) × (30 / Days)",
+      "outputs": [
+        {
+          "label": "Premium Income",
+          "calculation": "premium * 100",
+          "format": "currency",
+          "highlight": true
+        },
+        {
+          "label": "Return on Stock Value",
+          "calculation": "(premium / current_price) * 100",
+          "format": "percentage"
+        },
+        {
+          "label": "Annualized Return",
+          "calculation": "((premium / current_price) * (365 / days)) * 100",
+          "format": "percentage"
+        }
+      ],
+      "teaching_points": [
+        "Try 45 days: Longer duration = lower annualized return",
+        "Try $5 premium: Higher premium = better income",
+        "Most covered calls target 1-3% monthly return"
+      ]
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "Calculation #3: Breakeven & Downside Cushion",
+      "description": "How much can the stock drop before you lose money?",
+      "inputs": [
+        {
+          "label": "Current Stock Price",
+          "value": 185,
+          "locked": true
+        },
+        {
+          "label": "Premium Collected",
+          "type": "number",
+          "value": 3.50,
+          "min": 0.5,
+          "max": 20,
+          "step": 0.5
+        },
+        {
+          "label": "Stock Price Drops To",
+          "type": "slider",
+          "value": 185,
+          "min": 160,
+          "max": 185,
+          "step": 5
+        }
+      ],
+      "formula_display": "Breakeven = Current Price - Premium",
+      "outputs": [
+        {
+          "label": "Your Breakeven Price",
+          "calculation": "current_price - premium",
+          "format": "currency",
+          "highlight": true
+        },
+        {
+          "label": "Cushion (% drop allowed)",
+          "calculation": "(premium / current_price) * 100",
+          "format": "percentage"
+        },
+        {
+          "label": "Current P/L",
+          "calculation": "((drop_to - current_price) * 100) + (premium * 100)",
+          "format": "currency",
+          "conditional_color": true
+        }
+      ],
+      "teaching_points": [
+        "Premium provides a CUSHION on the downside",
+        "Try $181.50: You're still breakeven (not losing)",
+        "Try $175: Now you're losing despite the premium"
+      ]
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "Stock is $200. You collect $4 premium. What's your breakeven price?",
+      "options": [
+        "$200 (your entry price)",
+        "$196 (stock price minus premium)",
+        "$204 (stock price plus premium)",
+        "$190 (the strike price)"
+      ],
+      "correct": 1,
+      "xp_reward": 10,
+      "explanation_correct": "Perfect! $200 - $4 premium = $196 breakeven. Stock can drop 2% ($4) and you still don't lose money. That's your downside cushion!",
+      "explanation_wrong": "The premium you collected ($4) is yours to keep. So the stock needs to drop BELOW $196 before you actually lose money. $200 - $4 = $196."
+    },
+    {
+      "screen_type": "scenario",
+      "question": "You want 2% monthly return. Stock is $150, premiums are $2 (30 days) or $4 (60 days). Which is better?",
+      "options": [
+        "$2 premium for 30 days",
+        "$4 premium for 60 days",
+        "Both are exactly the same",
+        "Neither reaches 2% monthly"
+      ],
+      "correct": 0,
+      "xp_reward": 15,
+      "explanation_correct": "Correct! $2/$150 = 1.33% in 30 days. $4/$150 = 2.67% in 60 days = 1.33%/month. They're the same monthly rate, but the 30-day option gives you more flexibility to adjust your strategy sooner.",
+      "explanation_wrong": "Calculate the monthly return: ($2/$150) for 30 days = 1.33%/month. ($4/$150) for 60 days = 2.67% ÷ 2 months = 1.33%/month. Same rate, but shorter duration gives flexibility!"
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "The 3 Calculations 🧮",
+      "cards": [
+        {
+          "front": "Max Profit Formula?",
+          "back": "(Strike - Cost) × 100 + Premium × 100. This is your CAPPED upside if stock gets called away."
+        },
+        {
+          "front": "Income Return Formula?",
+          "back": "(Premium / Stock Price) × 100. Target 1-3% monthly. Annualize by × (365/days)."
+        },
+        {
+          "front": "Breakeven Formula?",
+          "back": "Current Price - Premium. This is how far stock can drop before you lose money."
+        }
+      ]
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 80,
+      "total_xp": 160,
+      "badge": "🧮 Income Calculator",
+      "badge_description": "You can calculate covered call returns like a pro",
+      "streak_bonus": false,
+      "next_lesson_preview": {
+        "title": "Picking Your Strike Price",
+        "description": "Learn which strike prices generate the best risk-reward",
+        "unlock_status": "unlocked"
+      },
+      "celebration_message": "You now have the math skills that 90% of option traders skip! 📊"
+    }
+  ]
+}

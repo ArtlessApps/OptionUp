@@ -1,0 +1,259 @@
+{
+  "lesson_id": "csp_real_trade_autopsy",
+  "title": "CSP Case Study (Real Trade)",
+  "estimated_time": "8 min",
+  "total_xp": 80,
+  "badge": "📊 CSP Analyst",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "trade_journal_csp.png",
+      "headline": "Real CSP campaign: $35,000 cash, 9 months, 13 trades",
+      "text": "Let's dissect an actual 9-month cash-secured put campaign on Disney (DIS). What worked? What failed? What would you do differently? You'll learn from real money on the line."
+    },
+    {
+      "screen_type": "definition",
+      "headline": "The Setup: March 2024",
+      "text": "Trader had $35,000 cash sitting in savings earning 5% APY ($1,750/year). Wanted to build a position in Disney (DIS) for long-term hold. Strategy: Sell 30-day puts at strikes 5-8% below current price, target 2% monthly income, get assigned if stock drops (buying the dip). Let's see what happened...",
+      "visual": "dis_chart_march_2024.png",
+      "highlight_words": ["$35,000 cash", "5% APY", "build a position", "5-8% below", "2% monthly", "buying the dip"]
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "Trade-by-Trade CSP Campaign",
+      "description": "Follow every put sold across 9 months",
+      "trade_timeline": [
+        {
+          "date": "Mar 15, 2024",
+          "action": "Sell to Open",
+          "details": "Sold Apr 19 $110 put (DIS at $120)",
+          "premium": "+$650",
+          "notes": "8.3% OTM, 35 DTE, 0.25 delta",
+          "outcome": "Expired worthless",
+          "net": "+$650",
+          "running_total": "+$650"
+        },
+        {
+          "date": "Apr 22, 2024",
+          "action": "Sell to Open",
+          "details": "Sold May 17 $115 put (DIS at $122)",
+          "premium": "+$700",
+          "notes": "5.7% OTM, 30 DTE",
+          "outcome": "Expired worthless",
+          "net": "+$700",
+          "running_total": "+$1,350"
+        },
+        {
+          "date": "May 20, 2024",
+          "action": "Sell to Open",
+          "details": "Sold Jun 21 $115 put (DIS at $118)",
+          "premium": "+$800",
+          "notes": "2.5% OTM (getting closer!)",
+          "outcome": "⚠️ ASSIGNED at $115",
+          "net": "+$800 - assigned",
+          "running_total": "+$2,150, now own 100 DIS at $115"
+        },
+        {
+          "date": "Jun 24, 2024",
+          "action": "Own Stock",
+          "details": "DIS drops to $105 (market selloff)",
+          "unrealized_loss": "-$1,000 on stock",
+          "notes": "❌ Mistake: Market turned, earnings weak",
+          "net": "$2,150 - $1,000 = +$1,150 net"
+        },
+        {
+          "date": "Jun 24, 2024",
+          "action": "Sell Covered Call",
+          "details": "Sold Jul 19 $120 call (DIS at $105)",
+          "premium": "+$350",
+          "notes": "Far OTM (14% above) - wanted upside room",
+          "outcome": "Expired worthless",
+          "running_total": "+$1,500 net"
+        },
+        {
+          "date": "Jul 22, 2024",
+          "action": "Sell Covered Call",
+          "details": "Sold Aug 16 $115 call (DIS at $108)",
+          "premium": "+$450",
+          "outcome": "Expired worthless (stock $112)",
+          "running_total": "+$1,950"
+        },
+        {
+          "date": "Aug 19, 2024",
+          "action": "Sell Covered Call",
+          "details": "Sold Sep 20 $115 call (DIS at $113)",
+          "premium": "+$500",
+          "outcome": "⚠️ CALLED AWAY at $115",
+          "notes": "Stock recovered to $116, sold at strike",
+          "stock_pnl": "$0 (bought $115, sold $115)",
+          "running_total": "+$2,450"
+        },
+        {
+          "date": "Sep 23, 2024",
+          "action": "Sell to Open",
+          "details": "Sold Oct 18 $115 put (DIS at $118)",
+          "premium": "+$550",
+          "notes": "Back to CSPs after called away",
+          "outcome": "Expired worthless",
+          "running_total": "+$3,000"
+        },
+        {
+          "date": "Oct 21, 2024",
+          "action": "Sell to Open",
+          "details": "Sold Nov 15 $118 put (DIS at $120)",
+          "premium": "+$600",
+          "notes": "Getting more aggressive (1.7% OTM)",
+          "outcome": "Expired worthless",
+          "running_total": "+$3,600"
+        },
+        {
+          "date": "Nov 18, 2024",
+          "action": "Sell to Open",
+          "details": "Sold Dec 20 $120 put (DIS at $122)",
+          "premium": "+$650",
+          "notes": "Last trade of campaign",
+          "outcome": "Expired worthless",
+          "running_total": "+$4,250"
+        }
+      ],
+      "final_summary": {
+        "total_premiums": "$6,250",
+        "stock_pnl": "$0 (bought $115, sold $115)",
+        "net_profit": "$4,250 (after holding stock through drawdown)",
+        "starting_cash": "$35,000",
+        "roi": "12.1% in 9 months (16.1% annualized)",
+        "vs_savings": "Would have earned $1,313 at 5% APY",
+        "alpha": "+$2,937 (vs savings account)"
+      }
+    },
+    {
+      "screen_type": "scenario",
+      "question": "What was the BIGGEST mistake in this CSP campaign?",
+      "options": [
+        "Getting assigned in June (should have avoided)",
+        "Not closing the $105 position at a loss immediately",
+        "Selling covered calls too far OTM ($120 when stock was $105)",
+        "Starting the strategy at all"
+      ],
+      "correct": 2,
+      "xp_reward": 15,
+      "explanation_correct": "YES! When assigned at $115 and stock dropped to $105, selling a $120 call was TOO far OTM. Should have sold $110-112 calls for MORE premium (4-6%) to recover faster. Hindsight: $120 strike only paid $350, $110 would have paid $600-700. Cost = $250-350 lost income!",
+      "explanation_wrong": "The real mistake was being too conservative with covered calls. Stock at $105, sold $120 call (14% OTM) = tiny $350 premium. Should have sold closer to current price ($108-110 strikes) for $600+ premium to recover the drawdown faster."
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "The campaign made 16% annualized. Savings account was 5%. Was this worth it?",
+      "options": [
+        "Yes - beat savings by 11%",
+        "No - too much work for 11% extra",
+        "No - risk of stock crash makes 11% not worth it",
+        "It depends on the trader's goals and time commitment"
+      ],
+      "correct": 3,
+      "xp_reward": 10,
+      "explanation_correct": "Smart! For someone with 2 hours/month to manage trades? 16% is fantastic vs 5% savings. For someone too busy? 11% alpha isn't worth the stress. For someone with investing skill? Could have made 20%+ in stocks directly. Know YOUR opportunity cost!",
+      "explanation_wrong": "There's no universal answer. It depends on: (1) Your time value, (2) Your alternative investments, (3) Your stress tolerance. $2,937 extra income is great for some, not worth it for others."
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "Lessons from the Trades",
+      "cards": [
+        {
+          "term": "Assignment Risk",
+          "definition": "Even at 5-8% OTM, assignment happens (markets drop!)",
+          "example": "DIS assigned after 2.5% OTM - stock dropped 13% total"
+        },
+        {
+          "term": "Recovery Strategy",
+          "definition": "After assignment underwater, sell ATM covered calls for max premium",
+          "example": "Stock $105, should sell $108-110 calls, not $120 calls"
+        },
+        {
+          "term": "Opportunity Cost",
+          "definition": "Compare CSP returns to alternatives (savings, stocks, bonds)",
+          "example": "16% CSP vs 5% savings vs 22% S&P 500 that year = context matters"
+        }
+      ]
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "What If Analysis: Other Strategies",
+      "description": "Compare the CSP approach to alternatives on $35,000",
+      "scenarios": [
+        {
+          "strategy": "Actual CSP Campaign",
+          "return": "$4,250 (12.1% in 9 months = 16.1% annual)",
+          "work_required": "30 min/week (select strikes, monitor)",
+          "stress_level": "Medium (worried during June drawdown)",
+          "pros": "Beat savings, learned option strategies",
+          "cons": "Held through 10% drawdown, required active management"
+        },
+        {
+          "strategy": "5% Savings Account",
+          "return": "$1,313 (5% annual)",
+          "work_required": "0 hours (set and forget)",
+          "stress_level": "Zero (FDIC insured)",
+          "pros": "No work, no risk, no stress",
+          "cons": "Lowest return, inflation eats gains"
+        },
+        {
+          "strategy": "Buy & Hold DIS Stock (Mar-Dec)",
+          "return": "$0 (DIS $120→$122 = +$200, - dividends $180 = $380 total)",
+          "work_required": "5 min (one purchase)",
+          "stress_level": "Medium-High (held through -13% drop)",
+          "pros": "Simple, captured upside if DIS mooned",
+          "cons": "Almost no return in 9 months, same drawdown as CSP"
+        },
+        {
+          "strategy": "S&P 500 Index Fund",
+          "return": "$5,450 (22% return that year)",
+          "work_required": "5 min (one purchase)",
+          "stress_level": "Low (diversified)",
+          "pros": "Best return, simplest, most diversified",
+          "cons": "Missed learning options, market-dependent"
+        },
+        {
+          "strategy": "Aggressive CSPs (ATM strikes)",
+          "return": "$8,500 estimated (but assigned 4x, held through volatility)",
+          "work_required": "2-3 hours/week",
+          "stress_level": "High (constantly assigned and selling stock)",
+          "pros": "Highest income potential",
+          "cons": "Very active, high stress, tax implications"
+        }
+      ],
+      "key_insight": "CSPs beat savings but underperformed S&P 500. Best use: income on cash you're waiting to deploy, not primary growth strategy."
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "Case Study Takeaways 📊",
+      "cards": [
+        {
+          "front": "What worked?",
+          "back": "Consistent income in up markets (Months 1-2, 7-9). Avoided panic during drawdown. Recovered full position via covered calls."
+        },
+        {
+          "front": "What didn't work?",
+          "back": "Covered calls too conservative ($120 when stock $105). Missed $250-350 in extra premium. Should have been more aggressive recovering cost basis."
+        },
+        {
+          "front": "Should you use CSPs?",
+          "back": "YES if: You want income on idle cash, you want to own specific stocks, you have time to manage. NO if: You're purely growth-focused or prefer passive investing."
+        }
+      ]
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 80,
+      "total_xp": 910,
+      "badge": "📊 CSP Analyst",
+      "badge_description": "You can analyze real CSP campaigns and learn from actual trades",
+      "streak_bonus": false,
+      "next_lesson_preview": {
+        "title": "Module 3: Advanced Spreads",
+        "description": "Coming soon: Learn vertical spreads, iron condors, and risk management",
+        "unlock_status": "locked"
+      },
+      "celebration_message": "MODULE 2 COMPLETE! You're now an income strategy expert! 🎓🎉"
+    }
+  ]
+}

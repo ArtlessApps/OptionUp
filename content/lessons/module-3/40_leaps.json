@@ -1,0 +1,175 @@
+{
+  "lesson_id": "leaps",
+  "title": "LEAPS (Long-Term Options)",
+  "estimated_time": "7 min",
+  "total_xp": 70,
+  "badge": "🏔️ LEAP Investor",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "leap_vs_stock.png",
+      "headline": "Own $50,000 of stock for $5,000?",
+      "text": "LEAPS give you stock-like exposure with 90% less capital. The ultimate leverage tool."
+    },
+    {
+      "screen_type": "definition",
+      "headline": "LEAPS = Long-term Equity Anticipation Securities",
+      "text": "LEAPS are simply options with 1-2 year expiration dates (or longer). They behave like stock ownership because they have so much time. Buying a deep ITM LEAP call is functionally similar to owning 100 shares, but uses ~80-90% less capital.",
+      "visual": "leap_timeline.png",
+      "highlight_words": ["1-2 year", "deep ITM", "80-90% less capital"]
+    },
+    {
+      "screen_type": "analogy",
+      "headline": "Buying a house vs getting a mortgage",
+      "text": "Owning 100 shares of a $500 stock = Buying a house for $50,000 cash. Buying a LEAP = Getting a mortgage. You put down $5,000 (10%) and control the house. If it appreciates to $60,000, you still make $10,000 profit on $5,000 capital (200% return instead of 20%). Downside: If house price drops, you could lose your entire down payment.",
+      "interactive": "tap_to_reveal",
+      "reveal_sections": [
+        {
+          "label": "Stock = Full ownership ($50k)",
+          "content": "Requires full capital to own 100 shares outright."
+        },
+        {
+          "label": "LEAP = Leveraged ownership ($5k)",
+          "content": "Control similar exposure with fraction of the capital."
+        },
+        {
+          "label": "Same upside, 10x capital efficiency",
+          "content": "Returns are magnified on smaller investment, but risk of total loss."
+        }
+      ]
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "LEAP concepts",
+      "cards": [
+        {
+          "term": "Deep ITM LEAP",
+          "definition": "Call option with .80-.90 delta, 12+ months to expiration",
+          "example": "Buy $400 call on $500 stock, 18 months out"
+        },
+        {
+          "term": "Delta Equivalent",
+          "definition": "Number of shares your LEAP mimics",
+          "example": ".85 delta LEAP = controls 85 shares effectively"
+        },
+        {
+          "term": "Time Decay Advantage",
+          "definition": "LEAPS decay slowly - only $0.05-$0.15/day",
+          "example": "18-month LEAP loses ~$10/month vs $50/month for 30-day option"
+        },
+        {
+          "term": "Extrinsic Value",
+          "definition": "Time premium on top of intrinsic value",
+          "example": "Stock at $500, $400 call worth $110 ($100 intrinsic + $10 extrinsic)"
+        }
+      ]
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "Why would someone buy a LEAP instead of 100 shares of stock?",
+      "options": [
+        "Uses 80-90% less capital for similar exposure",
+        "LEAPS have no risk",
+        "LEAPS pay dividends",
+        "LEAPS always outperform stock"
+      ],
+      "correct": 0,
+      "xp_reward": 10,
+      "explanation_correct": "Exactly! LEAPS offer leverage. Instead of $50,000 for 100 shares, you might pay $5,000 for a LEAP with .85 delta (effectively 85 shares). If stock rises 20%, you make ~20% on $50k (stock) or ~200% on $5k (LEAP). Capital efficiency.",
+      "explanation_wrong": "LEAPS are about capital efficiency. You get stock-like exposure for a fraction of the cost. Perfect for smaller accounts or when you want to deploy capital across multiple positions."
+    },
+    {
+      "screen_type": "scenario",
+      "question": "AAPL at $180. You're bullish long-term. You have $10,000. What's the benefit of buying LEAPS vs stock?",
+      "options": [
+        "LEAPS: Control ~300 shares. Stock: Own 55 shares",
+        "LEAPS have no theta decay",
+        "LEAPS are safer than stock",
+        "Stock is always better"
+      ],
+      "correct": 0,
+      "xp_reward": 10,
+      "explanation_correct": "Right! $10k buys 55 shares. Or, you could buy 3-4 LEAP calls (.80 delta) for $2,500 each, controlling ~240-320 shares of delta exposure. If AAPL goes to $220 (+22%), stock makes $2,200. LEAPS make ~$9,600 (assuming delta moves). Massive leverage.",
+      "explanation_wrong": "LEAPS give you more EXPOSURE per dollar. $10k in LEAPS can control 3-5x more delta than buying stock outright. Trade-off: If stock drops, you lose 100% of LEAP value vs only partial loss in stock."
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "Stock vs LEAP comparison",
+      "description": "NVDA at $500, you have $10,000 to invest. Compare two approaches.",
+      "inputs": [
+        {
+          "label": "Capital Available",
+          "value": 10000,
+          "locked": true
+        },
+        {
+          "label": "Stock Price",
+          "value": 500,
+          "locked": true
+        },
+        {
+          "label": "Compare Options",
+          "type": "toggle",
+          "options": ["Buy Stock", "Buy 2 LEAPS"],
+          "value": "Buy Stock"
+        }
+      ],
+      "outputs": [
+        {
+          "label": "Option A: Buy Stock",
+          "value": "20 shares | $10,000 cost | Delta: 20 shares | No theta | Dividends: Yes | If $600: +$2,000 (20%) | If $400: -$2,000 (-20%)"
+        },
+        {
+          "label": "Option B: Buy 2 LEAPS",
+          "value": "$450 calls (18mo) | $7,000 total | Delta: ~164 shares (.82 each) | Theta: ~$10/mo | No dividends | If $600: +$11,000 (157%) | If $400: -$7,000 (-100%)"
+        }
+      ],
+      "teaching_points": [
+        "LEAPS offer 8x delta exposure on same capital",
+        "But you lose 100% if wrong vs partial loss with stock",
+        "Stock offers safety and dividends, LEAPS offer explosive upside"
+      ]
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "LEAP strategy essentials",
+      "cards": [
+        {
+          "front": "When to use LEAPS",
+          "back": "Long-term bullish thesis (6-24 months) | Want leverage | Smaller account | Multiple positions"
+        },
+        {
+          "front": "Strike selection",
+          "back": "Deep ITM: .75-.90 delta | At least 12 months to expiration | Minimize extrinsic value"
+        },
+        {
+          "front": "Advantages",
+          "back": "Capital efficient (5-10x leverage) | Less theta decay | Control more shares | Lower total risk (can only lose premium)"
+        },
+        {
+          "front": "Disadvantages",
+          "back": "No dividends | Can lose 100% of capital | Time decay (though slow) | Spread/commissions higher"
+        },
+        {
+          "front": "Management",
+          "back": "Roll out 3-6 months before expiration | Close if thesis breaks | Can sell calls against (PMCC - next lesson)"
+        }
+      ]
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 70,
+      "total_xp": 70,
+      "badge": "🏔️ LEAP Investor",
+      "badge_description": "You understand long-term option strategies",
+      "streak_bonus": true,
+      "celebration_message": "LEAPS are how small accounts build wealth. You just unlocked serious leverage!",
+      "next_lesson_preview": {
+        "title": "Poor Man's Covered Call",
+        "description": "Generate income on your LEAPS",
+        "unlock_status": "unlocked"
+      }
+    }
+  ]
+}
+

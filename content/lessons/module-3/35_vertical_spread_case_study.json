@@ -1,0 +1,149 @@
+{
+  "lesson_id": "vertical-spread-case-study",
+  "title": "Vertical Spread Case Study",
+  "estimated_time": "8 min",
+  "total_xp": 80,
+  "badge": "📊 Spread Analyst",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "nvda_chart_60days.png",
+      "headline": "Real trade. Real results. Real lessons.",
+      "text": "Let's dissect an actual bull call spread trade on NVIDIA from start to finish."
+    },
+    {
+      "screen_type": "definition",
+      "headline": "The setup: NVDA bull call spread",
+      "text": "Date: Oct 1. NVDA at $500. Thesis: AI momentum continues, target $550 by Dec. Trade: Buy Dec $500 call ($25), Sell Dec $550 call ($10). Net debit: $15 ($1,500). Max profit: $35 ($3,500). Max loss: $15 ($1,500). Breakeven: $515. Let's see what happened...",
+      "visual": "trade_ticket.png",
+      "highlight_words": ["$500", "$550", "$15 debit", "$35 max profit"]
+    },
+    {
+      "screen_type": "scenario",
+      "headline": "Days 1-14: Slow grind higher",
+      "question": "NVDA slowly climbs from $500 to $510. Your spread is now worth $18 (up from $15 entry). Profit: $3 per share ($300). That's 20% gain in 2 weeks. Some traders would close here. What would you do?",
+      "options": [
+        "Close and take the 20% profit",
+        "Hold - target is $550",
+        "Add to the position",
+        "Roll to higher strikes"
+      ],
+      "correct": 1,
+      "xp_reward": 10,
+      "explanation_correct": "In this case study, the trader held. Early profits are tempting, and taking 20% in 2 weeks is great. But if your thesis is intact, holding can pay off bigger.",
+      "explanation_wrong": "There's no 'wrong' answer here - taking 20% in 2 weeks is excellent. The trader held because the AI thesis remained intact. Let's see how it played out."
+    },
+    {
+      "screen_type": "scenario",
+      "headline": "Days 15-28: Market correction",
+      "question": "Broader market sells off. NVDA drops to $490 in 3 days. Your spread crashes to $10 (down from $18). You're now showing -$5 loss (-33%). What should you consider?",
+      "options": [
+        "Panic sell immediately",
+        "Review thesis - if intact, hold through volatility",
+        "Double down and add more",
+        "Switch to puts"
+      ],
+      "correct": 1,
+      "xp_reward": 10,
+      "explanation_correct": "Exactly! The trader reviewed: AI fundamentals unchanged, just market noise. Staying calm when your thesis is intact is crucial. This is where most traders panic-sell and miss the recovery.",
+      "explanation_wrong": "Volatility tests your conviction. If the thesis is intact and it's just market noise, staying calm is key. Panic selling locks in losses right before recovery."
+    },
+    {
+      "screen_type": "scenario",
+      "headline": "Days 29-42: Strong earnings + Recovery",
+      "question": "NVDA reports blow-out earnings. Stock gaps to $535, then grinds to $555 over the next week. Your spread is now worth $48 (max value is $50). Profit: $33 per share ($3,300). That's 220% gain. What now?",
+      "options": [
+        "Hold 17 more days for the last $2",
+        "Close for $48 - take 96% of max profit",
+        "Roll to January with higher strikes",
+        "Let it ride and hope for $50"
+      ],
+      "correct": 1,
+      "xp_reward": 10,
+      "explanation_correct": "Smart! You captured $33 profit (220% return). The last $2 isn't worth the risk of a reversal. Professional move: lock in 96% of max and move on.",
+      "explanation_wrong": "Greed is the enemy. You're up 220%. The last 4% of profit ($200) could vanish in one bad day. Take the win. This is why pros close at 50-75% - they know when to walk away."
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "Alternative scenarios",
+      "description": "What if the trader made different decisions? Compare the outcomes.",
+      "inputs": [
+        {
+          "label": "Original Trade",
+          "value": "Held from entry to 96% profit",
+          "locked": true
+        },
+        {
+          "label": "Compare Scenario",
+          "type": "radio",
+          "options": [
+            "A) Closed at $18 (day 14)",
+            "B) Panicked at $10 (day 20)",
+            "C) Held to max $50 (day 60)"
+          ],
+          "value": "A"
+        }
+      ],
+      "outputs": [
+        {
+          "label": "Scenario A",
+          "value": "Profit: $300 (20%) | Time: 2 weeks | Annualized: ~520%"
+        },
+        {
+          "label": "Scenario B",
+          "value": "Loss: -$500 (-33%) | Time: 3 weeks | Lesson: Emotional decisions rarely work"
+        },
+        {
+          "label": "Scenario C",
+          "value": "Profit: $3,500 (233%) | Time: 8 weeks | Risk: Last 2 weeks were coin flip"
+        },
+        {
+          "label": "Analysis",
+          "value": "Scenario A is actually better risk-adjusted - taking 20% in 2 weeks beats 233% in 8 weeks"
+        }
+      ],
+      "teaching_points": [
+        "Quick profits aren't bad - they free capital faster",
+        "Holding to max looks great in hindsight but is objectively risky",
+        "The actual trade (96% of max) was the professional choice"
+      ]
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "Lessons from the case study",
+      "cards": [
+        {
+          "front": "Entry lesson",
+          "back": "Had clear thesis (AI momentum), defined target ($550), calculated risk ($1,500). Never trade without this clarity."
+        },
+        {
+          "front": "Management lesson",
+          "back": "Stayed calm during 33% drawdown because thesis was intact. Avoided panic. This separates winners from losers."
+        },
+        {
+          "front": "Exit lesson",
+          "back": "Closed at 96% of max profit instead of gambling on last 4%. Professional traders always leave a little on the table."
+        },
+        {
+          "front": "Result",
+          "back": "220% return in 6 weeks. But more importantly: followed the plan, managed emotions, exited smart."
+        }
+      ]
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 80,
+      "total_xp": 80,
+      "badge": "📊 Spread Analyst",
+      "badge_description": "You can analyze trades like a professional",
+      "streak_bonus": true,
+      "celebration_message": "You just learned more from one case study than most traders learn in months!",
+      "next_lesson_preview": {
+        "title": "Long Straddle",
+        "description": "Profit from big moves in ANY direction",
+        "unlock_status": "unlocked"
+      }
+    }
+  ]
+}
+

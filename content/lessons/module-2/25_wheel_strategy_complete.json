@@ -1,0 +1,237 @@
+{
+  "lesson_id": "wheel_strategy_complete",
+  "title": "The Wheel Strategy",
+  "estimated_time": "8 min",
+  "total_xp": 80,
+  "badge": "🎡 Wheel Master",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "wheel_spinning.png",
+      "headline": "What if you could generate income whether you own a stock or not?",
+      "text": "The Wheel combines CSPs and covered calls into an endless income loop. It's the strategy that turns volatility into cash flow. In 8 minutes, you'll learn the system that pros use to print money month after month."
+    },
+    {
+      "screen_type": "definition",
+      "headline": "The Wheel = CSP → Covered Call → Repeat Forever",
+      "text": "Step 1: Sell CSP, collect premium. Step 2: If assigned, now you own 100 shares. Step 3: Sell covered call on those shares, collect premium. Step 4: If called away, back to Step 1. You generate income at EVERY step, whether you own the stock or not. It's an infinite loop.",
+      "visual": "wheel_cycle_diagram.png",
+      "highlight_words": ["Sell CSP", "assigned", "own 100 shares", "Sell covered call", "called away", "generate income at EVERY step", "infinite loop"]
+    },
+    {
+      "screen_type": "analogy",
+      "headline": "Think of it like running a pawn shop",
+      "text": "Customer brings an item (CSP) → You agree to buy it for $100 if they need cash. They pay you $5 to hold that promise. IF they need cash (stock drops), you buy the item for $100 (assigned). You clean it up and offer to sell it for $110 (covered call). Someone pays you $4 for the option to buy at $110. IF they buy it (stock called away), great - you made $10 + $5 + $4 = $19 profit. IF they don't buy it, you keep the $4 and offer to sell it again. Repeat forever.",
+      "interactive": "tap_to_reveal",
+      "reveal_sections": [
+        {
+          "label": "Promise to buy = Cash-secured put"
+        },
+        {
+          "label": "They sell to you = Assignment (buy stock)"
+        },
+        {
+          "label": "Offer to sell = Covered call"
+        },
+        {
+          "label": "Item sells = Called away (stock sold)"
+        },
+        {
+          "label": "Start over = Sell new CSP, repeat wheel"
+        }
+      ]
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "Wheel Strategy Stages",
+      "cards": [
+        {
+          "term": "Phase 1: Wheeling (No Stock)",
+          "definition": "Selling CSPs monthly, collecting premium, waiting for assignment",
+          "example": "3 months of CSPs = $1,500 collected, no assignment yet"
+        },
+        {
+          "term": "Phase 2: Assigned (Now Own Stock)",
+          "definition": "CSP was exercised, you bought 100 shares, transition to covered calls",
+          "example": "Bought at $360, immediately sell $370 covered call"
+        },
+        {
+          "term": "Phase 3: Covered (Collecting Rent)",
+          "definition": "Selling covered calls monthly on shares, waiting to get called away",
+          "example": "2 months of covered calls = $800, then called away at $370"
+        },
+        {
+          "term": "Phase 4: Called Away (Full Cycle)",
+          "definition": "Stock sold at strike, profit realized, restart with CSPs",
+          "example": "Back to Phase 1 - sell $360 CSP on same stock"
+        }
+      ]
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "The Wheel in Action: 6-Month Campaign",
+      "description": "Follow a complete wheel cycle on Stock XYZ",
+      "monthly_breakdown": [
+        {
+          "month": "Month 1",
+          "action": "Sell $350 CSP",
+          "stock_price": "$380",
+          "premium": "$500",
+          "status": "No assignment",
+          "cumulative": "+$500"
+        },
+        {
+          "month": "Month 2",
+          "action": "Sell $350 CSP",
+          "stock_price": "$370",
+          "premium": "$600",
+          "status": "No assignment",
+          "cumulative": "+$1,100"
+        },
+        {
+          "month": "Month 3",
+          "action": "Sell $350 CSP",
+          "stock_price": "$340",
+          "premium": "$700",
+          "status": "⚠️ ASSIGNED at $350",
+          "notes": "Now own 100 shares at $350, market $340",
+          "cumulative": "+$1,800 cash, -$1,000 unrealized on stock = +$800 net"
+        },
+        {
+          "month": "Month 4",
+          "action": "Sell $360 covered call",
+          "stock_price": "$350",
+          "premium": "$500",
+          "status": "No assignment",
+          "notes": "Still own stock, collected more premium",
+          "cumulative": "+$1,300 net"
+        },
+        {
+          "month": "Month 5",
+          "action": "Sell $360 covered call",
+          "stock_price": "$358",
+          "premium": "$600",
+          "status": "No assignment",
+          "cumulative": "+$1,900 net"
+        },
+        {
+          "month": "Month 6",
+          "action": "Sell $360 covered call",
+          "stock_price": "$368",
+          "premium": "$700",
+          "status": "⚠️ CALLED AWAY at $360",
+          "notes": "Sold stock at $360 (bought $350) = $1,000 profit",
+          "cumulative": "+$3,600 total ($2,600 premiums + $1,000 stock gain)"
+        }
+      ],
+      "summary": {
+        "total_premiums": "$3,900",
+        "stock_gain": "$1,000",
+        "total_profit": "$3,600",
+        "initial_capital": "$35,000 (for CSP collateral)",
+        "roi": "10.3% in 6 months (20.6% annualized)",
+        "income_per_month": "$600 average"
+      },
+      "teaching_points": [
+        "Notice: Made money in EVERY month",
+        "Even down months (Month 3) collected premium",
+        "Stock assignment and sale = bonus profit"
+      ]
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "What's the MAIN advantage of the wheel over just covered calls or just CSPs?",
+      "options": [
+        "Higher total returns always",
+        "Less risk because you're diversified",
+        "Generate income whether you own the stock or not",
+        "You never lose money with the wheel"
+      ],
+      "correct": 2,
+      "xp_reward": 10,
+      "explanation_correct": "Exactly! The wheel lets you earn premium in ALL market conditions. Stock up? Covered calls. Stock down? CSPs. Don't own it yet? CSPs. Own it? Covered calls. You're always collecting income. That's the power!",
+      "explanation_wrong": "The wheel isn't about higher returns or no losses - it's about CONSISTENCY. You make income whether you own the stock (covered calls) or don't own it yet (CSPs). Always collecting premium."
+    },
+    {
+      "screen_type": "scenario",
+      "question": "You're on Month 8 of wheeling. Stock is $320, your cost basis is $350. You're underwater $3,000. What do you do?",
+      "options": [
+        "Stop the wheel - take the $3,000 loss",
+        "Keep selling covered calls at $360+ to recover",
+        "Switch to CSPs instead (you don't own it anymore)",
+        "Average down by buying more shares at $320"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "Perfect! You're underwater but still OWN the stock. Keep selling covered calls to collect premium and reduce your cost basis. Each $500 premium = -$5/share cost. After 6 more months of $500 calls, your cost is $320 = breakeven! Patience wins.",
+      "explanation_wrong": "Think about it: You OWN the stock at $350. Selling covered calls collects premium and reduces your cost basis. Don't panic sell - that's how you lock in losses. Keep wheeling!"
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "Wheel Outcomes in Different Markets",
+      "description": "See how the wheel performs in various conditions",
+      "scenarios": [
+        {
+          "market": "Bull Market (+20% for year)",
+          "wheel_performance": "CSPs mostly expire, 1-2 assignments, called away quickly, repeat",
+          "premiums_collected": "$4,200",
+          "stock_gains": "$2,000",
+          "total": "$6,200 (17.7% return)",
+          "vs_buy_hold": "Buy & hold: $7,000 (20% return)",
+          "verdict": "Wheel underperforms bull markets (capped upside)"
+        },
+        {
+          "market": "Flat Market (±5% range)",
+          "wheel_performance": "Ideal conditions - CSPs expire, covered calls expire, repeat forever",
+          "premiums_collected": "$7,200",
+          "stock_gains": "$0",
+          "total": "$7,200 (20.6% return)",
+          "vs_buy_hold": "Buy & hold: $0 (0% return)",
+          "verdict": "Wheel CRUSHES sideways markets"
+        },
+        {
+          "market": "Bear Market (-20% for year)",
+          "wheel_performance": "Assigned early, hold stock down, collect premium to reduce basis",
+          "premiums_collected": "$5,400",
+          "stock_losses": "-$4,000",
+          "total": "$1,400 (4% return)",
+          "vs_buy_hold": "Buy & hold: -$7,000 (-20% return)",
+          "verdict": "Wheel softens crashes (premium cushion)"
+        }
+      ],
+      "key_insight": "The wheel thrives in FLAT and SLIGHTLY volatile markets. Not a bull market strategy!"
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "The Wheel System 🎡",
+      "cards": [
+        {
+          "front": "The 4 phases?",
+          "back": "1. Sell CSP (no stock). 2. Get assigned (buy stock). 3. Sell covered call (own stock). 4. Get called away (sell stock). Repeat 1-4 forever."
+        },
+        {
+          "front": "Best market for wheel?",
+          "back": "SIDEWAYS markets with volatility. Stock bounces in a range = you collect premium every month. Bull markets = wheel underperforms buy & hold."
+        },
+        {
+          "front": "Biggest wheel mistake?",
+          "back": "Getting impatient when underwater. If assigned at $350 and stock drops to $320, DON'T panic sell. Keep selling covered calls to lower cost basis!"
+        }
+      ]
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 80,
+      "total_xp": 760,
+      "badge": "🎡 Wheel Master",
+      "badge_description": "You understand the infinite income loop that pros use",
+      "streak_bonus": false,
+      "next_lesson_preview": {
+        "title": "Picking Stocks for CSPs",
+        "description": "Learn which stocks are ideal for cash-secured puts",
+        "unlock_status": "unlocked"
+      },
+      "celebration_message": "The wheel is your money printer now! Keep spinning! 🎰"
+    }
+  ]
+}

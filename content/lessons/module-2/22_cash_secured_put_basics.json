@@ -1,0 +1,210 @@
+{
+  "lesson_id": "cash_secured_put_basics",
+  "title": "What is a Cash-Secured Put?",
+  "estimated_time": "8 min",
+  "total_xp": 80,
+  "badge": "💰 Premium Collector",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "money_waiting.png",
+      "headline": "Get paid $500 to wait for a stock you want to buy anyway?",
+      "text": "Cash-secured puts are the 'flip side' of covered calls. Instead of generating income from stocks you OWN, you generate income from stocks you WANT to own. This is how smart money builds positions."
+    },
+    {
+      "screen_type": "definition",
+      "headline": "Cash-Secured Put = Getting Paid to Wait",
+      "text": "You SELL a put option and set aside the cash to buy 100 shares. If the stock drops below your strike price, you're ASSIGNED - you buy the shares at that price (which you wanted anyway!). If stock stays above your strike, you keep the premium and try again. Either way, you win.",
+      "visual": "csp_diagram.png",
+      "highlight_words": ["SELL a put", "set aside the cash", "ASSIGNED", "buy the shares", "keep the premium", "Either way, you win"]
+    },
+    {
+      "screen_type": "analogy",
+      "headline": "Think of it like writing insurance",
+      "text": "Someone wants insurance on their car (stock). They pay you $500 premium. You promise: 'If your car (stock) is totaled and worth less than $20,000 (your strike price), I'll buy it from you for $20,000.' If the car stays fine (stock stays up), you keep the $500 and never buy the car. If the car totals (stock crashes), you buy it at $20,000 - which might be fair if it's only worth $15,000 now, but you still bought at agreed price.",
+      "interactive": "tap_to_reveal",
+      "reveal_sections": [
+        {
+          "label": "Car = The stock"
+        },
+        {
+          "label": "Insurance premium = Premium you collect"
+        },
+        {
+          "label": "Agreed purchase price = Your strike price"
+        },
+        {
+          "label": "Car totaled = Stock drops below strike"
+        },
+        {
+          "label": "You buy the car = Getting assigned (buying 100 shares)"
+        }
+      ]
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "CSP Essentials",
+      "cards": [
+        {
+          "term": "Cash-Secured",
+          "definition": "You have the CASH set aside to buy 100 shares",
+          "example": "$350 strike = need $35,000 cash available"
+        },
+        {
+          "term": "Put Option Sold",
+          "definition": "You sold someone the right to sell YOU the stock",
+          "example": "They can 'put' the stock to you at strike price"
+        },
+        {
+          "term": "Assignment",
+          "definition": "You're obligated to BUY 100 shares at strike price",
+          "example": "Sold $350 put, stock drops to $320, you buy at $350"
+        },
+        {
+          "term": "Effective Cost Basis",
+          "definition": "Strike price MINUS the premium you collected",
+          "example": "$350 strike - $5 premium = $345 effective cost"
+        }
+      ]
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "You want to buy AAPL at $180 or lower. AAPL is currently $200. What do you do?",
+      "options": [
+        "Buy AAPL now at $200 and hope it works out",
+        "Set a limit buy order at $180 and wait",
+        "Sell a $180 put and collect premium while you wait",
+        "Buy a $180 put option"
+      ],
+      "correct": 2,
+      "xp_reward": 10,
+      "explanation_correct": "Perfect! Sell a $180 put for maybe $3-4 premium. If AAPL drops to $180, you're assigned and buy at your target price (effective cost $176-177 after premium). If it stays at $200, you keep the premium and try again next month!",
+      "explanation_wrong": "Think strategically: A limit order pays you nothing while you wait. Selling a $180 put pays you $300-400 to wait for the same outcome. If assigned, you buy at your target. If not, you got paid to wait!"
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "You sell a $350 MSFT put for $5 premium. Stock drops to $330 and you're assigned. What's your EFFECTIVE cost per share?",
+      "options": [
+        "$350 (the strike price)",
+        "$345 (strike minus premium)",
+        "$330 (current market price)",
+        "$355 (strike plus premium)"
+      ],
+      "correct": 1,
+      "xp_reward": 10,
+      "explanation_correct": "Exactly! You paid $350 but collected $5 premium = $345 effective cost. You bought at $350 strike, but your 'real' entry is $345. Still underwater vs $330 market price, but better than buying at $350 with no premium!",
+      "explanation_wrong": "You're assigned at $350, but don't forget the $5 premium you collected! That reduces your cost basis to $345 per share. Premium ALWAYS reduces your effective cost."
+    },
+    {
+      "screen_type": "scenario",
+      "question": "You sell a $100 put on Stock X for $2 premium. A week later, Stock X is at $110. What happens?",
+      "options": [
+        "You're assigned and forced to buy at $100 (below market!)",
+        "Put expires worthless - you keep $200 and try again",
+        "You lose money because stock went up",
+        "You have to buy the stock at $110"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "Perfect! Stock is ABOVE your $100 strike, so the put expires worthless. You keep the $200 premium and never buy the stock. You can immediately sell ANOTHER put and collect more premium. This is the best outcome!",
+      "explanation_wrong": "The put buyer only exercises if stock is BELOW strike. Stock at $110 > strike $100, so they let it expire. You keep premium, never buy stock. Win!"
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "CSP Profit Calculator",
+      "description": "See your outcomes based on where the stock ends up",
+      "inputs": [
+        {
+          "label": "Strike Price You Sold",
+          "value": 350,
+          "locked": true
+        },
+        {
+          "label": "Premium Collected",
+          "value": 5.00,
+          "locked": true
+        },
+        {
+          "label": "Cash Reserved",
+          "value": 35000,
+          "locked": true,
+          "note": "$350 × 100 shares"
+        },
+        {
+          "label": "Stock Price at Expiration",
+          "type": "slider",
+          "min": 320,
+          "max": 380,
+          "value": 360,
+          "step": 5
+        }
+      ],
+      "outputs": [
+        {
+          "label": "Assignment Status",
+          "calculation": "stock_price < strike ? 'ASSIGNED - You bought 100 shares ⚠️' : 'Expired worthless - Keep premium ✅'"
+        },
+        {
+          "label": "Your Outcome",
+          "calculation": "stock_price < strike ? 'Own 100 shares at $' + strike : 'Keep $' + (premium * 100) + ' premium'"
+        },
+        {
+          "label": "Effective Cost (if assigned)",
+          "calculation": "strike - premium",
+          "format": "currency",
+          "show_if": "stock_price < strike"
+        },
+        {
+          "label": "Current P/L (if assigned)",
+          "calculation": "((stock_price - strike) * 100) + (premium * 100)",
+          "format": "currency",
+          "conditional_color": true,
+          "show_if": "stock_price < strike"
+        },
+        {
+          "label": "ROI on Cash (if not assigned)",
+          "calculation": "((premium * 100) / 35000) * 100",
+          "format": "percentage",
+          "show_if": "stock_price >= strike"
+        }
+      ],
+      "teaching_points": [
+        "Try $360: Best outcome - keep premium, no stock",
+        "Try $345: You're assigned but effective cost $345",
+        "Try $330: Assigned and currently down $1,500"
+      ]
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "Lock These In 🔒",
+      "cards": [
+        {
+          "front": "What's a cash-secured put?",
+          "back": "SELL a put option → Set aside cash to buy 100 shares → Get paid premium to wait → Either buy stock at discount OR keep premium if stock stays up"
+        },
+        {
+          "front": "Best case scenario?",
+          "back": "Stock stays ABOVE your strike = put expires worthless, you keep 100% of premium, never buy stock. Repeat monthly for infinite income."
+        },
+        {
+          "front": "Worst case scenario?",
+          "back": "Stock crashes to $0 = you're assigned at strike price and hold worthless shares. ONLY sell puts on stocks you'd want to own anyway!"
+        }
+      ]
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 80,
+      "total_xp": 530,
+      "badge": "💰 Premium Collector",
+      "badge_description": "You understand cash-secured puts - how to get paid while waiting",
+      "streak_bonus": false,
+      "next_lesson_preview": {
+        "title": "CSP Calculator",
+        "description": "Interactive tool to calculate returns and assignment scenarios",
+        "unlock_status": "unlocked"
+      },
+      "celebration_message": "You just learned how patient investors build positions at discounts! 🎯"
+    }
+  ]
+}
