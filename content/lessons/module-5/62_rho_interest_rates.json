@@ -1,0 +1,119 @@
+{
+  "lesson_id": "rho-interest-rates",
+  "title": "Rho (Interest Rates)",
+  "estimated_time": "6 min",
+  "total_xp": 60,
+  "badge": "💰 Rho Scholar",
+  "badge_description": "You know rho exists - and when to safely ignore it",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "federal_reserve_building.png",
+      "headline": "The Greek nobody cares about",
+      "text": "Rho measures interest rate impact on options. Good news: it barely matters for retail traders. But you should still understand it for completeness (and it's a quick lesson!)."
+    },
+    {
+      "screen_type": "definition",
+      "headline": "Rho: The Interest Rate Greek",
+      "text": "Rho measures how much your option price changes per 1% change in interest rates. Calls have positive rho (benefit from higher rates). Puts have negative rho (hurt by higher rates). Only matters for LEAPS and during major Fed rate changes.",
+      "visual": "rho_interest_rate_chart.png",
+      "highlight_words": ["1% change", "interest rates", "LEAPS", "barely matters"]
+    },
+    {
+      "screen_type": "analogy",
+      "headline": "Rho is Like Shipping Costs",
+      "text": "You're buying a $50,000 car. Shipping costs $200. Do you care? Not really - it's 0.4% of the total. That's rho for short-term options. For LEAPS (2-year options), it's like shipping a $5,000 item internationally - suddenly you care about shipping (rho).",
+      "interactive": "tap_to_reveal",
+      "reveal_sections": [
+        { "label": "30-day options: Rho ≈ $0.01-0.05 (ignore it)" },
+        { "label": "1-year LEAPS: Rho ≈ $0.30-0.70 (matters a bit)" },
+        { "label": "2-year LEAPS: Rho ≈ $0.50-1.00 (actually noticeable)" },
+        { "label": "Most retail: Stick to short-term = rho irrelevant" }
+      ]
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "When Rho Matters",
+      "cards": [
+        {
+          "term": "Rho for Calls",
+          "definition": "Positive rho - calls benefit from HIGHER interest rates",
+          "example": "Fed raises rates 1% → Your LEAPS call gains ~$0.50"
+        },
+        {
+          "term": "Rho for Puts",
+          "definition": "Negative rho - puts hurt by HIGHER interest rates",
+          "example": "Fed raises rates 1% → Your LEAPS put loses ~$0.50"
+        },
+        {
+          "term": "When to Ignore Rho",
+          "definition": "Any option <180 days to expiration",
+          "example": "If you trade monthlies/weeklies, rho impact ≈ $5-15 per contract. Negligible."
+        }
+      ]
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "Why does rho matter SO LITTLE for most traders?",
+      "options": [
+        "Interest rates never change",
+        "Options don't have carrying costs",
+        "Most traders use short-term options (30-90 days) where rho is negligible",
+        "Rho is a made-up Greek"
+      ],
+      "correct": 2,
+      "xp_reward": 10,
+      "explanation_correct": "Exactly! Rho impact is TIME-DEPENDENT. Short-term options have tiny rho (pennies). You'd need LEAPS + major Fed changes for rho to matter. Most retail = short-term = ignore rho.",
+      "explanation_wrong": "Rho exists but only matters for LONG-DATED options (LEAPS). Short-term options have rho ≈ $0.01-0.05, which is nothing. Focus on delta/theta/vega instead."
+    },
+    {
+      "screen_type": "scenario",
+      "question": "You own a 2-year LEAPS call (rho = 0.75). Fed raises rates by 1%. All else equal, what happens to your call?",
+      "options": [
+        "Loses $0.75 per share ($75 per contract)",
+        "Gains $0.75 per share ($75 per contract)",
+        "Nothing - rho doesn't affect calls",
+        "Depends on the stock"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "Correct! Calls have POSITIVE rho. Higher rates = slight benefit. Rho 0.75 × 1% rate increase × 100 shares = $75 gain. Not huge, but with LEAPS it's noticeable.",
+      "explanation_wrong": "Calls = positive rho = benefit from higher rates (puts hurt). Rho 0.75 means +$0.75/share per 1% rate increase. 1% up × 100 shares = $75 gain."
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "Rho: The Forgotten Greek 💰",
+      "cards": [
+        {
+          "front": "What is rho?",
+          "back": "Option price change per 1% interest rate move. Calls = positive rho. Puts = negative rho."
+        },
+        {
+          "front": "Why ignore rho?",
+          "back": "Most traders use short-term options (<90 days). Rho impact for these ≈ $5-20 per contract. Focus on delta/gamma/theta/vega instead."
+        },
+        {
+          "front": "When does rho matter?",
+          "back": "LEAPS (1-2 year options) during Fed rate change cycles. Otherwise, safely ignore it."
+        }
+      ],
+      "xp_reward": 10
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 60,
+      "total_xp": 60,
+      "badge": "💰 Rho Scholar",
+      "badge_description": "You know rho exists - and when to safely ignore it",
+      "streak_bonus": false,
+      "next_lesson_preview": {
+        "title": "Greeks in Spreads",
+        "description": "See how multi-leg strategies modify your Greek exposure - this is where it all comes together!",
+        "unlock_status": "unlocked"
+      },
+      "celebration_message": "Shortest lesson = still valuable knowledge. Now you know ALL five Greeks! 💰"
+    }
+  ]
+}
+
+

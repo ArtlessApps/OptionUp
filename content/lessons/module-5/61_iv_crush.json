@@ -1,0 +1,167 @@
+{
+  "lesson_id": "iv-crush",
+  "title": "IV Crush (The Earnings Trap)",
+  "estimated_time": "7 min",
+  "total_xp": 70,
+  "badge": "💥 IV Crush Survivor",
+  "badge_description": "You understand the earnings trap and will never fall for it again",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "earnings_disappointment.png",
+      "headline": "Why did you lose money even though you were RIGHT?",
+      "text": "IV CRUSH. You bought calls, earnings beat, stock up 5%, but your calls LOST money. This destroys beginners every earnings season. Here's how to avoid it."
+    },
+    {
+      "screen_type": "definition",
+      "headline": "IV Crush: The Post-Event Collapse",
+      "text": "IV Crush is the massive drop in implied volatility immediately after binary events (earnings, FDA decisions, elections). Options can lose 30-50% of value overnight even if you're RIGHT about direction. Why? Uncertainty resolved = IV collapses = vega crushes you.",
+      "visual": "iv_crush_chart.png",
+      "highlight_words": ["massive drop", "binary events", "30-50%", "even if RIGHT", "uncertainty resolved"]
+    },
+    {
+      "screen_type": "analogy",
+      "headline": "IV Crush is Like Concert Tickets After the Show",
+      "text": "Before concert: Tickets sell for $500 (high uncertainty - will it be good?). After concert: Tickets worth $0 even if it was AMAZING. Uncertainty gone = value collapses. Options before earnings = high IV. After earnings = IV crashes.",
+      "interactive": "tap_to_reveal",
+      "reveal_sections": [
+        { "label": "Before event: High IV = uncertainty premium baked in" },
+        { "label": "After event: Uncertainty gone = IV collapses" },
+        { "label": "Even correct direction can't save you from vega loss" },
+        { "label": "Delta gains < Vega losses = net loss despite being right" }
+      ]
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "IV Crush Mechanics",
+      "cards": [
+        {
+          "term": "Pre-Earnings IV Spike",
+          "definition": "IV inflates 50-100% in days before earnings",
+          "example": "Normal 30% IV → 80% IV before announcement"
+        },
+        {
+          "term": "Post-Earnings IV Collapse",
+          "definition": "IV drops 40-60% within hours after earnings",
+          "example": "80% IV before → 35% IV after (even if you're right!)"
+        },
+        {
+          "term": "The Break-Even Trap",
+          "definition": "Stock must move HUGE to overcome vega loss",
+          "example": "Need 10% stock move just to break even on 5% IV bet"
+        }
+      ]
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "When does IV Crush happen?",
+      "options": [
+        "Randomly throughout the year",
+        "Only during market crashes",
+        "After binary events (earnings, FDA, elections) when uncertainty resolves",
+        "Every Friday at expiration"
+      ],
+      "correct": 2,
+      "xp_reward": 10,
+      "explanation_correct": "Exactly! IV inflates BEFORE uncertainty (earnings, FDA approval, election). The moment uncertainty resolves (results announced), IV COLLAPSES. Predictable as clockwork.",
+      "explanation_wrong": "IV Crush is predictable: happens after BINARY EVENTS when uncertainty resolves. Earnings most common, but also FDA decisions, court rulings, elections."
+    },
+    {
+      "screen_type": "scenario",
+      "question": "Day before TSLA earnings: Stock $250, IV 110%. You buy $260 call for $18 (vega 0.15). Earnings beat! Stock jumps to $267.50 (+7%). Next day call worth $14. What happened?",
+      "options": [
+        "You did something wrong",
+        "Delta gain (+$3.75) was smaller than vega loss (-$7.50) from IV crush",
+        "Broker error",
+        "Theta decay"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "PERFECT! This IS IV crush. Delta 0.50 × $7.50 move = +$3.75 gain. BUT IV crashed from 110% to 60% (-50% IV). Vega 0.15 × -50 IV = -$7.50 loss. Net: -$3.75. You were RIGHT but LOST money!",
+      "explanation_wrong": "Break it down: Delta gain = 0.50 × $7.50 = +$3.75. Vega loss = 0.15 × -50% IV drop × 100 shares = -$7.50. Vega loss > Delta gain = Net loss. This is the earnings trap!"
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "IV Crush Simulator",
+      "description": "See how IV crush destroys even winning trades:",
+      "interactive_type": "iv_crush_calculator",
+      "params": {
+        "before_earnings": {
+          "stock_price": 100,
+          "strike_price": 105,
+          "iv": 80,
+          "option_price": 8,
+          "delta": 0.45,
+          "vega": 0.12
+        },
+        "user_inputs": {
+          "stock_move": {
+            "type": "slider",
+            "label": "Stock Move After Earnings",
+            "range": [-15, 15],
+            "step": 1,
+            "unit": "%"
+          },
+          "iv_after": {
+            "type": "slider",
+            "label": "IV After Earnings",
+            "range": [20, 80],
+            "default": 35,
+            "unit": "%"
+          }
+        },
+        "calculations": [
+          { "label": "Stock Price After", "formula": "stock_price × (1 + move%)" },
+          { "label": "Delta P/L", "formula": "delta × stock_move × 100" },
+          { "label": "Vega P/L", "formula": "vega × (new_iv - old_iv) × 100" },
+          { "label": "Net P/L", "formula": "delta_pnl + vega_pnl + theta_pnl" }
+        ],
+        "teaching_points": [
+          "Even +8% stock move can result in -20% option loss",
+          "Vega loss almost always exceeds delta gains",
+          "This is why pros SELL before earnings, not buy"
+        ]
+      },
+      "xp_reward": 15
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "IV Crush Survival Guide 💥",
+      "cards": [
+        {
+          "front": "What causes IV crush?",
+          "back": "Uncertainty resolves after binary events. Before = high IV (fear). After = low IV (known outcome). Vega collapses."
+        },
+        {
+          "front": "Can you be right and lose?",
+          "back": "YES! Stock moves in your favor but vega loss exceeds delta gain. This happens CONSTANTLY at earnings."
+        },
+        {
+          "front": "How to avoid IV crush?",
+          "back": "1) Don't buy before earnings 2) Sell premium instead 3) Use spreads (vega neutral) 4) Wait until AFTER announcement"
+        },
+        {
+          "front": "Who profits from IV crush?",
+          "back": "Option SELLERS. They collect inflated premiums before event, then watch them collapse. Buy back cheap after."
+        }
+      ],
+      "xp_reward": 10
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 70,
+      "total_xp": 70,
+      "badge": "💥 IV Crush Survivor",
+      "badge_description": "You understand the earnings trap and will never fall for it again",
+      "streak_bonus": false,
+      "next_lesson_preview": {
+        "title": "Rho: Interest Rate Effects",
+        "description": "The least important Greek - but you should still know it exists",
+        "unlock_status": "unlocked"
+      },
+      "celebration_message": "This lesson just saved you THOUSANDS of dollars. Most traders learn this the expensive way! 💥"
+    }
+  ]
+}
+
+

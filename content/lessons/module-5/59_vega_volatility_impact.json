@@ -1,0 +1,169 @@
+{
+  "lesson_id": "vega-volatility-impact",
+  "title": "Vega (Volatility's Impact)",
+  "estimated_time": "8 min",
+  "total_xp": 80,
+  "badge": "🌊 Vega Expert",
+  "badge_description": "You understand volatility's impact and how to trade IV instead of just direction",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "option_price_spike.png",
+      "headline": "Why did your option gain $300 when the stock didn't move?",
+      "text": "VEGA. When implied volatility spikes (fear, uncertainty, earnings), options get EXPENSIVE fast. This is the hidden force that can make or break your trade."
+    },
+    {
+      "screen_type": "definition",
+      "headline": "Vega: The Volatility Greek",
+      "text": "Vega measures how much your option price changes per 1% change in implied volatility (IV). High IV = expensive options. Low IV = cheap options. Vega is HIGHEST for ATM options with longer expirations.",
+      "visual": "vega_iv_relationship.png",
+      "highlight_words": ["1% change", "implied volatility", "expensive options", "ATM options"]
+    },
+    {
+      "screen_type": "analogy",
+      "headline": "Vega is Like Hurricane Insurance",
+      "text": "Before a hurricane: Insurance prices SKYROCKET (high IV, high vega). After it passes: Insurance cheap again (low IV). Same house, different fear level, different price. Options work exactly the same way.",
+      "interactive": "tap_to_reveal",
+      "reveal_sections": [
+        { "label": "Calm markets = Low IV = Cheap options" },
+        { "label": "Fear/uncertainty = High IV = Expensive options" },
+        { "label": "Before earnings = IV spike (uncertainty)" },
+        { "label": "After earnings = IV crash (uncertainty resolved)" }
+      ]
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "Vega & IV Essentials",
+      "cards": [
+        {
+          "term": "Implied Volatility (IV)",
+          "definition": "Market's expectation of future price movement",
+          "example": "IV 30% = market expects ~30% annual price swing"
+        },
+        {
+          "term": "Historical Volatility (HV)",
+          "definition": "Actual past price movement",
+          "example": "HV 20% = stock actually moved 20% in past year"
+        },
+        {
+          "term": "Vega as Opportunity",
+          "definition": "Buy options in low IV, sell in high IV",
+          "example": "High IV = collect inflated premiums. Low IV = cheap insurance"
+        }
+      ]
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "Your ATM call has vega of $0.20. IV increases from 30% to 40%. How much does your option gain?",
+      "options": [
+        "$0.20 total",
+        "$2.00 total ($200 per contract)",
+        "$4.00 total ($400 per contract)",
+        "$20 total ($2,000 per contract)"
+      ],
+      "correct": 1,
+      "xp_reward": 10,
+      "explanation_correct": "Perfect! Vega $0.20 means +$0.20 per 1% IV increase. IV up 10% (30→40) = $0.20 × 10 = $2.00 per share = $200 per contract.",
+      "explanation_wrong": "Calculate: Vega $0.20 × 10% IV increase (30→40) × 100 shares = $200 gain. You made money without the stock moving!"
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "When is the BEST time to BUY options (from a vega perspective)?",
+      "options": [
+        "Before earnings (high IV)",
+        "During market crashes (high IV)",
+        "When IV is at 52-week highs",
+        "When IV is at 52-week lows (cheap options)"
+      ],
+      "correct": 3,
+      "xp_reward": 10,
+      "explanation_correct": "Exactly! Buy low, sell high applies to IV too. Low IV = cheap options = good time to buy protection or speculate. You want IV to INCREASE after you buy.",
+      "explanation_wrong": "Think 'buy low, sell high.' Low IV = options are CHEAP. That's when you want to buy. High IV = you're overpaying for insurance."
+    },
+    {
+      "screen_type": "scenario",
+      "question": "AAPL at $180, IV at 20% (low). You buy $180 call for $5 (vega 0.15). No earnings, no news, but market gets nervous and AAPL's IV jumps to 40%. Stock still $180. What's your call worth now?",
+      "options": [
+        "Still $5 (stock didn't move)",
+        "$8 (IV expansion profit)",
+        "$3 (IV hurt you)",
+        "$10 (doubled)"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "Brilliant! IV up 20% (20→40) × vega $0.15 × 100 shares = $300 gain. Your $5 call is now worth $8. You made 60% profit without stock moving AT ALL. This is vega expansion!",
+      "explanation_wrong": "Stock flat but IV spiked 20%. Vega 0.15 × 20% IV increase × 100 shares = $300 gain. $5 call + $3 = $8. Pure vega profit!"
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "Vega Impact Simulator",
+      "description": "See how IV changes affect option prices (stock stays flat):",
+      "interactive_type": "vega_simulator",
+      "params": {
+        "stock_price": 100,
+        "strike_price": 100,
+        "initial_iv": 30,
+        "initial_option_price": 5,
+        "vega": 0.15,
+        "iv_slider": {
+          "min": 10,
+          "max": 80,
+          "step": 5,
+          "label": "Implied Volatility (%)"
+        },
+        "display_metrics": [
+          { "label": "Stock Price", "value": "$100 (unchanged)" },
+          { "label": "Implied Volatility", "field": "iv" },
+          { "label": "Option Price", "field": "option_price" },
+          { "label": "P/L from Vega", "field": "pnl" }
+        ],
+        "teaching_points": [
+          "IV 10-20%: Options dirt cheap (complacency)",
+          "IV 30-40%: Normal pricing",
+          "IV 50-70%: Options expensive (fear)",
+          "IV 80%+: Panic pricing (earnings, crisis)"
+        ]
+      },
+      "xp_reward": 15
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "Vega Mastery 🌊",
+      "cards": [
+        {
+          "front": "What does vega measure?",
+          "back": "Option price change per 1% IV move. Vega 0.20 = option gains/loses $0.20 per share per 1% IV change."
+        },
+        {
+          "front": "High IV vs Low IV?",
+          "back": "High IV = expensive options (fear, uncertainty). Low IV = cheap options (complacency). Context matters!"
+        },
+        {
+          "front": "When to buy vs sell?",
+          "back": "BUY when IV is low (cheap options). SELL when IV is high (collect inflated premiums). Opposite of what most do!"
+        },
+        {
+          "front": "Vega expansion example?",
+          "back": "Stock flat, but IV spikes from 30% to 50% before earnings. Your call gains $300 from vega alone!"
+        }
+      ],
+      "xp_reward": 10
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 80,
+      "total_xp": 80,
+      "badge": "🌊 Vega Expert",
+      "badge_description": "You understand volatility's impact and how to trade IV instead of just direction",
+      "streak_bonus": false,
+      "next_lesson_preview": {
+        "title": "Implied Volatility Rank (IVR)",
+        "description": "Learn how to know if options are cheap or expensive - the secret sauce",
+        "unlock_status": "unlocked"
+      },
+      "celebration_message": "Most traders buy expensive options and sell cheap ones. You now know better! 🌊"
+    }
+  ]
+}
+
+
