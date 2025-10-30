@@ -1,0 +1,93 @@
+{
+  "lesson_id": "ratio-spreads-caution",
+  "title": "Ratio Spreads (Caution!)",
+  "estimated_time": "8 min",
+  "total_xp": 80,
+  "badge": "⚠️ Ratio Warrior",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "danger_warning.png",
+      "headline": "Advanced strategy with potential UNLIMITED losses",
+      "text": "We teach this so you understand the risks. Do not trade ratio spreads until you're an expert."
+    },
+    {
+      "screen_type": "definition",
+      "headline": "Ratio spread = Buy and sell different quantities",
+      "text": "Common call ratio: Buy 1 ATM call, sell 2 OTM calls. Cheap entry can create naked exposure above the upper breakeven, with unlimited loss.",
+      "visual": "ratio_spread_imbalance.png",
+      "highlight_words": ["Buy 1", "Sell 2", "Naked exposure", "Unlimited loss"],
+      "example": {
+        "stock": 100,
+        "buy_call": {"strike": 100, "premium": 5, "qty": 1},
+        "sell_calls": {"strike": 110, "premium_each": 2, "qty": 2},
+        "net_debit": 1
+      }
+    },
+    {
+      "screen_type": "analogy",
+      "headline": "The expensive cheese trap",
+      "text": "Low cost in, big payout at one spot — but unlimited loss if price runs too far. The cheese is tasty; the trap is fatal.",
+      "interactive": "tap_to_reveal",
+      "reveal_sections": [
+        {"label": "Cheap entry", "content": "Small debit lures you in"},
+        {"label": "Profit hump", "content": "Max near middle strike"},
+        {"label": "Runaway loss", "content": "Above upper breakeven, losses are unbounded"}
+      ]
+    },
+    {
+      "screen_type": "calculation",
+      "headline": "P/L checkpoints",
+      "question": "Buy 1× $100 call for $5; sell 2× $110 calls for $2 each. What happens at $100, $110, $120, $130?",
+      "answer": "-$100; +$900; $0; -$1,100 (and worse beyond)",
+      "xp_reward": 10,
+      "explanation": "At $100: lose debit. At $110: long $10, shorts $0 → $900. At $120: long $20, shorts 2×$10 → $0. At $130: long $30, shorts 2×$20 → -$10 → -$1,100 total.",
+      "teaching_point": "Profit hump between lower strike and upper breakeven; unlimited loss above."
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "What's the maximum loss on a ratio spread?",
+      "options": ["The debit paid", "Width of strikes", "Twice the debit", "Unlimited"],
+      "correct": 3,
+      "xp_reward": 10,
+      "explanation_correct": "Correct. Extra short options create naked risk above the upper breakeven.",
+      "explanation_wrong": "Because you sell more than you bought, beyond a level you are short naked — losses can be unbounded."
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "Why pros rarely use them",
+      "cards": [
+        {"term": "Complex management", "definition": "Requires constant monitoring and hedging."},
+        {"term": "Tail risk", "definition": "Outlier moves blow up accounts."},
+        {"term": "Approval level", "definition": "Often requires highest broker permissions."},
+        {"term": "Safer alternatives", "definition": "Use call spreads or butterflies instead."}
+      ]
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "Our recommendation",
+      "cards": [
+        {"front": "Avoid", "back": "Don't trade as a beginner; cheap entry hides expensive risk"},
+        {"front": "If ever", "back": "Paper trade first; <0.5% of account; strict alerts"},
+        {"front": "Alternatives", "back": "Regular call spreads or butterflies for defined risk"},
+        {"front": "Understand", "back": "Know upper breakeven and exit before exposure"}
+      ]
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 80,
+      "total_xp": 80,
+      "badge": "⚠️ Ratio Warrior",
+      "badge_description": "You understand ratio-spread risks",
+      "streak_bonus": false,
+      "celebration_message": "Knowledge is defense. Next: Adjusting losing trades the right way.",
+      "next_lesson_preview": {
+        "title": "Adjusting Losing Trades",
+        "description": "When to adjust vs when to close",
+        "unlock_status": "unlocked"
+      }
+    }
+  ]
+}
+
+

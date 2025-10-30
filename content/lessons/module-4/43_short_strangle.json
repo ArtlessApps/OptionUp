@@ -1,0 +1,153 @@
+{
+  "lesson_id": "short-strangle",
+  "title": "Short Strangle",
+  "estimated_time": "7 min",
+  "total_xp": 70,
+  "badge": "🎲 Risk Taker",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "range_bounce_with_cash.png",
+      "headline": "Profit when a stock does... nothing?",
+      "text": "Most stocks spend 70% of the time trading sideways. While others wait, you could be collecting cash. Ready to learn the riskiest way to do this? (Don't worry, the SAFE version is next.)"
+    },
+    {
+      "screen_type": "definition",
+      "headline": "Short Strangle = Sell volatility on both sides",
+      "text": "A short strangle means you sell an out-of-the-money CALL above the current price and an out-of-the-money PUT below the current price (same expiration, different strikes). You collect TWO premiums upfront. If the stock stays between your strikes until expiration, you keep all the money. Catch: undefined risk in both directions.",
+      "visual": "short_strangle_diagram.png",
+      "highlight_words": ["Sell OTM CALL", "Sell OTM PUT", "Two premiums", "Undefined risk"],
+      "example": {
+        "stock": 100,
+        "sell_call_strike": 110,
+        "sell_call_premium": 2,
+        "sell_put_strike": 90,
+        "sell_put_premium": 2,
+        "total_credit": 4
+      }
+    },
+    {
+      "screen_type": "analogy",
+      "headline": "Selling insurance on both sides",
+      "text": "Think like an insurance company: you sell flood insurance (put) if price drops and fire insurance (call) if price skyrockets. Most months nothing happens and you keep premiums. But if disaster strikes, you pay out big on the affected side. With short strangles, potential payouts can be UNLIMITED.",
+      "interactive": "tap_to_reveal",
+      "reveal_sections": [
+        { "label": "Sell flood insurance (put)", "content": "You get paid unless the stock crashes." },
+        { "label": "Sell fire insurance (call)", "content": "You get paid unless the stock moons." },
+        { "label": "The scary part", "content": "Real flood or fire = large, unbounded losses." }
+      ]
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "Strangle vocabulary",
+      "cards": [
+        {
+          "term": "Neutral strategy",
+          "definition": "Profits when the stock stays within a range",
+          "example": "Short strikes at $90 and $110 on $100 stock"
+        },
+        {
+          "term": "Out-of-the-money (OTM)",
+          "definition": "Call above current price or put below current price",
+          "example": "$110 call, $90 put when stock is $100"
+        },
+        {
+          "term": "Credit collected",
+          "definition": "Money received upfront from selling options; your max profit",
+          "example": "$2 + $2 = $4 ($400 per contract)"
+        },
+        {
+          "term": "Undefined risk",
+          "definition": "Potential losses can be very large or unlimited",
+          "example": "Short strangles have undefined risk on BOTH sides"
+        }
+      ]
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "If you sell a $110 call and a $90 put for $2 each, what's your max profit?",
+      "options": [
+        "$200",
+        "$400",
+        "$2,000",
+        "Unlimited"
+      ],
+      "correct": 1,
+      "xp_reward": 10,
+      "explanation_correct": "Exactly! You collect $2 + $2 = $4 per share ($400 total). That's ALL you can make, no matter what happens.",
+      "explanation_wrong": "Remember: You're selling two options for $2 each. That premium ($2 + $2 = $4) is your maximum possible profit."
+    },
+    {
+      "screen_type": "scenario",
+      "question": "You sold a short strangle on XYZ ($100): short $110 call for $2 and short $90 put for $2 (total credit $4). On expiration day, where must the stock be to keep the full $400?",
+      "options": [
+        "Exactly $100",
+        "Between $90 and $110",
+        "Above $110",
+        "Below $90"
+      ],
+      "correct": 1,
+      "xp_reward": 10,
+      "explanation_correct": "Perfect! Anywhere in $90-$110, both options expire worthless and you keep the full $4 premium.",
+      "explanation_wrong": "If price is between the two short strikes, both options expire OTM and you keep the entire credit."
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "The dark side: loss grows without bound",
+      "description": "Explore how losses grow as price moves beyond the short strikes.",
+      "inputs": [
+        { "label": "Short Call Strike", "value": 110, "locked": true },
+        { "label": "Short Call Premium", "value": 2, "locked": true },
+        { "label": "Short Put Strike", "value": 90, "locked": true },
+        { "label": "Short Put Premium", "value": 2, "locked": true },
+        { "label": "Stock Price at Expiration", "type": "slider", "min": 60, "max": 150, "value": 100, "step": 5 }
+      ],
+      "outputs": [
+        { "label": "Total Credit", "value": "$4 ($400)", "locked": true },
+        { "label": "Upper Loss if Stock = 120", "value": "$8 loss/share (=$800)" },
+        { "label": "Upper Loss if Stock = 130", "value": "$18 loss/share (=$1,800)" },
+        { "label": "Lower Loss if Stock = 75", "value": "$13 loss/share (=$1,300)" }
+      ],
+      "teaching_points": [
+        "Max profit = credit; losses can exceed credit by many multiples",
+        "A single big move can wipe out months of small wins",
+        "Defined-risk alternative next: Iron Condor"
+      ]
+    },
+    {
+      "screen_type": "calculation",
+      "headline": "Breakevens",
+      "question": "Sold $110 call and $90 put, total credit $4. What are the breakevens?",
+      "answer": "Lower: $86, Upper: $114",
+      "xp_reward": 10,
+      "explanation": "Upper breakeven = call strike + credit = 110 + 4 = 114. Lower breakeven = put strike - credit = 90 - 4 = 86.",
+      "teaching_point": "Between breakevens you may have some profit; full profit only between short strikes."
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "Key points",
+      "cards": [
+        { "front": "Structure", "back": "Sell OTM call + Sell OTM put; collect two premiums" },
+        { "front": "Profit", "back": "Max profit = total credit; profit if stock stays between short strikes" },
+        { "front": "Risk", "back": "Undefined risk on both sides; a big move can be catastrophic" },
+        { "front": "Next", "back": "Use Iron Condors to define risk on both sides" }
+      ]
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 70,
+      "total_xp": 70,
+      "badge": "🎲 Risk Taker",
+      "badge_description": "You understand short strangles and why they're risky",
+      "streak_bonus": false,
+      "celebration_message": "You learned the high-wire act of neutral trading. Next up: how to cap the risk!",
+      "next_lesson_preview": {
+        "title": "Iron Condor Basics",
+        "description": "Same concept, but with defined risk using protective wings",
+        "unlock_status": "unlocked"
+      }
+    }
+  ]
+}
+
+
