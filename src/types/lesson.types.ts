@@ -70,6 +70,35 @@ export interface ScenarioScreen extends BaseScreen {
   explanation_wrong: string;
 }
 
+export interface CalculationScreen extends BaseScreen {
+  screen_type: 'calculation';
+  headline: string;
+  question: string;
+  answer: string;
+  xp_reward: number;
+  explanation: string;
+  teaching_point?: string;
+}
+
+export interface InteractiveExampleScreen extends BaseScreen {
+  screen_type: 'interactive_example';
+  headline: string;
+  description: string;
+  inputs: Array<{
+    label: string;
+    type?: 'slider' | 'toggle' | 'text';
+    min?: number;
+    max?: number;
+    step?: number;
+    value: number | string | boolean;
+  }>;
+  outputs: Array<{
+    label: string;
+    value: string;
+  }>;
+  teaching_points: string[];
+}
+
 export interface SummaryCardsScreen extends BaseScreen {
   screen_type: 'summary_cards';
   headline: string;
@@ -100,6 +129,8 @@ export type Screen =
   | AnalogyScreen
   | KeyTermsScreen
   | MultipleChoiceScreen
+  | CalculationScreen
+  | InteractiveExampleScreen
   | ScenarioScreen
   | SummaryCardsScreen
   | CelebrationScreen;
@@ -108,5 +139,28 @@ export interface Lesson {
   lesson_id: string;
   title: string;
   estimated_time: string;
+  total_xp?: number;
+  badge?: string;
   screens: Screen[];
+}
+
+export interface LessonMetadata {
+  id: string;
+  moduleNumber: number;
+  lessonNumber: number;
+  title: string;
+  estimatedTime: string;
+  totalXP: number;
+  badge?: string;
+  filePath: string;
+  isCompleted: boolean;
+  earnedXP: number;
+}
+
+export interface ModuleMetadata {
+  moduleNumber: number;
+  title: string;
+  lessons: LessonMetadata[];
+  totalLessons: number;
+  completedLessons: number;
 }

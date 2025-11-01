@@ -7,6 +7,8 @@ import { DefinitionScreen } from '../screens/DefinitionScreen';
 import { AnalogyScreen } from '../screens/AnalogyScreen';
 import { KeyTermsScreen } from '../screens/KeyTermsScreen';
 import { MultipleChoiceScreen } from '../screens/MultipleChoiceScreen';
+import { CalculationScreen } from '../screens/CalculationScreen';
+import { InteractiveExampleScreen } from '../screens/InteractiveExampleScreen';
 import { ScenarioScreen } from '../screens/ScenarioScreen';
 import { SummaryCardsScreen } from '../screens/SummaryCardsScreen';
 import { CelebrationScreen } from '../screens/CelebrationScreen';
@@ -57,6 +59,18 @@ export function LessonFlow({ lesson, onComplete }: LessonFlowProps) {
             onXPEarned={handleXPEarned}
           />
         );
+      
+      case 'calculation':
+        return (
+          <CalculationScreen
+            data={screen}
+            onContinue={handleContinue}
+            onXPEarned={handleXPEarned}
+          />
+        );
+      
+      case 'interactive_example':
+        return <InteractiveExampleScreen data={screen} onContinue={handleContinue} />;
       
       case 'scenario':
         return (

@@ -52,7 +52,7 @@
       "correct": 1,
       "xp_reward": 10,
       "explanation_correct": "Correct. Big Lizards skew wing widths (often wider downside) to increase credit and reflect bias.",
-      "explanation_wrong": "Big Lizards intentionally use asymmetric spread widths; condors are typically symmetric."}
+      "explanation_wrong": "Big Lizards intentionally use asymmetric spread widths; condors are typically symmetric."
     },
     {
       "screen_type": "interactive_example",
