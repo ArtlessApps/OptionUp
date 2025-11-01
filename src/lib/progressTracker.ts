@@ -62,6 +62,14 @@ class ProgressTracker {
   }
 
   /**
+   * Import progress from external source (e.g., cloud sync)
+   */
+  importProgress(progress: UserProgress): void {
+    this.progress = progress;
+    this.saveProgress();
+  }
+
+  /**
    * Mark a lesson as completed
    */
   completeLesson(lessonId: string, earnedXP: number): void {

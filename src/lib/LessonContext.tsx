@@ -58,7 +58,30 @@ export function LessonProvider({ children }: { children: ReactNode }) {
   // Load all lessons metadata on mount
   useEffect(() => {
     loadModules();
+    syncProgressWithCloud();
   }, []);
+
+  // Sync progress with cloud when user signs in
+  const syncProgressWithCloud = async () => {
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        // Load cloud progress
+        const cloudProgress = await CloudProgressTracker.loadFromCloud(user.id);
+        if (cloudProgress) {
+          // Merge with local progress
+          const localProgress = progressTracker.exportProgress();
+          const mergedProgress = CloudProgressTracker.mergeProgress(localProgress, cloudProgress);
+          progressTracker.importProgress(mergedProgress);
+          
+          // Refresh stats
+          await refreshProgress();
+        }
+      }
+    } catch (error) {
+      console.error('Failed to sync with cloud:', error);
+    }
+  };
 
   const loadModules = async () => {
     setIsLoading(true);
@@ -97,7 +120,7 @@ export function LessonProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const completeLesson = (lessonId: string, earnedXP: number) => {
+  const completeLesson = async (lessonId: string, earnedXP: number) => {
     progressTracker.completeLesson(lessonId, earnedXP);
 
     // Award badge if lesson has one
@@ -109,7 +132,18 @@ export function LessonProvider({ children }: { children: ReactNode }) {
     }
 
     // Refresh progress
-    refreshProgress();
+    await refreshProgress();
+    
+    // Sync to cloud if user is authenticated
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        const progress = progressTracker.exportProgress();
+        await CloudProgressTracker.syncToCloud(user.id, progress);
+      }
+    } catch (error) {
+      console.error('Failed to sync progress to cloud:', error);
+    }
   };
 
   const goToNextLesson = async () => {

@@ -1,11 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { LessonFlow } from './components/containers/LessonFlow';
 import { SkillTree } from './components/containers/SkillTree';
 import { StatsPanel } from './components/containers/StatsPanel';
+import { AuthScreen } from './components/screens/AuthScreen';
+import { ProfileScreen } from './components/screens/ProfileScreen';
+import { UpgradeScreen } from './components/screens/UpgradeScreen';
+import { PaywallScreen } from './components/screens/PaywallScreen';
 import { useLessons } from './lib/LessonContext';
+import { useAuth } from './lib/AuthContext';
+import { useSubscription, isLessonLocked } from './lib/SubscriptionContext';
 import './index.css';
 
-type AppView = 'home' | 'lesson' | 'completed';
+type AppView = 'home' | 'lesson' | 'completed' | 'auth' | 'profile' | 'upgrade' | 'paywall';
 
 function App() {
   const {
@@ -23,17 +29,114 @@ function App() {
     goToNextLesson,
   } = useLessons();
 
+  const { isAuthenticated, isLoading: isAuthLoading } = useAuth();
+  const { hasActiveSubscription, canAccessPremiumContent } = useSubscription();
+
   const [view, setView] = useState<AppView>('home');
+  const [pendingLesson, setPendingLesson] = useState<{ id: string; number: number } | null>(null);
+
+  // Show auth screen if not authenticated on first load
+  useEffect(() => {
+    if (!isAuthLoading && !isAuthenticated) {
+      // For now, allow guest access (optional)
+      // Uncomment below to force login:
+      // setView('auth');
+    }
+  }, [isAuthLoading, isAuthenticated]);
+
+  const handleLessonClick = (lessonId: string, lessonNumber: number) => {
+    // Check if lesson is locked
+    if (isLessonLocked(lessonNumber, hasActiveSubscription)) {
+      setPendingLesson({ id: lessonId, number: lessonNumber });
+      
+      // Show auth if not authenticated, otherwise show paywall/upgrade
+      if (!isAuthenticated) {
+        setView('auth');
+      } else {
+        setView('paywall');
+      }
+      return;
+    }
+
+    // Lesson is accessible
+    loadLesson(lessonId);
+    setView('lesson');
+  };
 
   // Loading state
-  if (isLoading) {
+  if (isLoading || isAuthLoading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-primary-50 to-purple-50 flex items-center justify-center">
         <div className="text-center">
           <div className="text-6xl mb-4 animate-bounce">📚</div>
-          <h1 className="text-2xl font-bold text-gray-900">Loading lessons...</h1>
+          <h1 className="text-2xl font-bold text-gray-900">Loading...</h1>
         </div>
       </div>
+    );
+  }
+
+  // Auth screen
+  if (view === 'auth') {
+    return (
+      <AuthScreen
+        onSuccess={() => {
+          // After successful auth, if there's a pending lesson, show paywall/upgrade
+          if (pendingLesson) {
+            setView('paywall');
+          } else {
+            setView('home');
+          }
+        }}
+        onSkip={() => {
+          setPendingLesson(null);
+          setView('home');
+        }}
+      />
+    );
+  }
+
+  // Profile screen
+  if (view === 'profile') {
+    return (
+      <ProfileScreen
+        onClose={() => setView('home')}
+        onUpgrade={() => setView('upgrade')}
+      />
+    );
+  }
+
+  // Upgrade screen
+  if (view === 'upgrade') {
+    return (
+      <UpgradeScreen
+        onClose={() => setView(isAuthenticated ? 'profile' : 'home')}
+        onSuccess={() => {
+          // After successful upgrade, go back to pending lesson if any
+          if (pendingLesson) {
+            loadLesson(pendingLesson.id);
+            setPendingLesson(null);
+            setView('lesson');
+          } else {
+            setView('home');
+          }
+        }}
+      />
+    );
+  }
+
+  // Paywall screen
+  if (view === 'paywall' && pendingLesson) {
+    return (
+      <PaywallScreen
+        lessonTitle={modules
+          .flatMap((m) => m.lessons)
+          .find((l) => l.id === pendingLesson.id)?.title}
+        onUpgrade={() => setView('upgrade')}
+        onBack={() => {
+          setPendingLesson(null);
+          setView('home');
+        }}
+      />
     );
   }
 
@@ -145,6 +248,39 @@ function App() {
           </div>
           
           <div className="flex items-center gap-2">
+            {/* Premium Badge or Upgrade Button */}
+            {isAuthenticated && hasActiveSubscription ? (
+              <span className="px-3 py-1 bg-gradient-to-r from-warning to-yellow-500 text-white text-xs font-bold rounded-full">
+                ⭐ PREMIUM
+              </span>
+            ) : (
+              <button
+                onClick={() => setView('upgrade')}
+                className="px-3 py-2 bg-gradient-to-r from-primary-600 to-primary-700 text-white text-xs font-bold rounded-lg hover:from-primary-700 hover:to-primary-800 transition-all"
+              >
+                Upgrade
+              </button>
+            )}
+            
+            {/* Auth/Profile Button */}
+            {isAuthenticated ? (
+              <button
+                onClick={() => setView('profile')}
+                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              >
+                <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </button>
+            ) : (
+              <button
+                onClick={() => setView('auth')}
+                className="px-4 py-2 bg-primary-600 text-white text-sm font-semibold rounded-lg hover:bg-primary-700 transition-colors"
+              >
+                Sign In
+              </button>
+            )}
+            
             {/* Reset Progress Button (for testing) */}
             <button
               onClick={() => {
@@ -156,13 +292,7 @@ function App() {
               className="px-3 py-2 text-xs font-semibold text-red-600 hover:bg-red-50 rounded-lg transition-colors"
               title="Reset Progress"
             >
-              Reset Progress
-            </button>
-            
-            <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
-              <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
+              Reset
             </button>
           </div>
         </div>
@@ -192,10 +322,8 @@ function App() {
             {/* Skill Tree */}
             <SkillTree
               modules={modules}
-              onLessonClick={(lessonId) => {
-                loadLesson(lessonId);
-                setView('lesson');
-              }}
+              onLessonClick={handleLessonClick}
+              hasActiveSubscription={hasActiveSubscription}
             />
           </div>
         </main>
