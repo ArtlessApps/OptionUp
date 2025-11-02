@@ -31,7 +31,7 @@ function App() {
   } = useLessons();
 
   const { isAuthenticated, isLoading: isAuthLoading } = useAuth();
-  const { hasActiveSubscription, canAccessPremiumContent } = useSubscription();
+  const { hasActiveSubscription } = useSubscription();
 
   const [view, setView] = useState<AppView>('landing');
   const [pendingLesson, setPendingLesson] = useState<{ id: string; number: number } | null>(null);

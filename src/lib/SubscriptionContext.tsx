@@ -2,7 +2,7 @@
  * Subscription Context - Manages user subscription state
  */
 
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import { supabase } from './supabase';
 import { useAuth } from './AuthContext';
 
@@ -31,7 +31,7 @@ const SubscriptionContext = createContext<SubscriptionContextType | undefined>(u
 const FREE_LESSON_LIMIT = 15;
 
 export function SubscriptionProvider({ children }: { children: ReactNode }) {
-  const { user, isAuthenticated } = useAuth();
+  const { user } = useAuth();
   const [subscription, setSubscription] = useState<SubscriptionData>({
     id: null,
     status: 'none',

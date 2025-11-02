@@ -9,14 +9,13 @@ import { useAuth } from '../../lib/AuthContext';
 
 interface UpgradeScreenProps {
   onClose: () => void;
-  onSuccess?: () => void;
 }
 
 type Plan = 'monthly' | 'yearly';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || '');
 
-export function UpgradeScreen({ onClose, onSuccess }: UpgradeScreenProps) {
+export function UpgradeScreen({ onClose }: UpgradeScreenProps) {
   const { user } = useAuth();
   const [selectedPlan, setSelectedPlan] = useState<Plan>('yearly');
   const [isLoading, setIsLoading] = useState(false);
@@ -61,9 +60,11 @@ export function UpgradeScreen({ onClose, onSuccess }: UpgradeScreenProps) {
       } else if (sessionId) {
         // Use Stripe.js to redirect (alternative)
         const stripe = await stripePromise;
-        const result = await stripe?.redirectToCheckout({ sessionId });
-        if (result?.error) {
-          throw new Error(result.error.message);
+        if (stripe) {
+          const { error } = await stripe.redirectToCheckout({ sessionId });
+          if (error) {
+            throw new Error(error.message || 'Failed to redirect to checkout');
+          }
         }
       }
       

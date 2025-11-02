@@ -3,7 +3,7 @@
  */
 
 import { supabase } from './supabase';
-import { UserProgress, LessonProgress } from './progressTracker';
+import type { UserProgress, LessonProgress } from './progressTracker';
 
 export class CloudProgressTracker {
   /**

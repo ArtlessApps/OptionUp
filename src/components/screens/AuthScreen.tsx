@@ -8,10 +8,9 @@ import { useAuth } from '../../lib/AuthContext';
 
 interface AuthScreenProps {
   onSuccess?: () => void;
-  onSkip?: () => void;
 }
 
-export function AuthScreen({ onSuccess, onSkip }: AuthScreenProps) {
+export function AuthScreen({ onSuccess }: AuthScreenProps) {
   const [mode, setMode] = useState<'signin' | 'signup'>('signin');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
