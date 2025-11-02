@@ -191,41 +191,33 @@ export function AuthScreen({ onSuccess, onSkip }: AuthScreenProps) {
             </button>
           </div>
 
-          {/* Skip Option (if provided) */}
-          {onSkip && (
-            <div className="mt-4 text-center">
-              <button
-                type="button"
-                onClick={onSkip}
-                className="text-sm text-gray-500 hover:text-gray-700"
-              >
-                Continue without account (limited access)
-              </button>
-            </div>
-          )}
+          {/* No skip option - account required */}
         </div>
 
         {/* Benefits */}
         <div className="mt-8 text-center">
-          <p className="text-sm text-gray-600 mb-3">Why create an account?</p>
+          <p className="text-sm font-semibold text-gray-700 mb-3">What you get free:</p>
           <div className="flex flex-wrap justify-center gap-4 text-xs">
             <div className="flex items-center gap-1 text-gray-700">
-              <span>☁️</span>
-              <span>Sync progress</span>
+              <span>📚</span>
+              <span>15 free lessons</span>
             </div>
             <div className="flex items-center gap-1 text-gray-700">
               <span>🔥</span>
-              <span>Track streaks</span>
+              <span>Track your streak</span>
             </div>
             <div className="flex items-center gap-1 text-gray-700">
-              <span>🏆</span>
-              <span>Earn badges</span>
+              <span>⭐</span>
+              <span>Earn XP & badges</span>
             </div>
             <div className="flex items-center gap-1 text-gray-700">
-              <span>🚀</span>
-              <span>Access all lessons</span>
+              <span>☁️</span>
+              <span>Cloud sync</span>
             </div>
           </div>
+          <p className="text-xs text-gray-500 mt-4">
+            Upgrade anytime for access to all 76+ lessons
+          </p>
         </div>
       </motion.div>
     </div>

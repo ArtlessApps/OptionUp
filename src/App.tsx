@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { LessonFlow } from './components/containers/LessonFlow';
 import { SkillTree } from './components/containers/SkillTree';
 import { StatsPanel } from './components/containers/StatsPanel';
+import { LandingPage } from './components/screens/LandingPage';
 import { AuthScreen } from './components/screens/AuthScreen';
 import { ProfileScreen } from './components/screens/ProfileScreen';
 import { UpgradeScreen } from './components/screens/UpgradeScreen';
@@ -11,7 +12,7 @@ import { useAuth } from './lib/AuthContext';
 import { useSubscription, isLessonLocked } from './lib/SubscriptionContext';
 import './index.css';
 
-type AppView = 'home' | 'lesson' | 'completed' | 'auth' | 'profile' | 'upgrade' | 'paywall';
+type AppView = 'landing' | 'home' | 'lesson' | 'completed' | 'auth' | 'profile' | 'upgrade' | 'paywall';
 
 function App() {
   const {
@@ -32,15 +33,22 @@ function App() {
   const { isAuthenticated, isLoading: isAuthLoading } = useAuth();
   const { hasActiveSubscription, canAccessPremiumContent } = useSubscription();
 
-  const [view, setView] = useState<AppView>('home');
+  const [view, setView] = useState<AppView>('landing');
   const [pendingLesson, setPendingLesson] = useState<{ id: string; number: number } | null>(null);
 
-  // Show auth screen if not authenticated on first load
+  // If user is already authenticated, skip landing page
   useEffect(() => {
-    if (!isAuthLoading && !isAuthenticated) {
-      // For now, allow guest access (optional)
-      // Uncomment below to force login:
-      // setView('auth');
+    if (!isAuthLoading) {
+      if (isAuthenticated) {
+        if (view === 'landing' || view === 'auth') {
+          setView('home');
+        }
+      } else {
+        // Not authenticated - they can see landing page but that's it
+        if (view === 'home' || view === 'lesson') {
+          setView('landing');
+        }
+      }
     }
   }, [isAuthLoading, isAuthenticated]);
 
@@ -75,7 +83,12 @@ function App() {
     );
   }
 
-  // Auth screen
+  // Landing page (first thing visitors see)
+  if (view === 'landing' && !isAuthenticated) {
+    return <LandingPage onGetStarted={() => setView('auth')} />;
+  }
+
+  // Auth screen (after clicking "Get Started")
   if (view === 'auth') {
     return (
       <AuthScreen
@@ -86,10 +99,6 @@ function App() {
           } else {
             setView('home');
           }
-        }}
-        onSkip={() => {
-          setPendingLesson(null);
-          setView('home');
         }}
       />
     );

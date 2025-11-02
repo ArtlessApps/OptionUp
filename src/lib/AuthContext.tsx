@@ -3,7 +3,7 @@
  */
 
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { User, Session, AuthError } from '@supabase/supabase-js';
+import type { User, Session } from '@supabase/supabase-js';
 import { supabase } from './supabase';
 
 interface AuthContextType {
@@ -11,10 +11,10 @@ interface AuthContextType {
   session: Session | null;
   isLoading: boolean;
   isAuthenticated: boolean;
-  signUp: (email: string, password: string) => Promise<{ error: AuthError | null }>;
-  signIn: (email: string, password: string) => Promise<{ error: AuthError | null }>;
+  signUp: (email: string, password: string) => Promise<{ error: Error | null }>;
+  signIn: (email: string, password: string) => Promise<{ error: Error | null }>;
   signOut: () => Promise<void>;
-  signInWithGoogle: () => Promise<{ error: AuthError | null }>;
+  signInWithGoogle: () => Promise<{ error: Error | null }>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -52,7 +52,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         emailRedirectTo: `${window.location.origin}/auth/callback`,
       },
     });
-    return { error };
+    return { error: error as Error | null };
   };
 
   const signIn = async (email: string, password: string) => {
@@ -60,11 +60,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       email,
       password,
     });
-    return { error };
+    return { error: error as Error | null };
   };
 
   const signOut = async () => {
     await supabase.auth.signOut();
+    // Clear all local storage on logout (progress, stats, etc.)
+    localStorage.clear();
+    // Reload the page to reset all state
+    window.location.reload();
   };
 
   const signInWithGoogle = async () => {
@@ -74,7 +78,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         redirectTo: `${window.location.origin}/auth/callback`,
       },
     });
-    return { error };
+    return { error: error as Error | null };
   };
 
   const value = {

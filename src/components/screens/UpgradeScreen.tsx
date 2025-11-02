@@ -5,6 +5,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { loadStripe } from '@stripe/stripe-js';
+import { useAuth } from '../../lib/AuthContext';
 
 interface UpgradeScreenProps {
   onClose: () => void;
@@ -16,6 +17,7 @@ type Plan = 'monthly' | 'yearly';
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || '');
 
 export function UpgradeScreen({ onClose, onSuccess }: UpgradeScreenProps) {
+  const { user } = useAuth();
   const [selectedPlan, setSelectedPlan] = useState<Plan>('yearly');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
@@ -25,23 +27,49 @@ export function UpgradeScreen({ onClose, onSuccess }: UpgradeScreenProps) {
     setError('');
 
     try {
-      // TODO: Call your backend API to create a Stripe checkout session
-      // For now, show a placeholder message
-      alert(`Stripe checkout coming soon!\n\nSelected plan: ${selectedPlan}\nPrice: ${selectedPlan === 'monthly' ? '$9.99/mo' : '$79.99/yr'}`);
-      
-      // In production, this would be:
-      // const response = await fetch('/api/create-checkout-session', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ plan: selectedPlan }),
-      // });
-      // const { sessionId } = await response.json();
-      // const stripe = await stripePromise;
-      // await stripe?.redirectToCheckout({ sessionId });
+      if (!user) {
+        setError('Please sign in to upgrade');
+        setIsLoading(false);
+        return;
+      }
+
+      // Call backend API to create checkout session
+      const apiUrl = import.meta.env.VITE_API_URL || '/api';
+      const response = await fetch(`${apiUrl}/create-checkout-session`, {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          plan: selectedPlan,
+          userId: user.id,
+          email: user.email,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to create checkout session');
+      }
+
+      const { sessionId, url } = await response.json();
+
+      // Redirect to Stripe Checkout
+      if (url) {
+        // Direct redirect (simpler)
+        window.location.href = url;
+      } else if (sessionId) {
+        // Use Stripe.js to redirect (alternative)
+        const stripe = await stripePromise;
+        const result = await stripe?.redirectToCheckout({ sessionId });
+        if (result?.error) {
+          throw new Error(result.error.message);
+        }
+      }
       
     } catch (err) {
-      setError('Failed to start checkout. Please try again.');
-    } finally {
+      console.error('Checkout error:', err);
+      setError(err instanceof Error ? err.message : 'Failed to start checkout. Please try again.');
       setIsLoading(false);
     }
   };
