@@ -14,6 +14,8 @@ import {
   getFirstIncompleteLesson,
 } from './lessonLoader';
 import { progressTracker } from './progressTracker';
+import { CloudProgressTracker } from './cloudProgressTracker';
+import { supabase } from './supabase';
 
 interface LessonContextType {
   // Data

@@ -119,16 +119,6 @@ function App() {
     return (
       <UpgradeScreen
         onClose={() => setView(isAuthenticated ? 'profile' : 'home')}
-        onSuccess={() => {
-          // After successful upgrade, go back to pending lesson if any
-          if (pendingLesson) {
-            loadLesson(pendingLesson.id);
-            setPendingLesson(null);
-            setView('lesson');
-          } else {
-            setView('home');
-          }
-        }}
       />
     );
   }

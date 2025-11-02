@@ -4,7 +4,6 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { loadStripe } from '@stripe/stripe-js';
 import { useAuth } from '../../lib/AuthContext';
 
 interface UpgradeScreenProps {
@@ -12,8 +11,6 @@ interface UpgradeScreenProps {
 }
 
 type Plan = 'monthly' | 'yearly';
-
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || '');
 
 export function UpgradeScreen({ onClose }: UpgradeScreenProps) {
   const { user } = useAuth();
@@ -59,13 +56,7 @@ export function UpgradeScreen({ onClose }: UpgradeScreenProps) {
         window.location.href = url;
       } else if (sessionId) {
         // Use Stripe.js to redirect (alternative)
-        const stripe = await stripePromise;
-        if (stripe) {
-          const { error } = await stripe.redirectToCheckout({ sessionId });
-          if (error) {
-            throw new Error(error.message || 'Failed to redirect to checkout');
-          }
-        }
+        window.location.href = `https://checkout.stripe.com/pay/${sessionId}`;
       }
       
     } catch (err) {
