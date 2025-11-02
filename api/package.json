@@ -1,6 +1,7 @@
 {
   "name": "optionup-api",
   "version": "1.0.0",
+  "type": "module",
   "description": "Serverless API functions for OptionUp",
   "dependencies": {
     "stripe": "^14.0.0",
