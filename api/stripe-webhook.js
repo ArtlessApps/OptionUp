@@ -23,12 +23,20 @@ export const config = {
 };
 
 export default async function handler(req, res) {
+  console.log('🔔 Webhook received!');
+  
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   const sig = req.headers['stripe-signature'];
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+
+  console.log('📝 Environment check:', {
+    hasWebhookSecret: !!webhookSecret,
+    hasSupabaseUrl: !!process.env.SUPABASE_URL,
+    hasSupabaseKey: !!process.env.SUPABASE_SERVICE_KEY,
+  });
 
   let event;
 
@@ -39,8 +47,9 @@ export default async function handler(req, res) {
     
     // Verify webhook signature
     event = stripe.webhooks.constructEvent(body, sig, webhookSecret);
+    console.log('✅ Webhook signature verified. Event type:', event.type);
   } catch (err) {
-    console.error('Webhook signature verification failed:', err.message);
+    console.error('❌ Webhook signature verification failed:', err.message);
     return res.status(400).send(`Webhook Error: ${err.message}`);
   }
 
@@ -113,8 +122,10 @@ async function handleCheckoutCompleted(session) {
       stripe_subscription_id: subscriptionId,
       status: subscription.status,
       plan: plan,
-      current_period_end: new Date(subscription.current_period_end * 1000).toISOString(),
-      cancel_at_period_end: subscription.cancel_at_period_end,
+      current_period_end: subscription.current_period_end 
+        ? new Date(subscription.current_period_end * 1000).toISOString() 
+        : null,
+      cancel_at_period_end: subscription.cancel_at_period_end || false,
       updated_at: new Date().toISOString(),
     });
 
@@ -127,31 +138,42 @@ async function handleCheckoutCompleted(session) {
 
 // Handle subscription updates
 async function handleSubscriptionUpdate(subscription) {
+  console.log('📦 Processing subscription update/create');
   const userId = subscription.metadata.userId;
   
+  console.log('👤 User ID from metadata:', userId);
+  
   if (!userId) {
-    console.error('No userId in subscription metadata');
+    console.error('❌ No userId in subscription metadata');
     return;
   }
 
+  const subscriptionData = {
+    user_id: userId,
+    stripe_customer_id: subscription.customer,
+    stripe_subscription_id: subscription.id,
+    status: subscription.status,
+    plan: subscription.metadata.plan || 'monthly',
+    current_period_end: subscription.current_period_end 
+      ? new Date(subscription.current_period_end * 1000).toISOString() 
+      : null,
+    cancel_at_period_end: subscription.cancel_at_period_end || false,
+    updated_at: new Date().toISOString(),
+  };
+  
+  console.log('💾 Attempting to upsert subscription:', JSON.stringify(subscriptionData, null, 2));
+
   // Use upsert to create or update the subscription
-  const { error } = await supabase
+  const { data, error } = await supabase
     .from('subscriptions')
-    .upsert({
-      user_id: userId,
-      stripe_customer_id: subscription.customer,
-      stripe_subscription_id: subscription.id,
-      status: subscription.status,
-      plan: subscription.metadata.plan || 'monthly',
-      current_period_end: new Date(subscription.current_period_end * 1000).toISOString(),
-      cancel_at_period_end: subscription.cancel_at_period_end,
-      updated_at: new Date().toISOString(),
-    });
+    .upsert(subscriptionData);
 
   if (error) {
-    console.error('Error updating subscription:', error);
+    console.error('❌ Error updating subscription:', JSON.stringify(error, null, 2));
+    throw error; // Throw to trigger 500 response
   } else {
-    console.log('Subscription updated for user:', userId);
+    console.log('✅ Subscription created/updated for user:', userId);
+    console.log('✅ Response data:', data);
   }
 }
 
@@ -195,7 +217,9 @@ async function handlePaymentSucceeded(invoice) {
     .from('subscriptions')
     .update({
       status: 'active',
-      current_period_end: new Date(subscription.current_period_end * 1000).toISOString(),
+      current_period_end: subscription.current_period_end 
+        ? new Date(subscription.current_period_end * 1000).toISOString() 
+        : null,
       updated_at: new Date().toISOString(),
     })
     .eq('user_id', userId);
