@@ -420,39 +420,48 @@ This redeploys with your new environment variables.
 
 ---
 
-### Step 5.4: Set Up Stripe Webhook
+### Step 5.4: Set Up Stripe Webhook (Using New Workbench)
 
 1. Go to Stripe Dashboard: https://dashboard.stripe.com
 2. Click **"Developers"** in left sidebar
-3. Click **"Webhooks"**
-4. Click **"+ Add endpoint"**
+3. Click **"Workbench"**
+4. Click **"Webhooks"** tab
+5. Click **"+ Destination"** (or **"+ Add Destination"**)
 
-**Fill in:**
-- Endpoint URL: `https://your-vercel-url.vercel.app/api/stripe-webhook`
-  - Replace with YOUR actual Vercel URL!
-- Description: `OptionUp Production Webhook`
-- Click **"Select events"**
+**Configure the destination:**
 
-**Select these 6 events:**
-- `checkout.session.completed`
-- `customer.subscription.created`
-- `customer.subscription.updated`
-- `customer.subscription.deleted`
-- `invoice.payment_succeeded`
-- `invoice.payment_failed`
+**Step 1: Events Configuration**
+- **Events From**: Select **"Your account"**
+- **Version**: Leave as latest API version (or select your preferred version)
+- **Event Types**: Click **"Select event types"** and choose these 6 events:
+  - `checkout.session.completed`
+  - `customer.subscription.created`
+  - `customer.subscription.updated`
+  - `customer.subscription.deleted`
+  - `invoice.payment_succeeded`
+  - `invoice.payment_failed`
+- Click **"Continue"**
 
-5. Click **"Add events"**
-6. Click **"Add endpoint"**
+**Step 2: Destination Type**
+- Select **"Webhook Endpoint"**
+- Click **"Continue"**
+
+**Step 3: Endpoint Details**
+- **Endpoint URL**: `https://your-vercel-url.vercel.app/api/stripe-webhook`
+  - ⚠️ Replace `your-vercel-url` with YOUR actual Vercel URL!
+- **Description** (optional): `OptionUp Production Webhook`
+- Click **"Create Destination"**
 
 ---
 
 ### Step 5.5: Get Webhook Signing Secret
 
-1. You'll see your new webhook in the list
-2. Click on it
-3. Look for **"Signing secret"** section
-4. Click **"Reveal"**
-5. Copy the secret (starts with `whsec_`)
+1. After creating the destination, you'll be taken to the destination details page
+   - OR: Find your webhook destination in the list and click on it
+2. Look for the **"Signing secret"** section
+3. Click **"Reveal"** (or the eye icon)
+4. Copy the secret (starts with `whsec_`)
+5. ⚠️ **Keep this secret safe** - you'll need it for the next step!
 
 ---
 
@@ -523,6 +532,134 @@ Complete the payment.
 4. You should be able to access lessons 16+
 
 **If all three work → YOU'RE DONE!** 🎉
+
+---
+
+## 🔧 **TROUBLESHOOTING: If Subscription Doesn't Work**
+
+### Problem: Getting 406 Errors from Supabase
+
+If you're seeing `Failed to load resource: the server responded with a status of 406` errors when trying to fetch subscriptions, follow these steps:
+
+#### Step 1: Check Vercel Logs
+
+1. Go to Vercel Dashboard → Your Project
+2. Click **"Deployments"** → Click your latest deployment
+3. Click **"Functions"** tab → Click **"View Function Logs"**
+4. OR click **"Logs"** in the top menu
+5. Look for webhook logs after you made the payment
+6. Check if you see:
+   - ✅ `"Subscription created for user: ..."` = **Webhook is working!**
+   - ❌ `"Error creating subscription: ..."` = **See error details**
+   - ❌ `"No userId in checkout session"` = **userId not passed correctly**
+   - ❌ No logs at all = **Webhook not receiving events**
+
+#### Step 2: Verify ALL Environment Variables
+
+Go to Vercel → Settings → Environment Variables and confirm these are set for **Production**:
+
+- `STRIPE_SECRET_KEY` (starts with `sk_test_`)
+- `STRIPE_WEBHOOK_SECRET` (starts with `whsec_`)
+- `SUPABASE_URL` (your Supabase project URL)
+- `SUPABASE_SERVICE_KEY` (⚠️ the **service_role** key, NOT the anon key!)
+- `STRIPE_PRICE_ID_MONTHLY` (starts with `price_`)
+- `STRIPE_PRICE_ID_YEARLY` (starts with `price_`)
+- `FRONTEND_URL` (your Vercel production URL)
+
+**After changing any variables, you MUST redeploy:**
+```bash
+vercel --prod
+```
+
+#### Step 3: Check Webhook is Receiving Events
+
+1. Go to Stripe Dashboard → Developers → Workbench → Webhooks
+2. Click on your webhook destination
+3. Scroll down to **"Recent events"** section
+4. You should see recent events listed
+5. Click on an event to see details:
+   - ✅ Status 200 = Success
+   - ❌ Status 400/500 = Error (check error message)
+   - ❌ No events shown = Webhook never called
+
+#### Step 4: Test Webhook Manually
+
+1. In Stripe Dashboard → Developers → Workbench → Webhooks → Your destination
+2. Click **"Test webhook"** button
+3. Select `checkout.session.completed` from the dropdown
+4. Click **"Send test webhook"**
+5. Check if it succeeds
+6. Then check Vercel logs for any errors
+
+#### Step 5: Verify Supabase Table & RLS Policies
+
+1. Go to Supabase Dashboard → Table Editor
+2. Check if `subscriptions` table exists
+3. Go to SQL Editor and run this to check policies:
+
+```sql
+SELECT * FROM pg_policies WHERE tablename = 'subscriptions';
+```
+
+You should see a policy called `"Users can read own subscription"`. If it's missing, run:
+
+```sql
+-- Policy: Users can read their own subscription
+CREATE POLICY "Users can read own subscription"
+  ON subscriptions FOR SELECT
+  USING (auth.uid() = user_id);
+```
+
+#### Step 6: Clean Up Test Data
+
+If you ran multiple test payments, clean up:
+
+**In Stripe:**
+1. Dashboard → Customers → Find your test customer
+2. Cancel all active subscriptions
+3. Optionally delete the test customer
+
+**In Supabase:**
+1. Table Editor → subscriptions table
+2. Delete test subscription records (click the trash icon)
+
+**In Your App:**
+1. Sign out
+2. Clear browser cache/cookies
+3. Sign up with a fresh email
+4. Try the payment flow again
+
+#### Step 7: Check Browser Console for Detailed Errors
+
+1. Open your app in the browser
+2. Open Developer Tools (F12 or Cmd+Option+I)
+3. Go to **Console** tab
+4. Look for red error messages
+5. Also check **Network** tab:
+   - Filter by "subscriptions"
+   - Click on the failed request
+   - Look at the **Response** tab for error details
+
+Common 406 error causes:
+- **Missing Accept header**: Supabase client expects `Accept: application/json`
+- **RLS policy blocking reads**: Make sure the policy exists
+- **Wrong API key**: Frontend should use anon key, webhook should use service key
+- **Table schema mismatch**: Verify table structure matches the code
+
+#### Step 8: Verify vercel.json Configuration
+
+Check if you have a `vercel.json` file with proper configuration for the webhook:
+
+```json
+{
+  "functions": {
+    "api/stripe-webhook.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  }
+}
+```
 
 ---
 

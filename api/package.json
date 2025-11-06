@@ -5,7 +5,8 @@
   "description": "Serverless API functions for OptionUp",
   "dependencies": {
     "stripe": "^14.0.0",
-    "@supabase/supabase-js": "^2.78.0"
+    "@supabase/supabase-js": "^2.78.0",
+    "micro": "^10.0.1"
   }
 }
 
