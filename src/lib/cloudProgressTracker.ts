@@ -22,6 +22,8 @@ export class CloudProgressTracker {
           last_activity_date: progress.lastActivityDate || null,
           badges: progress.badges,
           updated_at: new Date().toISOString(),
+        }, {
+          onConflict: 'user_id'
         });
 
       if (error) {
@@ -71,6 +73,27 @@ export class CloudProgressTracker {
     } catch (error) {
       console.error('Failed to load progress from cloud:', error);
       return null;
+    }
+  }
+
+  /**
+   * Create initial progress record for a new user
+   */
+  static async createInitialProgress(userId: string): Promise<void> {
+    try {
+      const initialProgress: UserProgress = {
+        totalXP: 0,
+        completedLessons: [],
+        lessonProgress: {},
+        currentStreak: 0,
+        badges: [],
+      };
+
+      await this.syncToCloud(userId, initialProgress);
+      console.log('✅ Created initial progress record for user:', userId);
+    } catch (error) {
+      console.error('Failed to create initial progress:', error);
+      // Don't throw - this is not critical
     }
   }
 

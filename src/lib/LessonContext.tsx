@@ -78,6 +78,16 @@ export function LessonProvider({ children }: { children: ReactNode }) {
           
           // Refresh stats
           await refreshProgress();
+        } else {
+          // No cloud progress exists - create initial record
+          console.log('No cloud progress found, creating initial record...');
+          await CloudProgressTracker.createInitialProgress(user.id);
+          
+          // Also sync any local progress they might have
+          const localProgress = progressTracker.exportProgress();
+          if (localProgress.totalXP > 0 || localProgress.completedLessons.length > 0) {
+            await CloudProgressTracker.syncToCloud(user.id, localProgress);
+          }
         }
       }
     } catch (error) {
