@@ -134,15 +134,19 @@ async function handleSubscriptionUpdate(subscription) {
     return;
   }
 
+  // Use upsert to create or update the subscription
   const { error } = await supabase
     .from('subscriptions')
-    .update({
+    .upsert({
+      user_id: userId,
+      stripe_customer_id: subscription.customer,
+      stripe_subscription_id: subscription.id,
       status: subscription.status,
+      plan: subscription.metadata.plan || 'monthly',
       current_period_end: new Date(subscription.current_period_end * 1000).toISOString(),
       cancel_at_period_end: subscription.cancel_at_period_end,
       updated_at: new Date().toISOString(),
-    })
-    .eq('user_id', userId);
+    });
 
   if (error) {
     console.error('Error updating subscription:', error);
