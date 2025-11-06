@@ -27,8 +27,8 @@ interface SubscriptionContextType {
 
 const SubscriptionContext = createContext<SubscriptionContextType | undefined>(undefined);
 
-// Free tier: first 15 lessons (Module 1)
-const FREE_LESSON_LIMIT = 15;
+// Free tier: first 5 lessons
+const FREE_LESSON_LIMIT = 5;
 
 export function SubscriptionProvider({ children }: { children: ReactNode }) {
   const { user } = useAuth();

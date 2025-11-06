@@ -62,7 +62,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
               Start Learning Free
             </button>
             <div className="text-sm text-gray-500">
-              ✓ 15 lessons free • ✓ No credit card needed
+              ✓ 5 lessons free • ✓ No credit card needed
             </div>
           </div>
 
@@ -197,7 +197,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
                   <p className="text-sm text-gray-600 mb-3">
                     Calls, puts, Greeks, profit/loss diagrams, position sizing
                   </p>
-                  <span className="text-xs text-gray-500">15 lessons • ~2 hours</span>
+                  <span className="text-xs text-gray-500">5 lessons • ~45 mins</span>
                 </div>
               </div>
             </div>
@@ -229,7 +229,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
                   <p className="text-sm text-gray-600 mb-3">
                     Verticals, calendars, diagonals, LEAPs
                   </p>
-                  <span className="text-xs text-gray-500">15 lessons</span>
+                  <span className="text-xs text-gray-500">5 lessons</span>
                 </div>
               </div>
             </div>
@@ -277,7 +277,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-2 text-sm">
                   <span className="text-green-600 mt-0.5">✓</span>
-                  <span className="text-gray-700">First 15 lessons</span>
+                  <span className="text-gray-700">First 5 lessons</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm">
                   <span className="text-green-600 mt-0.5">✓</span>
