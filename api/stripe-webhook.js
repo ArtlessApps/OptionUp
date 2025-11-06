@@ -22,6 +22,26 @@ export const config = {
   },
 };
 
+// Map Stripe subscription statuses to our database statuses
+function mapSubscriptionStatus(stripeStatus) {
+  const statusMap = {
+    'active': 'active',
+    'canceled': 'canceled',
+    'past_due': 'past_due',
+    'trialing': 'trialing',
+    'unpaid': 'unpaid',
+    'incomplete': 'unpaid', // Map incomplete to unpaid
+    'incomplete_expired': 'canceled', // Map expired to canceled
+    'paused': 'canceled', // Map paused to canceled
+  };
+  
+  const mappedStatus = statusMap[stripeStatus] || 'none';
+  if (!statusMap[stripeStatus]) {
+    console.warn(`⚠️ Unknown Stripe status '${stripeStatus}', mapping to 'none'`);
+  }
+  return mappedStatus;
+}
+
 export default async function handler(req, res) {
   console.log('🔔 Webhook received!');
   
@@ -100,18 +120,30 @@ export default async function handler(req, res) {
 
 // Handle successful checkout
 async function handleCheckoutCompleted(session) {
+  console.log('🛒 Processing checkout.session.completed');
   const userId = session.metadata.userId || session.client_reference_id;
   const customerId = session.customer;
   const subscriptionId = session.subscription;
 
+  console.log('👤 User ID:', userId);
+  console.log('📝 Subscription ID:', subscriptionId);
+
   if (!userId) {
-    console.error('No userId in checkout session');
+    console.error('❌ No userId in checkout session');
+    return;
+  }
+
+  if (!subscriptionId) {
+    console.error('❌ No subscriptionId in checkout session');
     return;
   }
 
   // Get subscription details
   const subscription = await stripe.subscriptions.retrieve(subscriptionId);
   const plan = session.metadata.plan || 'monthly';
+  
+  console.log('📊 Subscription status from Stripe:', subscription.status);
+  console.log('📊 Mapped status for DB:', mapSubscriptionStatus(subscription.status));
 
   // Create or update subscription in database
   const { error } = await supabase
@@ -120,19 +152,22 @@ async function handleCheckoutCompleted(session) {
       user_id: userId,
       stripe_customer_id: customerId,
       stripe_subscription_id: subscriptionId,
-      status: subscription.status,
+      status: mapSubscriptionStatus(subscription.status),
       plan: plan,
       current_period_end: subscription.current_period_end 
         ? new Date(subscription.current_period_end * 1000).toISOString() 
         : null,
       cancel_at_period_end: subscription.cancel_at_period_end || false,
       updated_at: new Date().toISOString(),
+    }, {
+      onConflict: 'user_id'
     });
 
   if (error) {
-    console.error('Error creating subscription:', error);
+    console.error('❌ Error creating subscription:', JSON.stringify(error, null, 2));
+    throw error; // Throw to trigger 500 response
   } else {
-    console.log('Subscription created for user:', userId);
+    console.log('✅ Subscription created for user:', userId);
   }
 }
 
@@ -142,6 +177,8 @@ async function handleSubscriptionUpdate(subscription) {
   const userId = subscription.metadata.userId;
   
   console.log('👤 User ID from metadata:', userId);
+  console.log('📊 Subscription status from Stripe:', subscription.status);
+  console.log('📊 Mapped status for DB:', mapSubscriptionStatus(subscription.status));
   
   if (!userId) {
     console.error('❌ No userId in subscription metadata');
@@ -152,7 +189,7 @@ async function handleSubscriptionUpdate(subscription) {
     user_id: userId,
     stripe_customer_id: subscription.customer,
     stripe_subscription_id: subscription.id,
-    status: subscription.status,
+    status: mapSubscriptionStatus(subscription.status),
     plan: subscription.metadata.plan || 'monthly',
     current_period_end: subscription.current_period_end 
       ? new Date(subscription.current_period_end * 1000).toISOString() 
@@ -166,7 +203,9 @@ async function handleSubscriptionUpdate(subscription) {
   // Use upsert to create or update the subscription
   const { data, error } = await supabase
     .from('subscriptions')
-    .upsert(subscriptionData);
+    .upsert(subscriptionData, {
+      onConflict: 'user_id'
+    });
 
   if (error) {
     console.error('❌ Error updating subscription:', JSON.stringify(error, null, 2));
@@ -179,10 +218,11 @@ async function handleSubscriptionUpdate(subscription) {
 
 // Handle subscription cancellation
 async function handleSubscriptionDeleted(subscription) {
+  console.log('🗑️ Processing subscription deletion');
   const userId = subscription.metadata.userId;
   
   if (!userId) {
-    console.error('No userId in subscription metadata');
+    console.error('❌ No userId in subscription metadata');
     return;
   }
 
@@ -195,22 +235,30 @@ async function handleSubscriptionDeleted(subscription) {
     .eq('user_id', userId);
 
   if (error) {
-    console.error('Error canceling subscription:', error);
+    console.error('❌ Error canceling subscription:', JSON.stringify(error, null, 2));
+    throw error;
   } else {
-    console.log('Subscription canceled for user:', userId);
+    console.log('✅ Subscription canceled for user:', userId);
   }
 }
 
 // Handle successful payment
 async function handlePaymentSucceeded(invoice) {
+  console.log('💰 Processing payment succeeded');
   const subscriptionId = invoice.subscription;
   
-  if (!subscriptionId) return;
+  if (!subscriptionId) {
+    console.log('⚠️ No subscription ID in invoice, skipping');
+    return;
+  }
 
   const subscription = await stripe.subscriptions.retrieve(subscriptionId);
   const userId = subscription.metadata.userId;
 
-  if (!userId) return;
+  if (!userId) {
+    console.error('❌ No userId in subscription metadata');
+    return;
+  }
 
   // Ensure subscription is active
   const { error } = await supabase
@@ -225,20 +273,30 @@ async function handlePaymentSucceeded(invoice) {
     .eq('user_id', userId);
 
   if (error) {
-    console.error('Error updating subscription after payment:', error);
+    console.error('❌ Error updating subscription after payment:', JSON.stringify(error, null, 2));
+    throw error;
+  } else {
+    console.log('✅ Subscription marked active for user:', userId);
   }
 }
 
 // Handle failed payment
 async function handlePaymentFailed(invoice) {
+  console.log('❌ Processing payment failed');
   const subscriptionId = invoice.subscription;
   
-  if (!subscriptionId) return;
+  if (!subscriptionId) {
+    console.log('⚠️ No subscription ID in invoice, skipping');
+    return;
+  }
 
   const subscription = await stripe.subscriptions.retrieve(subscriptionId);
   const userId = subscription.metadata.userId;
 
-  if (!userId) return;
+  if (!userId) {
+    console.error('❌ No userId in subscription metadata');
+    return;
+  }
 
   // Mark subscription as past_due
   const { error } = await supabase
@@ -250,7 +308,10 @@ async function handlePaymentFailed(invoice) {
     .eq('user_id', userId);
 
   if (error) {
-    console.error('Error updating subscription after failed payment:', error);
+    console.error('❌ Error updating subscription after failed payment:', JSON.stringify(error, null, 2));
+    throw error;
+  } else {
+    console.log('⚠️ Subscription marked past_due for user:', userId);
   }
 }
 
