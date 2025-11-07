@@ -10,6 +10,7 @@ import { PaywallScreen } from './components/screens/PaywallScreen';
 import { useLessons } from './lib/LessonContext';
 import { useAuth } from './lib/AuthContext';
 import { useSubscription, isLessonLocked } from './lib/SubscriptionContext';
+import { useNotification } from './lib/notificationContext';
 import './index.css';
 
 type AppView = 'landing' | 'home' | 'lesson' | 'completed' | 'auth' | 'profile' | 'upgrade' | 'paywall';
@@ -28,13 +29,29 @@ function App() {
     loadLesson,
     completeLesson,
     goToNextLesson,
+    setErrorCallbacks,
   } = useLessons();
 
   const { isAuthenticated, isLoading: isAuthLoading } = useAuth();
   const { hasActiveSubscription } = useSubscription();
+  const { showNotification } = useNotification();
 
   const [view, setView] = useState<AppView>('landing');
   const [pendingLesson, setPendingLesson] = useState<{ id: string; number: number } | null>(null);
+
+  // Set up error callbacks for sync and lesson loading errors
+  useEffect(() => {
+    setErrorCallbacks(
+      // Sync error callback
+      (error) => {
+        showNotification(error);
+      },
+      // Lesson load error callback
+      (error) => {
+        showNotification(error);
+      }
+    );
+  }, [setErrorCallbacks, showNotification]);
 
   // If user is already authenticated, skip landing page
   useEffect(() => {
@@ -73,11 +90,13 @@ function App() {
 
   // Loading state
   if (isLoading || isAuthLoading) {
+    const loadingMessage = isAuthLoading ? 'Setting up your account...' : 'Loading your lessons...';
     return (
       <div className="min-h-screen bg-gradient-to-br from-primary-50 to-purple-50 flex items-center justify-center">
         <div className="text-center">
           <div className="text-6xl mb-4 animate-bounce">📚</div>
-          <h1 className="text-2xl font-bold text-gray-900">Loading...</h1>
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">{loadingMessage}</h1>
+          <p className="text-gray-600">This will just take a moment</p>
         </div>
       </div>
     );
@@ -190,7 +209,8 @@ function App() {
         <div className="min-h-screen bg-gradient-to-br from-primary-50 to-purple-50 flex items-center justify-center">
           <div className="text-center">
             <div className="text-6xl mb-4 animate-pulse">⏳</div>
-            <h1 className="text-2xl font-bold text-gray-900">Loading lesson...</h1>
+            <h1 className="text-2xl font-bold text-gray-900 mb-2">Preparing your lesson...</h1>
+            <p className="text-gray-600">Getting everything ready</p>
           </div>
         </div>
       );

@@ -5,6 +5,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useAuth } from '../../lib/AuthContext';
+import { getAuthErrorMessage, type FriendlyError } from '../../lib/errorMessages';
+import { ErrorNotification } from '../common/ErrorNotification';
 
 interface AuthScreenProps {
   onSuccess?: () => void;
@@ -14,7 +16,7 @@ export function AuthScreen({ onSuccess }: AuthScreenProps) {
   const [mode, setMode] = useState<'signin' | 'signup'>('signin');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [error, setError] = useState<FriendlyError | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
 
@@ -22,45 +24,52 @@ export function AuthScreen({ onSuccess }: AuthScreenProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError(null);
     setSuccessMessage('');
     setIsLoading(true);
 
     try {
       if (mode === 'signin') {
-        const { error } = await signIn(email, password);
-        if (error) {
-          setError(error.message);
+        const { error: authError } = await signIn(email, password);
+        if (authError) {
+          setError(getAuthErrorMessage(authError));
         } else {
           onSuccess?.();
         }
       } else {
-        const { error } = await signUp(email, password);
-        if (error) {
-          setError(error.message);
+        const { error: authError } = await signUp(email, password);
+        if (authError) {
+          setError(getAuthErrorMessage(authError));
         } else {
           setSuccessMessage('Check your email to confirm your account!');
         }
       }
     } catch (err) {
-      setError('An unexpected error occurred');
+      setError(getAuthErrorMessage(err instanceof Error ? err : null));
     } finally {
       setIsLoading(false);
     }
   };
 
   const handleGoogleSignIn = async () => {
-    setError('');
+    setError(null);
     setIsLoading(true);
     try {
-      const { error } = await signInWithGoogle();
-      if (error) {
-        setError(error.message);
+      const { error: authError } = await signInWithGoogle();
+      if (authError) {
+        setError(getAuthErrorMessage(authError));
       }
     } catch (err) {
-      setError('An unexpected error occurred');
+      setError(getAuthErrorMessage(err instanceof Error ? err : null));
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleErrorAction = () => {
+    if (error?.action === 'switch-to-signin') {
+      setMode('signin');
+      setError(null);
     }
   };
 
@@ -82,15 +91,29 @@ export function AuthScreen({ onSuccess }: AuthScreenProps) {
 
           {/* Success Message */}
           {successMessage && (
-            <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl">
-              <p className="text-green-800 text-sm">{successMessage}</p>
-            </div>
+            <motion.div 
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mb-6 p-4 bg-green-50 border-2 border-green-200 rounded-xl"
+            >
+              <div className="flex items-start gap-3">
+                <span className="text-2xl">✉️</span>
+                <div>
+                  <h3 className="font-bold text-green-800 mb-1">Check your email</h3>
+                  <p className="text-green-800 text-sm">{successMessage}</p>
+                </div>
+              </div>
+            </motion.div>
           )}
 
           {/* Error Message */}
           {error && (
-            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl">
-              <p className="text-red-800 text-sm">{error}</p>
+            <div className="mb-6">
+              <ErrorNotification 
+                error={error} 
+                onAction={error.action ? handleErrorAction : undefined}
+                onDismiss={() => setError(null)}
+              />
             </div>
           )}
 
@@ -179,7 +202,7 @@ export function AuthScreen({ onSuccess }: AuthScreenProps) {
               type="button"
               onClick={() => {
                 setMode(mode === 'signin' ? 'signup' : 'signin');
-                setError('');
+                setError(null);
                 setSuccessMessage('');
               }}
               className="text-sm text-primary-600 hover:text-primary-700 font-semibold"

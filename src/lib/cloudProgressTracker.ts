@@ -4,12 +4,17 @@
 
 import { supabase } from './supabase';
 import type { UserProgress, LessonProgress } from './progressTracker';
+import { getSyncErrorMessage } from './errorMessages';
 
 export class CloudProgressTracker {
   /**
    * Sync local progress to Supabase
    */
-  static async syncToCloud(userId: string, progress: UserProgress): Promise<void> {
+  static async syncToCloud(
+    userId: string, 
+    progress: UserProgress, 
+    onError?: (error: any) => void
+  ): Promise<void> {
     try {
       const { error } = await supabase
         .from('user_progress')
@@ -28,20 +33,31 @@ export class CloudProgressTracker {
 
       if (error) {
         console.error('Error syncing progress to cloud:', error);
+        if (onError) {
+          const friendlyError = getSyncErrorMessage(error as Error);
+          onError(friendlyError);
+        }
         throw error;
       }
 
-      console.log('Progress synced to cloud successfully');
+      console.log('✅ Progress synced to cloud successfully');
     } catch (error) {
       console.error('Failed to sync progress:', error);
-      throw error;
+      if (onError && error instanceof Error) {
+        const friendlyError = getSyncErrorMessage(error);
+        onError(friendlyError);
+      }
+      // Don't throw - we don't want to break the app if sync fails
     }
   }
 
   /**
    * Load progress from Supabase
    */
-  static async loadFromCloud(userId: string): Promise<UserProgress | null> {
+  static async loadFromCloud(
+    userId: string, 
+    onError?: (error: any) => void
+  ): Promise<UserProgress | null> {
     try {
       const { data, error } = await supabase
         .from('user_progress')
@@ -51,14 +67,20 @@ export class CloudProgressTracker {
 
       if (error) {
         if (error.code === 'PGRST116') {
-          // No progress found, return null
+          // No progress found, return null (not an error)
+          console.log('No cloud progress found for user');
           return null;
         }
         console.error('Error loading progress from cloud:', error);
-        throw error;
+        if (onError) {
+          const friendlyError = getSyncErrorMessage(error as Error);
+          onError(friendlyError);
+        }
+        return null;
       }
 
       if (data) {
+        console.log('✅ Progress loaded from cloud successfully');
         return {
           totalXP: data.total_xp,
           completedLessons: data.completed_lessons,
@@ -72,6 +94,10 @@ export class CloudProgressTracker {
       return null;
     } catch (error) {
       console.error('Failed to load progress from cloud:', error);
+      if (onError && error instanceof Error) {
+        const friendlyError = getSyncErrorMessage(error);
+        onError(friendlyError);
+      }
       return null;
     }
   }

@@ -5,14 +5,17 @@ import App from './App.tsx'
 import { LessonProvider } from './lib/LessonContext'
 import { AuthProvider } from './lib/AuthContext'
 import { SubscriptionProvider } from './lib/SubscriptionContext'
+import { NotificationProvider } from './lib/notificationContext'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <AuthProvider>
       <SubscriptionProvider>
-        <LessonProvider>
-          <App />
-        </LessonProvider>
+        <NotificationProvider>
+          <LessonProvider>
+            <App />
+          </LessonProvider>
+        </NotificationProvider>
       </SubscriptionProvider>
     </AuthProvider>
   </StrictMode>,

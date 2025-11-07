@@ -5,6 +5,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useAuth } from '../../lib/AuthContext';
+import { getPaymentErrorMessage, type FriendlyError } from '../../lib/errorMessages';
+import { ErrorNotification } from '../common/ErrorNotification';
 
 interface UpgradeScreenProps {
   onClose: () => void;
@@ -16,15 +18,15 @@ export function UpgradeScreen({ onClose }: UpgradeScreenProps) {
   const { user } = useAuth();
   const [selectedPlan, setSelectedPlan] = useState<Plan>('yearly');
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState<FriendlyError | null>(null);
 
   const handleUpgrade = async () => {
     setIsLoading(true);
-    setError('');
+    setError(null);
 
     try {
       if (!user) {
-        setError('Please sign in to upgrade');
+        setError(getPaymentErrorMessage(new Error('not authenticated')));
         setIsLoading(false);
         return;
       }
@@ -61,7 +63,7 @@ export function UpgradeScreen({ onClose }: UpgradeScreenProps) {
       
     } catch (err) {
       console.error('Checkout error:', err);
-      setError(err instanceof Error ? err.message : 'Failed to start checkout. Please try again.');
+      setError(getPaymentErrorMessage(err instanceof Error ? err : null));
       setIsLoading(false);
     }
   };
@@ -223,9 +225,10 @@ export function UpgradeScreen({ onClose }: UpgradeScreenProps) {
 
           {/* Error Message */}
           {error && (
-            <div className="p-4 bg-red-50 border border-red-200 rounded-xl">
-              <p className="text-red-800 text-sm">{error}</p>
-            </div>
+            <ErrorNotification 
+              error={error} 
+              onDismiss={() => setError(null)}
+            />
           )}
 
           {/* CTA Button */}
@@ -238,9 +241,14 @@ export function UpgradeScreen({ onClose }: UpgradeScreenProps) {
           </button>
 
           {/* Fine Print */}
-          <p className="text-center text-xs text-gray-500">
-            Cancel anytime. No refunds for partial months or years.
-          </p>
+          <div className="text-center space-y-2">
+            <p className="text-xs text-gray-500">
+              Cancel anytime. No refunds for partial months or years.
+            </p>
+            <p className="text-xs text-gray-600">
+              Need help? Contact us at <a href="mailto:support@optionup.com" className="text-primary-600 hover:text-primary-700 font-semibold">support@optionup.com</a>
+            </p>
+          </div>
 
           {/* Trust Signals */}
           <div className="flex items-center justify-center gap-8 text-gray-400 text-sm">

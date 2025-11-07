@@ -16,6 +16,7 @@ import {
 import { progressTracker } from './progressTracker';
 import { CloudProgressTracker } from './cloudProgressTracker';
 import { supabase } from './supabase';
+import { getLessonErrorMessage } from './errorMessages';
 
 interface LessonContextType {
   // Data
@@ -34,6 +35,10 @@ interface LessonContextType {
   isLoading: boolean;
   isLoadingLesson: boolean;
 
+  // Error handling
+  onSyncError?: (error: any) => void;
+  onLessonLoadError?: (error: any) => void;
+
   // Actions
   loadLesson: (lessonId: string) => Promise<void>;
   completeLesson: (lessonId: string, earnedXP: number) => void;
@@ -41,6 +46,7 @@ interface LessonContextType {
   goToPreviousLesson: () => Promise<void>;
   continueLesson: () => Promise<void>;
   refreshProgress: () => Promise<void>;
+  setErrorCallbacks: (onSyncError?: (error: any) => void, onLessonLoadError?: (error: any) => void) => void;
 }
 
 const LessonContext = createContext<LessonContextType | undefined>(undefined);
@@ -56,6 +62,8 @@ export function LessonProvider({ children }: { children: ReactNode }) {
   const [currentStreak, setCurrentStreak] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingLesson, setIsLoadingLesson] = useState(false);
+  const [onSyncError, setOnSyncError] = useState<((error: any) => void) | undefined>(undefined);
+  const [onLessonLoadError, setOnLessonLoadError] = useState<((error: any) => void) | undefined>(undefined);
 
   // Load all lessons metadata on mount
   useEffect(() => {
@@ -69,7 +77,7 @@ export function LessonProvider({ children }: { children: ReactNode }) {
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
         // Load cloud progress
-        const cloudProgress = await CloudProgressTracker.loadFromCloud(user.id);
+        const cloudProgress = await CloudProgressTracker.loadFromCloud(user.id, onSyncError);
         if (cloudProgress) {
           // Merge with local progress
           const localProgress = progressTracker.exportProgress();
@@ -86,7 +94,7 @@ export function LessonProvider({ children }: { children: ReactNode }) {
           // Also sync any local progress they might have
           const localProgress = progressTracker.exportProgress();
           if (localProgress.totalXP > 0 || localProgress.completedLessons.length > 0) {
-            await CloudProgressTracker.syncToCloud(user.id, localProgress);
+            await CloudProgressTracker.syncToCloud(user.id, localProgress, onSyncError);
           }
         }
       }
@@ -127,6 +135,10 @@ export function LessonProvider({ children }: { children: ReactNode }) {
       setCurrentLessonMetadata(metadata || null);
     } catch (error) {
       console.error('Failed to load lesson:', error);
+      if (onLessonLoadError && error instanceof Error) {
+        const friendlyError = getLessonErrorMessage(error);
+        onLessonLoadError(friendlyError);
+      }
     } finally {
       setIsLoadingLesson(false);
     }
@@ -151,7 +163,7 @@ export function LessonProvider({ children }: { children: ReactNode }) {
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
         const progress = progressTracker.exportProgress();
-        await CloudProgressTracker.syncToCloud(user.id, progress);
+        await CloudProgressTracker.syncToCloud(user.id, progress, onSyncError);
       }
     } catch (error) {
       console.error('Failed to sync progress to cloud:', error);
@@ -207,6 +219,14 @@ export function LessonProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const setErrorCallbacks = (
+    syncErrorCallback?: (error: any) => void, 
+    lessonLoadErrorCallback?: (error: any) => void
+  ) => {
+    setOnSyncError(() => syncErrorCallback);
+    setOnLessonLoadError(() => lessonLoadErrorCallback);
+  };
+
   const value: LessonContextType = {
     modules,
     currentLesson,
@@ -218,12 +238,15 @@ export function LessonProvider({ children }: { children: ReactNode }) {
     currentStreak,
     isLoading,
     isLoadingLesson,
+    onSyncError,
+    onLessonLoadError,
     loadLesson,
     completeLesson,
     goToNextLesson,
     goToPreviousLesson,
     continueLesson,
     refreshProgress,
+    setErrorCallbacks,
   };
 
   return <LessonContext.Provider value={value}>{children}</LessonContext.Provider>;
