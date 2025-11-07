@@ -36,21 +36,22 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
         >
           <div className="inline-block mb-6">
             <span className="px-4 py-2 bg-green-100 text-green-700 text-sm font-semibold rounded-full">
-              🎓 Generate Consistent Weekly Income with Options
+              🎓 Step-by-Step Options Education
             </span>
           </div>
           
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Turn $500 into{' '}
+            Finally Understand{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-purple-600">
-              Consistent Weekly Income
+              Options Trading
             </span>
-            {' '}with Options Trading
+            <br />
+            <span className="text-3xl md:text-4xl text-gray-700">(Without Losing Your Shirt)</span>
           </h2>
           
           <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-            Master proven strategies in 15-minute daily lessons. No experience required.
-            Start earning within 30 days, not 6 months.
+            Learn proven strategies in 15-minute lessons. No experience required. 
+            Build real skills with risk management from day one.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -58,7 +59,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
               onClick={onGetStarted}
               className="px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 text-white font-bold text-lg rounded-2xl hover:from-primary-700 hover:to-primary-800 transition-all transform hover:scale-105 shadow-lg"
             >
-              Start Your Free 7-Day Course
+              Start Learning Free
             </button>
             <div className="text-sm text-gray-500">
               ✓ No credit card needed • ✓ 5 free lessons
@@ -390,12 +391,12 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
                 <div className="text-3xl">🎯</div>
                 <div>
                   <h4 className="font-bold text-gray-900 mb-2">
-                    Module 1: Foundations <span className="text-green-600 text-xs">✓ FREE</span>
+                    Module 1: Foundations <span className="text-green-600 text-xs">✓ 5 FREE LESSONS</span>
                   </h4>
                   <p className="text-sm text-gray-600 mb-3">
                     Options basics, terminology, and your first trades
                   </p>
-                  <span className="text-xs text-gray-500">15 lessons • 2 hours</span>
+                  <span className="text-xs text-gray-500">15 lessons total • 2 hours</span>
                 </div>
               </div>
             </div>
@@ -475,7 +476,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-2 text-sm">
                   <span className="text-green-600 mt-0.5">✓</span>
-                  <span className="text-gray-700">First 15 lessons (Module 1)</span>
+                  <span className="text-gray-700">First 5 lessons</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm">
                   <span className="text-green-600 mt-0.5">✓</span>
@@ -609,16 +610,16 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
             viewport={{ once: true }}
           >
             <h3 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Ready to Start Trading Smarter?
+              Ready to Finally Understand Options?
             </h3>
             <p className="text-xl text-white/90 mb-8">
-              Join 2,847 traders mastering options trading with OptionUp
+              Join 2,847 traders learning strategies that actually work
             </p>
             <button
               onClick={onGetStarted}
               className="px-10 py-5 bg-white text-primary-600 font-bold text-xl rounded-2xl hover:bg-gray-100 transition-all transform hover:scale-105 shadow-2xl"
             >
-              Start Your Free Course Now
+              Start Learning Free Today
             </button>
             <p className="text-white/80 text-sm mt-4">
               No credit card required • Start learning in 60 seconds
