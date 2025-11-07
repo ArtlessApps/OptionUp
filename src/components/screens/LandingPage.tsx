@@ -28,78 +28,124 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
       </header>
 
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">
+      <section className="relative max-w-7xl mx-auto px-6 py-16 md:py-24 overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute top-20 right-10 w-72 h-72 bg-primary-200/30 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-10 w-96 h-96 bg-purple-200/30 rounded-full blur-3xl"></div>
+        
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center max-w-4xl mx-auto"
+          className="text-center max-w-4xl mx-auto relative z-10"
         >
           <div className="inline-block mb-6">
-            <span className="px-4 py-2 bg-green-100 text-green-700 text-sm font-semibold rounded-full">
+            <span className="px-4 py-2 bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 text-sm font-semibold rounded-full shadow-sm border border-green-200">
               🎓 Step-by-Step Options Education
             </span>
           </div>
           
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             Finally Understand{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-purple-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 via-blue-600 to-purple-600">
               Options Trading
             </span>
             <br />
-            <span className="text-3xl md:text-4xl text-gray-700">(Without Losing Your Shirt)</span>
+            <span className="text-3xl md:text-4xl text-gray-700 mt-2 inline-block">(Without Losing Your Shirt)</span>
           </h2>
           
-          <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+          <p className="text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl mx-auto">
             Learn proven strategies in 15-minute lessons. No experience required. 
             Build real skills with risk management from day one.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
             <button
               onClick={onGetStarted}
-              className="px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 text-white font-bold text-lg rounded-2xl hover:from-primary-700 hover:to-primary-800 transition-all transform hover:scale-105 shadow-lg"
+              className="px-10 py-5 bg-gradient-to-r from-primary-600 to-primary-700 text-white font-bold text-lg rounded-2xl hover:from-primary-700 hover:to-primary-800 transition-all transform hover:scale-105 shadow-xl hover:shadow-2xl"
             >
               Start Learning Free
             </button>
-            <div className="text-sm text-gray-500">
+            <div className="text-sm text-gray-600 font-medium">
               ✓ No credit card needed • ✓ 5 free lessons
             </div>
           </div>
 
           {/* Enhanced Social Proof */}
-          <div className="mt-12">
+          <div className="mt-8">
             <div className="flex flex-col items-center gap-3">
-              <div className="flex items-center gap-2 text-gray-600">
-                <span className="text-2xl">⭐⭐⭐⭐⭐</span>
-                <span className="font-semibold">Based on 2,847 active traders</span>
+              <div className="flex items-center gap-3">
+                <span className="text-3xl">⭐⭐⭐⭐⭐</span>
               </div>
-              <p className="text-sm text-gray-500">Join traders who have completed over 45,000 lessons</p>
+              <div>
+                <p className="font-bold text-gray-900 text-lg">Based on 2,847 active traders</p>
+                <p className="text-sm text-gray-600">Join traders who have completed over 45,000 lessons</p>
+              </div>
             </div>
           </div>
         </motion.div>
 
-        {/* Hero Image / Demo */}
+        {/* Hero Image / Demo with floating elements */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="mt-16 max-w-5xl mx-auto"
+          className="mt-20 max-w-6xl mx-auto relative z-10"
         >
           <div className="relative">
-            {/* Mockup placeholder */}
-            <div className="bg-white rounded-3xl shadow-2xl p-8 border border-gray-200">
-              <div className="aspect-video bg-gradient-to-br from-primary-100 to-purple-100 rounded-2xl flex items-center justify-center">
+            {/* Main mockup */}
+            <div className="bg-white rounded-3xl shadow-2xl p-6 md:p-10 border border-gray-200 relative overflow-hidden">
+              {/* Subtle gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary-50/50 to-purple-50/50 rounded-3xl"></div>
+              
+              <div className="relative aspect-video bg-gradient-to-br from-primary-100 via-blue-100 to-purple-100 rounded-2xl flex items-center justify-center border border-gray-200 shadow-inner">
                 <div className="text-center">
-                  <div className="text-6xl mb-4">📊</div>
-                  <p className="text-gray-600 font-semibold">Interactive Lessons</p>
-                  <p className="text-sm text-gray-500">Practice with real scenarios</p>
+                  <div className="text-7xl mb-4 animate-bounce">📊</div>
+                  <p className="text-gray-700 font-bold text-xl mb-2">Interactive Lessons</p>
+                  <p className="text-gray-600">Learn covered calls, spreads & risk management</p>
                 </div>
               </div>
             </div>
-            {/* Floating elements - removed +10 XP placeholder */}
-            <div className="absolute -bottom-4 -right-4 bg-green-500 text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg">
-              Streak: 7 🔥
-            </div>
+            
+            {/* Floating elements with better design */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4 }}
+              className="absolute -top-6 -left-6 bg-gradient-to-br from-green-400 to-green-600 text-white px-6 py-3 rounded-2xl font-bold text-base shadow-2xl border-2 border-white"
+            >
+              <div className="flex items-center gap-2">
+                <span className="text-2xl">🔥</span>
+                <span>7 Day Streak</span>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5 }}
+              className="absolute -top-6 -right-6 bg-gradient-to-br from-yellow-400 to-orange-500 text-white px-6 py-3 rounded-2xl font-bold text-base shadow-2xl border-2 border-white"
+            >
+              <div className="flex items-center gap-2">
+                <span className="text-2xl">⭐</span>
+                <span>Level 3</span>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-gradient-to-br from-purple-500 to-purple-700 text-white px-8 py-4 rounded-2xl font-bold text-base shadow-2xl border-2 border-white"
+            >
+              <div className="flex items-center gap-2">
+                <span className="text-2xl">📈</span>
+                <span>15 Lessons Complete</span>
+              </div>
+            </motion.div>
+
+            {/* Background decoration */}
+            <div className="absolute -bottom-12 -right-12 w-64 h-64 bg-primary-200/20 rounded-full blur-2xl -z-10"></div>
+            <div className="absolute -top-12 -left-12 w-64 h-64 bg-purple-200/20 rounded-full blur-2xl -z-10"></div>
           </div>
         </motion.div>
       </section>
@@ -122,15 +168,15 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center"
+              className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100"
             >
-              <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <span className="text-3xl">💰</span>
+              <div className="w-20 h-20 bg-gradient-to-br from-green-100 to-green-200 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md">
+                <span className="text-4xl">💰</span>
               </div>
-              <h4 className="text-lg font-bold text-gray-900 mb-2">
+              <h4 className="text-lg font-bold text-gray-900 mb-3">
                 Generate 3-5% Monthly Returns
               </h4>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 leading-relaxed">
                 Learn covered calls and cash-secured puts to create consistent income from your portfolio
               </p>
             </motion.div>
@@ -141,15 +187,15 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-center"
+              className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100"
             >
-              <div className="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <span className="text-3xl">🛡️</span>
+              <div className="w-20 h-20 bg-gradient-to-br from-red-100 to-red-200 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md">
+                <span className="text-4xl">🛡️</span>
               </div>
-              <h4 className="text-lg font-bold text-gray-900 mb-2">
+              <h4 className="text-lg font-bold text-gray-900 mb-3">
                 Limit Losses to 2% Per Trade
               </h4>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 leading-relaxed">
                 Master protective strategies and position sizing to minimize risk and protect your capital
               </p>
             </motion.div>
@@ -160,15 +206,15 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="text-center"
+              className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100"
             >
-              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <span className="text-3xl">📈</span>
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md">
+                <span className="text-4xl">📈</span>
               </div>
-              <h4 className="text-lg font-bold text-gray-900 mb-2">
+              <h4 className="text-lg font-bold text-gray-900 mb-3">
                 Real Trade Examples
               </h4>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 leading-relaxed">
                 See actual P&L screenshots and step-by-step breakdowns of winning and losing trades
               </p>
             </motion.div>
@@ -179,15 +225,15 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="text-center"
+              className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100"
             >
-              <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <span className="text-3xl">🎯</span>
+              <div className="w-20 h-20 bg-gradient-to-br from-purple-100 to-purple-200 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md">
+                <span className="text-4xl">🎯</span>
               </div>
-              <h4 className="text-lg font-bold text-gray-900 mb-2">
+              <h4 className="text-lg font-bold text-gray-900 mb-3">
                 Portfolio Strategy
               </h4>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 leading-relaxed">
                 Build proper allocation that fits your risk tolerance and financial goals
               </p>
             </motion.div>
@@ -213,17 +259,20 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-white rounded-2xl p-8 shadow-lg"
+              className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-shadow relative"
             >
-              <div className="mb-4">
-                <span className="text-yellow-400 text-xl">⭐⭐⭐⭐⭐</span>
+              <div className="absolute -top-3 -right-3 bg-gradient-to-br from-green-400 to-green-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                VERIFIED
               </div>
-              <p className="text-gray-700 mb-6 leading-relaxed">
+              <div className="mb-4">
+                <span className="text-yellow-400 text-2xl">⭐⭐⭐⭐⭐</span>
+              </div>
+              <p className="text-gray-700 mb-6 leading-relaxed text-base">
                 "I made my first $347 in 2 weeks after finishing Lesson 8. Finally understand how options actually work."
               </p>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
-                  <span className="text-primary-600 font-bold">SM</span>
+              <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary-400 to-primary-600 rounded-full flex items-center justify-center shadow-md">
+                  <span className="text-white font-bold text-lg">SM</span>
                 </div>
                 <div>
                   <p className="font-semibold text-gray-900">Sarah M.</p>
@@ -238,17 +287,20 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="bg-white rounded-2xl p-8 shadow-lg"
+              className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-shadow relative"
             >
-              <div className="mb-4">
-                <span className="text-yellow-400 text-xl">⭐⭐⭐⭐⭐</span>
+              <div className="absolute -top-3 -right-3 bg-gradient-to-br from-green-400 to-green-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                VERIFIED
               </div>
-              <p className="text-gray-700 mb-6 leading-relaxed">
+              <div className="mb-4">
+                <span className="text-yellow-400 text-2xl">⭐⭐⭐⭐⭐</span>
+              </div>
+              <p className="text-gray-700 mb-6 leading-relaxed text-base">
                 "Lost $1,200 learning on my own before OptionUp. Now up $4,500 in 3 months. The risk management module saved me."
               </p>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
-                  <span className="text-primary-600 font-bold">MR</span>
+              <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
+                <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center shadow-md">
+                  <span className="text-white font-bold text-lg">MR</span>
                 </div>
                 <div>
                   <p className="font-semibold text-gray-900">Mike R.</p>
@@ -263,17 +315,20 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="bg-white rounded-2xl p-8 shadow-lg"
+              className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-shadow relative"
             >
-              <div className="mb-4">
-                <span className="text-yellow-400 text-xl">⭐⭐⭐⭐⭐</span>
+              <div className="absolute -top-3 -right-3 bg-gradient-to-br from-green-400 to-green-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                VERIFIED
               </div>
-              <p className="text-gray-700 mb-6 leading-relaxed">
+              <div className="mb-4">
+                <span className="text-yellow-400 text-2xl">⭐⭐⭐⭐⭐</span>
+              </div>
+              <p className="text-gray-700 mb-6 leading-relaxed text-base">
                 "The step-by-step approach makes sense. Started with covered calls, now trading spreads confidently."
               </p>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
-                  <span className="text-primary-600 font-bold">JL</span>
+              <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center shadow-md">
+                  <span className="text-white font-bold text-lg">JL</span>
                 </div>
                 <div>
                   <p className="font-semibold text-gray-900">Jennifer L.</p>
@@ -284,23 +339,46 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
           </div>
 
           {/* Trust Indicators */}
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary-600 mb-1">2,847</div>
-              <div className="text-sm text-gray-600">Active Traders</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary-600 mb-1">$1.2M+</div>
-              <div className="text-sm text-gray-600">Student Profits Tracked</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary-600 mb-1">94%</div>
-              <div className="text-sm text-gray-600">Complete All Lessons</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary-600 mb-1">45,000+</div>
-              <div className="text-sm text-gray-600">Lessons Completed</div>
-            </div>
+          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="text-center p-6 bg-white rounded-2xl shadow-lg border border-gray-100"
+            >
+              <div className="text-4xl font-bold bg-gradient-to-r from-primary-600 to-blue-600 bg-clip-text text-transparent mb-2">2,847</div>
+              <div className="text-sm text-gray-600 font-medium">Active Traders</div>
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-center p-6 bg-white rounded-2xl shadow-lg border border-gray-100"
+            >
+              <div className="text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">$1.2M+</div>
+              <div className="text-sm text-gray-600 font-medium">Student Profits Tracked</div>
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="text-center p-6 bg-white rounded-2xl shadow-lg border border-gray-100"
+            >
+              <div className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">94%</div>
+              <div className="text-sm text-gray-600 font-medium">Complete All Lessons</div>
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="text-center p-6 bg-white rounded-2xl shadow-lg border border-gray-100"
+            >
+              <div className="text-4xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent mb-2">45,000+</div>
+              <div className="text-sm text-gray-600 font-medium">Lessons Completed</div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -602,14 +680,20 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary-600 to-purple-600">
-        <div className="max-w-4xl mx-auto px-6 text-center">
+      <section className="relative py-20 bg-gradient-to-br from-primary-600 via-blue-600 to-purple-600 overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-10">
+          <div className="absolute top-20 left-20 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h3 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
               Ready to Finally Understand Options?
             </h3>
             <p className="text-xl text-white/90 mb-8">
@@ -617,11 +701,11 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
             </p>
             <button
               onClick={onGetStarted}
-              className="px-10 py-5 bg-white text-primary-600 font-bold text-xl rounded-2xl hover:bg-gray-100 transition-all transform hover:scale-105 shadow-2xl"
+              className="px-10 py-5 bg-white text-primary-600 font-bold text-xl rounded-2xl hover:bg-gray-50 transition-all transform hover:scale-105 shadow-2xl hover:shadow-3xl"
             >
               Start Learning Free Today
             </button>
-            <p className="text-white/80 text-sm mt-4">
+            <p className="text-white/80 text-sm mt-6 font-medium">
               No credit card required • Start learning in 60 seconds
             </p>
           </motion.div>
