@@ -1,7 +1,9 @@
 import { Resend } from 'resend';
-import { welcomeEmailTemplate } from './templates/welcome';
-import { paymentConfirmationTemplate } from './templates/payment-confirmation';
-import { renewalReminderTemplate } from './templates/renewal-reminder';
+import React from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+import { WelcomeEmail } from './templates/welcome';
+import { PaymentConfirmationEmail } from './templates/payment-confirmation';
+import { RenewalReminderEmail } from './templates/renewal-reminder';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -14,7 +16,7 @@ interface SendEmailParams {
 async function sendEmail({ to, subject, html }: SendEmailParams) {
   try {
     const data = await resend.emails.send({
-      from: process.env.FROM_EMAIL || 'team@yourdomain.com',
+      from: process.env.FROM_EMAIL || 'OptionUp <onboarding@resend.dev>',
       to: [to],
       subject,
       html,
@@ -34,10 +36,12 @@ export async function sendWelcomeEmail(params: {
   userName: string;
   dashboardUrl: string;
 }) {
-  const html = welcomeEmailTemplate({
-    userName: params.userName,
-    dashboardUrl: params.dashboardUrl,
-  });
+  const html = renderToStaticMarkup(
+    React.createElement(WelcomeEmail, {
+      userName: params.userName,
+      dashboardUrl: params.dashboardUrl,
+    })
+  );
 
   return sendEmail({
     to: params.to,
@@ -56,7 +60,16 @@ export async function sendPaymentConfirmationEmail(params: {
   receiptUrl: string;
   manageSubscriptionUrl: string;
 }) {
-  const html = paymentConfirmationTemplate(params);
+  const html = renderToStaticMarkup(
+    React.createElement(PaymentConfirmationEmail, {
+      userName: params.userName,
+      planName: 'Premium Monthly',
+      amount: params.amount,
+      billingPeriod: 'monthly',
+      nextBillingDate: params.nextBillingDate,
+      accountUrl: params.receiptUrl,
+    })
+  );
 
   return sendEmail({
     to: params.to,
@@ -79,7 +92,15 @@ export async function sendRenewalReminderEmail(params: {
   dashboardUrl: string;
   manageSubscriptionUrl: string;
 }) {
-  const html = renewalReminderTemplate(params);
+  const html = renderToStaticMarkup(
+    React.createElement(RenewalReminderEmail, {
+      userName: params.userName,
+      planName: 'Premium',
+      renewalDate: params.renewalDate,
+      renewalAmount: params.amount,
+      manageSubscriptionUrl: params.manageSubscriptionUrl,
+    })
+  );
 
   return sendEmail({
     to: params.to,

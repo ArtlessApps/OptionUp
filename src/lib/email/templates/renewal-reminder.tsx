@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface RenewalReminderEmailProps {
   userName?: string;
   planName?: string;
