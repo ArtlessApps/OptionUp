@@ -733,8 +733,8 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
             <div>
               <h5 className="text-white font-bold mb-3">Legal</h5>
               <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-white transition">Terms of Service</a></li>
-                <li><a href="#" className="hover:text-white transition">Privacy Policy</a></li>
+                <li><a href="/terms" className="hover:text-white transition">Terms of Service</a></li>
+                <li><a href="/privacy" className="hover:text-white transition">Privacy Policy</a></li>
                 <li><a href="#" className="hover:text-white transition">Risk Disclosure</a></li>
               </ul>
             </div>

@@ -45,13 +45,35 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const signUp = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: {
         emailRedirectTo: `${window.location.origin}/auth/callback`,
       },
     });
+
+    // Send welcome email after successful signup
+    if (data.user && !error) {
+      try {
+        const apiUrl = import.meta.env.VITE_API_URL || '/api';
+        await fetch(`${apiUrl}/auth/send-welcome-email`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: data.user.email!,
+            userName: data.user.user_metadata?.name || data.user.email!.split('@')[0],
+            dashboardUrl: `${window.location.origin}/dashboard`,
+          }),
+        });
+      } catch (emailError) {
+        // Log error but don't fail signup
+        console.error('Failed to send welcome email:', emailError);
+      }
+    }
+
     return { error: error as Error | null };
   };
 

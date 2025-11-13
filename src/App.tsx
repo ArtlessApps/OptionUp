@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { LessonFlow } from './components/containers/LessonFlow';
 import { SkillTree } from './components/containers/SkillTree';
 import { StatsPanel } from './components/containers/StatsPanel';
@@ -7,6 +8,9 @@ import { AuthScreen } from './components/screens/AuthScreen';
 import { ProfileScreen } from './components/screens/ProfileScreen';
 import { UpgradeScreen } from './components/screens/UpgradeScreen';
 import { PaywallScreen } from './components/screens/PaywallScreen';
+import { PrivacyScreen } from './components/screens/PrivacyScreen';
+import { TermsScreen } from './components/screens/TermsScreen';
+import { RefundPolicyScreen } from './components/screens/RefundPolicyScreen';
 import { useLessons } from './lib/LessonContext';
 import { useAuth } from './lib/AuthContext';
 import { useSubscription, isLessonLocked } from './lib/SubscriptionContext';
@@ -15,7 +19,7 @@ import './index.css';
 
 type AppView = 'landing' | 'home' | 'lesson' | 'completed' | 'auth' | 'profile' | 'upgrade' | 'paywall';
 
-function App() {
+function MainApp() {
   const {
     modules,
     currentLesson,
@@ -358,6 +362,17 @@ function App() {
         </aside>
       </div>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/privacy" element={<PrivacyScreen />} />
+      <Route path="/terms" element={<TermsScreen />} />
+      <Route path="/refund-policy" element={<RefundPolicyScreen />} />
+      <Route path="*" element={<MainApp />} />
+    </Routes>
   );
 }
 
