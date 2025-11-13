@@ -39,7 +39,10 @@ function loadEnv() {
       const key = match[1].trim();
       const value = match[2].trim().replace(/^["']|["']$/g, '');
       envVars[key] = value;
-      process.env[key] = value;
+      // Don't overwrite existing environment variables (allows override via env vars)
+      if (!process.env[key]) {
+        process.env[key] = value;
+      }
     }
   });
 
@@ -55,7 +58,8 @@ if (!env.RESEND_API_KEY) {
 
 const resend = new Resend(env.RESEND_API_KEY);
 // Use Resend's verified test domain for testing
-const fromEmail = env.FROM_EMAIL || 'OptionUp <onboarding@resend.dev>';
+// Prioritize environment variable over .env.local
+const fromEmail = process.env.FROM_EMAIL || env.FROM_EMAIL || 'OptionUp <onboarding@resend.dev>';
 
 const templates = {
   welcome: {
