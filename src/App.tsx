@@ -11,6 +11,7 @@ import { PaywallScreen } from './components/screens/PaywallScreen';
 import { PrivacyScreen } from './components/screens/PrivacyScreen';
 import { TermsScreen } from './components/screens/TermsScreen';
 import { RefundPolicyScreen } from './components/screens/RefundPolicyScreen';
+import { AboutScreen } from './components/screens/AboutScreen';
 import { useLessons } from './lib/LessonContext';
 import { useAuth } from './lib/AuthContext';
 import { useSubscription, isLessonLocked } from './lib/SubscriptionContext';
@@ -371,6 +372,7 @@ function App() {
       <Route path="/privacy" element={<PrivacyScreen />} />
       <Route path="/terms" element={<TermsScreen />} />
       <Route path="/refund-policy" element={<RefundPolicyScreen />} />
+      <Route path="/about" element={<AboutScreen />} />
       <Route path="*" element={<MainApp />} />
     </Routes>
   );

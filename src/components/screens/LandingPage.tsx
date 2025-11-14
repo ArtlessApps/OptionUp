@@ -726,6 +726,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
               <h5 className="text-white font-bold mb-3">Quick Links</h5>
               <ul className="space-y-2 text-sm">
                 <li><button onClick={onGetStarted} className="hover:text-white transition">Start Learning</button></li>
+                <li><a href="/about" className="hover:text-white transition">Our Story</a></li>
                 <li><button onClick={onGetStarted} className="hover:text-white transition">Pricing</button></li>
                 <li><button onClick={onGetStarted} className="hover:text-white transition">Sign In</button></li>
               </ul>
