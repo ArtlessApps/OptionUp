@@ -37,6 +37,7 @@ export interface AnalogyScreen extends BaseScreen {
   interactive: 'tap_to_reveal';
   reveal_sections: Array<{
     label: string;
+    content: string;
   }>;
 }
 

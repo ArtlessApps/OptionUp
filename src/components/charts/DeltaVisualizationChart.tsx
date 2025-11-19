@@ -72,7 +72,7 @@ export function DeltaVisualizationChart({
     }
   };
   
-  const calculateOptionPrice = (stock: number, strike: number, delta: number, isCall: boolean): number => {
+  const calculateOptionPrice = (stock: number, strike: number, isCall: boolean): number => {
     const intrinsic = isCall 
       ? Math.max(0, stock - strike)
       : Math.max(0, strike - stock);
@@ -97,7 +97,7 @@ export function DeltaVisualizationChart({
     
     for (let price = minPrice; price <= maxPrice; price += step) {
       const delta = calculateDelta(price, strikePrice, daysToExpiration, optionType === 'call');
-      const optionPrice = calculateOptionPrice(price, strikePrice, delta, optionType === 'call');
+      const optionPrice = calculateOptionPrice(price, strikePrice, optionType === 'call');
       
       let moneyness = 'ATM';
       if (optionType === 'call') {
@@ -121,7 +121,7 @@ export function DeltaVisualizationChart({
   
   // Current values
   const currentDelta = calculateDelta(stockPrice, strikePrice, daysToExpiration, optionType === 'call');
-  const currentOptionPrice = calculateOptionPrice(stockPrice, strikePrice, currentDelta, optionType === 'call');
+  const currentOptionPrice = calculateOptionPrice(stockPrice, strikePrice, optionType === 'call');
   
   // Determine moneyness
   let currentMoneyness = 'ATM';
