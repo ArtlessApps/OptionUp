@@ -1,32 +1,46 @@
 /**
- * Next.js API Route: Send Welcome Email
+ * Vercel Serverless Function: Send Welcome Email
  * Can be called after successful signup
  */
 
-import type { NextApiRequest, NextApiResponse } from 'next';
-import { sendWelcomeEmail } from '../../src/lib/email/send-email';
+import { sendWelcomeEmail } from '../../src/lib/email/send-email.js';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  // Enable CORS
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
+export default async function handler(req: Request) {
+  // Handle CORS preflight
   if (req.method === 'OPTIONS') {
-    res.status(200).end();
-    return;
+    return new Response(null, {
+      status: 200,
+      headers: {
+        'Access-Control-Allow-Credentials': 'true',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      },
+    });
   }
 
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
+      status: 405,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+    });
   }
 
   try {
-    const { email, userName, dashboardUrl } = req.body;
+    const body = await req.json();
+    const { email, userName, dashboardUrl } = body;
 
     if (!email) {
-      return res.status(400).json({ error: 'Email is required' });
+      return new Response(JSON.stringify({ error: 'Email is required' }), {
+        status: 400,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
+      });
     }
 
     const result = await sendWelcomeEmail({
@@ -36,22 +50,40 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     });
 
     if (result.success) {
-      return res.status(200).json({
+      return new Response(JSON.stringify({
         success: true,
         message: 'Welcome email sent successfully',
-        messageId: result.data?.id,
+        messageId: result.data?.id || (result.data as any)?.id || 'unknown',
+      }), {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
       });
     } else {
-      return res.status(500).json({
+      return new Response(JSON.stringify({
         error: 'Failed to send welcome email',
         details: result.error,
+      }), {
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
       });
     }
   } catch (error) {
     console.error('Send welcome email error:', error);
-    return res.status(500).json({
+    return new Response(JSON.stringify({
       error: 'Internal server error',
       message: error instanceof Error ? error.message : 'Unknown error',
+    }), {
+      status: 500,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
     });
   }
 }

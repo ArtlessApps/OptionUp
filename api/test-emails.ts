@@ -11,12 +11,11 @@
  * Body: { template: 'welcome', to: 'test@example.com' }
  */
 
-import type { NextApiRequest, NextApiResponse } from 'next';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { WelcomeEmail } from '../src/lib/email/templates/welcome';
-import { PaymentConfirmationEmail } from '../src/lib/email/templates/payment-confirmation';
-import { RenewalReminderEmail } from '../src/lib/email/templates/renewal-reminder';
+import { WelcomeEmail } from '../src/lib/email/templates/welcome.js';
+import { PaymentConfirmationEmail } from '../src/lib/email/templates/payment-confirmation.js';
+import { RenewalReminderEmail } from '../src/lib/email/templates/renewal-reminder.js';
 import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -76,25 +75,28 @@ function getSubject(template: string): string {
   }
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  // Enable CORS
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
+export default async function handler(req: Request) {
+  // Handle CORS preflight
   if (req.method === 'OPTIONS') {
-    res.status(200).end();
-    return;
+    return new Response(null, {
+      status: 200,
+      headers: {
+        'Access-Control-Allow-Credentials': 'true',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      },
+    });
   }
 
-  const { template } = req.query;
+  const url = new URL(req.url);
+  const template = url.searchParams.get('template');
 
   // GET - Preview email in browser
   if (req.method === 'GET') {
-    if (!template || typeof template !== 'string') {
+    if (!template) {
       // Show template selector
-      return res.status(200).send(`
+      return new Response(`
         <!DOCTYPE html>
         <html>
         <head>
@@ -183,38 +185,68 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           </div>
         </body>
         </html>
-      `);
+      `, {
+        status: 200,
+        headers: {
+          'Content-Type': 'text/html',
+          'Access-Control-Allow-Origin': '*',
+        },
+      });
     }
 
     try {
       const html = renderTemplate(template);
-      res.setHeader('Content-Type', 'text/html');
-      return res.status(200).send(html);
+      return new Response(html, {
+        status: 200,
+        headers: {
+          'Content-Type': 'text/html',
+          'Access-Control-Allow-Origin': '*',
+        },
+      });
     } catch (error) {
-      return res.status(400).json({
+      return new Response(JSON.stringify({
         error: 'Invalid template',
         message: error instanceof Error ? error.message : 'Unknown error',
         availableTemplates: ['welcome', 'payment-confirmation', 'renewal-reminder'],
+      }), {
+        status: 400,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
       });
     }
   }
 
   // POST - Send test email
   if (req.method === 'POST') {
-    const { template: postTemplate, to } = req.body;
+    const body = await req.json();
+    const { template: postTemplate, to } = body;
 
     if (!postTemplate || !to) {
-      return res.status(400).json({
+      return new Response(JSON.stringify({
         error: 'Missing required fields',
         required: ['template', 'to'],
         availableTemplates: ['welcome', 'payment-confirmation', 'renewal-reminder'],
+      }), {
+        status: 400,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
       });
     }
 
     if (!process.env.RESEND_API_KEY) {
-      return res.status(500).json({
+      return new Response(JSON.stringify({
         error: 'RESEND_API_KEY not configured',
         message: 'Set RESEND_API_KEY in your environment variables',
+      }), {
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
       });
     }
 
@@ -229,22 +261,40 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         html,
       });
 
-      return res.status(200).json({
+      return new Response(JSON.stringify({
         success: true,
         message: 'Test email sent successfully',
         template: postTemplate,
         to,
-        messageId: data.id,
+        messageId: data.data?.id || data.id || 'unknown',
+      }), {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
       });
     } catch (error) {
       console.error('Error sending test email:', error);
-      return res.status(500).json({
+      return new Response(JSON.stringify({
         error: 'Failed to send test email',
         message: error instanceof Error ? error.message : 'Unknown error',
+      }), {
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
       });
     }
   }
 
-  return res.status(405).json({ error: 'Method not allowed' });
+  return new Response(JSON.stringify({ error: 'Method not allowed' }), {
+    status: 405,
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+    },
+  });
 }
 

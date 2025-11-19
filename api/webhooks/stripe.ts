@@ -1,8 +1,6 @@
-import { buffer } from 'micro';
 import Stripe from 'stripe';
-import type { NextApiRequest, NextApiResponse } from 'next';
 import { createClient } from '@supabase/supabase-js';
-import { sendPaymentConfirmationEmail, sendRenewalReminderEmail } from '@/lib/email/send-email';
+import { sendPaymentConfirmationEmail, sendRenewalReminderEmail } from '../../src/lib/email/send-email.js';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2023-10-16',
@@ -16,20 +14,18 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_KEY! // Use service key for admin access
 );
 
-// Disable body parsing, need raw body for webhook verification
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: Request) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
+      status: 405,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 
-  const buf = await buffer(req);
-  const sig = req.headers['stripe-signature']!;
+  // Get raw body for Stripe webhook verification
+  const body = await req.arrayBuffer();
+  const buf = Buffer.from(body);
+  const sig = req.headers.get('stripe-signature')!;
 
   let event: Stripe.Event;
 
@@ -38,7 +34,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   } catch (err) {
     const error = err as Error;
     console.error('Webhook signature verification failed:', error.message);
-    return res.status(400).send(`Webhook Error: ${error.message}`);
+    return new Response(`Webhook Error: ${error.message}`, {
+      status: 400,
+    });
   }
 
   console.log('Received webhook event:', event.type);
@@ -128,9 +126,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         console.log(`Unhandled event type: ${event.type}`);
     }
 
-    res.status(200).json({ received: true });
+    return new Response(JSON.stringify({ received: true }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
   } catch (error) {
     console.error('Error processing webhook:', error);
-    res.status(500).json({ error: 'Webhook processing failed' });
+    return new Response(JSON.stringify({ error: 'Webhook processing failed' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 }

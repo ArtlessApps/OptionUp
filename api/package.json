@@ -6,7 +6,9 @@
   "dependencies": {
     "stripe": "^14.0.0",
     "@supabase/supabase-js": "^2.78.0",
-    "micro": "^10.0.1"
+    "resend": "^6.4.2",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   }
 }
 
