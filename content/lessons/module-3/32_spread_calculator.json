@@ -56,9 +56,19 @@
       "screen_type": "interactive_example",
       "headline": "Your spread calculator",
       "description": "Build and analyze any spread with instant calculations",
+      "interactive_type": "spread_calculator",
       "inputs": [
         {
+          "label": "Stock Price Now",
+          "name": "Stock Price Now",
+          "type": "slider",
+          "min": 450,
+          "max": 600,
+          "value": 500
+        },
+        {
           "label": "Strategy Type",
+          "name": "Strategy Type",
           "type": "dropdown",
           "options": [
             "Bull Call Spread (Debit)",
@@ -70,22 +80,34 @@
         },
         {
           "label": "Long Strike",
-          "type": "number",
+          "name": "Long Strike",
+          "type": "slider",
+          "min": 450,
+          "max": 550,
           "value": 500
         },
         {
           "label": "Long Premium",
-          "type": "number",
+          "name": "Long Premium",
+          "type": "slider",
+          "min": 5,
+          "max": 50,
           "value": 25
         },
         {
           "label": "Short Strike",
-          "type": "number",
+          "name": "Short Strike",
+          "type": "slider",
+          "min": 500,
+          "max": 600,
           "value": 550
         },
         {
           "label": "Short Premium",
-          "type": "number",
+          "name": "Short Premium",
+          "type": "slider",
+          "min": 2,
+          "max": 30,
           "value": 10
         }
       ],

@@ -1,21 +1,28 @@
 # OptionUp Lessons - Review & Notes
 
-**Purpose:** This document contains all lesson content from the OptionUp course in an easy-to-read format for review and note-taking.
+**Purpose:** This document contains lesson content from the OptionUp course in an easy-to-read format for review and note-taking. Use this document to track your progress, take notes, and identify any discrepancies between the curriculum and this summary.
 
-**Total Lessons:** 86 lessons across 7 modules
-**Last Updated:** November 6, 2025
+**Total Lessons:** 92 lessons across 7 modules
+**Last Updated:** [Update this date as you review lessons]
+
+**How to Use This Document:**
+- Review each lesson in the curriculum
+- Compare the content with what's listed here
+- Add your notes in the 📝 NOTES section for each lesson
+- Mark any discrepancies or changes needed
+- Update the "Last Updated" date as you progress
 
 ---
 
 ## TABLE OF CONTENTS
 
-- [Module 1: Options Fundamentals](#module-1-options-fundamentals) (Lessons 1-15)
-- [Module 2: Income Strategies](#module-2-income-strategies) (Lessons 16-27)
-- [Module 3: Spreads & Advanced](#module-3-spreads--advanced) (Lessons 28-42)
-- [Module 4: Neutral Strategies](#module-4-neutral-strategies) (Lessons 43-54)
-- [Module 5: The Greeks](#module-5-the-greeks) (Lessons 55-64)
-- [Module 6: Risk Management & Taxes](#module-6-risk-management--taxes) (Lessons 65-76)
-- [Module 7: Real Trades & Next Steps](#module-7-real-trades--next-steps) (Lessons 77-86)
+- [Module 1: Options Fundamentals](#module-1-options-fundamentals) (Lessons 1-15, 15a) - 18 lessons total
+- [Module 2: Income Strategies](#module-2-income-strategies) (Lessons 16-27, 21a, 27a) - 14 lessons total
+- [Module 3: Spreads & Advanced](#module-3-spreads--advanced) (Lessons 28-42, 41a) - 15 lessons total
+- [Module 4: Neutral Strategies](#module-4-neutral-strategies) (Lessons 43-54) - 12 lessons
+- [Module 5: The Greeks](#module-5-the-greeks) (Lessons 55-64) - 10 lessons
+- [Module 6: Risk Management & Taxes](#module-6-risk-management--taxes) (Lessons 65-76) - 12 lessons
+- [Module 7: Real Trades & Next Steps](#module-7-real-trades--next-steps) (Lessons 77-86, 85a) - 11 lessons total
 
 ---
 
@@ -37,9 +44,11 @@
 - Max loss for option buyers = premium paid (defined risk)
 
 **Analogy:** Like a house deposit - pay $5k to lock in $400k price for 90 days
-- House value rises: Exercise right, profit
-- House value drops: Walk away, lose only deposit
-- Deposit = premium, Locked price = strike, 90 days = expiration
+
+**During those 90 days:**
+- **House value rises to $450,000:** You exercise your right to buy at $400,000. You just made $50,000 (minus your $5,000 deposit).
+- **House value drops to $350,000:** You walk away. You lose your $5,000 deposit, but you didn't buy an overpriced house. Smart move.
+- **This is exactly how options work:** The deposit = premium. The locked-in price = strike price. The 90 days = expiration date.
 
 **Key Terms:**
 - **Premium:** Price you pay for the option (e.g., $3.50 × 100 = $350 total)
@@ -245,6 +254,70 @@
 
 ---
 
+### Lesson 07a: The Hidden Tax - Bid/Ask Spreads ⭐ NEW
+
+**Time:** 7 min | **XP:** 70 | **Badge:** 💸 Spread Saver
+
+**Key Concept:** The bid-ask spread is the "hidden tax" that can cost you 10-30% of your profits before the trade even moves
+
+**Hook:** You just lost $150 before the trade even moved - you bought an option for $2.20, instantly checked to sell it - only $1.80 offered. You lost $40 (18%) in 3 seconds. The stock didn't move. You just got hit by the hidden tax: the bid-ask spread.
+
+**Main Points:**
+- Every option has TWO prices: BID (where you sell) and ASK (where you buy)
+- SPREAD = Ask - Bid = the cost of trading
+- Market makers profit from this difference
+- Wide spreads = expensive trading (avoid >5% spreads)
+- Tight spreads = fair market (<5% is good)
+
+**Key Terms:**
+- **Bid Price:** The HIGHEST price buyers offer - where YOU sell
+- **Ask Price:** The LOWEST price sellers want - where YOU buy
+- **Spread:** The difference (Ask - Bid) = your cost to trade
+- **Slippage:** Loss due to buying at ask and selling at bid
+
+**Real Example:**
+- Bid $4.90, Ask $5.10 = $0.20 spread (GOOD - only 2% slippage)
+- Bid $3.00, Ask $6.00 = $3 spread (TERRIBLE - 57% slippage!)
+
+**Rule:** Never trade options with >10% spreads. Target: <5% of option price.
+
+**📝 NOTES:**
+
+
+---
+
+### Lesson 07b: Order Types - Never Use Market Orders ⭐ NEW
+
+**Time:** 7 min | **XP:** 70 | **Badge:** 🎯 Order Master
+
+**Key Concept:** Market orders on options = financial suicide. ALWAYS use limit orders to protect yourself from spread exploitation.
+
+**Hook:** $500 order executed at $800 - what happened? You clicked 'Buy' on an option showing $5.00. Your order filled at $8.00. You overpaid $300 instantly because you used a MARKET ORDER on options.
+
+**Main Points:**
+- **MARKET ORDER** = "Buy/sell NOW at whatever price available" = dangerous for options
+- **LIMIT ORDER** = "Only buy/sell at this price or better" = protects you
+- On options with wide spreads, market orders = disaster
+- ALWAYS use limit orders for options. No exceptions.
+
+**Order Types:**
+- **Market Order:** Executes immediately at worst price (NEVER use for options)
+- **Limit Order:** Only executes at your specified price or better (ALWAYS use)
+- **Stop-Loss Order:** Triggers when price hits your stop (optional for options)
+- **Good-Til-Canceled (GTC):** Limit order stays active until filled or cancelled
+
+**Strategy:**
+- BUY: Start at midpoint, walk up to ask if needed (try mid, then mid+$0.10, then mid+$0.20)
+- SELL: Start at midpoint, walk down to bid if needed
+- Never accept ask/bid immediately - always try midpoint first!
+
+**Rule:** Even in emergencies (3:59pm expiration), use limit orders at bid/ask. Market orders = donating money to market makers.
+
+**📝 NOTES:**
+
+
+---
+
 ### Lesson 08: In the Money vs Out of the Money
 
 **Time:** 7 min | **XP:** 70 | **Badge:** 🎯 Moneyness Master
@@ -319,11 +392,11 @@
 
 ---
 
-### Lesson 10: Assignment & Exercise
+### Lesson 10: Assignment & Exercise ⭐ EXPANDED
 
-**Time:** 7 min | **XP:** 70 | **Badge:** 📬 Assignment Expert
+**Time:** 10 min | **XP:** 110 | **Badge:** 📬 Assignment Expert
 
-**Key Concept:** Friday 4pm - your broker just assigned you 100 shares you didn't plan to buy
+**Key Concept:** Friday 4pm - your broker just assigned you 100 shares you didn't plan to buy. PLUS: Early assignment can happen ANYTIME if you sold ITM options!
 
 **Definitions:**
 - **EXERCISE:** YOU decide to use your option (buy/sell shares at strike)
@@ -352,6 +425,27 @@ SELL the option before expiration for cash. Never exercise, never get assigned. 
 - If you don't have cash = on margin (borrowing) = paying interest
 
 **Pro Tip:** Always SELL options before expiration for cash, don't exercise
+
+**NEW: Early Assignment Risk - The Hidden Danger ⚠️**
+- **EARLY ASSIGNMENT** = getting assigned BEFORE expiration
+- Can happen ANYTIME if your sold option is ITM
+- Most common triggers: dividends (call sellers), deep ITM options, day before expiration
+- Beginners think "I'm safe until Friday" - WRONG!
+
+**When Assignment Happens:**
+- **CAN Happen (Possible):** Assignment CAN occur anytime your sold option is ITM
+- **WILL Happen (Certain):** Assignment WILL occur at expiration if ITM by $0.01+
+- **Dividend Risk (Calls):** Call options often exercised early BEFORE ex-dividend date
+- **Deep ITM Risk:** Deep ITM options (>$10 ITM) have higher early assignment risk
+
+**Critical Scenario:**
+- It's Thursday. Stock pays $2 dividend tomorrow (ex-div date)
+- You sold ITM covered calls
+- **HIGH RISK** - you'll likely be assigned tonight to capture dividend
+- You lose: 1) Your shares (assigned), 2) The dividend (buyer gets it)
+- **Solution:** Close ITM calls BEFORE ex-div date or accept early assignment
+
+**Rule:** Always close ITM options before ex-dividend dates. Monitor daily if deep ITM.
 
 **📝 NOTES:**
 
@@ -502,11 +596,11 @@ SELL the option before expiration for cash. Never exercise, never get assigned. 
 
 ---
 
-### Lesson 14: Choosing Expiration Dates
+### Lesson 14: Choosing Expiration Dates ⭐ EXPANDED
 
-**Time:** 8 min | **XP:** 80 | **Badge:** 📅 Expiration Expert
+**Time:** 11 min | **XP:** 110 | **Badge:** 📅 Expiration Expert
 
-**Key Concept:** Right prediction, wrong timing = $0
+**Key Concept:** Right prediction, wrong timing = $0. PLUS: The final 7 days are DANGEROUS - gamma explosion and theta acceleration!
 
 **Hook:** You predicted TSLA would hit $300. It did... 3 days after your options expired.
 
@@ -592,14 +686,54 @@ SELL the option before expiration for cash. Never exercise, never get assigned. 
 
 ---
 
+### Lesson 15a: Understanding Buying Power ⭐ NEW
+
+**Time:** 8 min | **XP:** 80 | **Badge:** 💪 Power Calculator
+
+**Key Concept:** $10K account ≠ 10 contracts. Each strategy requires different capital reserves. Understanding buying power prevents overleveraging and margin calls.
+
+**Hook:** $10K account ≠ 10 contracts. Here's why. You have $10,000. You try to sell 10 cash-secured puts at $100 strike. Your broker rejects it: "Insufficient buying power." But 10 × $100 = $1,000... right? Wrong. Each CSP requires $10,000 reserved. You can sell ONE contract, not ten.
+
+**Main Points:**
+- **BUYING POWER** = the capital your broker RESERVES for each position
+- Not the same as your account balance
+- BUYING options = pay premium (small)
+- SELLING options = tie up capital (large)
+- Each strategy has different requirements
+
+**Buying Power Requirements:**
+- **Buying options:** Just premium ($200-500)
+- **Cash-Secured Puts:** Strike × 100 ($5,000-10,000 per contract)
+- **Covered Calls:** Must own 100 shares (no additional cash)
+- **Spreads:** Width of spread × 100 ($500-1,000)
+
+**Example:**
+- $25,000 account
+- Want to sell $50 CSPs
+- Each requires $5,000 reserved
+- Max contracts: $25,000 ÷ $5,000 = 5 contracts
+- **But don't max out!** Use only 3-4 (leave 20-30% cushion)
+
+**The 30% Cushion Rule:**
+- Never max out buying power
+- Leave 20-30% available for: rolling positions, new opportunities, margin requirement changes, emergency exits
+- Maxed out = trapped, can't maneuver
+
+**Rule:** Always keep 20-30% buying power available. Flexibility = survival in options trading!
+
+**📝 NOTES:**
+
+
+---
+
 ## MODULE 2: INCOME STRATEGIES
 *Goal: Generate consistent income from stocks you own or want to own*
 
-### Lesson 16: Covered Call Basics
+### Lesson 16: Covered Call Basics ⭐ EXPANDED
 
-**Time:** 8 min | **XP:** 80 | **Badge:** 🏠 Landlord
+**Time:** 11 min | **XP:** 110 | **Badge:** 🏠 Landlord
 
-**Key Concept:** Collect "rent" ($350/month) from stocks you already own
+**Key Concept:** Collect "rent" ($350/month) from stocks you already own. PLUS: Watch out for dividends - early assignment risk!
 
 **Hook:** Want to collect $350 every month from stocks you already own?
 
@@ -857,6 +991,38 @@ Months 5-6: Sold covered calls, collected $1,400 more
 - Far OTM Calls (10%): $9,290 (25.4%)
 
 **Lesson:** Match strategy to outlook. Bullish? Go far OTM or skip calls. Neutral? ATM/slight OTM.
+
+**📝 NOTES:**
+
+
+---
+
+### Lesson 21a: Choosing Your Trading Platform ⭐ NEW
+
+**Time:** 9 min | **XP:** 90 | **Badge:** 🏦 Platform Pro
+
+**Key Concept:** Not all brokers are equal for options. Choose wrong = can't execute strategies you learned. Choose right = smooth trading experience.
+
+**Hook:** You finished the course... but your broker won't let you trade spreads. Imagine learning 50 lessons, ready to execute your first iron condor, and your broker says "Options Level 1 account - spreads not approved." This happens to THOUSANDS of beginners.
+
+**Main Points:**
+- **Options Approval Levels (1-5):** Level 1 = Covered calls only. Level 2 = Buying options. Level 3 = Spreads. Level 4 = Naked puts. Level 5 = Naked calls
+- **Commission Structure:** Per-contract fee ($0-0.65/contract). 10 contracts = $0-13 round trip
+- **Pattern Day Trader (PDT) Rule:** <$25K account = limited to 3 day trades per 5 days
+- **Assignment Handling:** Some brokers auto-close ITM options at 3pm Friday. Others let them expire. Know your broker's policy!
+
+**Best Brokers for Beginners:**
+- **Webull or Charles Schwab:** $0 commissions, Level 2-3 approval, mobile-friendly, good customer service
+- **TD Ameritrade:** Professional platform but $0.65/contract (adds up for active traders)
+- **Interactive Brokers:** Lowest costs but steep learning curve
+- **Robinhood:** Simplest interface but limited features, slow approvals
+
+**Broker Comparison:**
+- Commission: Webull/Schwab ($0) vs TD/IB ($0.65/contract)
+- Approval Speed: Webull/Schwab (1-3 days) vs TD (instant for qualified)
+- Platform Quality: TD (best) vs Webull (good) vs Robinhood (basic)
+
+**Rule:** Start with Webull or Schwab. Request Level 2-3 approval. Upgrade to TD/IB later if you trade 500+ contracts/month.
 
 **📝 NOTES:**
 
@@ -1191,6 +1357,44 @@ Months 7-9: Back to CSPs, collected $1,800
 
 ---
 
+### Lesson 27a: Rolling - Extend Your Winning Trades ⭐ NEW
+
+**Time:** 9 min | **XP:** 90 | **Badge:** 🔄 Roll Master
+
+**Key Concept:** Instead of getting assigned, collect $150 MORE premium. Rolling = close current option + open new one (different strike/date) in ONE transaction.
+
+**Hook:** Your covered call is about to be assigned - stock hit your strike. Option #1: Let shares get called away. Option #2: ROLL the call up and out, keep your shares, collect MORE premium. This is how pros manage positions.
+
+**Main Points:**
+- **ROLLING** = Close your current option position + Simultaneously open a new one at different strike/date
+- **Roll UP** = higher strike (covered calls) - keep shares longer, collect more premium
+- **Roll OUT** = later expiration - buy more time, extend the trade
+- **Roll for CREDIT** = you RECEIVE money when rolling (always aim for this!)
+- **Roll for DEBIT** = you PAY money when rolling (sometimes necessary to save a position)
+
+**When to Roll:**
+- Covered calls: Want to keep shares long-term, dividend coming, stock in strong uptrend
+- CSPs: Still bullish but need more time, temporary dip not thesis-break
+- Can roll for credit or small debit
+- Thesis still intact
+
+**When NOT to Roll:**
+- Down 50%+ with broken thesis (accept loss, don't hope-trade)
+- Rolling repeatedly for debit (death spiral)
+- Just hoping for recovery (cut losses)
+
+**Example:**
+- Sold AAPL $180 Feb call for $3. AAPL now $185, call worth $7. Expiration in 3 days
+- Close $180 call (pay $7), sell $190 March call (collect $9) = $2 credit ($200 received)
+- You keep shares, collect more premium, assignment happens at $190 instead of $180
+
+**Rule:** Only roll if thesis INTACT. Rolling is NOT for avoiding reality - it's for managing good positions that need more time.
+
+**📝 NOTES:**
+
+
+---
+
 ## MODULE 3: SPREADS & ADVANCED
 *Goal: Learn how to combine options for defined risk/reward profiles*
 
@@ -1247,6 +1451,44 @@ Months 7-9: Back to CSPs, collected $1,800
 ### Lesson 41: Poor Man's Covered Call
 - Using LEAPS instead of owning stock
 - Lower capital requirement
+
+### Lesson 41a: Synthetic Positions - Creating Stock from Options ⭐ NEW
+
+**Time:** 8 min | **XP:** 80 | **Badge:** 🧪 Synthetic Scientist
+
+**Key Concept:** You can own TSLA without buying shares. Long call + Short put = Owning stock. Same profit/loss profile, but built with options.
+
+**Hook:** What if I told you: Long call + Short put = Owning stock? Same profit/loss profile, same risk, but built with options. This is synthetic positions - recreating stock exposure using only options.
+
+**Main Points:**
+- **SYNTHETIC** = Using options to replicate stock positions
+- **Synthetic Long Stock:** Buy ATM call + Sell ATM put = same as owning 100 shares
+- **Synthetic Short Stock:** Buy ATM put + Sell ATM call = same as shorting 100 shares
+- **Put-Call Parity:** Theoretical relationship showing calls and puts are interconnected
+- Retail rarely uses this (more complex, assignment risk, commissions)
+
+**Why Learn Synthetics?**
+- Understanding them reveals: options are INTERCONNECTED
+- A call isn't independent of a put - they're mathematically linked
+- Helps you understand pricing, see arbitrage opportunities
+- Think like a market maker
+
+**Example:**
+- Stock $100. Buy $100 call + Sell $100 put = profit/loss identical to owning stock
+- Stock goes to $110 = you profit $1,000 either way
+- Stock goes to $90 = you lose $1,000 either way
+
+**Should You Use Synthetics?**
+- Probably not. More complex, assignment risk, margin requirements, commissions
+- Just buy/short stock directly 99% of the time
+- Synthetics = theoretical knowledge > practical strategy for retail traders
+
+**Rule:** Synthetics = cool to understand, rarely used in practice. But understanding them helps you think about options correctly!
+
+**📝 NOTES:**
+
+
+---
 
 ### Lesson 42: When NOT to Trade
 - Recognizing bad setups
@@ -1448,9 +1690,120 @@ Months 7-9: Back to CSPs, collected $1,800
 - How to track your trades
 - Learning from history
 
-### Lesson 86: Next Steps and Resources
-- Where to go from here
-- Continuing education
+### Lesson 85a: Paper Trading Mastery ⭐ NEW
+
+**Time:** 9 min | **XP:** 90 | **Badge:** 📝 Practice Pro
+
+**Key Concept:** Pro athletes practice. So should you. Paper trading = practice with fake money, real prices, zero risk. Complete 30+ trades over 30+ days before risking real money.
+
+**Hook:** You wouldn't step onto an NFL field without practice. You wouldn't perform surgery without residency. Yet traders blow up $10,000 accounts without practicing once. Paper trading = practice with fake money, real prices, zero risk.
+
+**Main Points:**
+- **PAPER TRADING** = simulated trading with fake money but real market prices
+- Best platforms: ThinkorSwim (TD), TradeStation, TastyTrade, Webull
+- Goal: Complete 30+ trades over 30+ days before risking real money
+- Prove your edge in simulation before betting real capital
+
+**Paper Trading Essentials:**
+- **Simulated Account:** Fake money account that mirrors real trading ($100K fake money)
+- **Real-Time Data:** Uses actual market prices (not fake data)
+- **30-Day Minimum Rule:** Trade paper account for at least 30 days to see multiple market conditions
+- **Graduation Criteria:** 30+ trades, 30+ days, net positive results, followed your rules 90%+ of time
+
+**Graduation Checklist:**
+- ✅ 30+ trades executed
+- ✅ 30+ days elapsed
+- ✅ Net positive results
+- ✅ Followed plan 90%+ of time
+- ✅ Journaled every trade
+- ✅ Comfortable with platform
+
+**Biggest Mistake:**
+- Not taking it seriously (YOLO trades because "it's fake")
+- Paper trading MUST mimic reality: same position sizes, same strategies, same discipline
+- Treat fake money like real money or you're wasting time!
+
+**After Paper Success:**
+- Start with 1 contract real money
+- After 10-20 successful real trades, increase to 2 contracts
+- Scale up gradually every 20 trades
+- Take 3-6 months to reach full size
+
+**Rule:** Paper trading = dress rehearsal, not playground. Trade exactly as you'll trade real account!
+
+**📝 NOTES:**
+
+
+---
+
+### Lesson 86: Next Steps and Resources ⭐ EXPANDED
+
+**Time:** 12 min | **XP:** 120 | **Badge:** 🎓 OPTIONS GRADUATE
+
+**Key Concept:** You've completed all 92 lessons - from beginner to advanced trader! Now: the 10-point checklist to know if you're ready for real money.
+
+**Congratulations:** You've completed all 92 lessons - from beginner to advanced trader! Top 1% knowledge level—now build discipline through practice!
+
+**The Harsh Reality:**
+- You have knowledge, not yet proof of profitability
+- Discipline, emotions, and risk management determine success
+- Knowledge alone doesn't make money - practice does
+
+**Ready to Trade REAL Money? (The 10-Point Checklist) ⚠️**
+
+1. **✅ Knowledge:** Completed all 92 lessons - understand options mechanics, Greeks, strategies, risk management, taxes
+2. **✅ Practice:** 30+ paper trades over 30+ days - see different market conditions (up days, down days, choppy markets)
+3. **✅ Results:** Net positive paper trading P/L - proven edge in simulation
+4. **✅ Discipline:** Followed trading plan 90%+ of time - can stick to rules even when emotions say otherwise
+5. **✅ Plan:** Written trading plan with specific entry/exit rules - clear rules for what to trade, position sizing, max risk
+6. **✅ Journal:** Logged every paper trade with notes - data-driven approach, learning from wins AND losses
+7. **✅ Platform:** Approved for strategies you'll use (Level 2-3) - broker account ready, familiar with platform
+8. **✅ Capital:** 3-6 months emergency fund SEPARATE from trading - only trade with risk capital you can afford to lose
+9. **✅ Psychology:** Can explain every position to a friend - no mystery trades, no FOMO, no hope-trading
+10. **✅ Acceptance:** Understand risk of total loss + ready to start SMALL - starting with 1 contract, scaling up gradually
+
+**ALL 10 Required!** Missing ANY box = not ready. This isn't school where 80% passes. Real money = real consequences.
+
+**How to Start Trading Real Money:**
+- Start with 1 contract (minimum size)
+- After 10-20 successful real trades, increase to 2 contracts
+- Scale up gradually every 20 trades
+- Take 3-6 months to reach full size
+- Real money feels different - prove you can handle emotions before scaling!
+
+**6-Month Roadmap:**
+- Months 1–2: Paper trade 20+ rule‑based trades
+- Month 3: 25% size real money
+- Months 4–5: Scale if profitable; otherwise back to paper
+- Month 6: Full size only if consistent (≥60% win)
+
+**Realistic Expectations:**
+- Yr1: 0–10%
+- Yr2: 10–20%
+- Yr3+: 15–30%
+- Top 1%: 30–50% (rare)
+- Avoid get‑rich‑quick promises
+
+**Resources:**
+- Free: Options Alpha podcast, Tastytrade education, CBOE Learning Center, r/options, Project Option YouTube
+- Paid: Options Alpha, Market Chameleon, OptionNET Explorer, ORATS, Larry McMillan materials
+- Books: Natenberg, Overby, McMillan, Passarelli
+
+**Final Words:**
+- Start small. Follow your plan. Journal everything.
+- Options trading is a skill—requires years of practice.
+- Discipline is the differentiator.
+- Some will win, some will lose—all outcomes are okay.
+- Survive first: manage risk above profits.
+- Welcome to the arena.
+
+**Your Final 7‑Day Challenge:**
+- Day 1: Download plan & journal templates
+- Days 2–3: Write plan; review with accountability partner
+- Day 4: Open paper account
+- Days 5–7: Place 3 paper trades; journal each
+
+**📝 NOTES:**
 
 **📝 MODULE 7 NOTES:**
 

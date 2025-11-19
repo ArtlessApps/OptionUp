@@ -1,8 +1,8 @@
 {
   "lesson_id": "covered_call_basics",
   "title": "What is a Covered Call?",
-  "estimated_time": "8 min",
-  "total_xp": 80,
+  "estimated_time": "11 min",
+  "total_xp": 110,
   "badge": "🏠 Landlord",
   "screens": [
     {
@@ -169,6 +169,134 @@
       ]
     },
     {
+      "screen_type": "definition",
+      "headline": "Dividends & Early Assignment - CRITICAL Risk",
+      "text": "If your stock pays dividends and your sold call is ITM near ex-dividend date, you face HIGH early assignment risk. Call buyers exercise the night BEFORE ex-div to capture the dividend. You lose: 1) Your shares (assigned), 2) The dividend (buyer gets it). This is the #1 covered call mistake. Always close ITM calls before ex-div dates!",
+      "visual": "💰⚠️",
+      "highlight_words": ["dividends", "ITM", "ex-dividend date", "HIGH early assignment", "close before ex-div"]
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "Dividend Terms for Covered Calls",
+      "cards": [
+        {
+          "term": "Ex-Dividend Date",
+          "definition": "The cutoff date to receive the dividend. Own stock BEFORE this date = get dividend",
+          "example": "Ex-div Friday. Own stock Thursday night = get dividend. Buy Friday = no dividend. Options buyers know this!"
+        },
+        {
+          "term": "Early Assignment Risk (Dividends)",
+          "definition": "ITM call buyers exercise night before ex-div to capture dividend",
+          "example": "Stock pays $0.50 dividend tomorrow. Your $180 call ITM at $182. Buyer exercises tonight, captures $50 dividend, you lose stock + dividend."
+        },
+        {
+          "term": "Dividend Capture Strategy",
+          "definition": "Hold stock for dividend, THEN sell covered call after ex-div date",
+          "example": "Own JEPI (pays $0.50 monthly). Wait for ex-div date, collect dividend, THEN sell calls. You keep dividend + premium!"
+        },
+        {
+          "term": "Dividend-Adjusted Strikes",
+          "definition": "Option prices drop by ~dividend amount on ex-div date",
+          "example": "Stock $100, pays $1 dividend. After ex-div, stock opens $99, calls drop ~$1. This is normal, expected."
+        }
+      ]
+    },
+    {
+      "screen_type": "scenario",
+      "question": "You sold $180 covered calls on AAPL. Stock is $183 (ITM). Ex-dividend date is tomorrow ($0.25 dividend). What's your risk?",
+      "options": [
+        "No risk - expiration is 2 weeks away",
+        "HIGH RISK - likely assigned tonight, lose stock + dividend",
+        "Low risk - $0.25 dividend is too small to matter",
+        "Medium risk - 50/50 chance"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "CRITICAL awareness! Call buyer thinks: 'Exercise tonight, capture $25 dividend tomorrow, vs wait 2 weeks.' They exercise. You wake up: shares gone, no dividend. ALWAYS close ITM calls 1-2 days before ex-div date. $25 dividend may seem small, but losing it + shares = bad outcome!",
+      "explanation_wrong": "This is THE most common early assignment trigger! Even small dividends ($0.25) incentivize early exercise. Buyer captures $25 dividend by exercising. You lose shares + dividend. Rule: Close ITM covered calls 1-2 days before ex-dividend date. Non-negotiable!"
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "Best covered call strategy for dividend stocks (like JEPI, SCHD)?",
+      "options": [
+        "Sell calls anytime - dividends don't matter",
+        "Never sell calls on dividend stocks",
+        "Wait until AFTER ex-div date, collect dividend, THEN sell calls",
+        "Sell calls only far OTM (>10%)"
+      ],
+      "correct": 2,
+      "xp_reward": 15,
+      "explanation_correct": "Perfect strategy! Timeline: 1) Hold stock through ex-div date → collect dividend, 2) Next day, sell covered calls → collect premium, 3) Both dividends + premiums = double income! Never sell ITM calls before ex-div on dividend stocks - you'll lose both income streams!",
+      "explanation_wrong": "Smart dividend strategy: Own stock → Collect dividend (ex-div date) → THEN sell calls. This way you get BOTH dividend income AND premium income. Selling calls BEFORE ex-div = risk early assignment = you lose dividend. Timing matters!"
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "Dividend + Covered Call Calculator",
+      "description": "See the impact of dividends on your covered call strategy",
+      "inputs": [
+        {
+          "label": "Stock Price",
+          "value": 50,
+          "locked": true
+        },
+        {
+          "label": "Your Call Strike",
+          "type": "slider",
+          "min": 48,
+          "max": 55,
+          "value": 52,
+          "step": 1
+        },
+        {
+          "label": "Quarterly Dividend",
+          "type": "slider",
+          "min": 0,
+          "max": 2,
+          "value": 0.50,
+          "step": 0.25,
+          "note": "$ per share"
+        },
+        {
+          "label": "Premium Collected",
+          "value": 2.00,
+          "locked": true,
+          "note": "Per share"
+        },
+        {
+          "label": "Days Until Ex-Div Date",
+          "type": "slider",
+          "min": 0,
+          "max": 30,
+          "value": 2,
+          "step": 1
+        }
+      ],
+      "outputs": [
+        {
+          "label": "Early Assignment Risk",
+          "calculation": "(strike <= stock_price && days_to_exdiv <= 3 && dividend > 0) ? '🔴 VERY HIGH - Close call NOW!' : (strike <= stock_price && days_to_exdiv <= 7) ? '🟡 MEDIUM - Monitor closely' : '🟢 LOW - Safe for now'",
+          "highlight": true
+        },
+        {
+          "label": "If Assigned Before Ex-Div",
+          "calculation": "(premium * 100) + ' premium - ' + (dividend * 100) + ' lost dividend = $' + ((premium - dividend) * 100) + ' net'"
+        },
+        {
+          "label": "If You Kept Shares Through Ex-Div",
+          "calculation": "'$' + (dividend * 100) + ' dividend + $' + (premium * 100) + ' premium = $' + ((dividend + premium) * 100) + ' total'"
+        },
+        {
+          "label": "Best Strategy",
+          "calculation": "(days_to_exdiv <= 3 && strike <= stock_price) ? 'CLOSE call, keep dividend, sell new call after ex-div' : 'Current position OK, monitor daily'"
+        }
+      ],
+      "teaching_points": [
+        "Try: Strike $52 (ITM), 2 days to ex-div = HIGH RISK!",
+        "Try: $0.50 dividend vs $2.00 dividend - see risk difference",
+        "Try: Strike $55 (OTM) = LOW risk even near ex-div"
+      ]
+    },
+    {
       "screen_type": "summary_cards",
       "headline": "Lock These In 🔒",
       "cards": [
@@ -181,6 +309,10 @@
           "back": "Generate INCOME from stocks you already own. Keep premium whether stock goes up, down, or sideways."
         },
         {
+          "front": "Dividend stocks - what's the risk?",
+          "back": "If your sold call is ITM near ex-dividend date = HIGH early assignment risk! Buyer exercises to capture dividend. You lose shares + dividend. ALWAYS close ITM calls 1-2 days before ex-div!"
+        },
+        {
           "front": "Main risk?",
           "back": "Stock crashes - you lose on the shares (premium only provides small cushion). Also miss out if stock moons past your strike."
         }
@@ -188,10 +320,10 @@
     },
     {
       "screen_type": "celebration",
-      "xp_earned": 80,
-      "total_xp": 80,
+      "xp_earned": 110,
+      "total_xp": 1630,
       "badge": "🏠 Landlord",
-      "badge_description": "You understand covered calls - the foundation of income trading",
+      "badge_description": "You understand covered calls AND dividend risks!",
       "streak_bonus": false,
       "next_lesson_preview": {
         "title": "Covered Call Calculator",

@@ -1,0 +1,207 @@
+{
+  "lesson_id": "bid-ask-spread-hidden-tax",
+  "title": "The Hidden Tax - Bid/Ask Spreads",
+  "estimated_time": "7 min",
+  "total_xp": 70,
+  "badge": "💸 Spread Saver",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "💸🚨",
+      "headline": "You just lost $150 before the trade even moved",
+      "text": "You bought an option for $2.20. Instantly checked to sell it - only $1.80 offered. You lost $40 (18%) in 3 seconds. The stock didn't move. The market didn't crash. You just got hit by the hidden tax: the bid-ask spread."
+    },
+    {
+      "screen_type": "definition",
+      "headline": "Bid, Ask, and the Spread Between Them",
+      "text": "Every option has TWO prices. BID = what buyers will pay you (you sell here). ASK = what sellers want (you buy here). SPREAD = Ask - Bid = the cost of trading. Market makers profit from this difference. Wide spreads = expensive trading.",
+      "visual": "📊",
+      "highlight_words": ["BID", "ASK", "SPREAD", "Market makers", "cost of trading"]
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "3 Prices You Must Know",
+      "cards": [
+        {
+          "term": "Bid Price",
+          "definition": "The HIGHEST price buyers offer - where YOU sell",
+          "example": "Bid $4.90 means you sell for $4.90/share = $490 total"
+        },
+        {
+          "term": "Ask Price",
+          "definition": "The LOWEST price sellers want - where YOU buy",
+          "example": "Ask $5.10 means you pay $5.10/share = $510 total"
+        },
+        {
+          "term": "Spread",
+          "definition": "The difference (Ask - Bid) = your cost to trade",
+          "example": "$5.10 - $4.90 = $0.20 spread (4% slippage on midpoint)"
+        }
+      ]
+    },
+    {
+      "screen_type": "analogy",
+      "headline": "Think of it like a currency exchange",
+      "text": "You're at the airport exchanging dollars for euros. Two windows show different rates...",
+      "interactive": "tap_to_reveal",
+      "reveal_sections": [
+        {
+          "label": "Window A: Tight Spread (Bank)",
+          "content": "Buy euros at $1.08, sell euros at $1.06. Spread = $0.02 (2%). Fair deal - you lose 2% to exchange."
+        },
+        {
+          "label": "Window B: Wide Spread (Airport Kiosk)",
+          "content": "Buy euros at $1.20, sell at $0.90. Spread = $0.30 (29%!). Ripoff - you lose 29% instantly. Avoid!"
+        },
+        {
+          "label": "Options spreads work the same way",
+          "content": "Tight spread (<5%) = fair market. Wide spread (>10%) = you're getting robbed by market makers. Always check before buying!"
+        }
+      ]
+    },
+    {
+      "screen_type": "scenario",
+      "question": "An option shows: Bid $2.00, Ask $2.10, Mid $2.05. You buy at ask. Stock doesn't move. You immediately sell. How much did you lose?",
+      "options": [
+        "$0 - no loss if stock didn't move",
+        "$5 per contract ($0.05 × 100 shares)",
+        "$10 per contract ($0.10 × 100 shares)",
+        "$20 per contract ($0.20 × 100 shares)"
+      ],
+      "correct": 2,
+      "xp_reward": 15,
+      "explanation_correct": "Exactly! You bought at $2.10 (ask), sold at $2.00 (bid) = $0.10 loss per share × 100 shares = $10 loss per contract. This is slippage - the cost of the spread. On a $205 position, you lost $10 = 4.9% instantly. Always factor this in!",
+      "explanation_wrong": "You bought at ASK ($2.10) and sold at BID ($2.00). That's $0.10 difference × 100 shares = $10 per contract lost to the spread. The stock didn't move, but you paid the 'spread tax' twice (once buying, once selling)."
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "Which option is MORE liquid and safer to trade?",
+      "options": [
+        "Option A: Bid $3.00, Ask $6.00 (spread = $3.00)",
+        "Option B: Bid $4.90, Ask $5.10 (spread = $0.20)",
+        "Both are equally safe",
+        "Can't tell from spreads alone"
+      ],
+      "correct": 1,
+      "xp_reward": 10,
+      "explanation_correct": "Perfect! Option B has a $0.20 spread (4% on midpoint) = tight, liquid, fair market. Option A has $3 spread (67% on midpoint!) = illiquid nightmare. You'd lose $300 per contract just entering and exiting. ALWAYS choose tight spreads!",
+      "explanation_wrong": "Look at the spread as % of price. Option B: $0.20 spread on ~$5 = 4% (excellent). Option A: $3 spread on ~$4.50 = 67% (disaster!). Wide spreads destroy your profits before the trade even moves. Avoid Option A!"
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "Spread Impact Calculator",
+      "description": "See how spreads eat into your profits",
+      "inputs": [
+        {
+          "label": "Bid Price",
+          "type": "slider",
+          "min": 1.50,
+          "max": 3.00,
+          "value": 1.80,
+          "step": 0.10
+        },
+        {
+          "label": "Ask Price",
+          "type": "slider",
+          "min": 2.00,
+          "max": 4.00,
+          "value": 2.20,
+          "step": 0.10
+        }
+      ],
+      "outputs": [
+        {
+          "label": "Spread",
+          "calculation": "ask - bid",
+          "format": "currency"
+        },
+        {
+          "label": "Midpoint",
+          "calculation": "(ask + bid) / 2",
+          "format": "currency"
+        },
+        {
+          "label": "Spread as % of Midpoint",
+          "calculation": "((ask - bid) / ((ask + bid) / 2)) * 100",
+          "format": "percentage",
+          "highlight": true
+        },
+        {
+          "label": "Cost Per Contract (Round Trip)",
+          "calculation": "(ask - bid) * 100",
+          "format": "currency"
+        },
+        {
+          "label": "Verdict",
+          "calculation": "((ask - bid) / ((ask + bid) / 2)) * 100 < 5 ? '✅ GOOD - Trade it' : ((ask - bid) / ((ask + bid) / 2)) * 100 < 10 ? '⚠️ CAUTION - Acceptable if necessary' : '🚫 AVOID - Too wide'"
+        }
+      ],
+      "teaching_points": [
+        "Try: Bid $1.90, Ask $2.10 = 5% spread (borderline)",
+        "Try: Bid $1.50, Ask $2.50 = 29% spread (toxic!)",
+        "Rule: Never trade spreads >10% unless you have no choice"
+      ]
+    },
+    {
+      "screen_type": "scenario",
+      "question": "You found a perfect trade setup, but the bid is $2.00 and ask is $3.50. What should you do?",
+      "options": [
+        "Buy at ask anyway - the setup is perfect",
+        "Place limit order at midpoint ($2.75) and wait",
+        "Skip the trade - spread is too wide (43%)",
+        "Use a market order to guarantee execution"
+      ],
+      "correct": 2,
+      "xp_reward": 15,
+      "explanation_correct": "Smart discipline! $1.50 spread on $2.75 midpoint = 54% spread. You'd lose $150 per contract just trading in and out. Even if your thesis is right, the spread will eat your profits. NEVER trade options with >10% spreads. Find a more liquid alternative!",
+      "explanation_wrong": "Spread = $1.50 on ~$2.75 midpoint = 54%. That's TOXIC. Even if the stock moves perfectly for you, half your theoretical profit goes to the spread. No trade setup is worth a 54% entry tax. Walk away and find liquid options (SPY, QQQ, AAPL, TSLA)."
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "Where are the TIGHTEST spreads usually found?",
+      "options": [
+        "Far OTM weekly options on small-cap stocks",
+        "ATM monthly options on SPY, AAPL, MSFT",
+        "Deep ITM options on any stock",
+        "LEAPS on mid-cap stocks"
+      ],
+      "correct": 1,
+      "xp_reward": 10,
+      "explanation_correct": "Exactly! ATM options on mega-cap stocks (SPY, QQQ, AAPL, MSFT, TSLA, NVDA) have massive volume = tight spreads (often $0.01-0.05). Market makers compete for these trades. Monthly expirations are more liquid than weeklies. This is where beginners should trade!",
+      "explanation_wrong": "Liquidity follows volume. ATM options = most traders = tightest spreads. Mega-cap stocks = most traders = best liquidity. Monthly expirations = standard = most liquid. Far OTM and small caps = wide spreads = avoid until you're experienced."
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "Spread Survival Rules",
+      "cards": [
+        {
+          "front": "What's the bid-ask spread?",
+          "back": "The 'hidden tax' of options trading. BID = where you sell. ASK = where you buy. The difference is your cost to trade. Market makers profit from spreads."
+        },
+        {
+          "front": "What's an acceptable spread?",
+          "back": "Target: <5% of option price. Acceptable: <10% if necessary. AVOID: >10% (you're getting robbed). Calculate: (Ask-Bid) ÷ Midpoint × 100%."
+        },
+        {
+          "front": "How to avoid bad spreads?",
+          "back": "1) Trade mega-cap stocks (SPY, AAPL, MSFT). 2) Trade ATM or slightly OTM strikes. 3) Use monthly expirations. 4) Check spread BEFORE buying. 5) Use limit orders, never market orders!"
+        }
+      ]
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 70,
+      "total_xp": 430,
+      "badge": "💸 Spread Saver",
+      "badge_description": "You won't lose money to hidden spreads!",
+      "celebration_message": "You just learned the #1 cost that destroys beginner traders. Most never realize they're losing to spreads, not bad trades! 🎯",
+      "streak_bonus": false,
+      "next_lesson_preview": {
+        "title": "Order Types - Never Use Market Orders",
+        "description": "Learn how to control your entry price and avoid getting ripped off",
+        "unlock_status": "unlocked"
+      }
+    }
+  ]
+}
+

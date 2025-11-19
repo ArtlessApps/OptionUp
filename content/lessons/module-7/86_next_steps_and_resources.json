@@ -1,13 +1,97 @@
 {
   "lesson_id": "next-steps-and-resources",
   "title": "Next Steps & Resources (The Grand Finale)",
-  "estimated_time": "9 min",
-  "total_xp": 90,
+  "estimated_time": "12 min",
+  "total_xp": 120,
   "badge": "🎓 OPTIONS GRADUATE",
   "screens": [
-    {"screen_type": "celebration", "visual": "fireworks_confetti.png", "headline": "Congratulations!", "text": "You’ve completed all 86 lessons.", "xp_earned": 0, "total_xp": 0, "badge": "", "badge_description": "", "streak_bonus": false, "celebration_message": "Top 5% knowledge level—now build discipline."},
+    {"screen_type": "celebration", "visual": "fireworks_confetti.png", "headline": "Congratulations!", "text": "You've completed all 95 lessons - from beginner to advanced trader!", "xp_earned": 0, "total_xp": 0, "badge": "", "badge_description": "", "streak_bonus": false, "celebration_message": "Top 1% knowledge level—now build discipline through practice!"},
     {"screen_type": "definition", "headline": "The Harsh Reality", "text": "You have knowledge, not yet proof of profitability. Discipline, emotions, and risk management determine success.", "visual": "reality_check.png"},
     {"screen_type": "definition", "headline": "6‑Month Roadmap", "text": "Months 1–2: Paper trade 20+ rule‑based trades. Month 3: 25% size real money. Months 4–5: Scale if profitable; otherwise back to paper. Month 6: Full size only if consistent (≥60% win).", "visual": "roadmap_6mo.png"},
+    {
+      "screen_type": "key_terms",
+      "headline": "Ready to Trade REAL Money? (The 10-Point Checklist)",
+      "cards": [
+        {
+          "term": "✅ Knowledge: Completed all 95 lessons",
+          "definition": "You understand options mechanics, Greeks, strategies, risk management, taxes",
+          "example": "Can explain: bid-ask spreads, early assignment risk, gamma explosion, rolling positions, buying power requirements"
+        },
+        {
+          "term": "✅ Practice: 30+ paper trades over 30+ days",
+          "definition": "Minimum practice requirement to see different market conditions",
+          "example": "Traded through: up days, down days, choppy markets, high/low volatility. Tested your discipline over time."
+        },
+        {
+          "term": "✅ Results: Net positive paper trading P/L",
+          "definition": "Proven edge in simulation before risking real capital",
+          "example": "30 trades, 18 wins, 12 losses = 60% win rate, +$2,400 profit. OR 40% win rate but winners 3x bigger than losers."
+        },
+        {
+          "term": "✅ Discipline: Followed trading plan 90%+ of time",
+          "definition": "Can stick to your rules even when emotions say otherwise",
+          "example": "Didn't FOMO into trades outside plan. Took stop losses when triggered. Didn't overtrade after wins/losses."
+        },
+        {
+          "term": "✅ Plan: Written trading plan with specific entry/exit rules",
+          "definition": "Clear rules for: what to trade, position sizing, entry criteria, exit criteria, max risk per trade",
+          "example": "I sell 30-45 DTE CSPs on quality stocks, 5-8% OTM, max 3% account risk, close at 50% profit or -100% loss."
+        },
+        {
+          "term": "✅ Journal: Logged every paper trade with notes",
+          "definition": "Data-driven approach, learning from wins AND losses",
+          "example": "Each trade logged: strategy, entry/exit, P/L, what worked, what didn't, emotions felt, lessons learned."
+        },
+        {
+          "term": "✅ Platform: Approved for strategies you'll use (Level 2-3)",
+          "definition": "Broker account ready, options approval granted, familiar with platform",
+          "example": "TD Ameritrade Level 3 approved. Know how to: place limit orders, close spreads, roll positions, check buying power."
+        },
+        {
+          "term": "✅ Capital: 3-6 months emergency fund SEPARATE from trading",
+          "definition": "Only trade with risk capital you can afford to lose completely",
+          "example": "$25K trading account + $20K emergency fund in savings. Losing trading account won't affect rent, food, bills."
+        },
+        {
+          "term": "✅ Psychology: Can explain every position to a friend",
+          "definition": "No mystery trades, no FOMO, no hope-trading",
+          "example": "Why this trade? What's my thesis? Max risk? Max gain? Exit plan? If you can't explain it simply, don't trade it."
+        },
+        {
+          "term": "✅ Acceptance: Understand risk of total loss + ready to start SMALL",
+          "definition": "Starting with 1 contract, scaling up gradually over months",
+          "example": "First 10 trades = 1 contract max. After success, increase to 2 contracts. After 20 more trades, increase again. Patience!"
+        }
+      ]
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "You checked 8/10 boxes on the checklist. Should you start trading real money?",
+      "options": [
+        "Yes - 80% is passing grade!",
+        "No - need 10/10 before risking capital",
+        "Yes - the missing 2 don't matter",
+        "Maybe - depends which 2 are missing"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "ALL 10 required! Missing ANY box = not ready. This isn't school where 80% passes. Real money = real consequences. Each box protects you from specific failure mode. Missing 'Discipline'? You'll blow up account. Missing 'Emergency Fund'? One bad month forces panic selling. 10/10 or keep practicing!",
+      "explanation_wrong": "You need 10/10 - no exceptions. Each requirement protects against specific risks: Knowledge (bad trades), Practice (no experience), Results (no edge), Discipline (emotion trading), Plan (no rules), Journal (can't improve), Platform (can't execute), Capital (financial stress), Psychology (confusion), Acceptance (unrealistic expectations). Miss one = vulnerable!"
+    },
+    {
+      "screen_type": "scenario",
+      "question": "You hit 10/10 on checklist. How should you start trading real money?",
+      "options": [
+        "Jump to full position sizes - you're ready!",
+        "Start with 1 contract, prove you can handle emotions, scale slowly",
+        "Start with 50% of planned size",
+        "Wait another 30 days just to be safe"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "Perfect discipline! Paper trading success ≠ real money success. Emotions change EVERYTHING when it's real. Start 1 contract. After 10-20 successful real trades (following plan, managing emotions), increase to 2 contracts. Scale up every 20 trades. Take 3-6 months to reach full size. Patience = survival!",
+      "explanation_wrong": "Real money feels different - fear, greed, panic hit harder. Start with 1 contract minimum size. Prove you can handle real money psychology for 10-20 trades. THEN scale up slowly (2 contracts, then 3, then 4). Reaching full size should take 3-6 months. Rushing = common reason beginners blow up accounts!"
+    },
     {"screen_type": "definition", "headline": "Realistic Expectations", "text": "Yr1: 0–10%; Yr2: 10–20%; Yr3+: 15–30%. Top 1%: 30–50% (rare). Avoid get‑rich‑quick promises.", "visual": "expectations_curve.png"},
     {"screen_type": "key_terms", "headline": "What NOT to Do", "cards": [
       {"term": "Alert Services", "definition": "Most lose; you pay for their trades"},
@@ -21,7 +105,7 @@
     {"screen_type": "definition", "headline": "Final Words (1)", "text": "Start small. Follow your plan. Journal everything. Options trading is a skill—requires years of practice. Discipline is the differentiator.", "visual": "final_words_1.png"},
     {"screen_type": "definition", "headline": "Final Words (2)", "text": "Some will win, some will lose—all outcomes are okay. Survive first: manage risk above profits. Welcome to the arena.", "visual": "final_words_2.png"},
     {"screen_type": "definition", "headline": "Your Final 7‑Day Challenge", "text": "Day 1: Download plan & journal templates. Days 2–3: Write plan; review with accountability partner. Day 4: Open paper account. Days 5–7: Place 3 paper trades; journal each.", "visual": "challenge_checklist.png"},
-    {"screen_type": "celebration", "visual": "graduation_ceremony.png", "headline": "Graduation!", "text": "Claim your diploma and share your achievement.", "xp_earned": 90, "total_xp": 90, "badge": "🎓 OPTIONS GRADUATE", "badge_description": "Completed the full curriculum", "streak_bonus": true, "celebration_message": "Welcome to the 1% who finish.", "next_lesson_preview": {"title": "Return to Dashboard", "description": "Access templates and community", "unlock_status": "unlocked"}},
+    {"screen_type": "celebration", "visual": "graduation_ceremony.png", "headline": "Graduation!", "text": "Claim your diploma and share your achievement. You've mastered: options fundamentals, income strategies, spreads, neutral strategies, the Greeks, risk management, and real-world applications!", "xp_earned": 120, "total_xp": 8950, "badge": "🎓 OPTIONS GRADUATE", "badge_description": "Completed all 95 lessons - Elite trader knowledge!", "streak_bonus": true, "celebration_message": "Welcome to the 1% who finish. Now go practice - 30 paper trades await you!", "next_lesson_preview": {"title": "Return to Dashboard", "description": "Download trading plan & journal templates", "unlock_status": "unlocked"}},
     {"screen_type": "summary_cards", "headline": "The Last Line", "cards": [
       {"front": "Best time was years ago", "back": "Second best is today—go trade."}
     ]}

@@ -1,0 +1,1651 @@
+{
+  "module-1": [
+    {
+      "lesson_id": "options-vs-stocks",
+      "title": "Options vs Stocks",
+      "time": "6 min",
+      "xp": "",
+      "badge": "",
+      "hook": "Last month, NVDA moved 10%. Stock investors made $1,000. Options traders made $4,000. Same stock, same move, but 4x the returns. This is leverage - and it's not as scary as it sounds.",
+      "key_concept": "Control $10,000 of stock for just $200?",
+      "main_points": [
+        "An option is a CONTRACT that gives you the right (not obligation) to buy or sell 100 shares of stock at a specific price, by a specific date. Think of it as a coupon with an expiration date - you can "
+      ],
+      "key_terms": [
+        "Premium: The price you pay for the option contract",
+        "Strike Price: The price you can buy/sell the stock at",
+        "Expiration Date: When your option contract expires"
+      ],
+      "file": "01_options_vs_stocks.json"
+    },
+    {
+      "lesson_id": "calls-vs-puts",
+      "title": "Calls vs Puts (The Two Building Blocks)",
+      "time": "7 min",
+      "xp": "",
+      "badge": "",
+      "hook": "Stock investors pray for the market to go UP. Options traders can profit when it goes up OR down. You're about to learn both sides of the coin.",
+      "key_concept": "Stocks only make money one way. Options make money two ways.",
+      "main_points": [
+        "There are only TWO types of options. CALL = bet on price going UP. You're 'calling' the stock higher. PUT = bet on price going DOWN. You're 'putting' the stock lower. Every strategy uses these two bui"
+      ],
+      "key_terms": [
+        "CALL Option: Right to BUY stock at strike price",
+        "PUT Option: Right to SELL stock at strike price",
+        "How to remember: CALL = Bullish (price UP). PUT = Bearish (price DOWN)"
+      ],
+      "file": "02_calls_vs_puts.json"
+    },
+    {
+      "lesson_id": "strike-price-expiration",
+      "title": "Strike Price & Expiration (The Two Choices)",
+      "time": "7 min",
+      "xp": "",
+      "badge": "",
+      "hook": "When you buy a call or put, you must choose: WHAT price (strike) and by WHEN (expiration). Pick wrong, you lose money even if you're right about direction. Let's get this right.",
+      "key_concept": "Two decisions will make or break your trade",
+      "main_points": [
+        "The strike price is the price YOU choose where you want to buy (call) or sell (put) the stock. Higher strike = cheaper call but needs bigger move. Lower strike = more expensive call but easier to prof",
+        "Every option has an expiration date - usually a Friday. After 4pm ET that day, your option is worthless if not exercised. Short expiration = cheaper but risky (need quick moves). Long expiration = exp"
+      ],
+      "key_terms": [
+        "Weeklies: Options expiring this Friday or next",
+        "Monthlies: Options expiring 30-90 days out",
+        "LEAPS: Long-term options (1+ years out)"
+      ],
+      "file": "03_strike_price_expiration.json"
+    },
+    {
+      "lesson_id": "premium-intrinsic-time-value",
+      "title": "Premium: What You're Actually Paying For",
+      "time": "8 min",
+      "xp": "",
+      "badge": "",
+      "hook": "Even if the stock doesn't move. Even if you're right about direction. You're fighting a countdown clock called theta. Understanding what you're paying for is the difference between profit and pain.",
+      "key_concept": "Your option loses value every single day",
+      "main_points": [
+        "Every option premium has TWO parts. INTRINSIC = how much it's worth if you exercised right now. TIME = what you're paying for the possibility of bigger moves. Time value ALWAYS goes to zero at expirat"
+      ],
+      "key_terms": [
+        "Intrinsic Value: The option's value if exercised RIGHT NOW",
+        "Time Value: Premium you pay for the time left until expiration",
+        "Extrinsic Value: Another name for time value"
+      ],
+      "file": "04_premium_intrinsic_time_value.json"
+    },
+    {
+      "lesson_id": "profit-loss-diagram",
+      "title": "Your First Profit/Loss Diagram",
+      "time": "7 min",
+      "xp": "",
+      "badge": "",
+      "hook": "Professional traders look at P/L diagrams before EVERY trade. It shows max profit, max loss, and breakeven - instantly. If you can read this chart, you can trade options safely.",
+      "key_concept": "One chart shows your entire trade risk",
+      "main_points": [
+        "A P/L diagram is a visual chart showing your profit or loss at every possible stock price at expiration. The X-axis = stock price. The Y-axis = your profit/loss. One glance tells you everything you ne"
+      ],
+      "key_terms": [
+        "Breakeven Point: Stock price where you neither profit nor lose",
+        "Max Loss: The most you can lose on the trade",
+        "Max Profit: The most you can make (if there is a cap)"
+      ],
+      "file": "05_profit_loss_diagram.json"
+    },
+    {
+      "lesson_id": "buying-a-call",
+      "title": "Buying a Call (When/Why/How)",
+      "time": "8 min",
+      "xp": "",
+      "badge": "",
+      "hook": "Buying a call is the simplest bullish trade in options. When you think a stock will POP, this gives you leveraged upside with defined risk. Let's learn to do it right.",
+      "key_concept": "This is the trade beginners start with",
+      "main_points": [
+        "Buying a call = paying a premium for the RIGHT to buy 100 shares at your strike price by expiration. You profit when stock goes UP above your breakeven. Max loss = premium paid. Max profit = unlimited"
+      ],
+      "key_terms": [
+        "Long Call: When you BUY a call (you're 'long')",
+        "At-The-Money (ATM): Strike price equals current stock price",
+        "Out-of-The-Money (OTM): Strike price above current stock (for calls)"
+      ],
+      "file": "06_buying_a_call.json"
+    },
+    {
+      "lesson_id": "buying-a-put",
+      "title": "Buying a Put (Profiting from Drops)",
+      "time": "8 min",
+      "xp": "",
+      "badge": "",
+      "hook": "October 2022: Market drops 10%. Stock investors lose $10,000. Put buyers MAKE $15,000. Same market, opposite position. This is how you profit from fear.",
+      "key_concept": "Make money when stocks crash",
+      "main_points": [
+        "Buying a put = paying a premium for the RIGHT to sell 100 shares at your strike price by expiration. You profit when stock goes DOWN below your breakeven. Max loss = premium paid. Max profit = stock g"
+      ],
+      "key_terms": [
+        "Long Put: When you BUY a put (you're 'long')",
+        "Protective Put: Buying a put to protect stock you own",
+        "Out-of-The-Money Put (OTM): Strike price BELOW current stock price"
+      ],
+      "file": "07_buying_a_put.json"
+    },
+    {
+      "lesson_id": "bid-ask-spread-hidden-tax",
+      "title": "The Hidden Tax - Bid/Ask Spreads",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\ud83d\udcb8 Spread Saver",
+      "hook": "You bought an option for $2.20. Instantly checked to sell it - only $1.80 offered. You lost $40 (18%) in 3 seconds. The stock didn't move. The market didn't crash. You just got hit by the hidden tax: the bid-ask spread.",
+      "key_concept": "You just lost $150 before the trade even moved",
+      "main_points": [
+        "Every option has TWO prices. BID = what buyers will pay you (you sell here). ASK = what sellers want (you buy here). SPREAD = Ask - Bid = the cost of trading. Market makers profit from this difference"
+      ],
+      "key_terms": [
+        "Bid Price: The HIGHEST price buyers offer - where YOU sell",
+        "Ask Price: The LOWEST price sellers want - where YOU buy",
+        "Spread: The difference (Ask - Bid) = your cost to trade"
+      ],
+      "file": "07a_bid_ask_spread_hidden_tax.json"
+    },
+    {
+      "lesson_id": "order-types-never-market",
+      "title": "Order Types - Never Use Market Orders",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\ud83c\udfaf Order Master",
+      "hook": "You clicked 'Buy' on an option showing $5.00. Your order filled at $8.00. You overpaid $300 instantly because you used a MARKET ORDER on options. This is financial suicide. Let's make sure you never do this.",
+      "key_concept": "$500 order executed at $800 - what happened?",
+      "main_points": [
+        "MARKET ORDER = 'Buy/sell NOW at whatever price available' = dangerous for options. LIMIT ORDER = 'Only buy/sell at this price or better' = protects you. On options with wide spreads, market orders = d"
+      ],
+      "key_terms": [
+        "Market Order: Executes immediately at whatever price is available",
+        "Limit Order: Only executes at your specified price or better",
+        "Stop-Loss Order: Triggers market/limit order when price hits your stop"
+      ],
+      "file": "07b_order_types_never_market.json"
+    },
+    {
+      "lesson_id": "itm-vs-otm",
+      "title": "In the Money vs Out of the Money",
+      "time": "7 min",
+      "xp": "",
+      "badge": "",
+      "hook": "Two traders buy calls on the same stock. One is 'in the money' and safe. The other is 'out of the money' and needs a miracle. The difference? Just $5 in strike price. This matters more than you think.",
+      "key_concept": "This determines if your option has ANY value",
+      "main_points": [
+        "Every option is always in one of three states: IN THE MONEY (ITM) = has intrinsic value right now. AT THE MONEY (ATM) = strike equals stock price. OUT OF THE MONEY (OTM) = zero intrinsic value, needs "
+      ],
+      "key_terms": [
+        "In The Money (ITM): Option has intrinsic value if exercised now",
+        "At The Money (ATM): Strike price equals current stock price",
+        "Out of The Money (OTM): Option has zero intrinsic value, only time value"
+      ],
+      "file": "08_itm_vs_otm.json"
+    },
+    {
+      "lesson_id": "theta-decay",
+      "title": "Theta: Why Options Decay",
+      "time": "8 min",
+      "xp": "",
+      "badge": "",
+      "hook": "Stock doesn't move. Market closed. You did nothing. Yet your call drops from $500 to $450 overnight. This is theta decay - the silent killer of option buyers. Let's understand it so you can avoid it.",
+      "key_concept": "Your option loses $50 every single day",
+      "main_points": [
+        "Theta is the rate at which your option loses value as time passes. Every day closer to expiration = less time for the stock to move = lower time value. Theta accelerates in the final 30 days. At expir"
+      ],
+      "key_terms": [
+        "Theta: Daily rate of time decay (usually shown as negative)",
+        "30-Day Decay Acceleration: Time decay speeds up dramatically in final 30 days",
+        "Weekend Theta: Options decay over weekends even though market is closed"
+      ],
+      "file": "09_theta_decay.json"
+    },
+    {
+      "lesson_id": "assignment-exercise",
+      "title": "Assignment & Exercise (What Happens at Expiration)",
+      "time": "10 min",
+      "xp": 110,
+      "badge": "\ud83d\udcec Assignment Expert",
+      "hook": "You thought your option would just expire. Instead, you wake up Monday owning $25,000 of stock you didn't plan to buy. This happens to beginners who don't understand assignment. Let's make sure it never surprises you.",
+      "key_concept": "Friday 4pm: Your broker just assigned you 100 shares",
+      "main_points": [
+        "EXERCISE = YOU decide to use your option (buy or sell shares at strike). ASSIGNMENT = SOMEONE ELSE exercised and YOU'RE on the hook to deliver shares. Happens automatically if your option is ITM at ex",
+        "EARLY ASSIGNMENT = getting assigned BEFORE expiration. Can happen ANYTIME if your sold option is ITM. Most common triggers: dividends (call sellers), deep ITM options, day before expiration. Beginners"
+      ],
+      "key_terms": [
+        "Exercise: Using your option to buy/sell shares at strike price",
+        "Assignment: Being forced to fulfill the obligation of an option you SOLD",
+        "Automatic Exercise: Broker auto-exercises ITM options at expiration"
+      ],
+      "file": "10_assignment_exercise.json"
+    },
+    {
+      "lesson_id": "max-loss-max-gain",
+      "title": "Max Loss vs Max Gain (Risk Management 101)",
+      "time": "7 min",
+      "xp": "",
+      "badge": "",
+      "hook": "Professional rule: Never enter a trade without knowing your worst-case scenario. Beginners chase returns. Pros manage risk. Let's think like a pro.",
+      "key_concept": "Know your max loss BEFORE you click buy",
+      "main_points": [
+        "MAX LOSS = the MOST you can lose if everything goes wrong. For option buyers = premium paid (always defined). MAX GAIN = the MOST you can profit if everything goes right. For calls = unlimited. For pu"
+      ],
+      "key_terms": [
+        "Risk/Reward Ratio: How much you can make vs how much you risk",
+        "Defined Risk: Your loss is CAPPED at a specific dollar amount",
+        "Risk of Ruin: Betting too much on one trade can blow up your account"
+      ],
+      "file": "11_max_loss_max_gain.json"
+    },
+    {
+      "lesson_id": "position-sizing",
+      "title": "Position Sizing (How Much to Risk)",
+      "time": "8 min",
+      "xp": "",
+      "badge": "",
+      "hook": "The difference? Position sizing. Trader A risked 5% per trade. Trader B risked 50%. Both had winning strategies. Only one survived the losing streak. Math determines survival.",
+      "key_concept": "Same trade, two traders: One makes $50k, one loses everything",
+      "main_points": [
+        "Position sizing = calculating HOW MUCH money to risk on each trade based on your account size and risk tolerance. Formula: Position Size = (Account Size \u00d7 Risk %) \u00f7 Max Loss per Contract. Get this rig"
+      ],
+      "key_terms": [
+        "Risk Per Trade: Percentage of total account you're willing to lose on one trade",
+        "Kelly Criterion: Mathematical formula for optimal bet size",
+        "Overleveraging: Risking too much of your account on one or few trades"
+      ],
+      "file": "12_position_sizing.json"
+    },
+    {
+      "lesson_id": "liquidity-bid-ask",
+      "title": "Liquidity & Bid-Ask Spread",
+      "time": "7 min",
+      "xp": "",
+      "badge": "",
+      "hook": "You're trying to sell for $5. Bid is $2.50. Ask is $7.50. The spread is $5 - that's 100% of value! This is illiquid hell. Let's make sure you never get trapped.",
+      "key_concept": "Your option is up 200%... but nobody will buy it",
+      "main_points": [
+        "LIQUIDITY = how easily you can buy/sell an option without moving the price. HIGH LIQUIDITY = tight bid-ask spread ($0.05-0.10), instant fills. LOW LIQUIDITY = wide spread ($1+), hard to exit. BID = hi"
+      ],
+      "key_terms": [
+        "Bid-Ask Spread: Difference between bid (buy price) and ask (sell price)",
+        "Open Interest: Total number of outstanding option contracts",
+        "Slippage: Loss due to buying at ask and selling at bid"
+      ],
+      "file": "13_liquidity_bid_ask.json"
+    },
+    {
+      "lesson_id": "choosing-expiration-dates",
+      "title": "Choosing Expiration Dates",
+      "time": "11 min",
+      "xp": 110,
+      "badge": "\ud83d\udcc5 Expiration Expert",
+      "hook": "You predicted TSLA would hit $300. It did... 3 days after your options expired. You were RIGHT but made zero. Expiration selection isn't about predicting the future - it's about giving yourself time to BE right.",
+      "key_concept": "Right prediction, wrong timing = $0",
+      "main_points": [
+        "WEEKLIES = 0-14 days (high risk, theta acceleration). MONTHLIES = 30-90 days (balanced, most popular). QUARTERLIES = 90-120 days (slower pace). LEAPS = 12+ months (behaves like stock). Choose based on",
+        "0-7 DTE = Options go CRAZY. GAMMA EXPLOSION makes prices swing wildly. THETA ACCELERATION means you lose $100+/day. Professionals close most positions by 7 DTE despite remaining value. Why? The risk ("
+      ],
+      "key_terms": [
+        "Weekly Options (0-14 days): Short-term options, expire every Friday",
+        "Monthly Options (30-90 days): Standard options, third Friday of each month",
+        "LEAPS (1-2 years): Long-term options, January expirations"
+      ],
+      "file": "14_choosing_expiration_dates.json"
+    },
+    {
+      "lesson_id": "reading-options-chain",
+      "title": "Reading an Options Chain",
+      "time": "9 min",
+      "xp": "",
+      "badge": "",
+      "hook": "The options chain is your command center. It shows every strike, every expiration, every price. Beginners see chaos. Pros see opportunity. By the end of this lesson, you'll read it fluently.",
+      "key_concept": "This screen has all the data you need to trade",
+      "main_points": [
+        "The options chain is a GRID showing all available options for a stock. ROWS = different strike prices. COLUMNS = bid, ask, volume, open interest, implied volatility, Greeks. LEFT side = calls. RIGHT s"
+      ],
+      "key_terms": [
+        "Volume: Contracts traded TODAY (resets daily)",
+        "Open Interest (OI): Total outstanding contracts (all traders combined)",
+        "Implied Volatility (IV): Market's expectation of future volatility (%)"
+      ],
+      "file": "15_reading_options_chain.json"
+    },
+    {
+      "lesson_id": "buying-power-requirements",
+      "title": "Understanding Buying Power",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83d\udcaa Power Calculator",
+      "hook": "You have $10,000. You try to sell 10 cash-secured puts at $100 strike. Your broker rejects it: 'Insufficient buying power.' But 10 \u00d7 $100 = $1,000... right? Wrong. Each CSP requires $10,000 reserved. You can sell ONE contract, not ten. Let's learn how buying power actually works.",
+      "key_concept": "$10K account \u2260 10 contracts. Here's why.",
+      "main_points": [
+        "BUYING POWER = the capital your broker RESERVES for each position. Not the same as your account balance. BUYING options = pay premium (small). SELLING options = tie up capital (large). Each strategy h"
+      ],
+      "key_terms": [
+        "Buying Power Reduction (BPR): Amount of capital reserved/locked when you open a position",
+        "Cash-Secured Put Requirement: 100% of strike price \u00d7 100 shares reserved",
+        "Covered Call Requirement: Must OWN 100 shares of stock (no additional cash needed)"
+      ],
+      "file": "15a_buying_power_requirements.json"
+    }
+  ],
+  "module-2": [
+    {
+      "lesson_id": "covered_call_basics",
+      "title": "What is a Covered Call?",
+      "time": "11 min",
+      "xp": 110,
+      "badge": "\ud83c\udfe0 Landlord",
+      "hook": "Covered calls let you become a 'landlord' of your stocks - collecting rent while keeping your property. In 8 minutes, you'll learn the strategy that generates 70% of options income.",
+      "key_concept": "Want to collect $350 every month from stocks you already own?",
+      "main_points": [
+        "A covered call means you OWN 100 shares of a stock, and SELL someone the right to buy it from you at a higher price. They pay you a premium for this right. You keep the premium no matter what happens.",
+        "If your stock pays dividends and your sold call is ITM near ex-dividend date, you face HIGH early assignment risk. Call buyers exercise the night BEFORE ex-div to capture the dividend. You lose: 1) Yo"
+      ],
+      "key_terms": [
+        "Covered: You OWN the 100 shares already (not naked/risky)",
+        "Strike Price: The price someone can buy your stock at",
+        "Premium Collected: The income you receive upfront (yours to keep)"
+      ],
+      "file": "16_covered_call_basics.json"
+    },
+    {
+      "lesson_id": "covered_call_calculator",
+      "title": "Covered Call Calculator (Interactive)",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83e\uddee Income Calculator",
+      "hook": "Let's build the calculator every covered call trader uses. You'll see exactly how to calculate returns, breakevens, and annualized income - the math that separates profitable traders from losers.",
+      "key_concept": "Is 1.9% return in 30 days good or bad?",
+      "main_points": [
+        "Every covered call has three possible outcomes: (1) Max Profit if called away, (2) Income if expires, (3) Breakeven if stock drops. Knowing these numbers BEFORE you trade is the difference between gam"
+      ],
+      "key_terms": [],
+      "file": "17_covered_call_calculator.json"
+    },
+    {
+      "lesson_id": "strike_selection_strategy",
+      "title": "Picking Your Strike Price",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\ud83c\udfaf Strike Picker",
+      "hook": "Most beginners pick strikes randomly - 'that one looks good!' - and wonder why they keep losing money. In 7 minutes, you'll learn the systematic approach that professionals use.",
+      "key_concept": "Why did you choose THAT strike price?",
+      "main_points": [
+        "Higher strikes give you MORE upside potential but LESS premium income. Lower strikes give you MORE premium income but cap your gains sooner. There's no 'perfect' strike - only the right strike for YOU"
+      ],
+      "key_terms": [
+        "At-The-Money (ATM): Strike price equals (or very close to) current stock price",
+        "Out-of-The-Money (OTM): Strike price ABOVE current stock price (for calls)",
+        "Delta: Probability the option ends in-the-money (0-1.0)"
+      ],
+      "file": "18_strike_selection_strategy.json"
+    },
+    {
+      "lesson_id": "closing_covered_calls",
+      "title": "When to Close Early",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\ud83d\udeaa Exit Expert",
+      "hook": "Most beginners wait until expiration - missing huge opportunities to lock in profits early and redeploy capital. Learn the professional exit strategy that can double your annual returns.",
+      "key_concept": "You sold a call for $3. Now it's worth $0.30. What do you do?",
+      "main_points": [
+        "When you SELL a covered call, you can BUY it back anytime before expiration to 'close' the position. If the option has lost value (decayed toward $0), you can buy it back cheap, keep most of the origi"
+      ],
+      "key_terms": [
+        "Buy to Close (BTC): Buying back an option you previously sold to close it",
+        "50% Rule: Common strategy: close when option decays to 50% of value",
+        "Rolling: Closing current call and opening new one simultaneously"
+      ],
+      "file": "19_closing_covered_calls.json"
+    },
+    {
+      "lesson_id": "covered_call_mistakes",
+      "title": "Common Mistakes (Assignment Surprises)",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\u26a0\ufe0f Mistake Avoider",
+      "hook": "Real trader mistake that cost $4,000 in one trade. In 7 minutes, you'll learn the 5 costly errors that trap beginners - and how to avoid them all.",
+      "key_concept": "Why did I just get assigned the day before earnings?!",
+      "main_points": [
+        "If you sell a covered call and the stock pays a dividend, you might get EARLY ASSIGNMENT the day before the ex-dividend date. The call buyer wants to own the shares to collect the dividend. You lose b"
+      ],
+      "key_terms": [
+        "Ex-Dividend Date: Day before this = you must own stock to get dividend",
+        "Early Assignment: Getting assigned before expiration (rare but costly)",
+        "Earnings Assignment: Getting assigned before earnings (stock gaps, you miss move)"
+      ],
+      "file": "20_covered_call_mistakes.json"
+    },
+    {
+      "lesson_id": "covered_call_case_study",
+      "title": "Covered Call Case Study (Real Trade Autopsy)",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83d\udcc8 Trade Analyst",
+      "hook": "100 shares of MSFT. $18,000 invested. 6 months of covered calls. What was the result? You'll see every trade, every decision, every mistake - and learn what works in real markets.",
+      "key_concept": "Let's dissect a real 6-month covered call campaign",
+      "main_points": [
+        "Trader bought 100 MSFT shares at $366 on January 15, 2024. Total investment: $36,600. Goal: Generate 2% monthly income via covered calls while holding MSFT long-term. Strategy: Sell 30-45 day calls, 5"
+      ],
+      "key_terms": [
+        "FOMO Trading: Emotional buying/selling due to fear of missing out",
+        "Opportunity Cost: What you gave up by capping gains with covered calls",
+        "Mechanical Trading: Following rules without emotion (50% rule, strike selection)"
+      ],
+      "file": "21_covered_call_case_study.json"
+    },
+    {
+      "lesson_id": "broker-selection-guide",
+      "title": "Choosing Your Trading Platform",
+      "time": "9 min",
+      "xp": 90,
+      "badge": "\ud83c\udfe6 Platform Pro",
+      "hook": "Imagine learning 50 lessons, ready to execute your first iron condor, and your broker says 'Options Level 1 account - spreads not approved.' This happens to THOUSANDS of beginners. Let's make sure you pick the right broker from day one.",
+      "key_concept": "You finished the course... but your broker won't let you trade spreads",
+      "main_points": [
+        "Not all brokers are equal for options. Key differences: OPTIONS APPROVAL LEVELS (1-5), commissions ($0-0.65/contract), platform quality (mobile vs desktop), customer service, and approval speed. Pick "
+      ],
+      "key_terms": [
+        "Options Approval Levels: 1 = Covered calls only. 2 = Buying options. 3 = Spreads. 4 = Naked puts. 5 = Naked calls",
+        "Commission Structure: Per-contract fee on every option trade (both entry and exit)",
+        "Pattern Day Trader (PDT) Rule: If <$25K account, limited to 3 day trades per 5 days"
+      ],
+      "file": "21a_broker_selection_guide.json"
+    },
+    {
+      "lesson_id": "cash_secured_put_basics",
+      "title": "What is a Cash-Secured Put?",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83d\udcb0 Premium Collector",
+      "hook": "Cash-secured puts are the 'flip side' of covered calls. Instead of generating income from stocks you OWN, you generate income from stocks you WANT to own. This is how smart money builds positions.",
+      "key_concept": "Get paid $500 to wait for a stock you want to buy anyway?",
+      "main_points": [
+        "You SELL a put option and set aside the cash to buy 100 shares. If the stock drops below your strike price, you're ASSIGNED - you buy the shares at that price (which you wanted anyway!). If stock stay"
+      ],
+      "key_terms": [
+        "Cash-Secured: You have the CASH set aside to buy 100 shares",
+        "Put Option Sold: You sold someone the right to sell YOU the stock",
+        "Assignment: You're obligated to BUY 100 shares at strike price"
+      ],
+      "file": "22_cash_secured_put_basics.json"
+    },
+    {
+      "lesson_id": "csp_calculator_tool",
+      "title": "CSP Calculator (Interactive)",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83e\uddee Put Calculator",
+      "hook": "Let's calculate the REAL returns on cash-secured puts, including the opportunity cost of cash sitting idle and the risk if you get assigned underwater. The math that separates smart CSP traders from bagholders.",
+      "key_concept": "Is 1.4% monthly return on cash good enough?",
+      "main_points": [
+        "Every CSP trade has four key calculations: (1) ROI on cash reserved, (2) Annualized return, (3) Effective purchase price if assigned, (4) Breakeven price. Understanding these BEFORE selling lets you c"
+      ],
+      "key_terms": [],
+      "file": "23_csp_calculator_tool.json"
+    },
+    {
+      "lesson_id": "csp_assignment_reality",
+      "title": "Getting Assigned (Is It Bad?)",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\ud83d\udce6 Assignment Handler",
+      "hook": "Getting assigned on a CSP terrifies beginners. But it's not a disaster - it's part of the strategy! In 7 minutes, you'll learn how to handle assignment like a pro and even profit from it.",
+      "key_concept": "ASSIGNED: You bought 100 shares. Now what?",
+      "main_points": [
+        "When you sell a put, assignment means you're OBLIGATED to buy 100 shares at the strike price. This happens when the stock drops below your strike at expiration. You already collected premium, so your "
+      ],
+      "key_terms": [
+        "Exercise & Assignment: Put buyer exercises \u2192 you're assigned \u2192 you buy shares",
+        "Automatic Assignment: If put is ITM at expiration, assignment is automatic (no choice)",
+        "Now You're Long: After assignment, you OWN 100 shares (can hold or sell immediately)"
+      ],
+      "file": "24_csp_assignment_reality.json"
+    },
+    {
+      "lesson_id": "wheel_strategy_complete",
+      "title": "The Wheel Strategy",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83c\udfa1 Wheel Master",
+      "hook": "The Wheel combines CSPs and covered calls into an endless income loop. It's the strategy that turns volatility into cash flow. In 8 minutes, you'll learn the system that pros use to print money month after month.",
+      "key_concept": "What if you could generate income whether you own a stock or not?",
+      "main_points": [
+        "Step 1: Sell CSP, collect premium. Step 2: If assigned, now you own 100 shares. Step 3: Sell covered call on those shares, collect premium. Step 4: If called away, back to Step 1. You generate income "
+      ],
+      "key_terms": [
+        "Phase 1: Wheeling (No Stock): Selling CSPs monthly, collecting premium, waiting for assignment",
+        "Phase 2: Assigned (Now Own Stock): CSP was exercised, you bought 100 shares, transition to covered calls",
+        "Phase 3: Covered (Collecting Rent): Selling covered calls monthly on shares, waiting to get called away"
+      ],
+      "file": "25_wheel_strategy_complete.json"
+    },
+    {
+      "lesson_id": "csp_stock_selection",
+      "title": "Picking Stocks for CSPs",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\ud83d\udd0d Stock Screener",
+      "hook": "Stock selection is 70% of CSP success. Sell puts on the wrong stock and you'll be holding bags forever. In 7 minutes, you'll learn the screening criteria that separate winning trades from disasters.",
+      "key_concept": "Why did your CSP lose 40% while mine made 20%?",
+      "main_points": [
+        "This is the most important rule in CSP trading. If you wouldn't buy 100 shares of this stock at this price TODAY with cash, don't sell a put on it. Getting assigned should be a HAPPY outcome, not a di"
+      ],
+      "key_terms": [
+        "Quality Company: Strong business, good financials, you'd hold 5+ years if needed",
+        "High Implied Volatility: Higher IV = bigger premiums (more income per put sold)",
+        "Liquid Options: Tight bid-ask spread, high volume (easy to enter/exit)"
+      ],
+      "file": "26_csp_stock_selection.json"
+    },
+    {
+      "lesson_id": "csp_real_trade_autopsy",
+      "title": "CSP Case Study (Real Trade)",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83d\udcca CSP Analyst",
+      "hook": "Let's dissect an actual 9-month cash-secured put campaign on Disney (DIS). What worked? What failed? What would you do differently? You'll learn from real money on the line.",
+      "key_concept": "Real CSP campaign: $35,000 cash, 9 months, 13 trades",
+      "main_points": [
+        "Trader had $35,000 cash sitting in savings earning 5% APY ($1,750/year). Wanted to build a position in Disney (DIS) for long-term hold. Strategy: Sell 30-day puts at strikes 5-8% below current price, "
+      ],
+      "key_terms": [
+        "Assignment Risk: Even at 5-8% OTM, assignment happens (markets drop!)",
+        "Recovery Strategy: After assignment underwater, sell ATM covered calls for max premium",
+        "Opportunity Cost: Compare CSP returns to alternatives (savings, stocks, bonds)"
+      ],
+      "file": "27_csp_real_trade_autopsy.json"
+    },
+    {
+      "lesson_id": "rolling-positions",
+      "title": "Rolling - Extend Your Winning Trades",
+      "time": "9 min",
+      "xp": 90,
+      "badge": "\ud83d\udd04 Roll Master",
+      "hook": "Your covered call is about to be assigned - stock hit your strike. Option #1: Let shares get called away. Option #2: ROLL the call up and out, keep your shares, collect MORE premium. This is how pros manage positions. Let's learn rolling.",
+      "key_concept": "Instead of getting assigned, collect $150 MORE premium",
+      "main_points": [
+        "ROLLING = Close your current option position + Simultaneously open a new one at different strike/date. It's ONE transaction that extends your trade. Roll UP = higher strike (covered calls). Roll OUT ="
+      ],
+      "key_terms": [
+        "Roll UP (Strike): Close current strike, open higher strike (covered calls)",
+        "Roll OUT (Time): Close current expiration, open later expiration",
+        "Roll for CREDIT: You RECEIVE money when rolling (net credit)"
+      ],
+      "file": "27a_rolling_positions.json"
+    }
+  ],
+  "module-3": [
+    {
+      "lesson_id": "what-is-a-spread",
+      "title": "What is a Spread?",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83c\udfaf Spread Specialist",
+      "hook": "Spreads let you trade options for a fraction of the cost. But there's a catch...",
+      "key_concept": "Why pay $2,500 when you could pay $500?",
+      "main_points": [
+        "A spread is when you BUY one option and SELL another option at the same time. Think of it like trading a 'pair' instead of singles. The option you sell reduces the cost of the option you buy."
+      ],
+      "key_terms": [
+        "Legs: The two options in a spread (long leg + short leg)",
+        "Width: The distance between strike prices",
+        "Net Debit: You pay money upfront (spread costs you)"
+      ],
+      "file": "28_what_is_a_spread.json"
+    },
+    {
+      "lesson_id": "bull-call-spread",
+      "title": "Bull Call Spread",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\ud83d\udcc8 Bull Spreader",
+      "hook": "The bull call spread is perfect when you expect a stock to go up, but don't want to risk $3,000 on a naked call.",
+      "key_concept": "Bullish, but don't want to overpay?",
+      "main_points": [
+        "A bull call spread means you buy a call at a lower strike and simultaneously sell a call at a higher strike. Same expiration date. You profit if the stock goes up, but your gains are capped at the hig"
+      ],
+      "key_terms": [],
+      "file": "29_bull_call_spread.json"
+    },
+    {
+      "lesson_id": "bear-put-spread",
+      "title": "Bear Put Spread",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\ud83d\udcc9 Bear Spreader",
+      "hook": "The bear put spread is the mirror image of a bull call spread. Same concept, opposite direction.",
+      "key_concept": "Bearish? Profit on the way down.",
+      "main_points": [
+        "A bear put spread means you buy a put at a higher strike and simultaneously sell a put at a lower strike. Same expiration. You profit if the stock goes down, but your gains are capped at the lower str"
+      ],
+      "key_terms": [],
+      "file": "30_bear_put_spread.json"
+    },
+    {
+      "lesson_id": "credit-spreads-vs-debit-spreads",
+      "title": "Credit Spreads vs Debit Spreads",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83d\udcb3 Credit Master",
+      "hook": "Same stock, same outlook, but one spread costs you money (debit) and the other pays you money (credit). Which is better?",
+      "key_concept": "Pay money or collect money?",
+      "main_points": [
+        "Debit spreads = You pay money upfront. Credit spreads = You collect money upfront. Debit spreads have higher profit potential. Credit spreads have higher probability of profit. You cannot have both - "
+      ],
+      "key_terms": [
+        "Bull Call Spread (Debit): Buy lower call + Sell higher call = Pay money",
+        "Bull Put Spread (Credit): Sell higher put + Buy lower put = Collect money",
+        "Bear Put Spread (Debit): Buy higher put + Sell lower put = Pay money"
+      ],
+      "file": "31_credit_spreads_vs_debit_spreads.json"
+    },
+    {
+      "lesson_id": "spread-calculator",
+      "title": "Spread Calculator",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83e\uddee Spread Calculator",
+      "hook": "The spread calculator shows you max profit, max loss, and breakeven BEFORE you trade. Never guess again.",
+      "key_concept": "Build any spread, see instant results",
+      "main_points": [
+        "Every spread has four critical numbers: Max Profit, Max Loss, Breakeven, and Probability of Profit. The spread calculator computes all four instantly. You should NEVER enter a spread without knowing t"
+      ],
+      "key_terms": [],
+      "file": "32_spread_calculator.json"
+    },
+    {
+      "lesson_id": "managing-spreads",
+      "title": "Managing Spreads",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\ud83c\udfae Trade Manager",
+      "hook": "Most beginners don't know when to exit a spread. Let's fix that.",
+      "key_concept": "Entering is easy. Managing is everything.",
+      "main_points": [
+        "1) Close early - Take profit or cut loss before expiration. 2) Hold to expiration - Let it play out. 3) Roll - Close current spread and open new one with later expiration or different strikes. The bes"
+      ],
+      "key_terms": [
+        "Close for profit: Exit when you've captured 50-75% of max profit",
+        "Cut loss early: Exit when loss exceeds your risk tolerance",
+        "Roll out: Close current spread, open new one in later month"
+      ],
+      "file": "33_managing_spreads.json"
+    },
+    {
+      "lesson_id": "spread-selection",
+      "title": "Spread Selection (Probability vs Profit)",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\ud83c\udfb2 Probability Picker",
+      "hook": "High probability + low profit? Or low probability + high profit? Choose wisely.",
+      "key_concept": "The decision that defines your trading style",
+      "main_points": [
+        "Every strike price has an implied probability of being ITM at expiration. OTM strikes have low probability but high payoff. ITM strikes have high probability but low payoff. You're essentially choosin"
+      ],
+      "key_terms": [
+        "High Probability (60-80%): OTM credit spreads, narrow width, modest profit",
+        "Balanced (40-60%): ATM spreads, moderate width, balanced risk/reward",
+        "Low Probability (20-40%): OTM debit spreads, wide width, huge payoff if right"
+      ],
+      "file": "34_spread_selection.json"
+    },
+    {
+      "lesson_id": "vertical-spread-case-study",
+      "title": "Vertical Spread Case Study",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83d\udcca Spread Analyst",
+      "hook": "Let's dissect an actual bull call spread trade on NVIDIA from start to finish.",
+      "key_concept": "Real trade. Real results. Real lessons.",
+      "main_points": [
+        "Date: Oct 1. NVDA at $500. Thesis: AI momentum continues, target $550 by Dec. Trade: Buy Dec $500 call ($25), Sell Dec $550 call ($10). Net debit: $15 ($1,500). Max profit: $35 ($3,500). Max loss: $15"
+      ],
+      "key_terms": [],
+      "file": "35_vertical_spread_case_study.json"
+    },
+    {
+      "lesson_id": "long-straddle",
+      "title": "Long Straddle (Big Move, Any Direction)",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\u26a1 Volatility Trader",
+      "hook": "Earnings tomorrow. FDA approval pending. Merger announcement. You know chaos is coming - the straddle profits from it.",
+      "key_concept": "What if you don't know WHICH way, just that it'll move BIG?",
+      "main_points": [
+        "A long straddle means buying a call AND a put at the same strike price (usually ATM), same expiration. You profit if the stock makes a big move in EITHER direction. You lose if it stays flat. This is "
+      ],
+      "key_terms": [
+        "ATM Straddle: Both call and put at current stock price",
+        "Breakeven Points (2 of them): Upper BE = Strike + Total cost | Lower BE = Strike - Total cost",
+        "IV Crush: Volatility collapses after event, killing option value"
+      ],
+      "file": "36_long_straddle.json"
+    },
+    {
+      "lesson_id": "long-strangle",
+      "title": "Long Strangle (Cheaper Straddle)",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\ud83c\udfaa Strangle Artist",
+      "hook": "Same concept as straddle, but 30-50% cheaper. Trade-off: needs bigger move to profit.",
+      "key_concept": "Straddles too expensive? Try a strangle.",
+      "main_points": [
+        "A long strangle means buying an OTM call AND an OTM put (different strikes), same expiration. Instead of buying ATM ($100 call + $100 put), you buy OTM ($105 call + $95 put). It's cheaper, but the sto"
+      ],
+      "key_terms": [],
+      "file": "37_long_strangle.json"
+    },
+    {
+      "lesson_id": "calendar-spread",
+      "title": "Calendar Spread (Time Decay Play)",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83d\udcc5 Time Spreader",
+      "hook": "Calendar spreads let you harvest theta decay while maintaining a directional position. Advanced, but powerful.",
+      "key_concept": "What if you could profit from time itself?",
+      "main_points": [
+        "A calendar spread means selling a short-term option and buying a longer-term option at the SAME strike. You profit because the short-term option decays faster than the long-term. Best when stock stays"
+      ],
+      "key_terms": [
+        "Theta Differential: Short-term options decay faster than long-term",
+        "Neutral Strategy: Profits most when stock stays at strike price",
+        "Vega Risk: If IV drops, long option loses more value than short"
+      ],
+      "file": "38_calendar_spread.json"
+    },
+    {
+      "lesson_id": "diagonal-spread",
+      "title": "Diagonal Spread (Income + Direction)",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83d\udcd0 Diagonal Trader",
+      "hook": "What if you want time decay AND a directional bias? That's the diagonal spread.",
+      "key_concept": "Calendar spread + direction = Diagonal",
+      "main_points": [
+        "A diagonal spread is like a calendar spread, but instead of using the SAME strike, you use different strikes. Sell short-term OTM option, buy long-term ITM or ATM option. This gives you theta decay PL"
+      ],
+      "key_terms": [
+        "Bullish Diagonal: Buy long-term ITM call + Sell short-term OTM call",
+        "Bearish Diagonal: Buy long-term ITM put + Sell short-term OTM put",
+        "Strike Selection: Long = ITM for delta | Short = OTM for premium collection"
+      ],
+      "file": "39_diagonal_spread.json"
+    },
+    {
+      "lesson_id": "leaps",
+      "title": "LEAPS (Long-Term Options)",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\ud83c\udfd4\ufe0f LEAP Investor",
+      "hook": "LEAPS give you stock-like exposure with 90% less capital. The ultimate leverage tool.",
+      "key_concept": "Own $50,000 of stock for $5,000?",
+      "main_points": [
+        "LEAPS are simply options with 1-2 year expiration dates (or longer). They behave like stock ownership because they have so much time. Buying a deep ITM LEAP call is functionally similar to owning 100 "
+      ],
+      "key_terms": [
+        "Deep ITM LEAP: Call option with .80-.90 delta, 12+ months to expiration",
+        "Delta Equivalent: Number of shares your LEAP mimics",
+        "Time Decay Advantage: LEAPS decay slowly - only $0.05-$0.15/day"
+      ],
+      "file": "40_leaps.json"
+    },
+    {
+      "lesson_id": "poor-mans-covered-call",
+      "title": "Poor Man's Covered Call (PMCC)",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83d\udc8e PMCC Expert",
+      "hook": "The Poor Man's Covered Call mimics covered calls using LEAPS instead of shares. Same income, 90% less capital.",
+      "key_concept": "Covered calls without owning stock?",
+      "main_points": [
+        "Buy a deep ITM LEAP call (long-term, .80+ delta) and sell short-term OTM calls against it, just like a covered call. But instead of owning 100 shares ($50,000), you own a LEAP ($5,000). You collect we"
+      ],
+      "key_terms": [
+        "The LEAP (Long): Deep ITM call, 12+ months, .75-.85 delta",
+        "The Short Call: OTM call, 30-45 days, .30 delta",
+        "Net Debit: LEAP cost - Short call premium collected"
+      ],
+      "file": "41_poor_mans_covered_call.json"
+    },
+    {
+      "lesson_id": "synthetic-positions",
+      "title": "Synthetic Positions - Creating Stock from Options",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83e\uddea Synthetic Scientist",
+      "hook": "What if I told you: Long call + Short put = Owning stock? Same profit/loss profile, same risk, but built with options. This is synthetic positions - recreating stock exposure using only options. Rarely used by retail traders, but understanding this reveals how options actually work.",
+      "key_concept": "You can own TSLA without buying shares",
+      "main_points": [
+        "SYNTHETIC = Using options to replicate stock positions. Long stock = Buy call + Sell put (same strike). Short stock = Buy put + Sell call. Why? Sometimes cheaper, sometimes more efficient, mostly theo"
+      ],
+      "key_terms": [
+        "Synthetic Long Stock: Buy ATM call + Sell ATM put = same as owning 100 shares",
+        "Synthetic Short Stock: Buy ATM put + Sell ATM call = same as shorting 100 shares",
+        "Put-Call Parity: Theoretical relationship: Call - Put = Stock price - Strike (discounted)"
+      ],
+      "file": "41a_synthetic_positions.json"
+    },
+    {
+      "lesson_id": "when-not-to-trade",
+      "title": "When NOT to Trade (Avoiding Common Traps)",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\ud83d\uded1 Discipline Master",
+      "hook": "Knowing when NOT to trade is more important than knowing when to trade.",
+      "key_concept": "This lesson could save you more than all the others combined.",
+      "main_points": [
+        "The best traders are selective. They pass on 95% of opportunities and only trade when everything aligns. This lesson covers the 8 situations where you should NEVER trade, no matter how tempting it loo"
+      ],
+      "key_terms": [
+        "Trading near expiration (<7 days): Gamma risk, all-or-nothing, stressful",
+        "Oversized positions: One trade can wreck your account",
+        "Trading during low volume hours: Spreads widen, bad fills, whipsaw"
+      ],
+      "file": "42_when_not_to_trade.json"
+    }
+  ],
+  "module-4": [
+    {
+      "lesson_id": "short-strangle",
+      "title": "Short Strangle",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\ud83c\udfb2 Risk Taker",
+      "hook": "Most stocks spend 70% of the time trading sideways. While others wait, you could be collecting cash. Ready to learn the riskiest way to do this? (Don't worry, the SAFE version is next.)",
+      "key_concept": "Profit when a stock does... nothing?",
+      "main_points": [
+        "A short strangle means you sell an out-of-the-money CALL above the current price and an out-of-the-money PUT below the current price (same expiration, different strikes). You collect TWO premiums upfr"
+      ],
+      "key_terms": [
+        "Neutral strategy: Profits when the stock stays within a range",
+        "Out-of-the-money (OTM): Call above current price or put below current price",
+        "Credit collected: Money received upfront from selling options; your max profit"
+      ],
+      "file": "43_short_strangle.json"
+    },
+    {
+      "lesson_id": "iron-condor-basics",
+      "title": "Iron Condor Basics",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83e\udd85 Condor Pilot",
+      "hook": "Remember the terrifying short strangle? Keep the income potential but cap losses on both sides. That's the iron condor \u2014 Wall Street's favorite income strategy.",
+      "key_concept": "Same income idea as a strangle \u2014 but with capped losses",
+      "main_points": [
+        "An iron condor adds long options beyond the short strikes to define risk. Four legs total: Sell OTM put, Buy further OTM put, Sell OTM call, Buy further OTM call. Net effect: credit received and maxim"
+      ],
+      "key_terms": [
+        "Wings: The protective long options further out.",
+        "Wing Width: Distance between short and long on a side.",
+        "Net Credit: Premium collected after paying for wings."
+      ],
+      "file": "44_iron_condor_basics.json"
+    },
+    {
+      "lesson_id": "iron-condor-management",
+      "title": "Iron Condor Management",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83d\udee0\ufe0f Trade Mechanic",
+      "hook": "Do you panic? Adjust? Hold? Close? This lesson is where iron condor traders succeed or fail.",
+      "key_concept": "Collected your credit. Stock starts moving toward a strike. Now what?",
+      "main_points": [
+        "Professional approach: When the trade hits 50% of max profit, close it. If you collected $3 credit, target $1.50 profit. You capture half the profit in a fraction of the time and redeploy capital."
+      ],
+      "key_terms": [
+        "Adjust: Modify strikes or time when tested.",
+        "Close untested side: Remove the good side to cut risk.",
+        "Mental stop: Exit if loss > 2\u00d7 credit."
+      ],
+      "file": "45_iron_condor_management.json"
+    },
+    {
+      "lesson_id": "butterfly-spread",
+      "title": "Butterfly Spread",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\ud83c\udfaf Sniper",
+      "hook": "Want a low-cost, high-precision bet on a specific target price? Butterflies shine when you expect a pin.",
+      "key_concept": "Iron condor = shotgun. Butterfly = sniper.",
+      "main_points": [
+        "Structure (calls): Buy 1 ITM call, Sell 2 ATM calls, Buy 1 OTM call \u2014 same expiration, equidistant strikes. Net debit: small. Max profit at the middle strike; max loss is the small debit you paid."
+      ],
+      "key_terms": [
+        "Max Profit: At middle strike only.",
+        "Max Loss: Net debit paid.",
+        "Breakevens: Lower = lower strike + debit; Upper = upper strike - debit."
+      ],
+      "file": "46_butterfly_spread.json"
+    },
+    {
+      "lesson_id": "iron-butterfly",
+      "title": "Iron Butterfly",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\ud83e\udd8b Iron Butterfly",
+      "hook": "Iron butterfly = short ATM straddle with wings. Bigger credit than condors, narrower profit zone.",
+      "key_concept": "Collect credit like a condor, peak like a butterfly",
+      "main_points": [
+        "Sell ATM call and ATM put at the same strike (short straddle), then buy further OTM call and put as wings to define risk. Max profit at the center; max loss = wing width minus credit."
+      ],
+      "key_terms": [
+        "Short Straddle Core: Sell ATM call and put.",
+        "Wings: Long OTM call and put define risk.",
+        "Net Credit: Large vs condors (ATM has most premium)."
+      ],
+      "file": "47_iron_butterfly.json"
+    },
+    {
+      "lesson_id": "comparing-neutral-strategies",
+      "title": "Comparing Neutral Strategies",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83d\udcca Strategy Selector",
+      "hook": "Short Strangle. Iron Condor. Butterfly. Iron Butterfly. See them head-to-head to choose the right one for the job.",
+      "key_concept": "Four neutral strategies. Which one when?",
+      "main_points": [
+        "High-level view of cost, max profit/loss, zone width, risk, POP, and capital needs."
+      ],
+      "key_terms": [
+        "Specific target: Butterfly / Iron Butterfly",
+        "General range: Iron Condor",
+        "High IV & expert: Short Strangle (not recommended)"
+      ],
+      "file": "48_comparing_neutral_strategies.json"
+    },
+    {
+      "lesson_id": "double-diagonal",
+      "title": "Double Diagonal",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\ud83d\udcd0 Diagonal Master",
+      "hook": "Double diagonals can generate rolling monthly income while your long options protect for months.",
+      "key_concept": "Sell near-term monthly. Keep long-term protection.",
+      "main_points": [
+        "Sell 30-day options and buy 90-day options at the same strikes on both put and call sides. Shorts decay fast; longs decay slowly; repeat monthly rolls to collect credit."
+      ],
+      "key_terms": [
+        "Calendar spread: Same strike, different expirations.",
+        "Roll forward: Replace expiring near-term shorts with new 30-day shorts.",
+        "Theta differential: Shorts decay faster than longs (income)."
+      ],
+      "file": "49_double_diagonal.json"
+    },
+    {
+      "lesson_id": "jade-lizard",
+      "title": "Jade Lizard",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\ud83e\udd8e Jade Trader",
+      "hook": "Jade Lizard: sell a naked put and a short call spread. Upside risk can be eliminated if credit \u2265 call spread width. Downside remains undefined.",
+      "key_concept": "Massive premium with no upside risk (if built right)",
+      "main_points": [
+        "Sell OTM put (undefined downside) and sell a bear call spread (defined upside). If total credit \u2265 call spread width, the upside worst case is fully covered by credit."
+      ],
+      "key_terms": [
+        "No Upside Risk: Total credit \u2265 call spread width.",
+        "Undefined Downside: Naked put can lose big if stock crashes.",
+        "Bias: Bullish to neutral."
+      ],
+      "file": "50_jade_lizard.json"
+    },
+    {
+      "lesson_id": "big-lizard",
+      "title": "Big Lizard",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\ud83d\udc09 Big Lizard",
+      "hook": "Big Lizard = Jade Lizard with a put spread (defined downside). Asymmetric wings collect bigger credit than symmetric condors.",
+      "key_concept": "Like Jade, but downside defined",
+      "main_points": [
+        "Sell OTM call and buy higher OTM call (bear call spread). Sell OTM put and buy lower OTM put (bull put spread). Put spread is typically wider to reflect crash risk and collect larger credit."
+      ],
+      "key_terms": [
+        "Asymmetric Width: Put spread often 2\u00d7 call spread width.",
+        "Credit vs Risk: Higher credit than condor; larger max loss on wider side.",
+        "Bias: Neutral-to-bullish setups common."
+      ],
+      "file": "51_big_lizard.json"
+    },
+    {
+      "lesson_id": "ratio-spreads-caution",
+      "title": "Ratio Spreads (Caution!)",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\u26a0\ufe0f Ratio Warrior",
+      "hook": "We teach this so you understand the risks. Do not trade ratio spreads until you're an expert.",
+      "key_concept": "Advanced strategy with potential UNLIMITED losses",
+      "main_points": [
+        "Common call ratio: Buy 1 ATM call, sell 2 OTM calls. Cheap entry can create naked exposure above the upper breakeven, with unlimited loss."
+      ],
+      "key_terms": [
+        "Complex management: Requires constant monitoring and hedging.",
+        "Tail risk: Outlier moves blow up accounts.",
+        "Approval level: Often requires highest broker permissions."
+      ],
+      "file": "52_ratio_spreads_caution.json"
+    },
+    {
+      "lesson_id": "adjusting-losing-trades",
+      "title": "Adjusting Losing Trades",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83d\udd27 Adjustment Expert",
+      "hook": "Most traders over-adjust and turn small losses into big losses. We'll fix that.",
+      "key_concept": "The fork in the road: adjust or exit?",
+      "main_points": [
+        "Adjustment is not a refusal to accept loss; it's a tactical change when your thesis remains intact. If thesis breaks, exit. Set a mental stop: loss \u2248 2\u00d7 credit collected."
+      ],
+      "key_terms": [
+        "Roll out in time: Close and reopen same strikes 30\u201345 DTE for extra credit",
+        "Roll tested side: Move tested spread further out/wider to buy room",
+        "Close untested side: Salvage profit; reduce capital and complexity"
+      ],
+      "file": "53_adjusting_losing_trades.json"
+    },
+    {
+      "lesson_id": "probability-of-profit",
+      "title": "Probability of Profit (Understanding P50)",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83c\udfb2 Probability Master",
+      "hook": "It's all probability. Higher probability \u2192 lower credit. Lower probability \u2192 higher credit.",
+      "key_concept": "Why some condors pay $300 and others $600",
+      "main_points": [
+        "POP is the chance your trade ends with any profit at expiration. For condors, it's the probability the stock finishes between your breakevens."
+      ],
+      "key_terms": [
+        "Delta \u2248 probability ITM: 0.30 delta \u2248 30% ITM chance (\u224870% OTM).",
+        "1 Standard Deviation: ~68% of outcomes within \u00b11 SD.",
+        "2 Standard Deviations: ~95% within \u00b12 SD."
+      ],
+      "file": "54_probability_of_profit.json"
+    }
+  ],
+  "module-5": [
+    {
+      "lesson_id": "delta-explained",
+      "title": "Delta Explained",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83d\udcd0 Delta Master",
+      "hook": "Delta is the single most important Greek. It tells you EXACTLY how much your option moves when the stock moves $1. Master this and you'll trade like the pros.",
+      "key_concept": "Why do professionals obsess over this one number?",
+      "main_points": [
+        "Delta measures how much your option's price changes when the underlying stock moves $1. It ranges from 0 to 1.0 for calls (0 to -1.0 for puts). A delta of 0.50 means your option gains $0.50 for every "
+      ],
+      "key_terms": [
+        "Delta as Directional Exposure: Shows how much your position moves with the stock",
+        "Delta as Probability: Approximate % chance of finishing in-the-money",
+        "Portfolio Delta: Sum of all your position deltas (total exposure)"
+      ],
+      "file": "55_delta_explained.json"
+    },
+    {
+      "lesson_id": "delta-hedging",
+      "title": "Delta Hedging",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\u2696\ufe0f Hedge Fund Manager",
+      "hook": "Delta hedging is the secret sauce. They sell you options, hedge away the risk, and collect free money from time decay. Here's how.",
+      "key_concept": "How do market makers profit without taking directional risk?",
+      "main_points": [
+        "Delta hedging means adjusting your position so your total delta equals ZERO. When delta-neutral, stock movements don't affect you - you profit from time decay and volatility instead."
+      ],
+      "key_terms": [
+        "Delta Neutral: Position with total delta = 0 (no directional exposure)",
+        "Dynamic Hedging: Continuously adjusting hedge as delta changes",
+        "Market Maker Strategy: Sell options, hedge delta, profit from bid-ask + theta"
+      ],
+      "file": "56_delta_hedging.json"
+    },
+    {
+      "lesson_id": "gamma-explained",
+      "title": "Gamma (Delta's Acceleration)",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\u26a1 Gamma Guru",
+      "hook": "GAMMA. When delta changes rapidly (high gamma), small stock moves create MASSIVE option gains. Or losses. Let's break down this powerful force.",
+      "key_concept": "What made GameStop explode 2,400% in January 2021?",
+      "main_points": [
+        "Gamma measures how much DELTA changes when the stock moves $1. High gamma means your delta accelerates quickly (exciting for buyers, terrifying for sellers). ATM options near expiration have the highe"
+      ],
+      "key_terms": [
+        "Positive Gamma: Long options (buyers). Delta INCREASES as stock moves in your favor",
+        "Negative Gamma: Short options (sellers). Delta works AGAINST you as stock moves",
+        "Gamma Squeeze: Market makers forced to buy stock, creating feedback loop"
+      ],
+      "file": "57_gamma_explained.json"
+    },
+    {
+      "lesson_id": "theta-time-decay-patterns",
+      "title": "Theta (Time Decay Patterns)",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\u23f0 Theta Warrior",
+      "hook": "THETA. Every single day, your options lose value - even if you're right about direction. Time decay is the silent killer. Learn to make it your weapon instead of your enemy.",
+      "key_concept": "Why do 90% of options expire worthless?",
+      "main_points": [
+        "Theta measures how much your option loses in value per day. It's ALWAYS negative for option buyers (you lose money daily) and ALWAYS positive for option sellers (you make money daily). Theta accelerat"
+      ],
+      "key_terms": [
+        "Theta Decay Curve: NON-LINEAR decay - accelerates as expiration nears",
+        "Weekend Theta: Markets closed Sat/Sun but theta keeps decaying",
+        "Sweet Spot for Sellers: 30-45 DTE = maximum theta decay without too much gamma risk"
+      ],
+      "file": "58_theta_time_decay_patterns.json"
+    },
+    {
+      "lesson_id": "vega-volatility-impact",
+      "title": "Vega (Volatility's Impact)",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83c\udf0a Vega Expert",
+      "hook": "VEGA. When implied volatility spikes (fear, uncertainty, earnings), options get EXPENSIVE fast. This is the hidden force that can make or break your trade.",
+      "key_concept": "Why did your option gain $300 when the stock didn't move?",
+      "main_points": [
+        "Vega measures how much your option price changes per 1% change in implied volatility (IV). High IV = expensive options. Low IV = cheap options. Vega is HIGHEST for ATM options with longer expirations."
+      ],
+      "key_terms": [
+        "Implied Volatility (IV): Market's expectation of future price movement",
+        "Historical Volatility (HV): Actual past price movement",
+        "Vega as Opportunity: Buy options in low IV, sell in high IV"
+      ],
+      "file": "59_vega_volatility_impact.json"
+    },
+    {
+      "lesson_id": "implied-volatility-rank",
+      "title": "Implied Volatility Rank (IVR)",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\ud83d\udcca IV Rank Specialist",
+      "hook": "DEPENDS ON THE STOCK. TSLA at 50% IV is actually LOW. AAPL at 50% IV is SKY HIGH. IVR gives you context - the secret to not overpaying for options.",
+      "key_concept": "Is 50% IV high or low?",
+      "main_points": [
+        "Implied Volatility Rank shows where CURRENT IV sits relative to its 52-week range. IVR 100% = IV at 52-week high (very expensive). IVR 0% = IV at 52-week low (very cheap). Formula: (Current IV - 52w L"
+      ],
+      "key_terms": [
+        "IVR > 50%: IV in top half of range = relatively expensive options",
+        "IVR < 30%: IV in bottom third of range = relatively cheap options",
+        "IVR 30-50%: Neutral zone - no strong IV edge either way"
+      ],
+      "file": "60_implied_volatility_rank.json"
+    },
+    {
+      "lesson_id": "iv-crush",
+      "title": "IV Crush (The Earnings Trap)",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\ud83d\udca5 IV Crush Survivor",
+      "hook": "IV CRUSH. You bought calls, earnings beat, stock up 5%, but your calls LOST money. This destroys beginners every earnings season. Here's how to avoid it.",
+      "key_concept": "Why did you lose money even though you were RIGHT?",
+      "main_points": [
+        "IV Crush is the massive drop in implied volatility immediately after binary events (earnings, FDA decisions, elections). Options can lose 30-50% of value overnight even if you're RIGHT about direction"
+      ],
+      "key_terms": [
+        "Pre-Earnings IV Spike: IV inflates 50-100% in days before earnings",
+        "Post-Earnings IV Collapse: IV drops 40-60% within hours after earnings",
+        "The Break-Even Trap: Stock must move HUGE to overcome vega loss"
+      ],
+      "file": "61_iv_crush.json"
+    },
+    {
+      "lesson_id": "rho-interest-rates",
+      "title": "Rho (Interest Rates)",
+      "time": "6 min",
+      "xp": 60,
+      "badge": "\ud83d\udcb0 Rho Scholar",
+      "hook": "Rho measures interest rate impact on options. Good news: it barely matters for retail traders. But you should still understand it for completeness (and it's a quick lesson!).",
+      "key_concept": "The Greek nobody cares about",
+      "main_points": [
+        "Rho measures how much your option price changes per 1% change in interest rates. Calls have positive rho (benefit from higher rates). Puts have negative rho (hurt by higher rates). Only matters for LE"
+      ],
+      "key_terms": [
+        "Rho for Calls: Positive rho - calls benefit from HIGHER interest rates",
+        "Rho for Puts: Negative rho - puts hurt by HIGHER interest rates",
+        "When to Ignore Rho: Any option <180 days to expiration"
+      ],
+      "file": "62_rho_interest_rates.json"
+    },
+    {
+      "lesson_id": "greeks-in-spreads",
+      "title": "Greeks in Spreads",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83c\udf9b\ufe0f Greek Composer",
+      "hook": "GREEK CONTROL. Spreads let you DESIGN your exposure - choose the Greeks you want, eliminate the ones you don't. This is how you trade like a portfolio manager.",
+      "key_concept": "Why do professionals use spreads instead of naked options?",
+      "main_points": [
+        "Multi-leg strategies combine long and short options to create custom Greek profiles. Want delta but not vega? Use a debit spread. Want theta but not gamma risk? Use an iron condor. Spreads = precision"
+      ],
+      "key_terms": [
+        "Bull Call Spread Greeks: Long ATM call + Short OTM call",
+        "Iron Condor Greeks: Short strangle + Long strangle (wings)",
+        "Calendar Spread Greeks: Short near-term + Long long-term (same strike)"
+      ],
+      "file": "63_greeks_in_spreads.json"
+    },
+    {
+      "lesson_id": "greeks-calculator",
+      "title": "Greeks Calculator (Interactive Capstone)",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83e\uddee Greeks Calculator Master",
+      "hook": "You've learned the theory. Now FEEL it. This interactive Greeks calculator lets you manipulate every variable and watch the Greeks dance. Build intuition through experimentation.",
+      "key_concept": "Time to play with fire",
+      "main_points": [
+        "An interactive tool that shows how stock price, time, IV, and strike selection affect all five Greeks simultaneously. Move one slider, watch everything update in real-time. This is how professionals d"
+      ],
+      "key_terms": [],
+      "file": "64_greeks_calculator.json"
+    }
+  ],
+  "module-6": [
+    {
+      "lesson_id": "trading-around-earnings",
+      "title": "Trading Around Earnings",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83d\udcca Earnings Warrior",
+      "hook": "Welcome to IV crush\u2014the #1 earnings trap that destroys retail traders.",
+      "key_concept": "Stock rockets 12%... and your calls lose money?",
+      "main_points": [
+        "Earnings drive uncertainty \u2192 IV spikes into the event and collapses right after. Even if direction is right, IV crush can offset gains."
+      ],
+      "key_terms": [
+        "Earnings Date: Quarterly disclosure; typical gaps 3-15%",
+        "IV Crush: 30-50% IV drop post-announcement",
+        "Earnings Calendar: Plan positions around known dates"
+      ],
+      "file": "65_trading_around_earnings.json"
+    },
+    {
+      "lesson_id": "volatility-smile",
+      "title": "Volatility Smile",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83d\ude0a Smile Decoder",
+      "hook": "The volatility smile reveals the market's fear of tails.",
+      "key_concept": "Why is the far OTM option pricier (per IV) than ATM?",
+      "main_points": [
+        "ATM IV is lowest; OTM puts and calls have higher IV. Deep OTM highest\u2014pricing in fat tails."
+      ],
+      "key_terms": [
+        "Volatility Smile: U-shaped IV vs strike",
+        "Put Skew: OTM puts IV > OTM calls IV (equities)",
+        "Fat Tails: Extreme moves > normal model"
+      ],
+      "file": "66_volatility_smile.json"
+    },
+    {
+      "lesson_id": "skew-trading",
+      "title": "Skew Trading",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83d\udcc8 Skew Master",
+      "hook": "Not a glitch. It's skew\u2014here since 1987.",
+      "key_concept": "Same distance OTM\u2014put costs 70% more than call",
+      "main_points": [
+        "Equities: negative skew \u2192 OTM puts rich, OTM calls cheap. Reflects faster, correlated crashes."
+      ],
+      "key_terms": [
+        "Negative Skew: OTM put IV > OTM call IV (equities)",
+        "Positive Skew: OTM call IV > OTM put IV (some commodities)",
+        "Risk Reversal: 25\u0394 put IV \u2212 25\u0394 call IV"
+      ],
+      "file": "67_skew_trading.json"
+    },
+    {
+      "lesson_id": "vix-options-basics",
+      "title": "VIX Options Basics",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\ud83d\udcc9 VIX Navigator",
+      "hook": "Powerful hedge, but weird mechanics you must know.",
+      "key_concept": "VIX calls: insurance that explodes in crises",
+      "main_points": [
+        "Ranges: 12\u201320 normal, 20\u201330 elevated, 30\u201350 panic, 50\u201380 crisis. VIX\u2191 when SPX\u2193."
+      ],
+      "key_terms": [
+        "VIX Futures: Options settle to futures, not spot",
+        "Contango: Futures > spot \u2192 decay headwind",
+        "European Style: Cash-settled at expiry; no early exercise"
+      ],
+      "file": "68_vix_options_basics.json"
+    },
+    {
+      "lesson_id": "portfolio-heat",
+      "title": "Portfolio Heat (Total Risk)",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83d\udd25 Heat Manager",
+      "hook": "Total portfolio heat matters more than per-trade risk.",
+      "key_concept": "2% per trade isn't safe if 15 trades share the same risk",
+      "main_points": [
+        "Portfolio Heat = \u03a3 max loss across open positions. If correlated, losses can realize together."
+      ],
+      "key_terms": [
+        "Portfolio Heat: Total $ at risk across positions",
+        "Heat %: Heat / account size",
+        "Correlated Heat: Same sector/strategy \u2192 simultaneous losses"
+      ],
+      "file": "69_portfolio_heat.json"
+    },
+    {
+      "lesson_id": "correlation-risk",
+      "title": "Correlation Risk",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83d\udd17 Correlation Breaker",
+      "hook": "Correlation turns many trades into one big bet.",
+      "key_concept": "5 different tickers \u2260 diversification if they move together",
+      "main_points": [
+        "Shared factors (sector, strategy, Greeks, expiry) make positions fail together."
+      ],
+      "key_terms": [
+        "Sector: Same industry exposure",
+        "Strategy: All short vol / all bullish",
+        "Greeks: Common delta/vega/gamma"
+      ],
+      "file": "70_correlation_risk.json"
+    },
+    {
+      "lesson_id": "black-swan-protection",
+      "title": "Black Swan Protection",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\ud83e\udda2 Swan Survivor",
+      "hook": "Tail hedges look wasteful\u2014until they save your portfolio.",
+      "key_concept": "-55% vs -18%: the cost of no insurance",
+      "main_points": [
+        "2001, 2008, 2020\u2014fast drops 30\u201360%. Most strategies fail simultaneously."
+      ],
+      "key_terms": [
+        "Tail Risk: Fat-tail events more frequent than normal",
+        "Tail Hedge: OTM puts, VIX calls, cash, bonds, gold",
+        "Convexity: Small cost; outsized payoff"
+      ],
+      "file": "71_black_swan_protection.json"
+    },
+    {
+      "lesson_id": "when-to-stop-trading",
+      "title": "When to Stop Trading",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83d\uded1 Discipline Master",
+      "hook": "Stopping is a strategy, not failure.",
+      "key_concept": "Most blown accounts: 'I should have stopped'",
+      "main_points": [
+        "Protect capital; reset emotions; reassess edge. Pros stop often; amateurs don't."
+      ],
+      "key_terms": [
+        "Drawdown Limit: E.g., -10% in a month",
+        "Losing Streak: 3\u20135 losses \u2192 stop",
+        "Extreme Markets: VIX >40"
+      ],
+      "file": "72_when_to_stop_trading.json"
+    },
+    {
+      "lesson_id": "wash-sales",
+      "title": "Wash Sales",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83e\uddfc Wash Sale Avoider",
+      "hook": "The 61-day danger zone is real.",
+      "key_concept": "IRS disallowed $11k of your losses",
+      "main_points": [
+        "Sell at loss and repurchase substantially identical within \u00b130 days \u2192 current-year loss disallowed, added to new basis."
+      ],
+      "key_terms": [
+        "Substantially Identical: Stock and its options often qualify",
+        "61-Day Window: 30 before + sale day + 30 after",
+        "Deferred Loss: Adds to basis; benefit later"
+      ],
+      "file": "73_wash_sales.json"
+    },
+    {
+      "lesson_id": "short-vs-long-term-gains",
+      "title": "Short-term vs Long-term Gains",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\ud83d\udcb0 Tax Optimizer",
+      "hook": "Day 366 can be worth thousands.",
+      "key_concept": "$10k profit \u2192 $3.7k tax vs $1.5k tax",
+      "main_points": [
+        "STCG: \u2264365d at ordinary rates. LTCG: \u2265366d at 0\u201320%. Options usually STCG; LEAPS can reach LTCG if held >1y."
+      ],
+      "key_terms": [
+        "Holding Period: >365d required for LTCG",
+        "Ordinary Income: 10\u201337% federal",
+        "Qualified Dividends: LTCG rates if holding rules met"
+      ],
+      "file": "74_short_vs_long_term_gains.json"
+    },
+    {
+      "lesson_id": "assignment-exercise-taxes",
+      "title": "Assignment & Exercise Tax Implications",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\ud83d\udccb Assignment Tax Expert",
+      "hook": "Report combined per IRS rules.",
+      "key_concept": "Covered call premium isn't separate\u2014it's in the sale price",
+      "main_points": [
+        "Call assignment: premium ADDED to sale price. Put assignment: premium SUBTRACTED from cost basis."
+      ],
+      "key_terms": [
+        "Cost Basis Adj: Short put premium reduces basis",
+        "Sale Price Adj: Short call premium increases proceeds",
+        "Holding Period: ITM CC can reset; OTM preserves"
+      ],
+      "file": "75_assignment_exercise_taxes.json"
+    },
+    {
+      "lesson_id": "record-keeping-for-traders",
+      "title": "Record Keeping for Traders",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83d\udcd3 Master Journalist",
+      "hook": "You can't improve what you don't measure.",
+      "key_concept": "+28% vs +5%: the record-keeping gap",
+      "main_points": [
+        "Taxes, analysis, refinement, psychology, audit protection. Journaling traders outperform 20\u201330%."
+      ],
+      "key_terms": [
+        "Trade Journal: Every trade with context and outcome",
+        "Metrics: Win%, avg win/loss, expectancy, DD",
+        "Emotional Tags: FOMO, revenge, confidence"
+      ],
+      "file": "76_record_keeping.json"
+    }
+  ],
+  "module-7": [
+    {
+      "lesson_id": "winning-covered-call",
+      "title": "Winning Covered Call (What Worked)",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83d\udcb0 Covered Call Champion",
+      "hook": "Take 50% profit and walk away.",
+      "key_concept": "I made $325 in 22 days by following a simple rule.",
+      "main_points": [
+        "Experience: 2 years | Account: $50,000 | Style: Conservative income | Goal: +$1,500/mo. Setup: Owns 100 MSFT @ $380 (14 months). Strategy: Sell a covered call.",
+        "MSFT $380. Sold $400 call (5.3% OTM), 45 DTE, collected $6.50 = $650. Max if called: $20 stock gain + $6.50 premium = $26.50/share ($2,650). If not called: keep $650 and shares.",
+        "Closed day 22 at $3.25 \u2192 profit $325. MSFT later rallied to $395; holding to expiry could have yielded $650, but 50% in half the time is superior risk-adjusted. Annualized return \u2248 7.9% on $38,000 equ"
+      ],
+      "key_terms": [
+        "Profit Target: Close at 50% ($325) around day 20-25",
+        "Stop / Roll: If MSFT hits $405, roll up & out",
+        "Time Edge: Theta slows after early decay\u2014don't overstay"
+      ],
+      "file": "77_winning_covered_call.json"
+    },
+    {
+      "lesson_id": "losing-iron-condor",
+      "title": "Losing Iron Condor (What Went Wrong)",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83d\udcc9 Lesson Learned",
+      "hook": "Close when your stop hits.",
+      "key_concept": "I lost $300 by ignoring one rule.",
+      "main_points": [
+        "1 year trading | $25k account | Premium seller. Loves iron condors; mistake: hope trading.",
+        "SPY $490. Sold $530/535 call spread (+$1.50) and $470/465 put spread (+$1.50) \u2192 $3.00 credit. Max profit $300; max loss $200; profit zone $467\u2013$533 (13.2% wide)."
+      ],
+      "key_terms": [
+        "Target: Close at 50% profit ($150)",
+        "Stop: Close at $4.00 (\u2212$100)",
+        "Adjustment: Roll tested side when breached"
+      ],
+      "file": "78_losing_iron_condor.json"
+    },
+    {
+      "lesson_id": "perfect-vertical-spread-timing",
+      "title": "Perfect Vertical Spread Timing",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83c\udfaf Perfect Timing",
+      "hook": "Alex\u2019s NVIDIA earnings spread.",
+      "key_concept": "220% profit in 15 days by timing a catalyst.",
+      "main_points": [
+        "3 years | $75k | Catalyst-driven trades; edges earnings & structure.",
+        "NVDA $500. Bought $500C ($25), sold $550C ($10) \u2192 debit $15 ($1,500). Max profit $3,500; breakeven $515; 45 DTE.",
+        "At entry: \u0394~0.50, vega ~0.15, theta \u2212$30/day. After gap: \u0394~0.95, vega low, theta small\u2014price move dominated."
+      ],
+      "key_terms": [
+        "Thesis: AI momentum \u2192 likely beat",
+        "Exit: Sell morning after earnings",
+        "Risk: Binary; size at 2% ($1,500)"
+      ],
+      "file": "79_perfect_vertical_spread_timing.json"
+    },
+    {
+      "lesson_id": "getting-assigned-horror",
+      "title": "Getting Assigned (Horror Story)",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83d\udce6 Assignment Survivor",
+      "hook": "A \u2018cash\u2011secured\u2019 put gone wrong.",
+      "key_concept": "I woke up owing $10,000 I didn\u2019t have.",
+      "main_points": [
+        "6 months trading | $15k account. Mistook \u2018cash\u2011secured\u2019 as \u2018enough for premium\u2019. Consequence: margin call.",
+        "TSLA $260. Sold $250 put for $8 (30 DTE). Collected $800. Assumed $15k cash was enough. Reality: assignment needs $25,000 (strike \u00d7 100). Shortfall $10,000.",
+        "Expiry: TSLA $228 \u2192 assigned at $250. Monday: position shows 100 shares @ $250, account cash \u2212$10,000 margin. Borrowed funds now incur interest."
+      ],
+      "key_terms": [
+        "Insufficient Cash: Needed $25k; had $15k",
+        "Misunderstood \u2018cash\u2011secured\u2019: Requires full strike \u00d7 100 in CASH",
+        "No Stop/No Roll: Didn\u2019t close at \u2212$800 or roll lower"
+      ],
+      "file": "80_getting_assigned.json"
+    },
+    {
+      "lesson_id": "iv-crush-win",
+      "title": "IV Crush Win (Earnings Play)",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\ud83d\udca5 IV Crusher",
+      "hook": "David\u2019s IV crush masterclass.",
+      "key_concept": "50% profit in 6 days by selling expensive options.",
+      "main_points": [
+        "2 years | $40k | Exploits IV crush around earnings: sells when IV expensive, exits on crush.",
+        "META $500; IV Rank 85%. Sold $530/535C for $1.50, sold $470/465P for $1.50 \u2192 $3.00 credit. Max profit $300; max loss $200; profit range $467\u2013$533 (13.2%).",
+        "IV spikes pre-earnings; collapses post-earnings. Enter 3\u20137 days before, exit morning after. 30 DTE to balance time."
+      ],
+      "key_terms": [
+        "IV Timing: Sold at IVR 85% (rich premium)",
+        "Close After: Captured crush immediately",
+        "Wide Range: 13.2% buffer"
+      ],
+      "file": "81_iv_crush_win.json"
+    },
+    {
+      "lesson_id": "black-swan-event-2020",
+      "title": "Black Swan Event (2020 Crash)",
+      "time": "9 min",
+      "xp": 90,
+      "badge": "\ud83e\udda2 Black Swan Survivor",
+      "hook": "Robert\u2019s tail\u2011risk reality check.",
+      "key_concept": "Lost $42,000 in 5 weeks. Lessons that saved me later.",
+      "main_points": [
+        "5 years | $200k | Premium seller, 3 years profitable. Pre\u2011crash: 10 index condors, 5 tech bull puts, 3 covered calls. Heat ~12%.",
+        "SPY 338 ATH, VIX 14. Credits $6k (condors) + $2.5k (puts). Greeks: \u0394 +250, \u0398 +$300/day, Vega \u2212$8,000 (short vol).",
+        "SPY 338\u2192310 (\u22128.3%), VIX 14\u219235. P&L \u2212$8k (\u22124%). Signals ignored: VIX>30."
+      ],
+      "key_terms": [
+        "Ignored VIX 35: Should\u2019ve closed short vol early",
+        "Held at \u221214%: Needed a drawdown stop",
+        "Correlation: Indices + short vol = one big bet"
+      ],
+      "file": "82_black_swan_event.json"
+    },
+    {
+      "lesson_id": "creating-a-trading-plan",
+      "title": "Creating a Trading Plan",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83d\udccb Planner Pro",
+      "hook": "Build your plan now.",
+      "key_concept": "A plan is your rulebook\u2014without it, you\u2019re gambling.",
+      "main_points": [
+        "What to trade, when to enter, how much to risk, when to exit, how to adjust. With a plan: consistency and measurable improvement.",
+        "Dollar target, timeframe, weekly hours, purpose (income/growth/learning). Realistic returns: Yr1 0\u201310%, Yr2\u20133 15\u201325%, skilled 25\u201340%.",
+        "Max drawdown (e.g., \u221210%/month), risk per trade (2\u20135%), max portfolio heat (\u226420%), cash reserve (20\u201330%)."
+      ],
+      "key_terms": [],
+      "file": "83_creating_trading_plan.json"
+    },
+    {
+      "lesson_id": "backtesting-strategies",
+      "title": "Backtesting Strategies",
+      "time": "8 min",
+      "xp": 80,
+      "badge": "\ud83d\udd2c Backtest Master",
+      "hook": "Backtesting is your time machine.",
+      "key_concept": "Test your rules on 5 years of data before risking money.",
+      "main_points": [
+        "Define precise rules \u2192 get historical data \u2192 simulate trades \u2192 compute metrics \u2192 decide viability. Reveals win rate, P/L, drawdowns\u2014not future performance or emotions.",
+        "Example: 45 DTE SPY condors, 15\u0394 shorts, close 50% or 21 DTE, stop 200% credit, IVR>40. Must be precise.",
+        "Prices, option quotes, IV. Sources: TOS OnDemand, broker data, OptionStrat, ORATS, OptionNET Explorer, CBOE DataShop."
+      ],
+      "key_terms": [],
+      "file": "84_backtesting_strategies.json"
+    },
+    {
+      "lesson_id": "journal-template",
+      "title": "Journal Template",
+      "time": "7 min",
+      "xp": 70,
+      "badge": "\ud83d\udcd3 Master Journalist",
+      "hook": "Your journal is your mentor.",
+      "key_concept": "If you don\u2019t track it, you can\u2019t improve it.",
+      "main_points": [
+        "Find patterns, track improvement, capture emotions, build accountability. Data > opinions.",
+        "Dates, ticker, strategy, entry/exit, P/L $, P/L %, days in trade, notes.",
+        "Greeks at entry (\u0394/\u0398/\u03bd), VIX/IVR, trend, exit reason, emotional tags, portfolio heat/correlation."
+      ],
+      "key_terms": [],
+      "file": "85_journal_template.json"
+    },
+    {
+      "lesson_id": "next-steps-and-resources",
+      "title": "Next Steps & Resources (The Grand Finale)",
+      "time": "12 min",
+      "xp": 120,
+      "badge": "\ud83c\udf93 OPTIONS GRADUATE",
+      "hook": "",
+      "key_concept": "",
+      "main_points": [
+        "You have knowledge, not yet proof of profitability. Discipline, emotions, and risk management determine success.",
+        "Months 1\u20132: Paper trade 20+ rule\u2011based trades. Month 3: 25% size real money. Months 4\u20135: Scale if profitable; otherwise back to paper. Month 6: Full size only if consistent (\u226560% win).",
+        "Yr1: 0\u201310%; Yr2: 10\u201320%; Yr3+: 15\u201330%. Top 1%: 30\u201350% (rare). Avoid get\u2011rich\u2011quick promises."
+      ],
+      "key_terms": [
+        "\u2705 Knowledge: Completed all 95 lessons: You understand options mechanics, Greeks, strategies, risk management, taxes",
+        "\u2705 Practice: 30+ paper trades over 30+ days: Minimum practice requirement to see different market conditions",
+        "\u2705 Results: Net positive paper trading P/L: Proven edge in simulation before risking real capital"
+      ],
+      "file": "86_next_steps_and_resources.json"
+    }
+  ]
+}

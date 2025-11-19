@@ -1,7 +1,9 @@
 {
   "lesson_id": "assignment-exercise",
   "title": "Assignment & Exercise (What Happens at Expiration)",
-  "estimated_time": "7 min",
+  "estimated_time": "10 min",
+  "total_xp": 110,
+  "badge": "📬 Assignment Expert",
   "screens": [
     {
       "screen_type": "hook",
@@ -35,6 +37,123 @@
           "definition": "Broker auto-exercises ITM options at expiration",
           "example": "Friday 4pm: You own $100 call, stock at $105. You forgot to sell it. Your broker exercises it automatically. Monday: you own 100 shares."
         }
+      ]
+    },
+    {
+      "screen_type": "definition",
+      "headline": "Early Assignment Risk - The Hidden Danger",
+      "text": "EARLY ASSIGNMENT = getting assigned BEFORE expiration. Can happen ANYTIME if your sold option is ITM. Most common triggers: dividends (call sellers), deep ITM options, day before expiration. Beginners think 'I'm safe until Friday' - WRONG. If you SOLD options, assignment can happen Monday, Wednesday, anytime. Stay alert!",
+      "visual": "⚠️🔔",
+      "highlight_words": ["EARLY ASSIGNMENT", "BEFORE expiration", "ANYTIME", "dividends", "deep ITM", "SOLD options"]
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "When Assignment Happens",
+      "cards": [
+        {
+          "term": "CAN Happen (Possible)",
+          "definition": "Assignment CAN occur anytime your sold option is ITM",
+          "example": "Monday: Sold $45 put, stock at $44 (ITM). Someone COULD exercise early and assign you. Rare but possible. Be aware!"
+        },
+        {
+          "term": "WILL Happen (Certain)",
+          "definition": "Assignment WILL occur at expiration if ITM by $0.01+",
+          "example": "Friday 4pm: Your sold put is ITM. 99% chance of assignment over weekend. Plan for it or close the position!"
+        },
+        {
+          "term": "Dividend Risk (Calls)",
+          "definition": "Call options often exercised early BEFORE ex-dividend date",
+          "example": "AAPL pays $0.25 dividend tomorrow. Your sold $180 call is ITM. Buyer exercises tonight to capture dividend. You lose stock + dividend!"
+        },
+        {
+          "term": "Deep ITM Risk",
+          "definition": "Deep ITM options (>$10 ITM) have higher early assignment risk",
+          "example": "Stock at $60, you sold $45 put. It's $15 ITM. High chance someone exercises early. Close or roll the position!"
+        }
+      ]
+    },
+    {
+      "screen_type": "scenario",
+      "question": "It's Thursday. Stock pays $2 dividend tomorrow (ex-div date). You sold ITM covered calls. What's the risk?",
+      "options": [
+        "No risk - expiration is next Friday",
+        "HIGH RISK - you'll likely be assigned tonight to capture dividend",
+        "Medium risk - might happen",
+        "No risk - dividends don't affect options"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "CRITICAL awareness! Call buyers often exercise the night BEFORE ex-div date to capture the dividend. You wake up Friday: shares gone, you don't get the $2 dividend either. Solution: Close ITM calls BEFORE ex-div date or accept early assignment. This is the #1 early assignment trigger!",
+      "explanation_wrong": "This is the most common early assignment scenario! Buyer thinks: 'Exercise now, get $200 dividend tomorrow, vs wait for expiration and miss dividend.' They exercise. You lose shares AND dividend. ALWAYS close ITM calls before ex-dividend date!"
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "You sold a $45 cash-secured put. Stock drops to $42 on Wednesday (expiration is Friday). What's your early assignment risk?",
+      "options": [
+        "Zero - puts aren't assigned early",
+        "LOW - possible but uncommon (stock would need to drop much more)",
+        "HIGH - you'll definitely be assigned early",
+        "Medium - 50/50 chance"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "Good assessment! Early assignment on puts is RARE (unlike calls with dividends). Most put holders wait until expiration to exercise. Exception: stock crashes hard (>20% ITM) or extreme market events. At $3 ITM, low early assignment risk. But be aware it CAN happen anytime you sold options!",
+      "explanation_wrong": "Low risk here. Early put assignment is uncommon unless stock crashes hard (>$10 ITM). Most put buyers wait until expiration. Your sold $45 put with stock at $42 = $3 ITM = probably safe until Friday. But monitor it - deep drops can trigger early assignment!"
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "Early Assignment Risk Calculator",
+      "description": "Assess your early assignment risk level",
+      "inputs": [
+        {
+          "label": "Option Type You SOLD",
+          "type": "select",
+          "options": ["Covered Call", "Cash-Secured Put"],
+          "value": "Covered Call"
+        },
+        {
+          "label": "Days Until Expiration",
+          "type": "slider",
+          "min": 0,
+          "max": 30,
+          "value": 7,
+          "step": 1
+        },
+        {
+          "label": "How Far ITM?",
+          "type": "slider",
+          "min": 0,
+          "max": 20,
+          "value": 5,
+          "step": 1,
+          "note": "$ amount ITM"
+        },
+        {
+          "label": "Dividend Coming? (for calls)",
+          "type": "select",
+          "options": ["No dividend", "Dividend in 3+ days", "Dividend tomorrow!"],
+          "value": "No dividend"
+        }
+      ],
+      "outputs": [
+        {
+          "label": "Early Assignment Risk Level",
+          "calculation": "(option_type == 'Covered Call' && dividend == 'Dividend tomorrow!' && itm > 0) ? '🔴 VERY HIGH - Likely tonight!' : (option_type == 'Covered Call' && dividend == 'Dividend in 3+ days' && itm > 5) ? '🟡 MEDIUM - Watch closely' : (itm > 15) ? '🟡 MEDIUM - Deep ITM' : (itm > 0 && dte < 2) ? '🟡 MEDIUM - Near expiration' : '🟢 LOW - Monitor but OK'",
+          "highlight": true
+        },
+        {
+          "label": "What To Do",
+          "calculation": "(option_type == 'Covered Call' && dividend == 'Dividend tomorrow!' && itm > 0) ? 'CLOSE TODAY or accept assignment!' : (itm > 15 || dte < 2) ? 'Consider closing or rolling position' : 'Monitor daily, be prepared for assignment'"
+        },
+        {
+          "label": "Worst Case",
+          "calculation": "option_type == 'Covered Call' ? 'Shares called away, lose stock + potential dividend' : 'Assigned shares at strike, now own stock (tie up capital)'"
+        }
+      ],
+      "teaching_points": [
+        "Try: Call, 7 DTE, $5 ITM, dividend tomorrow = HIGH RISK!",
+        "Try: Put, 14 DTE, $3 ITM, no dividend = LOW RISK",
+        "Try: Call, 1 DTE, $15 ITM = MEDIUM RISK (deep ITM)"
       ]
     },
     {
@@ -144,6 +263,10 @@
           "back": "If your option is ITM by $0.01+ at 4pm Friday, most brokers auto-exercise. Monday: you own shares (calls) or are short shares (puts). Avoid surprise: sell before 4pm or have cash ready."
         },
         {
+          "front": "Early assignment - when does it happen?",
+          "back": "ANYTIME if you SOLD an ITM option. Most common: day before ex-dividend date (calls), deep ITM (>$10), day before expiration. Close ITM options before ex-div dates! Monitor daily if deep ITM."
+        },
+        {
           "front": "Assignment risk - who has it?",
           "back": "Only option SELLERS have assignment risk. If you only BUY options, you control when/if to exercise. You can't be assigned. This is why beginners should stick to buying initially."
         }
@@ -151,11 +274,11 @@
     },
     {
       "screen_type": "celebration",
-      "xp_earned": 70,
-      "total_xp": 740,
+      "xp_earned": 110,
+      "total_xp": 1070,
       "badge": "📬 Assignment Expert",
-      "badge_description": "You'll never be surprised by assignment!",
-      "celebration_message": "Excellent! You now understand what happens at expiration. Next: calculating your max risk and reward before entering any trade.",
+      "badge_description": "You understand assignment AND early assignment risk!",
+      "celebration_message": "Critical knowledge! You now know when assignment happens (expiration) AND when early assignment can surprise you (dividends!). Stay alert! 📬",
       "streak_bonus": false,
       "next_lesson_preview": {
         "title": "Max Loss vs Max Gain",

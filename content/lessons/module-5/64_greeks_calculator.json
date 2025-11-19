@@ -23,33 +23,56 @@
       "screen_type": "interactive_example",
       "headline": "Greeks Calculator: Main Controls",
       "description": "Adjust the inputs and watch the Greeks respond:",
-      "interactive_type": "greeks_calculator_full",
-      "params": {
-        "inputs": {
-          "stock_price": {"type": "slider", "label": "Stock Price", "min": 80, "max": 120, "default": 100, "step": 1},
-          "strike_price": {"type": "dropdown", "label": "Strike Price", "options": [85, 90, 95, 100, 105, 110, 115], "default": 100},
-          "days_to_expiration": {"type": "slider", "label": "Days to Expiration", "min": 1, "max": 90, "default": 30, "step": 1},
-          "implied_volatility": {"type": "slider", "label": "Implied Volatility (%)", "min": 10, "max": 100, "default": 40, "step": 5},
-          "option_type": {"type": "toggle", "label": "Option Type", "options": ["Call", "Put"], "default": "Call"}
+      "interactive_type": "greeks_dashboard",
+      "inputs": [
+        {
+          "label": "Stock Price",
+          "name": "Stock Price",
+          "type": "slider",
+          "min": 80,
+          "max": 120,
+          "value": 100,
+          "step": 1
         },
-        "outputs": {
-          "option_price": {"label": "Option Price", "format": "$X.XX", "font_size": "large"},
-          "greeks": {
-            "delta": { "label": "Delta (Δ)", "format": "0.XX", "color": "blue" },
-            "gamma": { "label": "Gamma (Γ)", "format": "0.XXX", "color": "green" },
-            "theta": { "label": "Theta (Θ)", "format": "-$X.XX/day", "color": "red" },
-            "vega": { "label": "Vega (ν)", "format": "$X.XX per 1% IV", "color": "purple" },
-            "rho": { "label": "Rho (ρ)", "format": "$X.XX per 1% rate", "color": "gray" }
-          }
+        {
+          "label": "Strike Price",
+          "name": "Strike Price",
+          "type": "dropdown",
+          "options": [85, 90, 95, 100, 105, 110, 115],
+          "value": 100
         },
-        "visual_elements": {"payoff_diagram": true, "greek_bars": true, "moneyness_indicator": true},
-        "guided_experiments": [
-          {"instruction": "Move stock price from $95 to $105", "watch": "Delta increases, Gamma peaks at ATM ($100)"},
-          {"instruction": "Reduce DTE from 90 to 7 days", "watch": "Theta explodes, Gamma skyrockets if ATM"},
-          {"instruction": "Increase IV from 20% to 80%", "watch": "Option price jumps even though stock didn't move"}
-        ]
-      },
-      "xp_reward": 20
+        {
+          "label": "Days to Expiration",
+          "name": "Days to Expiration",
+          "type": "slider",
+          "min": 1,
+          "max": 90,
+          "value": 30,
+          "step": 1
+        },
+        {
+          "label": "Implied Volatility (%)",
+          "name": "Implied Volatility (%)",
+          "type": "slider",
+          "min": 10,
+          "max": 100,
+          "value": 40,
+          "step": 5
+        },
+        {
+          "label": "Option Type",
+          "name": "Option Type",
+          "type": "dropdown",
+          "options": ["Call", "Put"],
+          "value": "Call"
+        }
+      ],
+      "outputs": [],
+      "teaching_points": [
+        "Move stock price from $95 to $105 - Delta increases, Gamma peaks at ATM ($100)",
+        "Reduce DTE from 90 to 7 days - Theta explodes, Gamma skyrockets if ATM",
+        "Increase IV from 20% to 80% - Option price jumps even though stock didn't move"
+      ]
     },
     {
       "screen_type": "interactive_example",

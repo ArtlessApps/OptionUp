@@ -1,0 +1,250 @@
+{
+  "lesson_id": "rolling-positions",
+  "title": "Rolling - Extend Your Winning Trades",
+  "estimated_time": "9 min",
+  "total_xp": 90,
+  "badge": "🔄 Roll Master",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "🔄💰",
+      "headline": "Instead of getting assigned, collect $150 MORE premium",
+      "text": "Your covered call is about to be assigned - stock hit your strike. Option #1: Let shares get called away. Option #2: ROLL the call up and out, keep your shares, collect MORE premium. This is how pros manage positions. Let's learn rolling."
+    },
+    {
+      "screen_type": "definition",
+      "headline": "What is Rolling?",
+      "text": "ROLLING = Close your current option position + Simultaneously open a new one at different strike/date. It's ONE transaction that extends your trade. Roll UP = higher strike (covered calls). Roll OUT = later expiration (more time). Roll for CREDIT = collect money. Roll for DEBIT = pay money. Pros roll to manage winners and losers.",
+      "visual": "🔄",
+      "highlight_words": ["ROLLING", "Close", "open a new one", "Roll UP", "Roll OUT", "CREDIT", "DEBIT"]
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "Rolling Terms",
+      "cards": [
+        {
+          "term": "Roll UP (Strike)",
+          "definition": "Close current strike, open higher strike (covered calls)",
+          "example": "Sold $180 call → roll to $190 call. Keep shares longer, collect more premium, higher assignment price."
+        },
+        {
+          "term": "Roll OUT (Time)",
+          "definition": "Close current expiration, open later expiration",
+          "example": "Feb expiration → roll to March. Buy more time, extend the trade, collect more theta."
+        },
+        {
+          "term": "Roll for CREDIT",
+          "definition": "You RECEIVE money when rolling (net credit)",
+          "example": "Close $180 call for $5, open $190 call for $8 = $3 credit ($300 received). Always aim for this!"
+        },
+        {
+          "term": "Roll for DEBIT",
+          "definition": "You PAY money when rolling (net debit)",
+          "example": "Close $180 call for $8, open $190 call for $6 = $2 debit ($200 paid). Sometimes necessary to save a position."
+        }
+      ]
+    },
+    {
+      "screen_type": "analogy",
+      "headline": "Think of it like renewing a lease",
+      "text": "You're a landlord (covered call seller)...",
+      "interactive": "tap_to_reveal",
+      "reveal_sections": [
+        {
+          "label": "Original lease (your covered call)",
+          "content": "Tenant pays $1,000/month rent with option to buy house for $180,000. Lease expires Feb 28. House now worth $185,000 - tenant will probably buy it."
+        },
+        {
+          "label": "Option 1: Let lease expire (assignment)",
+          "content": "Tenant buys house for $180,000. You profit $5,000 gain + $2,000 rent collected = done. You lose the house."
+        },
+        {
+          "label": "Option 2: Roll the lease (roll call)",
+          "content": "Negotiate: 'Let's extend to March 31, raise option price to $190,000, you pay me $1,200 more rent.' Tenant agrees. You keep house longer, collect $1,200 MORE, and if they buy, you get $190k instead of $180k. This is rolling!"
+        }
+      ]
+    },
+    {
+      "screen_type": "scenario",
+      "question": "You sold AAPL $180 Feb call for $3. AAPL now $185, call worth $7. Expiration in 3 days. What's happening?",
+      "options": [
+        "You're losing money - call went up",
+        "You're winning - stock went up past your strike",
+        "You'll be assigned Friday - shares called away",
+        "Nothing to worry about - let it expire"
+      ],
+      "correct": 2,
+      "xp_reward": 15,
+      "explanation_correct": "Exactly - you're about to be assigned! Stock $185 > strike $180 = shares will be called away Friday. You profit: $1,000 stock gain ($185→$180) + $300 original premium = $1,300 total. Good outcome! But if you want to KEEP the shares and collect more premium, you need to ROLL the call!",
+      "explanation_wrong": "You WILL be assigned Friday - stock $185 > $180 strike. You profit $1,300 but lose the shares. If you want to keep shares (maybe for dividends, or bullish long-term), you can ROLL the call to March at $190 strike. You'd keep shares, collect more premium, and assignment happens at $190 instead."
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "Rolling Calculator",
+      "description": "See if rolling makes sense for your position",
+      "inputs": [
+        {
+          "label": "Current Call Strike",
+          "value": 180,
+          "locked": true
+        },
+        {
+          "label": "Current Stock Price",
+          "value": 185,
+          "locked": true
+        },
+        {
+          "label": "Cost to Close Current Call",
+          "type": "slider",
+          "min": 5,
+          "max": 10,
+          "value": 7,
+          "step": 0.50,
+          "note": "What you'd pay to buy it back"
+        },
+        {
+          "label": "New Strike to Roll To",
+          "type": "slider",
+          "min": 185,
+          "max": 195,
+          "value": 190,
+          "step": 5
+        },
+        {
+          "label": "Premium for New Call",
+          "type": "slider",
+          "min": 3,
+          "max": 12,
+          "value": 9,
+          "step": 0.50,
+          "note": "What you'd collect selling new call"
+        }
+      ],
+      "outputs": [
+        {
+          "label": "Cost to Close Current",
+          "calculation": "cost_to_close * -100",
+          "format": "currency",
+          "note": "Negative = you pay"
+        },
+        {
+          "label": "Premium from New Call",
+          "calculation": "new_premium * 100",
+          "format": "currency",
+          "note": "Positive = you receive"
+        },
+        {
+          "label": "Net Credit/Debit",
+          "calculation": "(new_premium - cost_to_close) * 100",
+          "format": "currency",
+          "highlight": true,
+          "conditional_color": true
+        },
+        {
+          "label": "Verdict",
+          "calculation": "(new_premium - cost_to_close) > 0 ? '✅ ROLL for CREDIT - Do it!' : (new_premium - cost_to_close) > -2 ? '⚠️ Small debit - Maybe worth it' : '🚫 Large debit - Just take assignment'"
+        },
+        {
+          "label": "New Strike Room",
+          "calculation": "new_strike - current_price",
+          "format": "currency",
+          "note": "Stock can rise this much before assignment"
+        }
+      ],
+      "teaching_points": [
+        "Try: $7 close, $9 new = $2 credit ($200 received) ✅",
+        "Try: $7 close, $6 new = $1 debit ($100 paid) ⚠️",
+        "Roll UP to $195 = more room but less premium"
+      ]
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "You sold $100 put, stock dropped to $95. Assignment likely. You're still bullish. What should you do?",
+      "options": [
+        "Let it assign - buy shares at $100",
+        "Roll PUT out to next month at $95 strike",
+        "Close the put and walk away",
+        "Roll PUT out to next month at $100 strike"
+      ],
+      "correct": 3,
+      "xp_reward": 15,
+      "explanation_correct": "Smart rolling! Close $100 put (pay $5), sell new $100 put next month (collect maybe $6) = net $1 credit. You avoid assignment, give stock more time to recover, collect more premium. If it recovers to $102, you win without ever buying shares. If still $95 next month, roll again or take assignment then!",
+      "explanation_wrong": "Roll the PUT out at SAME strike ($100). Avoid assignment now, give stock time to recover. Close current $100 put (costs ~$5), sell next month $100 put (collect ~$6) = net credit. If stock recovers, you win. If not, you can roll again or take assignment later. Rolling = buying time!"
+    },
+    {
+      "screen_type": "scenario",
+      "question": "When should you DEFINITELY roll a covered call instead of taking assignment?",
+      "options": [
+        "You want to keep the shares long-term",
+        "Ex-dividend date is coming (you want the dividend)",
+        "Stock is in strong uptrend - expect more gains",
+        "All of the above"
+      ],
+      "correct": 3,
+      "xp_reward": 15,
+      "explanation_correct": "All three! Roll when: 1) You love the stock long-term (don't want to sell), 2) Dividend coming (keep shares for $2+ dividend), 3) Strong uptrend (stock might hit $200, you'd miss $10+ gain). Cost to roll: maybe $200. Benefit: keep shares + dividend + future gains. Math works out!",
+      "explanation_wrong": "These are ALL reasons to roll! If you're bullish long-term, getting assigned = forced to sell at strike. Rolling lets you keep shares, collect more premium, and profit from continued gains. Dividend coming? Keep shares for dividend (worth more than roll cost). Roll = flexibility!"
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "What's the biggest RISK of rolling positions?",
+      "options": [
+        "You pay commissions twice",
+        "You keep losing positions open longer (hoping for recovery)",
+        "Your broker might reject the order",
+        "You lose your original premium"
+      ],
+      "correct": 1,
+      "xp_reward": 10,
+      "explanation_correct": "This is the trap! Rolling can become 'hope trading' - you keep rolling a loser instead of taking the loss. Example: Stock drops from $100 to $70, you keep rolling $100 put every month, paying debits, tying up capital. After 6 months, you paid $2,000 in roll debits and STILL underwater. Sometimes taking assignment is smarter!",
+      "explanation_wrong": "The trap: rolling turns into hoping. You're down, roll to 'give it more time,' pay a debit, next month still down, roll again, pay again. You can death-spiral into huge losses. Rule: Only roll if thesis INTACT. If thesis broken (company fundamentals bad), take the loss. Don't hope-trade!"
+    },
+    {
+      "screen_type": "scenario",
+      "question": "Good candidate for rolling vs bad candidate?",
+      "options": [
+        "Good: You're down 10%, thesis intact. Bad: Down 50%, thesis broken.",
+        "Good: You're down 50%, thesis broken. Bad: Down 10%, thesis intact.",
+        "Both are good candidates for rolling",
+        "Neither should be rolled - always take assignment"
+      ],
+      "correct": 0,
+      "xp_reward": 15,
+      "explanation_correct": "Perfect judgment! Down 10% with intact thesis = roll (temporary dip, give it time). Down 50% with broken thesis = cut losses (don't throw good money after bad). Rolling works when: 1) Small/medium drawdown, 2) Thesis still valid, 3) Can roll for credit or small debit. Don't roll just to avoid loss - that's hope trading!",
+      "explanation_wrong": "Roll when thesis INTACT, position salvageable. Down 10% = temporary, rollable. Down 50% with broken story = cut losses, move on. Rolling is NOT for avoiding reality - it's for managing good positions that need more time. If fundamentals changed, take the L!"
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "Rolling Rules",
+      "cards": [
+        {
+          "front": "What is rolling?",
+          "back": "Close current option + Open new option (different strike/date) in ONE transaction. Roll UP = higher strike. Roll OUT = later date. Pros use rolling to extend winners and manage losers."
+        },
+        {
+          "front": "When to roll a covered call?",
+          "back": "1) Want to keep shares long-term, 2) Dividend coming soon, 3) Stock in uptrend (expect more gains), 4) Can roll for credit or small debit. Don't roll if you're OK selling shares at strike!"
+        },
+        {
+          "front": "When to roll a cash-secured put?",
+          "back": "Roll when: 1) Still bullish but need more time, 2) Temporary dip not thesis-break, 3) Can roll for credit, 4) Avoid assignment for now. DON'T roll if: 1) Down 40%+ with broken thesis, 2) Rolling for debit repeatedly, 3) Just hoping for recovery!"
+        }
+      ]
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 90,
+      "total_xp": 2290,
+      "badge": "🔄 Roll Master",
+      "badge_description": "You can extend and manage your positions like a pro!",
+      "celebration_message": "You just learned the #1 skill that separates beginners from pros. Rolling = flexibility = more profits! 🔄",
+      "streak_bonus": false,
+      "next_lesson_preview": {
+        "title": "The Wheel Strategy",
+        "description": "Combine CSPs + Covered Calls for infinite income loop",
+        "unlock_status": "unlocked"
+      }
+    }
+  ]
+}
+

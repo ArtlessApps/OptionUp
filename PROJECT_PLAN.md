@@ -42,24 +42,60 @@
 
 **Differentiator:** Real trade autopsies + common mistakes + "when NOT to trade"
 
-### Module 1: Fundamentals (10 lessons)
+### Module 1: Fundamentals (18 lessons including subsections)
 
-1. What is a Call Option?
-2. What is a Put Option?
-3. Intrinsic vs Time Value
-4. The Greeks - Delta
-5. Understanding Theta Decay
-6. IV and Vega
-7. Max Loss/Gain Scenarios
-8. Position Sizing & Risk
-9. Covered Calls Basics
-10. Cash-Secured Puts Basics
+1. Options vs Stocks
+2. Calls vs Puts
+3. Strike Price & Expiration
+4. Premium: Intrinsic vs Time Value
+5. Profit/Loss Diagram
+6. Buying a Call
+7. Buying a Put
+7a. Bid-Ask Spreads & The Hidden Tax ⭐ NEW
+7b. Order Types - Never Use Market Orders ⭐ NEW
+8. In the Money vs Out of the Money
+9. Theta - Why Options Decay
+10. Assignment & Exercise (EXPANDED with early assignment risk)
+11. Max Loss vs Max Gain
+12. Position Sizing
+13. Liquidity & Bid-Ask Spread
+14. Choosing Expiration Dates (EXPANDED with expiration week dynamics)
+15. Reading an Options Chain
+15a. Understanding Buying Power ⭐ NEW
 
-### Future Modules
+### Module 2: Income Strategies (14 lessons including subsections)
 
-- Module 2: Basic Spreads (vertical, iron condor)
-- Module 3: Advanced Strategies (straddles, calendars, diagonals)
-- Module 4: Portfolio Integration (hedging, income strategies, tax implications)
+16. Covered Call Basics (EXPANDED with dividend capture)
+17-21. Covered Call mechanics & case studies
+21a. Choosing Your Trading Platform ⭐ NEW
+22-27. Cash-Secured Puts & Wheel Strategy
+27a. Rolling Positions ⭐ NEW
+
+### Module 3: Spreads & Advanced (15 lessons including subsections)
+
+28-41. Spreads, calendars, diagonals, LEAPS, PMCC
+41a. Synthetic Positions ⭐ NEW
+42. When NOT to Trade
+
+### Module 4: Neutral Strategies (12 lessons)
+
+43-54. Iron condors, butterflies, strangles, adjustments
+
+### Module 5: The Greeks (10 lessons)
+
+55-64. Delta, Gamma, Theta, Vega, IV, Rho, Greeks in spreads
+
+### Module 6: Risk Management & Taxes (12 lessons)
+
+65-76. Earnings, VIX, portfolio heat, correlation, taxes, wash sales
+
+### Module 7: Real Trades & Next Steps (11 lessons including subsections)
+
+77-85. Real trade autopsies, trading plan, backtesting, journal
+85a. Paper Trading Mastery ⭐ NEW
+86. Next Steps (EXPANDED with 10-point "Ready to Trade?" checklist)
+
+**Total: 93 lessons** (86 original + 7 new gap-fill lessons with letter suffixes)
 
 ---
 
@@ -208,10 +244,10 @@ src/
 
 ### Week 3-4: Content Sprint
 
-**Goal:** Complete Module 1 (10 lessons)
+**Goal:** Complete Module 1 (18 lessons including subsections)
 
-- Build lessons 4-10 (2-4 hours each)
-- Content includes: Greeks, position sizing, covered calls, cash-secured puts
+- Build lessons 4-15a (2-4 hours each)
+- Content includes: Greeks, position sizing, covered calls, cash-secured puts, bid-ask spreads, order types, buying power
 - **Deliverable:** Full Module 1 ready to launch
 
 ### Week 5: Build the Wrapper
@@ -234,7 +270,7 @@ src/
 - Deploy as PWA
 - Soft launch (Product Hunt, Reddit, Twitter)
 
-**Deliverable:** Live product with 10 lessons
+**Deliverable:** Live product with 93 lessons (complete curriculum)
 
 ---
 
@@ -300,12 +336,22 @@ src/
 
 ---
 
+## Curriculum Updates (November 2025)
+
+**Gap Analysis Implementation:**
+- ✅ All 12 critical gaps addressed
+- ✅ 7 new lessons created (bid-ask spreads, order types, buying power, broker selection, rolling, synthetics, paper trading)
+- ✅ 4 existing lessons expanded (early assignment risk, expiration week dynamics, dividend capture, go-live checklist)
+- ✅ Letter suffix numbering system implemented (07a, 07b, etc.) for proper sequencing
+- ✅ Total curriculum: 93 lessons (86 original + 7 new)
+- See `GAP_ANALYSIS_IMPLEMENTATION.md` for complete details
+
 ## Monetization Strategy
 
 **Freemium Model:**
 
 - First 3 lessons free (hook users)
-- $20/month for full access
+- $20/month for full access (all 93 lessons)
 - No trial period initially (avoid churn complexity)
 
 **Target:** 4,167 paying subscribers = $1M ARR

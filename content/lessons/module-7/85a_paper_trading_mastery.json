@@ -1,0 +1,256 @@
+{
+  "lesson_id": "paper-trading-mastery",
+  "title": "Paper Trading - Practice Before Risking Real Money",
+  "estimated_time": "9 min",
+  "total_xp": 90,
+  "badge": "📝 Practice Pro",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "📝💡",
+      "headline": "Pro athletes practice. So should you.",
+      "text": "You wouldn't step onto an NFL field without practice. You wouldn't perform surgery without residency. Yet traders blow up $10,000 accounts without practicing once. Paper trading = practice with fake money, real prices, zero risk. Let's set you up for success."
+    },
+    {
+      "screen_type": "definition",
+      "headline": "What is Paper Trading?",
+      "text": "PAPER TRADING = simulated trading with fake money but real market prices. You place trades, track results, test strategies - all risk-free. Best platforms: ThinkorSwim (TD), TradeStation, TastyTrade, Webull. Goal: Complete 30+ trades over 30+ days before risking real money. Prove your edge in simulation before betting real capital.",
+      "visual": "📝",
+      "highlight_words": ["PAPER TRADING", "fake money", "real market prices", "risk-free", "30+ trades", "30+ days", "Prove your edge"]
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "Paper Trading Essentials",
+      "cards": [
+        {
+          "term": "Simulated Account",
+          "definition": "Fake money account that mirrors real trading",
+          "example": "ThinkorSwim gives you $100,000 fake money. Trade as if it's real. Results tracked same as live account."
+        },
+        {
+          "term": "Real-Time Data",
+          "definition": "Paper trading uses actual market prices (not fake data)",
+          "example": "If SPY is $450.23 in real market, it's $450.23 in your paper account. Fills mimic reality (bid/ask spreads, slippage)."
+        },
+        {
+          "term": "30-Day Minimum Rule",
+          "definition": "Trade paper account for at least 30 days before going live",
+          "example": "30 days = see multiple market conditions (up days, down days, volatility). Test your discipline over time."
+        },
+        {
+          "term": "Graduation Criteria",
+          "definition": "Requirements to move from paper to real money",
+          "example": "30+ trades, 30+ days, net positive results, followed your rules 90%+ of time, journal every trade."
+        }
+      ]
+    },
+    {
+      "screen_type": "analogy",
+      "headline": "Think of it like flight simulator training",
+      "text": "Pilots don't jump straight to flying 747s...",
+      "interactive": "tap_to_reveal",
+      "reveal_sections": [
+        {
+          "label": "Stage 1: Flight simulator (paper trading)",
+          "content": "Practice takeoffs, landings, emergency procedures with ZERO risk. Crash = reset and try again. Learn from mistakes without consequences. This is paper trading - safe practice environment."
+        },
+        {
+          "label": "Stage 2: Supervised flights (small real money)",
+          "content": "After 100+ sim hours, co-pilot with instructor using real plane. Small mistakes = minor consequences. This is starting with 1 contract real money after paper trading success."
+        },
+        {
+          "label": "Stage 3: Solo flying (full trading)",
+          "content": "After proving competence, fly solo. You've built muscle memory, tested reactions, proven you can handle stress. This is full-scale trading after 3-6 months of success."
+        }
+      ]
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "How long should you paper trade before using real money?",
+      "options": [
+        "1 week - just need to learn the platform",
+        "30 days minimum - see multiple market conditions",
+        "1 trade - if it works, go live",
+        "Forever - never risk real money"
+      ],
+      "correct": 1,
+      "xp_reward": 10,
+      "explanation_correct": "Perfect! 30 days minimum because: 1) See different market conditions (trending, choppy, volatile), 2) Test your discipline over time (not just lucky trades), 3) Build habits and muscle memory, 4) Prove strategy works across multiple trades. One week isn't enough - you might just get lucky. 30+ days = real proof!",
+      "explanation_wrong": "Minimum 30 days, ideally 60-90 days. Why? Markets change day-to-day. A strategy that works Monday might fail Friday. You need to see: trending markets, choppy markets, high/low volatility, winning streaks, losing streaks. 30+ days = test ALL conditions. One week = you might just be lucky!"
+    },
+    {
+      "screen_type": "scenario",
+      "question": "Your paper trading results after 30 days: 15 trades, 12 wins, 3 losses, +$2,400 profit. Ready for real money?",
+      "options": [
+        "Yes - 80% win rate is great!",
+        "No - need at least 30 trades, not just 30 days",
+        "Yes - any profit means you're ready",
+        "No - need 100% win rate first"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "Smart discipline! 15 trades isn't enough data. You might have gotten lucky. Goal: 30+ trades AND 30+ days. Why? 15 trades = small sample size. One bad week could erase that $2,400. 30+ trades = statistical significance, proves consistent edge. Don't rush - paper trading is FREE practice!",
+      "explanation_wrong": "Not enough trades! 15 trades = small sample, might be luck. Graduation criteria: 1) 30+ trades, 2) 30+ days, 3) Net positive, 4) Followed rules. You're only 2/4. Keep paper trading until 30+ trades. It's free practice - why rush into real money and potentially lose?"
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "Paper Trading Progress Tracker",
+      "description": "Are you ready to graduate to real money?",
+      "inputs": [
+        {
+          "label": "Days Paper Trading",
+          "type": "slider",
+          "min": 7,
+          "max": 90,
+          "value": 30,
+          "step": 7
+        },
+        {
+          "label": "Total Trades Executed",
+          "type": "slider",
+          "min": 5,
+          "max": 60,
+          "value": 35,
+          "step": 5
+        },
+        {
+          "label": "Winning Trades",
+          "type": "slider",
+          "min": 0,
+          "max": 40,
+          "value": 22,
+          "step": 1
+        },
+        {
+          "label": "Followed Trading Plan",
+          "type": "slider",
+          "min": 0,
+          "max": 100,
+          "value": 85,
+          "step": 5,
+          "note": "% of time"
+        }
+      ],
+      "outputs": [
+        {
+          "label": "Days Requirement",
+          "calculation": "days >= 30 ? '✅ Pass (30+ days)' : '❌ Fail (need ' + (30 - days) + ' more days)'",
+          "highlight": days < 30
+        },
+        {
+          "label": "Trade Count Requirement",
+          "calculation": "total_trades >= 30 ? '✅ Pass (30+ trades)' : '❌ Fail (need ' + (30 - total_trades) + ' more trades)'",
+          "highlight": total_trades < 30
+        },
+        {
+          "label": "Win Rate",
+          "calculation": "total_trades > 0 ? ((winning_trades / total_trades) * 100).toFixed(1) + '%' : '0%'",
+          "format": "percentage"
+        },
+        {
+          "label": "Discipline Check",
+          "calculation": "followed_plan >= 90 ? '✅ Excellent discipline' : followed_plan >= 75 ? '⚠️ Good but needs work' : '❌ Poor discipline - not ready'",
+          "highlight": followed_plan < 75
+        },
+        {
+          "label": "VERDICT",
+          "calculation": "(days >= 30 && total_trades >= 30 && followed_plan >= 90) ? '🎓 READY FOR REAL MONEY' : 'Keep practicing - not ready yet'",
+          "highlight": true
+        }
+      ],
+      "teaching_points": [
+        "Try 30 days, 35 trades, 90% discipline = Ready!",
+        "Try 60 days, 15 trades = Not enough trades",
+        "Try 30 days, 30 trades, 60% discipline = Poor discipline"
+      ]
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "What's the BIGGEST mistake in paper trading?",
+      "options": [
+        "Trading too small - use full position sizes",
+        "Not taking it seriously (YOLO trades because 'it's fake')",
+        "Trading too conservatively",
+        "Using different strategies than you will in real money"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "This is the trap! Paper trading with $100K fake money, throwing $50K into meme stock options because 'it's not real.' Then real money: you're terrified to risk $500. Paper trading MUST mimic reality: same position sizes, same strategies, same discipline. Treat fake money like real money or you're wasting time!",
+      "explanation_wrong": "Paper trading fails when you don't take it seriously. Traders YOLO with fake money, then freeze up with real money. Rule: Trade paper account EXACTLY as you'll trade real account. Same strategies, same position sizes (scaled), same entry rules, same discipline. Paper trading = dress rehearsal, not playground!"
+    },
+    {
+      "screen_type": "scenario",
+      "question": "Best way to structure your paper trading practice?",
+      "options": [
+        "Trade every single day, as many trades as possible",
+        "Follow your actual trading plan - 2-3 trades/week if that's your strategy",
+        "Only trade when you're 100% certain",
+        "Copy what other traders do"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "Exactly right! Paper trading should MIRROR your real trading plan. If your plan = 2-3 CSPs per week, do that in paper. Don't force 20 trades/week just to hit 30 trades faster. Quality > quantity. Build the HABITS you'll use in real trading. Paper trading = behavior rehearsal!"
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "You paper traded for 45 days, 40 trades, up $4,500 (15% return). What should you start with in real money?",
+      "options": [
+        "Go all-in - you proved you can do it!",
+        "Start with 1 contract at a time, scale up slowly",
+        "Match your paper trading size immediately",
+        "Wait another 90 days to be extra sure"
+      ],
+      "correct": 1,
+      "xp_reward": 10,
+      "explanation_correct": "Smart! You graduated paper trading, but real money = different psychology. Start with 1 contract (minimum size). If that works for 10-20 trades, add a 2nd contract. Scale up gradually. Even pros feel different with real money. Prove you can handle the emotional difference before scaling up!",
+      "explanation_wrong": "Start SMALL even after paper success! Real money = different emotions (fear, greed, panic). Begin with 1 contract. After 10-20 successful real trades, increase to 2 contracts. After 20 more, increase again. Gradual scaling = test your psychology. Many traders crush paper trading but freeze with real money!"
+    },
+    {
+      "screen_type": "scenario",
+      "question": "Best paper trading platforms for options?",
+      "options": [
+        "ThinkorSwim (TD Ameritrade) - most realistic",
+        "Investopedia simulator - free but basic",
+        "TastyTrade / Webull - good and free",
+        "ThinkorSwim or TastyTrade/Webull"
+      ],
+      "correct": 3,
+      "xp_reward": 15,
+      "explanation_correct": "Both are excellent! ThinkorSwim (TD) = most advanced, realistic fills, professional tools, steep learning curve. TastyTrade/Webull = user-friendly, free, good for beginners, realistic enough. Start with Webull/TastyTrade if new. Graduate to ThinkorSwim if you want pro-level platform. Both give realistic options practice!",
+      "explanation_wrong": "ThinkorSwim = gold standard (complex but realistic). TastyTrade/Webull = great for beginners (simpler, free, real data). Investopedia = too basic (doesn't handle spreads well, unrealistic fills). Choose ThinkorSwim if you want to learn it eventually. Choose TastyTrade/Webull for easier start. Both work!"
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "Paper Trading Graduation Checklist",
+      "cards": [
+        {
+          "front": "Minimum requirements to go live?",
+          "back": "✅ 30+ trades executed, ✅ 30+ days elapsed, ✅ Net positive results, ✅ Followed plan 90%+ of time, ✅ Journaled every trade, ✅ Comfortable with platform. Missing any? Keep practicing!"
+        },
+        {
+          "front": "How to treat paper trading?",
+          "back": "Treat fake money EXACTLY like real money. Same strategies, same position sizes, same discipline. No YOLO trades. No 'testing' crazy ideas. Paper trading = dress rehearsal for real show. Practice how you'll perform!"
+        },
+        {
+          "front": "After paper trading success, what next?",
+          "back": "Start with 1 contract real money. Trade 10-20 times. If successful, increase to 2 contracts. Scale up gradually every 20 trades. Real money = different psychology. Prove you can handle it before risking more!"
+        }
+      ]
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 90,
+      "total_xp": 7950,
+      "badge": "📝 Practice Pro",
+      "badge_description": "You know how to practice before risking real capital!",
+      "celebration_message": "You're almost ready! Complete your 30-day paper trading challenge and you'll be set for real trading success! 📝",
+      "streak_bonus": false,
+      "next_lesson_preview": {
+        "title": "Next Steps and Resources",
+        "description": "The grand finale - your 10-point checklist to go live",
+        "unlock_status": "unlocked"
+      }
+    }
+  ]
+}
+

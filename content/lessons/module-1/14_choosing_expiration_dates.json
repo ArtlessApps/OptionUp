@@ -1,7 +1,9 @@
 {
   "lesson_id": "choosing-expiration-dates",
   "title": "Choosing Expiration Dates",
-  "estimated_time": "8 min",
+  "estimated_time": "11 min",
+  "total_xp": 110,
+  "badge": "📅 Expiration Expert",
   "screens": [
     {
       "screen_type": "hook",
@@ -35,6 +37,124 @@
           "definition": "Long-term options, January expirations",
           "example": "Bullish on AI for 2 years? Buy NVDA Jan 2027 call. Acts like stock ownership but cheaper (delta ~0.80). Lower risk, lower reward."
         }
+      ]
+    },
+    {
+      "screen_type": "definition",
+      "headline": "Expiration Week Dynamics - The Final 7 Days",
+      "text": "0-7 DTE = Options go CRAZY. GAMMA EXPLOSION makes prices swing wildly. THETA ACCELERATION means you lose $100+/day. Professionals close most positions by 7 DTE despite remaining value. Why? The risk (gamma) outweighs the reward (remaining theta). This is when options become gambling, not trading.",
+      "visual": "⚡💥",
+      "highlight_words": ["0-7 DTE", "GAMMA EXPLOSION", "THETA ACCELERATION", "close by 7 DTE", "risk outweighs reward"]
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "Final Week Greeks",
+      "cards": [
+        {
+          "term": "Gamma Explosion",
+          "definition": "Gamma (rate of delta change) goes parabolic in final 7 days",
+          "example": "45 DTE: gamma = 0.02 (stable). 3 DTE: gamma = 0.25 (explosive). $1 stock move = delta swings 25 points. Your P/L whipsaws $100+ per hour."
+        },
+        {
+          "term": "Theta Acceleration",
+          "definition": "80% of option value decays in final 30 days, 50% in final 7 days",
+          "example": "Your $5 option loses $0.10/day at 45 DTE. At 5 DTE? Loses $1/day. 10x faster decay. Clock is ticking LOUD."
+        },
+        {
+          "term": "Pin Risk",
+          "definition": "Stock 'camps' at your strike price into expiration = assignment uncertainty",
+          "example": "You sold $100 put, stock hovering $99.95-$100.05 all Friday. Will you be assigned? Don't know until Monday. Stressful limbo."
+        },
+        {
+          "term": "The 7-DTE Rule",
+          "definition": "Many pros close spreads/positions by 7 days before expiration",
+          "example": "You sold spread for $1 credit, it's worth $0.20 now (80% profit), 6 days left. Close it! Remaining $0.20 isn't worth gamma risk."
+        }
+      ]
+    },
+    {
+      "screen_type": "scenario",
+      "question": "You sold an iron condor for $2.00 credit. It's now worth $0.30 (85% profit captured). There are 5 days left. What should you do?",
+      "options": [
+        "Hold to expiration - squeeze out last $0.30",
+        "Close now - 85% profit is excellent, avoid gamma risk",
+        "Wait 3 more days, then close",
+        "Roll to next month"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "Professional decision! You captured 85% of max profit ($1.70 of $2.00). Holding for last $0.30 exposes you to gamma explosions - one whipsaw could cost you $500. Pros take 80-85% profit and move on. 'Pigs get fat, hogs get slaughtered.'",
+      "explanation_wrong": "This is where beginners get burned. You banked $1.70. Holding for $0.30 more = greed. Gamma risk in final 5 days can turn your $1.70 winner into a $500 loser in ONE move. Professional rule: Take 80%+ profit and exit. Protect your wins!"
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "Why do gamma explosions happen in the final week?",
+      "options": [
+        "Market makers manipulate prices",
+        "Less time = bigger delta swings per stock move = more volatility",
+        "More traders enter positions",
+        "Theta and gamma are not related"
+      ],
+      "correct": 1,
+      "xp_reward": 10,
+      "explanation_correct": "Exactly! With 45 DTE, $1 stock move = small delta change (time cushion absorbs it). With 3 DTE, that same $1 move = HUGE delta swing (no time left). Options become binary (win/lose) instead of gradual. This creates wild price swings = gamma explosion!",
+      "explanation_wrong": "It's mathematical. Gamma = rate of delta change. Near expiration, options go from ATM (50% chance) to ITM (100%) or OTM (0%) FAST. Small stock moves = big delta swings = big P/L swings = volatility. This is gamma explosion - it's math, not manipulation."
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "Expiration Week Risk Calculator",
+      "description": "See how risk/reward changes as expiration approaches",
+      "inputs": [
+        {
+          "label": "Days to Expiration (DTE)",
+          "type": "slider",
+          "min": 1,
+          "max": 45,
+          "value": 5,
+          "step": 1
+        },
+        {
+          "label": "Profit Captured So Far",
+          "type": "slider",
+          "min": 0,
+          "max": 100,
+          "value": 80,
+          "step": 5,
+          "note": "% of max profit"
+        },
+        {
+          "label": "Remaining Profit Available",
+          "type": "slider",
+          "min": 10,
+          "max": 100,
+          "value": 30,
+          "step": 10,
+          "note": "$ remaining"
+        }
+      ],
+      "outputs": [
+        {
+          "label": "Gamma Risk Level",
+          "calculation": "dte <= 3 ? '🔴 EXTREME - Whipsaw city' : dte <= 7 ? '🟡 HIGH - Close soon' : dte <= 14 ? '🟢 MEDIUM - Monitor' : '🟢 LOW - OK to hold'",
+          "highlight": true
+        },
+        {
+          "label": "Theta Decay Rate",
+          "calculation": "dte <= 3 ? 'VERY FAST ($50-150/day)' : dte <= 7 ? 'FAST ($30-80/day)' : dte <= 14 ? 'MODERATE ($15-40/day)' : 'SLOW ($5-20/day)'"
+        },
+        {
+          "label": "Professional Action",
+          "calculation": "(profit_captured >= 80 && dte <= 7) ? 'CLOSE NOW - Take your profit!' : (profit_captured >= 70 && dte <= 3) ? 'CLOSE NOW - Gamma risk too high' : (profit_captured < 50 && dte <= 3) ? 'CLOSE OR ACCEPT LOSS - Don\\'t gamble' : 'Monitor closely, consider closing at 80%'"
+        },
+        {
+          "label": "Risk/Reward Ratio",
+          "calculation": "dte <= 7 ? 'POOR - Risk >' + (remaining_profit * 3) + ', Reward $' + remaining_profit : 'OK - Manageable'"
+        }
+      ],
+      "teaching_points": [
+        "Try: 5 DTE, 80% captured, $30 left = CLOSE IT!",
+        "Try: 3 DTE, 60% captured = GAMMA RISK too high",
+        "Try: 30 DTE, 50% captured = Still safe to hold"
       ]
     },
     {
@@ -154,6 +274,10 @@
           "back": "Avoid buying options with <30 days unless you have specific near-term catalyst. Theta accelerates after 30 days. Exception: earnings, Fed meetings, product launches. Otherwise, give yourself 60+ days."
         },
         {
+          "front": "Expiration week (0-7 DTE) - why so dangerous?",
+          "back": "GAMMA EXPLOSION = wild price swings. THETA ACCELERATION = lose $100+/day. PIN RISK = assignment uncertainty. Professional rule: Close positions with 80%+ profit captured by 7 DTE. Risk > Reward in final week!"
+        },
+        {
           "front": "Rolling options - when does it make sense?",
           "back": "Roll when: 1) Thesis intact but need more time, 2) Can roll for credit/small debit, 3) >30 days left on new expiration. Don't roll: 1) Down 50%+ (accept loss), 2) Thesis broken, 3) Just hope."
         }
@@ -161,11 +285,11 @@
     },
     {
       "screen_type": "celebration",
-      "xp_earned": 80,
-      "total_xp": 1040,
+      "xp_earned": 110,
+      "total_xp": 1370,
       "badge": "📅 Expiration Expert",
-      "badge_description": "You know how to choose the perfect expiration date!",
-      "celebration_message": "Excellent! You now understand timing is everything. Final lesson: reading an options chain like a pro.",
+      "badge_description": "You know expiration selection AND expiration week risks!",
+      "celebration_message": "Pro knowledge! You now understand timing selection AND why the final week is so dangerous. Trade smart! 📅",
       "streak_bonus": false,
       "next_lesson_preview": {
         "title": "Reading an Options Chain",

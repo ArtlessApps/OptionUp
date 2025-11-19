@@ -64,9 +64,14 @@ export function AnalogyScreen({ data, onContinue }: AnalogyScreenProps) {
                   <Card className="bg-success/10 border-2 border-success" padding="md">
                     <div className="flex items-start gap-3">
                       <span className="text-2xl">✓</span>
-                      <p className="text-gray-800 font-medium flex-1">
-                        {section.label}
-                      </p>
+                      <div className="flex-1">
+                        <p className="text-gray-800 font-medium mb-2">
+                          {section.label}
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                          {section.content}
+                        </p>
+                      </div>
                     </div>
                   </Card>
                 </motion.div>

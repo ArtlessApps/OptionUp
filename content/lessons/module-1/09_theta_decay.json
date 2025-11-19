@@ -121,29 +121,34 @@
       "screen_type": "interactive_example",
       "headline": "Theta Decay Visualizer",
       "description": "Watch how time value decays as expiration approaches",
+      "interactive_type": "theta_decay",
       "inputs": [
         {
+          "label": "Days Until Expiration",
           "name": "Days Until Expiration",
           "type": "slider",
           "min": 1,
           "max": 90,
-          "default": 90
+          "value": 90
         },
         {
+          "label": "Option Premium",
           "name": "Option Premium",
           "type": "slider",
           "min": 1,
           "max": 20,
-          "default": 10
+          "value": 10
         },
         {
+          "label": "Intrinsic Value",
           "name": "Intrinsic Value",
           "type": "slider",
           "min": 0,
           "max": 15,
-          "default": 5
+          "value": 5
         }
       ],
+      "outputs": [],
       "teaching_points": [
         "Notice: Decay is slow at 90 days, then accelerates",
         "The final 30 days is where most time value disappears",

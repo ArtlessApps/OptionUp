@@ -1,0 +1,238 @@
+{
+  "lesson_id": "synthetic-positions",
+  "title": "Synthetic Positions - Creating Stock from Options",
+  "estimated_time": "8 min",
+  "total_xp": 80,
+  "badge": "🧪 Synthetic Scientist",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "🧪⚗️",
+      "headline": "You can own TSLA without buying shares",
+      "text": "What if I told you: Long call + Short put = Owning stock? Same profit/loss profile, same risk, but built with options. This is synthetic positions - recreating stock exposure using only options. Rarely used by retail traders, but understanding this reveals how options actually work."
+    },
+    {
+      "screen_type": "definition",
+      "headline": "What are Synthetic Positions?",
+      "text": "SYNTHETIC = Using options to replicate stock positions. Long stock = Buy call + Sell put (same strike). Short stock = Buy put + Sell call. Why? Sometimes cheaper, sometimes more efficient, mostly theoretical. Key insight: calls and puts are TWO SIDES of the same thing. Understanding synthetics = understanding option relationships.",
+      "visual": "🧪",
+      "highlight_words": ["SYNTHETIC", "replicate stock", "Buy call + Sell put", "TWO SIDES", "option relationships"]
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "Synthetic Building Blocks",
+      "cards": [
+        {
+          "term": "Synthetic Long Stock",
+          "definition": "Buy ATM call + Sell ATM put = same as owning 100 shares",
+          "example": "Stock $100. Buy $100 call + Sell $100 put = profit/loss identical to owning stock. Stock goes to $110 = you profit $1,000 either way."
+        },
+        {
+          "term": "Synthetic Short Stock",
+          "definition": "Buy ATM put + Sell ATM call = same as shorting 100 shares",
+          "example": "Stock $100. Buy $100 put + Sell $100 call = profit when stock drops. Stock to $90 = you profit $1,000."
+        },
+        {
+          "term": "Put-Call Parity",
+          "definition": "Theoretical relationship: Call - Put = Stock price - Strike (discounted)",
+          "example": "Mathematical proof that calls and puts are interconnected. Used by market makers for pricing arbitrage."
+        },
+        {
+          "term": "Why Retail Rarely Uses This",
+          "definition": "More complex, assignment risk, margin requirements, commissions",
+          "example": "Just buy stock for $10,000 vs synthetic (tie up margin, 2 contracts, assignment risk). Rarely worth it for most traders."
+        }
+      ]
+    },
+    {
+      "screen_type": "analogy",
+      "headline": "Think of it like building with LEGO",
+      "text": "Stock = the finished model. Options = individual LEGO bricks...",
+      "interactive": "tap_to_reveal",
+      "reveal_sections": [
+        {
+          "label": "Option 1: Buy the pre-built model (buy stock)",
+          "content": "$10,000 for the finished castle (100 shares at $100). Simple, straightforward, you own it outright. This is normal stock ownership."
+        },
+        {
+          "label": "Option 2: Build it from individual bricks (synthetic)",
+          "content": "Buy blue brick (+$5), sell red brick (-$5) = total $0 upfront but you've CONSTRUCTED the same castle. More complex, same end result. This is synthetic long (buy call + sell put)."
+        },
+        {
+          "label": "Why bother with the complex way?",
+          "content": "Sometimes the individual bricks (options) are mispriced. Smart traders build synthetic when cheaper than buying outright. But for most of us? Just buy the finished model (stock)!"
+        }
+      ]
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "Synthetic Long Stock Calculator",
+      "description": "See how synthetic long matches real stock",
+      "inputs": [
+        {
+          "label": "Strike Price (ATM)",
+          "value": 100,
+          "locked": true
+        },
+        {
+          "label": "Stock Price at Expiration",
+          "type": "slider",
+          "min": 80,
+          "max": 120,
+          "value": 110,
+          "step": 5
+        },
+        {
+          "label": "Call Premium Paid",
+          "value": 5,
+          "locked": true,
+          "note": "You bought the call"
+        },
+        {
+          "label": "Put Premium Collected",
+          "value": 5,
+          "locked": true,
+          "note": "You sold the put"
+        }
+      ],
+      "outputs": [
+        {
+          "label": "Real Stock P/L",
+          "calculation": "(stock_price - 100) * 100",
+          "format": "currency",
+          "note": "If you just bought 100 shares at $100"
+        },
+        {
+          "label": "Call P/L",
+          "calculation": "stock_price > 100 ? ((stock_price - 100) * 100) - 500 : -500",
+          "format": "currency"
+        },
+        {
+          "label": "Put P/L",
+          "calculation": "stock_price < 100 ? ((100 - stock_price) * -100) + 500 : 500",
+          "format": "currency"
+        },
+        {
+          "label": "Synthetic P/L (Call + Put)",
+          "calculation": "(stock_price > 100 ? ((stock_price - 100) * 100) - 500 : -500) + (stock_price < 100 ? ((100 - stock_price) * -100) + 500 : 500)",
+          "format": "currency",
+          "highlight": true
+        },
+        {
+          "label": "Difference",
+          "calculation": "Math.abs(((stock_price - 100) * 100) - ((stock_price > 100 ? ((stock_price - 100) * 100) - 500 : -500) + (stock_price < 100 ? ((100 - stock_price) * -100) + 500 : 500)))",
+          "format": "currency",
+          "note": "Should be $0 - they're identical!"
+        }
+      ],
+      "teaching_points": [
+        "Try $110: Real stock = +$1,000. Synthetic = +$1,000. Same!",
+        "Try $90: Real stock = -$1,000. Synthetic = -$1,000. Same!",
+        "Try $100: Both = $0. Perfectly mirrored."
+      ]
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "Why does Buy Call + Sell Put = Owning Stock?",
+      "options": [
+        "It doesn't - this is a trick question",
+        "At expiration: Call profits if stock up, Put loses if stock down = net same as stock",
+        "The premiums cancel out perfectly",
+        "Your broker converts it to stock automatically"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "Perfect understanding! Stock at $110: Call profits $1,000 (up from $100), Put expires worthless (collect $500) = net $1,500. Stock ownership: Profit $1,000 (from $100 to $110). Wait, that's different? No - you paid $500 for call, collected $500 for put = $0 net upfront cost. The math works out identically!",
+      "explanation_wrong": "Think about payoffs. Stock up: Long call wins, short put expires = you profit. Stock down: Long call expires, short put assigned (you buy stock) = you lose. It's identical to owning stock! The call and put cancel each other's premiums (~$0 net), so you have stock-like exposure."
+    },
+    {
+      "screen_type": "scenario",
+      "question": "You created synthetic long: Bought $100 call, sold $100 put. Stock drops to $90 at expiration. What happens?",
+      "options": [
+        "Call expires, put expires - you lose nothing",
+        "Call expires worthless, you're assigned on put (buy stock at $100)",
+        "Both options expire worthless - profit!",
+        "Your broker closes both for you automatically"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "Exactly how it works! Call = worthless (lost $500 premium). Put = assigned (you buy 100 shares at $100, now worth $90) = down $1,000. Total loss: $500 call + $1,000 stock unrealized = $1,500. Same as if you'd bought stock at $100 and it dropped to $90! Synthetic = real stock exposure!",
+      "explanation_wrong": "Stock below $100 = Call worthless (you lose premium), Put ASSIGNED (you buy 100 shares at $100). You now own stock at $100 that's worth $90 = $1,000 loss + $500 call premium = $1,500 total loss. Identical to buying stock at $100! This proves synthetic = real stock."
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "Why don't retail traders use synthetic positions more often?",
+      "options": [
+        "They're illegal for retail traders",
+        "More complex, assignment risk, commissions, margin requirements",
+        "They don't actually work in real markets",
+        "Brokers don't allow them"
+      ],
+      "correct": 1,
+      "xp_reward": 10,
+      "explanation_correct": "All these reasons! Buying stock = $10,000 cash, simple, no assignment risk. Synthetic = 2 contracts (2× commission), assignment risk on short put, margin requirements, more complexity. For what benefit? Maybe save $50? Not worth it for most retail traders. Institutions use synthetics for tax/capital efficiency - we don't need to!",
+      "explanation_wrong": "Synthetics are LEGAL but not practical for retail. Why? 1) More commissions (2 contracts), 2) Assignment risk (short put), 3) Margin requirements, 4) Complexity (2 positions to manage), 5) Same risk as stock anyway. Just buy the stock! Synthetics = theoretical knowledge more than practical tool."
+    },
+    {
+      "screen_type": "scenario",
+      "question": "When MIGHT a synthetic long be better than buying stock?",
+      "options": [
+        "Never - always buy stock instead",
+        "When you're in a tax-advantaged account and want leverage",
+        "When options are mispriced and synthetic is cheaper than stock",
+        "When you don't have enough capital for stock"
+      ],
+      "correct": 2,
+      "xp_reward": 15,
+      "explanation_correct": "Rare but possible! Sometimes market inefficiencies price synthetic cheaper than stock. Example: Stock $100. Call $6, Put $6. Synthetic cost = $6-6 = $0 (but need margin). Stock cost = $10,000 cash. If you're capital-efficient and understand risks, synthetic uses less capital. But 99% of the time? Just buy stock. This is advanced/theoretical!",
+      "explanation_wrong": "Very occasionally, options are mispriced and synthetic costs less than stock. Example: inefficient markets, low liquidity stocks, dividend-adjusted options. Professional traders exploit this for arbitrage. For retail? Stock is simpler 99% of the time. Synthetics = cool to understand, rarely used in practice!"
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "What's the KEY INSIGHT from learning about synthetics?",
+      "options": [
+        "You should always use synthetics instead of stock",
+        "Calls and puts are interconnected - two sides of same coin",
+        "Synthetics are the best strategy for beginners",
+        "Market makers are ripping you off"
+      ],
+      "correct": 1,
+      "xp_reward": 10,
+      "explanation_correct": "THIS is why we teach synthetics! Not because you'll use them, but because understanding them reveals: options are INTERCONNECTED. A call isn't independent of a put - they're mathematically linked. This helps you understand pricing, see arbitrage opportunities, and think like a market maker. Synthetics = lens to see option relationships!",
+      "explanation_wrong": "The lesson isn't 'use synthetics' - it's 'understand relationships.' When you see synthetic long = real stock, you understand that calls + puts are linked. This helps you: 1) Spot mispriced options, 2) Understand put-call parity, 3) Think like market makers, 4) See arbitrage. Knowledge, not necessarily strategy!"
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "Synthetic Positions Summary",
+      "cards": [
+        {
+          "front": "What's a synthetic long stock?",
+          "back": "Buy ATM call + Sell ATM put (same strike) = identical profit/loss to owning 100 shares. Stock up = you profit. Stock down = you lose. Same exposure, built with options."
+        },
+        {
+          "front": "Why learn synthetics if we don't use them?",
+          "back": "Understanding synthetics reveals: options are interconnected, puts and calls are two sides of same coin, market makers use arbitrage. Helps you THINK about options correctly, even if you never trade them."
+        },
+        {
+          "front": "Should I use synthetic positions?",
+          "back": "Probably not. More complex, assignment risk, margin requirements, commissions. Just buy/short stock directly 99% of the time. Synthetics = theoretical knowledge > practical strategy for retail traders."
+        }
+      ]
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 80,
+      "total_xp": 3020,
+      "badge": "🧪 Synthetic Scientist",
+      "badge_description": "You understand the deep math connecting options!",
+      "celebration_message": "Advanced knowledge unlocked! You now think about options like a market maker. This mental model will serve you well! 🧪",
+      "streak_bonus": false,
+      "next_lesson_preview": {
+        "title": "When NOT to Trade",
+        "description": "Learn discipline - recognizing when to sit on hands",
+        "unlock_status": "unlocked"
+      }
+    }
+  ]
+}
+

@@ -98,22 +98,45 @@
       "headline": "Delta in Action: See It Move",
       "description": "Adjust the stock price and watch how different deltas respond:",
       "interactive_type": "delta_simulator",
-      "params": {
-        "initial_stock_price": 100,
-        "initial_option_price": 5,
-        "positions": [
-          { "label": "OTM Call (Δ 0.20)", "delta": 0.20, "premium": 2 },
-          { "label": "ATM Call (Δ 0.50)", "delta": 0.50, "premium": 5 },
-          { "label": "ITM Call (Δ 0.80)", "delta": 0.80, "premium": 12 }
-        ],
-        "stock_range": [95, 105],
-        "teaching_points": [
-          "Notice: OTM option barely moves (low delta)",
-          "ATM option moves moderately (0.50 delta = half speed)",
-          "ITM option moves almost 1:1 with stock (high delta)"
-        ]
-      },
-      "xp_reward": 15
+      "inputs": [
+        {
+          "label": "Stock Price Now",
+          "name": "Stock Price Now",
+          "type": "slider",
+          "min": 90,
+          "max": 110,
+          "value": 100
+        },
+        {
+          "label": "Strike Price",
+          "name": "Strike Price",
+          "type": "slider",
+          "min": 90,
+          "max": 110,
+          "value": 100
+        },
+        {
+          "label": "Days to Expiration",
+          "name": "Days to Expiration",
+          "type": "slider",
+          "min": 1,
+          "max": 90,
+          "value": 30
+        },
+        {
+          "label": "Option Type",
+          "name": "Option Type",
+          "type": "dropdown",
+          "options": ["Call", "Put"],
+          "value": "Call"
+        }
+      ],
+      "outputs": [],
+      "teaching_points": [
+        "Notice: OTM option barely moves (low delta)",
+        "ATM option moves moderately (0.50 delta = half speed)",
+        "ITM option moves almost 1:1 with stock (high delta)"
+      ]
     },
     {
       "screen_type": "summary_cards",

@@ -1,0 +1,218 @@
+{
+  "lesson_id": "buying-power-requirements",
+  "title": "Understanding Buying Power",
+  "estimated_time": "8 min",
+  "total_xp": 80,
+  "badge": "💪 Power Calculator",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "🏦💰",
+      "headline": "$10K account ≠ 10 contracts. Here's why.",
+      "text": "You have $10,000. You try to sell 10 cash-secured puts at $100 strike. Your broker rejects it: 'Insufficient buying power.' But 10 × $100 = $1,000... right? Wrong. Each CSP requires $10,000 reserved. You can sell ONE contract, not ten. Let's learn how buying power actually works."
+    },
+    {
+      "screen_type": "definition",
+      "headline": "What is Buying Power?",
+      "text": "BUYING POWER = the capital your broker RESERVES for each position. Not the same as your account balance. BUYING options = pay premium (small). SELLING options = tie up capital (large). Each strategy has different requirements. Max out buying power = margin call risk.",
+      "visual": "💪",
+      "highlight_words": ["BUYING POWER", "RESERVES", "BUYING options", "SELLING options", "margin call"]
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "Key Buying Power Terms",
+      "cards": [
+        {
+          "term": "Buying Power Reduction (BPR)",
+          "definition": "Amount of capital reserved/locked when you open a position",
+          "example": "Sell $50 put = $5,000 BPR (you need $5,000 available). Your $10k account can only do 2 contracts."
+        },
+        {
+          "term": "Cash-Secured Put Requirement",
+          "definition": "100% of strike price × 100 shares reserved",
+          "example": "$350 strike × 100 = $35,000 reserved per contract. Need full amount in cash."
+        },
+        {
+          "term": "Covered Call Requirement",
+          "definition": "Must OWN 100 shares of stock (no additional cash needed)",
+          "example": "Own 100 AAPL = can sell 1 call. Own 500 shares = 5 calls max. Stock = the collateral."
+        },
+        {
+          "term": "Spread Requirement",
+          "definition": "Width of the spread × 100",
+          "example": "$45-$50 put spread = $5 width × 100 = $500 reserved. Much less than naked put!"
+        }
+      ]
+    },
+    {
+      "screen_type": "analogy",
+      "headline": "Think of it like your credit card limit",
+      "text": "You have $10,000 credit limit...",
+      "interactive": "tap_to_reveal",
+      "reveal_sections": [
+        {
+          "label": "Buying a $200 item (buying options)",
+          "content": "$200 charge on $10,000 limit = $9,800 available credit left. You PAID $200, simple. Buying options works this way - you pay premium, that's it."
+        },
+        {
+          "label": "Holding authorization (selling options)",
+          "content": "Hotel puts $2,000 HOLD on card for incidentals. You didn't spend it, but it's RESERVED. Only $8,000 available now. Selling CSPs works this way - cash is reserved, not spent."
+        },
+        {
+          "label": "Multiple holds = maxed out",
+          "content": "Five hotels × $2,000 hold = $10,000 reserved. Card declines at restaurant even though you haven't spent anything! This is why you can't sell 10 CSPs with $10k - buying power is RESERVED."
+        }
+      ]
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "Buying Power Calculator",
+      "description": "See how many contracts your account can handle",
+      "inputs": [
+        {
+          "label": "Account Balance",
+          "type": "slider",
+          "min": 5000,
+          "max": 50000,
+          "value": 25000,
+          "step": 5000
+        },
+        {
+          "label": "Strategy",
+          "type": "select",
+          "options": ["Buy Call/Put", "Cash-Secured Put ($50 strike)", "Cash-Secured Put ($100 strike)", "Bull Put Spread ($5 wide)", "Iron Condor ($5 wide each side)"],
+          "value": "Cash-Secured Put ($50 strike)"
+        }
+      ],
+      "outputs": [
+        {
+          "label": "Buying Power Required Per Contract",
+          "calculation": "strategy == 'Buy Call/Put' ? 'Premium paid (e.g., $200-500)' : strategy == 'Cash-Secured Put ($50 strike)' ? '$5,000' : strategy == 'Cash-Secured Put ($100 strike)' ? '$10,000' : strategy == 'Bull Put Spread ($5 wide)' ? '$500' : '$1,000'"
+        },
+        {
+          "label": "Max Contracts You Can Trade",
+          "calculation": "strategy == 'Buy Call/Put' ? '10-20+ (depends on premium)' : strategy == 'Cash-Secured Put ($50 strike)' ? Math.floor(account_balance / 5000) : strategy == 'Cash-Secured Put ($100 strike)' ? Math.floor(account_balance / 10000) : strategy == 'Bull Put Spread ($5 wide)' ? Math.floor(account_balance / 500) : Math.floor(account_balance / 1000)",
+          "highlight": true
+        },
+        {
+          "label": "Total Capital Reserved",
+          "calculation": "strategy == 'Cash-Secured Put ($50 strike)' ? Math.floor(account_balance / 5000) * 5000 : strategy == 'Cash-Secured Put ($100 strike)' ? Math.floor(account_balance / 10000) * 10000 : strategy == 'Bull Put Spread ($5 wide)' ? Math.floor(account_balance / 500) * 500 : Math.floor(account_balance / 1000) * 1000",
+          "format": "currency"
+        },
+        {
+          "label": "Buying Power Remaining",
+          "calculation": "account_balance - (strategy == 'Cash-Secured Put ($50 strike)' ? Math.floor(account_balance / 5000) * 5000 : strategy == 'Cash-Secured Put ($100 strike)' ? Math.floor(account_balance / 10000) * 10000 : strategy == 'Bull Put Spread ($5 wide)' ? Math.floor(account_balance / 500) * 500 : Math.floor(account_balance / 1000) * 1000)",
+          "format": "currency"
+        }
+      ],
+      "teaching_points": [
+        "Try $25K with $100 CSP: Only 2 contracts!",
+        "Try spreads: Way more contracts possible",
+        "Try buying options: Minimal buying power needed"
+      ]
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "You have $25,000. You want to sell cash-secured puts on a $50 stock. How many contracts can you sell?",
+      "options": [
+        "50 contracts ($25,000 ÷ $500 premium)",
+        "5 contracts ($25,000 ÷ $5,000 per contract)",
+        "500 contracts ($25,000 ÷ $50 strike)",
+        "Unlimited - you have enough cash"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "Perfect math! Each $50 CSP requires $50 × 100 shares = $5,000 reserved. $25,000 ÷ $5,000 = 5 contracts maximum. Each contract ties up $5,000 even though premium might only be $200. The $5,000 is RESERVED for potential assignment, not spent!",
+      "explanation_wrong": "Cash-secured puts require FULL strike price reserved. $50 strike × 100 shares = $5,000 per contract. Your $25,000 ÷ $5,000 = 5 contracts max. Premium collected ($200-300) is separate - the $5,000 must stay reserved in case you're assigned!"
+    },
+    {
+      "screen_type": "scenario",
+      "question": "You have $30,000 and sell 5 CSPs at $50 strike ($5,000 each = $25,000 reserved). Then stock drops and you're assigned on all 5. What happens?",
+      "options": [
+        "You need MORE money - margin call!",
+        "You now own 500 shares, paid for with your $25,000 reserve",
+        "Your broker rejects the assignment",
+        "You owe $25,000 to your broker"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "Exactly how it works! Your $25,000 reserve gets USED to buy 500 shares at $50/share. You now own 500 shares (market value maybe $45/share = $22,500) and have $5,000 cash left. You're underwater $2,500 but fully paid - no margin call. The reserve was there for this reason!",
+      "explanation_wrong": "This is WHY it's called 'cash-secured' - you RESERVED the $25,000 for this! When assigned, that $25,000 buys your 500 shares at $50/share. No margin call, no surprise. You now own stock and can sell covered calls. The system worked as designed!"
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "Which strategy uses the LEAST buying power?",
+      "options": [
+        "Buying a $5 call option",
+        "Selling a $100 cash-secured put",
+        "Selling a $50 cash-secured put",
+        "Owning 100 shares of stock"
+      ],
+      "correct": 0,
+      "xp_reward": 10,
+      "explanation_correct": "Correct! BUYING options = pay premium upfront ($500 for this call), done. No reserves needed. Buying power used = just the premium. SELLING options = huge reserves ($5,000-10,000). This is why buying options is easier for small accounts!",
+      "explanation_wrong": "BUYING options uses minimal buying power (just the premium paid). SELLING options ties up massive capital. $5 call = $500 paid, that's it. $100 CSP = $10,000 reserved! Small accounts should BUY options, not sell them."
+    },
+    {
+      "screen_type": "scenario",
+      "question": "Your account: $50,000. You want to sell $100 CSPs. How many should you actually sell?",
+      "options": [
+        "5 contracts (max out - use all $50k)",
+        "3-4 contracts (leave 30% cushion)",
+        "10 contracts (use leverage)",
+        "1 contract (play it super safe)"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "Smart risk management! $50k ÷ $10k = 5 max, but pros leave 20-30% cushion. Sell 3-4 contracts = $30-40k used, $10-20k available. Why? Opportunities arise, margin requirements can change, emergency exits. Never max out buying power - leave breathing room!",
+      "explanation_wrong": "Never max out buying power! Yes, you CAN sell 5 contracts ($50k capacity), but SHOULD sell 3-4. Leave $10-15k available (20-30% cushion) for: new opportunities, emergency adjustments, margin requirement changes, peace of mind. Maxed out = trapped, can't maneuver!"
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "What's the danger of maxing out your buying power?",
+      "options": [
+        "You'll get charged interest",
+        "You can't open new positions or adjustments",
+        "Your broker will close your positions",
+        "There's no danger - use it all!"
+      ],
+      "correct": 1,
+      "xp_reward": 10,
+      "explanation_correct": "Exactly the trap! Maxed out = paralyzed. Position going against you? Can't roll. Great opportunity appears? Can't take it. Market drops, margins increase? Forced liquidations. Always keep 20-30% buying power available. Flexibility = survival in options trading!",
+      "explanation_wrong": "Maxed out buying power = no flexibility. Can't adjust losing trades, can't take new opportunities, can't handle margin increases. It's like driving cross-country on empty tank - one problem and you're stranded. Keep 20-30% available always!"
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "Buying Power Rules",
+      "cards": [
+        {
+          "front": "How much buying power does each strategy need?",
+          "back": "BUYING options: Just premium ($200-500). SELLING CSPs: Strike × 100 ($5,000-10,000). Covered calls: Own stock (no cash). Spreads: Width × 100 ($500-1,000). Know these before trading!"
+        },
+        {
+          "front": "How many contracts can I trade?",
+          "back": "Account Balance ÷ Buying Power Per Contract = Max Contracts. Example: $25,000 ÷ $5,000 CSP = 5 contracts max. But DON'T max out - use only 3-4 (70-80% of capacity)."
+        },
+        {
+          "front": "Why keep 20-30% buying power available?",
+          "back": "1) Roll/adjust losing positions, 2) Take new opportunities, 3) Handle margin changes, 4) Emergency exits, 5) Peace of mind. Maxed out = trapped. Flexibility = survival!"
+        }
+      ]
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 80,
+      "total_xp": 1340,
+      "badge": "💪 Power Calculator",
+      "badge_description": "You understand buying power - no margin calls for you!",
+      "celebration_message": "Critical knowledge! You now know how to avoid the #1 beginner mistake: overleveraging. Trade within your limits! 💪",
+      "streak_bonus": false,
+      "next_lesson_preview": {
+        "title": "Covered Call Basics",
+        "description": "Your first income strategy - collect rent from stocks you own",
+        "unlock_status": "unlocked"
+      }
+    }
+  ]
+}
+

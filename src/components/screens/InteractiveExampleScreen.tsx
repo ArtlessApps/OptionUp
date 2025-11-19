@@ -3,6 +3,13 @@ import { motion } from 'framer-motion';
 import { Button } from '../atomic/Button';
 import { Card } from '../atomic/Card';
 import type { InteractiveExampleScreen as InteractiveExampleScreenType } from '../../types/lesson.types';
+import { 
+  ThetaDecayChart, 
+  DeltaVisualizationChart, 
+  ProfitLossChart, 
+  SpreadPLChart,
+  GreeksDashboard 
+} from '../charts';
 
 interface InteractiveExampleScreenProps {
   data: InteractiveExampleScreenType;
@@ -25,8 +32,126 @@ export function InteractiveExampleScreen({ data, onContinue }: InteractiveExampl
     }));
   };
   
+  // Helper to get input value by name or index
+  const getInputValue = (nameOrIndex: string | number): any => {
+    if (typeof nameOrIndex === 'string') {
+      const input = data.inputs.find(inp => inp.name === nameOrIndex);
+      if (input) {
+        const index = data.inputs.indexOf(input);
+        return inputValues[index];
+      }
+    }
+    return inputValues[nameOrIndex];
+  };
+  
+  // Render appropriate chart based on interactive_type
+  const renderChart = () => {
+    if (!data.interactive_type || data.interactive_type === 'generic') {
+      return null;
+    }
+    
+    try {
+      switch (data.interactive_type) {
+        case 'theta_decay':
+          return (
+            <ThetaDecayChart
+              daysToExpiration={getInputValue('Days Until Expiration') || getInputValue(0) || 90}
+              optionPremium={getInputValue('Option Premium') || getInputValue(1) || 10}
+              intrinsicValue={getInputValue('Intrinsic Value') || getInputValue(2) || 5}
+            />
+          );
+          
+        case 'delta_simulator':
+          return (
+            <DeltaVisualizationChart
+              stockPrice={getInputValue('Stock Price Now') || getInputValue(0) || 100}
+              strikePrice={getInputValue('Strike Price') || getInputValue(1) || 100}
+              daysToExpiration={getInputValue('Days to Expiration') || getInputValue(2) || 30}
+              optionType={(getInputValue('Option Type') === 'Put' || getInputValue(3) === 'Put') ? 'put' : 'call'}
+            />
+          );
+          
+        case 'pl_diagram':
+          return (
+            <ProfitLossChart
+              strikePrice={getInputValue('Strike Price') || getInputValue(1) || 110}
+              premium={getInputValue('Premium Paid') || getInputValue(2) || 5}
+              optionType={data.headline.toLowerCase().includes('put') ? 'put' : 'call'}
+              stockPriceNow={getInputValue('Stock Price Now') || getInputValue(0) || 100}
+            />
+          );
+          
+        case 'greeks_dashboard':
+          return (
+            <GreeksDashboard
+              stockPrice={getInputValue('Stock Price') || getInputValue(0) || 100}
+              strikePrice={getInputValue('Strike Price') || getInputValue(1) || 100}
+              daysToExpiration={getInputValue('Days to Expiration') || getInputValue(2) || 30}
+              impliedVolatility={getInputValue('Implied Volatility (%)') || getInputValue(3) || 40}
+              optionType={(getInputValue('Option Type') === 'Put' || getInputValue(4) === 'Put') ? 'put' : 'call'}
+            />
+          );
+          
+        case 'spread_calculator':
+        case 'iron_condor_builder':
+          // For spreads, we need to construct legs from inputs
+          // This is a simplified example - real implementation would parse the actual spread structure
+          const longStrike = getInputValue('Long Strike') || getInputValue(1) || 180;
+          const shortStrike = getInputValue('Short Strike') || getInputValue(3) || 190;
+          const longPremium = getInputValue('Long Premium') || getInputValue(2) || 12;
+          const shortPremium = getInputValue('Short Premium') || 6;
+          
+          const legs = [
+            { strike: longStrike, premium: longPremium / 100, type: 'call' as const, position: 'long' as const },
+            { strike: shortStrike, premium: shortPremium / 100, type: 'call' as const, position: 'short' as const }
+          ];
+          
+          return (
+            <SpreadPLChart
+              legs={legs}
+              stockPriceNow={getInputValue('Stock Price Now') || getInputValue(0) || 180}
+              spreadType="Bull Call Spread"
+            />
+          );
+          
+        default:
+          return null;
+      }
+    } catch (error) {
+      console.error('Error rendering chart:', error);
+      return null;
+    }
+  };
+  
   const renderInput = (input: InteractiveExampleScreenType['inputs'][0], index: number) => {
     const currentValue = inputValues[index];
+    
+    // Skip rendering if locked
+    if (input.locked) {
+      return null;
+    }
+    
+    // Dropdown input
+    if (input.type === 'dropdown' && input.options) {
+      return (
+        <div key={index} className="mb-6">
+          <label className="block text-sm font-semibold text-gray-700 mb-2">
+            {input.label}
+          </label>
+          <select
+            value={currentValue as string | number}
+            onChange={(e) => handleInputChange(index, isNaN(Number(e.target.value)) ? e.target.value : Number(e.target.value))}
+            className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-primary-500 focus:outline-none bg-white"
+          >
+            {input.options.map((option, idx) => (
+              <option key={idx} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </div>
+      );
+    }
     
     // Slider input
     if (input.type === 'slider' || (input.min !== undefined && input.max !== undefined)) {
@@ -121,6 +246,13 @@ export function InteractiveExampleScreen({ data, onContinue }: InteractiveExampl
           {data.description}
         </p>
         
+        {/* Chart Visualization (if interactive_type is specified) */}
+        {data.interactive_type && data.interactive_type !== 'generic' && (
+          <div className="w-full mb-6">
+            {renderChart()}
+          </div>
+        )}
+        
         {/* Interactive Inputs Section */}
         <div className="w-full mb-6">
           <Card className="bg-white border-2 border-primary-100" padding="lg">
@@ -131,32 +263,34 @@ export function InteractiveExampleScreen({ data, onContinue }: InteractiveExampl
           </Card>
         </div>
         
-        {/* Outputs Section */}
-        <div className="w-full mb-6">
-          <Card className="bg-gradient-to-br from-primary-50 to-purple-50 border-2 border-primary-200" padding="lg">
-            <h3 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">
-              Results
-            </h3>
-            <div className="space-y-3">
-              {data.outputs.map((output, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex items-center justify-between py-2 border-b border-primary-200 last:border-b-0"
-                >
-                  <span className="text-sm font-medium text-gray-700">
-                    {output.label}
-                  </span>
-                  <span className="text-lg font-bold text-primary-700">
-                    {output.value}
-                  </span>
-                </motion.div>
-              ))}
-            </div>
-          </Card>
-        </div>
+        {/* Outputs Section - Only show if there are outputs */}
+        {data.outputs && data.outputs.length > 0 && (
+          <div className="w-full mb-6">
+            <Card className="bg-gradient-to-br from-primary-50 to-purple-50 border-2 border-primary-200" padding="lg">
+              <h3 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">
+                Results
+              </h3>
+              <div className="space-y-3">
+                {data.outputs.map((output, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex items-center justify-between py-2 border-b border-primary-200 last:border-b-0"
+                  >
+                    <span className="text-sm font-medium text-gray-700">
+                      {output.label}
+                    </span>
+                    <span className="text-lg font-bold text-primary-700">
+                      {output.value}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            </Card>
+          </div>
+        )}
         
         {/* Teaching Points Section */}
         {data.teaching_points && data.teaching_points.length > 0 && (

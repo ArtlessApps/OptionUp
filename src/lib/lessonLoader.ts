@@ -25,14 +25,18 @@ const lessonFiles = import.meta.glob('/content/lessons/module-*/*.json');
 /**
  * Extract module and lesson number from file path
  * Example: "/content/lessons/module-2/17_covered_call_calculator.json"
- * Returns: { moduleNumber: 2, lessonNumber: 17 }
+ * Example: "/content/lessons/module-1/07a_bid_ask_spread.json"
+ * Returns: { moduleNumber: 2, lessonNumber: 17, lessonSuffix: '' }
+ * Returns: { moduleNumber: 1, lessonNumber: 7, lessonSuffix: 'a' }
  */
-function parseFilePath(filePath: string): { moduleNumber: number; lessonNumber: number } | null {
-  const match = filePath.match(/module-(\d+)\/(\d+)_/);
+function parseFilePath(filePath: string): { moduleNumber: number; lessonNumber: number; lessonSuffix: string } | null {
+  // Match: module-(\d+)/(\d+)([a-z]?)_
+  const match = filePath.match(/module-(\d+)\/(\d+)([a-z]?)_/);
   if (match) {
     return {
       moduleNumber: parseInt(match[1], 10),
       lessonNumber: parseInt(match[2], 10),
+      lessonSuffix: match[3] || '', // Empty string if no letter suffix
     };
   }
   return null;
@@ -49,7 +53,7 @@ export async function loadAllLessonMetadata(): Promise<ModuleMetadata[]> {
     const parsed = parseFilePath(filePath);
     if (!parsed) continue;
 
-    const { moduleNumber, lessonNumber } = parsed;
+    const { moduleNumber, lessonNumber, lessonSuffix } = parsed;
 
     // Load the lesson data
     const lessonData = (await importFn()) as { default: Lesson };
@@ -67,8 +71,8 @@ export async function loadAllLessonMetadata(): Promise<ModuleMetadata[]> {
       badge = celebrationScreen.badge || badge;
     }
 
-    // Create lesson metadata
-    const metadata: LessonMetadata = {
+    // Create lesson metadata (temporarily store suffix for sorting)
+    const metadata: LessonMetadata & { _suffix?: string } = {
       id: lesson.lesson_id,
       moduleNumber,
       lessonNumber,
@@ -79,6 +83,7 @@ export async function loadAllLessonMetadata(): Promise<ModuleMetadata[]> {
       filePath,
       isCompleted: progressTracker.isLessonCompleted(lesson.lesson_id),
       earnedXP: progressTracker.getLessonXP(lesson.lesson_id),
+      _suffix: lessonSuffix, // Temporary field for sorting
     };
 
     // Initialize module if it doesn't exist
@@ -100,8 +105,23 @@ export async function loadAllLessonMetadata(): Promise<ModuleMetadata[]> {
   const sortedModules = Object.values(modules).sort((a, b) => a.moduleNumber - b.moduleNumber);
 
   sortedModules.forEach((module) => {
-    // Sort lessons by lesson number
-    module.lessons.sort((a, b) => a.lessonNumber - b.lessonNumber);
+    // Sort lessons by lesson number, then by suffix (empty string sorts before 'a')
+    module.lessons.sort((a, b) => {
+      const aMeta = a as LessonMetadata & { _suffix?: string };
+      const bMeta = b as LessonMetadata & { _suffix?: string };
+      if (a.lessonNumber !== b.lessonNumber) {
+        return a.lessonNumber - b.lessonNumber;
+      }
+      // Same lesson number - sort by suffix (empty string < 'a' < 'b' < ...)
+      const aSuffix = aMeta._suffix || '';
+      const bSuffix = bMeta._suffix || '';
+      return aSuffix.localeCompare(bSuffix);
+    });
+    
+    // Remove temporary _suffix field
+    module.lessons.forEach(lesson => {
+      delete (lesson as any)._suffix;
+    });
 
     // Calculate stats
     module.totalLessons = module.lessons.length;

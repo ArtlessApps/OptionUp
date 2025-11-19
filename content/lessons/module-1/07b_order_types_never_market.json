@@ -1,0 +1,228 @@
+{
+  "lesson_id": "order-types-never-market",
+  "title": "Order Types - Never Use Market Orders",
+  "estimated_time": "7 min",
+  "total_xp": 70,
+  "badge": "🎯 Order Master",
+  "screens": [
+    {
+      "screen_type": "hook",
+      "visual": "💰💸",
+      "headline": "$500 order executed at $800 - what happened?",
+      "text": "You clicked 'Buy' on an option showing $5.00. Your order filled at $8.00. You overpaid $300 instantly because you used a MARKET ORDER on options. This is financial suicide. Let's make sure you never do this."
+    },
+    {
+      "screen_type": "definition",
+      "headline": "Market vs Limit Orders",
+      "text": "MARKET ORDER = 'Buy/sell NOW at whatever price available' = dangerous for options. LIMIT ORDER = 'Only buy/sell at this price or better' = protects you. On options with wide spreads, market orders = disaster. ALWAYS use limit orders for options. No exceptions.",
+      "visual": "⚠️",
+      "highlight_words": ["MARKET ORDER", "whatever price", "LIMIT ORDER", "this price or better", "ALWAYS use limit"]
+    },
+    {
+      "screen_type": "key_terms",
+      "headline": "4 Order Types to Know",
+      "cards": [
+        {
+          "term": "Market Order",
+          "definition": "Executes immediately at whatever price is available",
+          "example": "Options bid $4.80, ask $5.20. Market buy = $5.20. Market sell = $4.80. You get the WORST price. NEVER use for options!"
+        },
+        {
+          "term": "Limit Order",
+          "definition": "Only executes at your specified price or better",
+          "example": "Set limit buy at $5.00. Only fills if ask drops to $5.00 or lower. You control max price paid. ALWAYS use for options!"
+        },
+        {
+          "term": "Stop-Loss Order",
+          "definition": "Triggers market/limit order when price hits your stop",
+          "example": "Own option at $6, set stop at $4. If it hits $4, auto-sells. Optional for options (most don't use)."
+        },
+        {
+          "term": "Good-Til-Canceled (GTC)",
+          "definition": "Limit order stays active until filled or you cancel",
+          "example": "Limit buy at $4.50, GTC. Order sits for days until filled or cancelled. Useful for patient entries."
+        }
+      ]
+    },
+    {
+      "screen_type": "analogy",
+      "headline": "Think of it like buying a car",
+      "text": "You want to buy a used car...",
+      "interactive": "tap_to_reveal",
+      "reveal_sections": [
+        {
+          "label": "Market Order = 'Whatever the dealer wants'",
+          "content": "You walk in and say 'I'll pay whatever you're asking.' Sticker says $15k. Dealer smiles and says 'Actually, $25k.' You overpaid $10k because you didn't negotiate. This is market orders on options."
+        },
+        {
+          "label": "Limit Order = 'I'll pay $18k max'",
+          "content": "You say 'I'll pay $18k, take it or leave it.' Sticker is $20k. Dealer might accept $18k, or you walk away. You controlled max price. This is limit orders - YOU set the terms."
+        },
+        {
+          "label": "Options need limit orders even MORE",
+          "content": "Car market = competitive. Options = market makers WAITING for suckers using market orders. They see your market order coming and raise the ask price. You get fleeced. ALWAYS use limits!"
+        }
+      ]
+    },
+    {
+      "screen_type": "scenario",
+      "question": "An option shows: Bid $4.50, Ask $5.50, Mid $5.00. You want to BUY. What order type should you use?",
+      "options": [
+        "Market order - fast execution",
+        "Limit order at $5.50 (the ask)",
+        "Limit order at $5.00 (the midpoint)",
+        "Stop-loss order at $5.50"
+      ],
+      "correct": 2,
+      "xp_reward": 15,
+      "explanation_correct": "Perfect strategy! Midpoint ($5.00) is fair price between bid and ask. Place limit buy at $5.00 and wait. Market makers might fill you at $5.00-5.10. You saved $40-50 vs paying the full ask. NEVER pay full ask - always try midpoint or slightly above. Patience saves money!",
+      "explanation_wrong": "Never use market orders or pay full ask! Midpoint = $5.00 = fair price. Place limit at $5.00. You might wait 30 seconds to 5 minutes, but you'll save $50+ per contract vs buying at ask. Market makers will often meet you near midpoint. Patience = profit!"
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "Why are market orders ESPECIALLY dangerous for options vs stocks?",
+      "options": [
+        "Options are more expensive than stocks",
+        "Options have wider spreads than stocks",
+        "Options expire faster than stocks",
+        "Brokers charge more for options"
+      ],
+      "correct": 1,
+      "xp_reward": 10,
+      "explanation_correct": "Exactly! Stocks: spread = $0.01 (0.01% of $100 stock). Options: spread = $0.50-5.00 (5-50% of option price!). Market orders on stocks = lose pennies. Market orders on options = lose 10-30% instantly. Wide spreads + market orders = disaster!",
+      "explanation_wrong": "The danger is SPREADS. Stock spreads = $0.01 ($100.00 bid, $100.01 ask). Option spreads = $0.50-3.00 wide. Market order = you pay ask (sell at bid). On $5 option with $1 spread, you lose 20% instantly. ALWAYS use limit orders on options!"
+    },
+    {
+      "screen_type": "interactive_example",
+      "headline": "Market vs Limit Order Simulator",
+      "description": "See the cost difference between order types",
+      "inputs": [
+        {
+          "label": "Option Bid Price",
+          "value": 4.50,
+          "locked": true
+        },
+        {
+          "label": "Option Ask Price",
+          "value": 5.50,
+          "locked": true
+        },
+        {
+          "label": "Your Limit Price (if using limit)",
+          "type": "slider",
+          "min": 4.50,
+          "max": 5.50,
+          "value": 5.00,
+          "step": 0.10
+        }
+      ],
+      "outputs": [
+        {
+          "label": "Market Order Buy Price",
+          "value": "$5.50 (you pay the ask)",
+          "always": true
+        },
+        {
+          "label": "Your Limit Order Price",
+          "calculation": "limit_price",
+          "format": "currency"
+        },
+        {
+          "label": "Savings vs Market Order",
+          "calculation": "(5.50 - limit_price) * 100",
+          "format": "currency",
+          "highlight": true
+        },
+        {
+          "label": "Savings as %",
+          "calculation": "((5.50 - limit_price) / 5.50) * 100",
+          "format": "percentage"
+        },
+        {
+          "label": "Trade-off",
+          "calculation": "limit_price < 5.00 ? 'Might not fill - too aggressive' : limit_price == 5.00 ? 'Fair price - will likely fill' : limit_price > 5.20 ? 'Will definitely fill but overpaying' : 'Good balance'"
+        }
+      ],
+      "teaching_points": [
+        "Try $5.00 (midpoint): Best balance - likely fills, saves $50",
+        "Try $5.10: Still good - saves $40, faster fill",
+        "Try $5.50 (ask): Same as market order - wasting money!"
+      ]
+    },
+    {
+      "screen_type": "scenario",
+      "question": "You place a limit buy order at $5.00 (midpoint). Five minutes pass - no fill. What should you do?",
+      "options": [
+        "Cancel and use market order - you need it now!",
+        "Raise your limit to $5.10 and wait a bit more",
+        "Lower your limit to $4.90 - get a better deal!",
+        "Use a stop-loss order instead"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "Smart patience! No fill in 5 min = market makers want you to chase. Raise to $5.10 (still saving $40 vs ask). Wait another 3-5 min. If desperate, go to $5.20. But NEVER use market order. Those extra minutes save you $30-50 per contract. Stay disciplined!",
+      "explanation_wrong": "If not filling at midpoint, slowly walk your limit UP toward ask. Try $5.10, wait 3 min. Then $5.20 if needed. Market makers are testing your patience. Don't break and hit market order - that's what they want! Staying at $4.90 won't fill if bid is $4.50."
+    },
+    {
+      "screen_type": "multiple_choice",
+      "question": "When is it OK to use a market order on options?",
+      "options": [
+        "When you need to exit immediately",
+        "When the spread is very tight (<$0.05)",
+        "When trading mega-cap stocks like SPY",
+        "NEVER - always use limit orders"
+      ],
+      "correct": 3,
+      "xp_reward": 10,
+      "explanation_correct": "Perfect discipline! Even on tight spreads ($0.05 = $5/contract), you're giving away free money. Takes 10 seconds to place limit order at midpoint vs market order. Those 10 seconds save $5-50 per contract. Over 100 trades/year = $500-5,000 saved. ALWAYS use limits!",
+      "explanation_wrong": "Market orders = giving away free money. Even 'tight' $0.05 spread = $5 loss per contract. Why donate $5 to market makers when placing limit order takes 10 seconds? Over 100 trades = $500 wasted! Professional traders NEVER use market orders on options. Neither should you!"
+    },
+    {
+      "screen_type": "scenario",
+      "question": "It's 3:59pm on expiration Friday. Your ITM option needs to close NOW or you'll be assigned. What do you do?",
+      "options": [
+        "Market order - this is the ONE exception",
+        "Limit order at bid - accept quick exit",
+        "Let it expire and take assignment",
+        "Hold overnight and deal with it Monday"
+      ],
+      "correct": 1,
+      "xp_reward": 15,
+      "explanation_correct": "Good thinking! Limit at bid = instant fill (you're meeting buyers' price) but you CONTROLLED it. Market order might execute even worse than bid if spread is wide. Even in emergencies, use limit at bid/ask. You're guaranteed fill but protected from worse execution. Smart risk management!",
+      "explanation_wrong": "Even in emergencies, use limit orders! Place limit SELL at bid price = instant fill (you're accepting buyers' price). This guarantees execution but protects you if spread is wider than you think. Market order = could execute below bid on illiquid option. Always limit, even when rushing!"
+    },
+    {
+      "screen_type": "summary_cards",
+      "headline": "Order Type Rules",
+      "cards": [
+        {
+          "front": "Golden Rule for Options?",
+          "back": "NEVER use market orders. ALWAYS use limit orders. No exceptions. Market orders on options = donating 10-30% to market makers. Limit orders = you control max price paid."
+        },
+        {
+          "front": "Where to set your limit price?",
+          "back": "BUY: Start at midpoint, walk up to ask if needed (try mid, then mid+$0.10, then mid+$0.20). SELL: Start at midpoint, walk down to bid if needed. Never accept ask/bid immediately!"
+        },
+        {
+          "front": "What if limit order doesn't fill?",
+          "back": "PATIENCE! Wait 3-5 minutes at midpoint. Then nudge limit by $0.10 toward ask/bid. Repeat. Takes extra 5-10 minutes but saves $30-100 per contract. Market makers test your discipline - don't break!"
+        }
+      ]
+    },
+    {
+      "screen_type": "celebration",
+      "xp_earned": 70,
+      "total_xp": 500,
+      "badge": "🎯 Order Master",
+      "badge_description": "You'll never overpay with market orders!",
+      "celebration_message": "You just saved yourself thousands of dollars over your trading career. Market orders are for suckers - you're smarter than that! 🎯",
+      "streak_bonus": false,
+      "next_lesson_preview": {
+        "title": "In the Money vs Out of the Money",
+        "description": "Learn when your option has value right now",
+        "unlock_status": "unlocked"
+      }
+    }
+  ]
+}
+

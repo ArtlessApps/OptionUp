@@ -61,29 +61,34 @@
       "screen_type": "interactive_example",
       "headline": "Long Call P/L Diagram Builder",
       "description": "Move the sliders to see how your P/L diagram changes",
+      "interactive_type": "pl_diagram",
       "inputs": [
         {
+          "label": "Stock Price Now",
           "name": "Stock Price Now",
           "type": "slider",
           "min": 50,
           "max": 200,
-          "default": 100
+          "value": 100
         },
         {
+          "label": "Strike Price",
           "name": "Strike Price",
           "type": "slider",
           "min": 80,
           "max": 150,
-          "default": 110
+          "value": 110
         },
         {
+          "label": "Premium Paid",
           "name": "Premium Paid",
           "type": "slider",
           "min": 1,
           "max": 20,
-          "default": 5
+          "value": 5
         }
       ],
+      "outputs": [],
       "teaching_points": [
         "Notice: Max loss is always the premium (flat line at bottom)",
         "Breakeven = Strike + Premium ($110 + $5 = $115)",

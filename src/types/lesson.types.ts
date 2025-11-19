@@ -80,23 +80,48 @@ export interface CalculationScreen extends BaseScreen {
   teaching_point?: string;
 }
 
+export type InteractiveType =
+  | 'theta_decay'
+  | 'delta_simulator'
+  | 'pl_diagram'
+  | 'spread_calculator'
+  | 'greeks_dashboard'
+  | 'iron_condor_builder'
+  | 'generic';
+
 export interface InteractiveExampleScreen extends BaseScreen {
   screen_type: 'interactive_example';
   headline: string;
   description: string;
+  interactive_type?: InteractiveType;
   inputs: Array<{
     label: string;
-    type?: 'slider' | 'toggle' | 'text';
+    name?: string;
+    type?: 'slider' | 'toggle' | 'text' | 'dropdown' | 'number';
     min?: number;
     max?: number;
     step?: number;
     value: number | string | boolean;
+    options?: (string | number)[];
+    locked?: boolean;
   }>;
   outputs: Array<{
     label: string;
     value: string;
+    calculation?: string;
+    format?: string;
+    highlight?: boolean;
+    note?: string;
   }>;
   teaching_points: string[];
+  chartConfig?: {
+    showGrid?: boolean;
+    animationDuration?: number;
+    height?: number;
+    stockPriceRange?: [number, number];
+    showBreakeven?: boolean;
+    showMaxProfitLoss?: boolean;
+  };
 }
 
 export interface SummaryCardsScreen extends BaseScreen {
