@@ -135,12 +135,12 @@
         {
           "label": "Days Requirement",
           "calculation": "days >= 30 ? '✅ Pass (30+ days)' : '❌ Fail (need ' + (30 - days) + ' more days)'",
-          "highlight": days < 30
+          "highlight": "days < 30"
         },
         {
           "label": "Trade Count Requirement",
           "calculation": "total_trades >= 30 ? '✅ Pass (30+ trades)' : '❌ Fail (need ' + (30 - total_trades) + ' more trades)'",
-          "highlight": total_trades < 30
+          "highlight": "total_trades < 30"
         },
         {
           "label": "Win Rate",
@@ -150,7 +150,7 @@
         {
           "label": "Discipline Check",
           "calculation": "followed_plan >= 90 ? '✅ Excellent discipline' : followed_plan >= 75 ? '⚠️ Good but needs work' : '❌ Poor discipline - not ready'",
-          "highlight": followed_plan < 75
+          "highlight": "followed_plan < 75"
         },
         {
           "label": "VERDICT",
