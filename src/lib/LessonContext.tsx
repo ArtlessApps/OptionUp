@@ -64,12 +64,52 @@ export function LessonProvider({ children }: { children: ReactNode }) {
   const [isLoadingLesson, setIsLoadingLesson] = useState(false);
   const [onSyncError, setOnSyncError] = useState<((error: any) => void) | undefined>(undefined);
   const [onLessonLoadError, setOnLessonLoadError] = useState<((error: any) => void) | undefined>(undefined);
+  const [hasLoadedInitialProgress, setHasLoadedInitialProgress] = useState(false);
 
   // Load all lessons metadata on mount
   useEffect(() => {
     loadModules();
-    syncProgressWithCloud();
   }, []);
+
+  // Sync progress with cloud when authentication state changes
+  useEffect(() => {
+    const syncOnAuthChange = async () => {
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        
+        if (user && !hasLoadedInitialProgress) {
+          console.log('User authenticated, syncing progress from cloud...');
+          await syncProgressWithCloud();
+          setHasLoadedInitialProgress(true);
+        } else if (!user) {
+          // User logged out, reset the flag so progress loads again on next login
+          setHasLoadedInitialProgress(false);
+        }
+      } catch (error) {
+        console.error('Error checking auth state:', error);
+      }
+    };
+
+    syncOnAuthChange();
+
+    // Listen for auth state changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+      console.log('Auth state changed:', event);
+      
+      if (event === 'SIGNED_IN' && session?.user) {
+        console.log('User signed in, loading progress from cloud...');
+        await syncProgressWithCloud();
+        setHasLoadedInitialProgress(true);
+      } else if (event === 'SIGNED_OUT') {
+        console.log('User signed out, resetting progress flag');
+        setHasLoadedInitialProgress(false);
+      }
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [hasLoadedInitialProgress]);
 
   // Sync progress with cloud when user signs in
   const syncProgressWithCloud = async () => {
